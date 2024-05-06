@@ -1,0 +1,977 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{balance}
+\usepackage{algorithmic}
+\usepackage{lipsum}
+\usepackage{cuted}
+\usepackage{units}
+\usepackage{nicefrac, xfrac}
+\usepackage[german]{babel}
+\newcommand{\slfrac}[2]{\left.#1\middle/#2\right.}
+
+\tolerance=750
+\emergencystretch=5pt
+\hyphenpenalty=1000
+\exhyphenpenalty=100
+
+% \hyphenation{ve-ry-lon-g-w-ord  ev-en-long-er-com-pound-word-with-no-spaces}
+\hyphenation{Duisauteiruredolorinre-prehenderitinvoluptatevelitesse-cillum doloreeufugiatnullapariatur}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+\begin{document}
+\title{Chance-Constrained Frequency Dynamic Unit Commitment Considering Uncertain Variability through Bayesian Filter Method}
+\author{IEEE Publication Technology Department
+\thanks{Manuscript created October, 2020; This work was developed by the IEEE Publication Technology Department. This work is distributed under the \LaTeX \ Project Public License (LPPL) ( http://www.latex-project.org/ ) version 1.3. A copy of the LPPL, version 1.3, is included in the base \LaTeX \ documentation of all distributions of \LaTeX \ released 2003/12/01 or later. The opinions expressed here are entirely that of the author. No warranty is expressed or implied. User assumes all risk.}}
+
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~18, No.~9, September~2020}%
+{How to Use the IEEEtran \LaTeX \ Templates}
+
+\maketitle
+
+\begin{abstract}
+Ensuring frequency dynamic security with considering uncertain variability (UV) is a critical challenge in low-inertia grids with a high penetration of renewable energy sources. In this situation, a Bayesian-filer-derived system frequency response (BF-SFR) method and a well-designed chance constrained frequency dynamic unit commitment (CC-FDUC) model are proposed to solve this problem. A Bayesian filter method for modeling SFR is created after the UV induced by numerous converter-interfaced resources and potential measured errors is examined. Unlike previous approaches such as analytical SFR method and time-discretized ones without considering UV, BF-SFR offers the trajectory of frequency derivation as existing methods do, it additionally estimate the posterior distribution of frequency derivation if UV incorporated. Following this, The posterior distribution through BF-SFR is reformulated as a set of chance constrained frequency dynamic restrictions in CC-FDUC to search optimal scheduled commitment results. Several cases on a modified IEEE 6 bus test system and a 118 bus test system confirm the unbiased and validness of the proposed models.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Bayesian filer, system frequency response, uncertain variability, unit commitment, chance constraints, converter-interfaced generators.
+\end{IEEEkeywords}
+
+
+\section{Introduction}
+\IEEEPARstart{T}{he} UV characteristic from multiple converter-interfaced generators and measured errors has a negative impact on the frequency dynamic security and energy management in low-inertia grids. To keep the system have an adequate capacity against UV, many studies and state Grid Codes are reported to explore the necessity of grid-connected converter-interfaced generators participating into frequency supporting in order to preserve the intended system's acceptable capacity against UV.
+
+The literature reported several studies to model SFR against imbalanced power disturbances. These studies used an center-of-inertia (CoI) swing equation to calculate frequency dynamics. Ref. $[1,2]$ built a low-order CoI equation concerning conventional synchronous generators and derived an analytical solution. Ref. [3-6] considered the impact of converter-interfaced generators with various frequency control schemes. It's worth noting that such models in [1-6] kept similar mathematical types of ordinary differential equation. As such, their solutions kept similar forms, the difference of associated solutions lies in a modification of frequency dynamic parameters due to integrated converter-interfaced generators. The shortage of such solutions mentioned before lies in a lack of consideration of complex frequency control schemes. Driven by this issue, another type of time-discretized solution encoding SFR is developed. Ref. $[7,8]$ constructed a time-discretized solution considering rate-of-change-of-frequency (RoCoF) replays. Ref. [9] extended a multi-area time-discretized solution considering frequency supporting of fly-wheel storage systems. Ref. [11] derived a time-discretized SFR solution considering converter-based generators. The numerical result of frequency response, [7-11], reflects the trajectory of frequency dynamic with free noise assumptions. Nevertheless, the frequency dynamic with noise assumptions cannot be solved. Furthermore, the probabilistic distribution of the system frequency change cannot be well estimated.
+
+In the application of frequency dynamic in electrical power system operations, some FDUC models were carried out on introducing frequency dynamic requirements derived from SFR into UC problems. These models can be divided into two categories in line with integrated frequency dynamic constraints. i) critical feature requirement of frequency dynamic, such as RoCoF, nadir, is reshaped as a set of convex constraints into UC $[3,5,6$, 11-17]; ii) frequency change over a predefined simulated horizon (e.g., 0s - 60s) is reformulated into a set of binding constraints incorporating into UC, [7, 9, 18-19]. Compared with the former category, the latter one is more accurate but more complicated. In despite that the involvement of conventional generators participating in UC has been thoroughly discussed, few studies focus frequency supporting of converter-interfaced generators and BESS from the probabilistic perspective.
+
+Motivated by such issues, this paper firstly presents a new probabilistic Bayesian filter framework for encoding SFR with UV hypothesis. BF-SFR captures the interactive impact of UV on the frequency derivation, it can not only estimate the trajectory of frequency derivation but also provide its posterior probabilistic density distribution (PDF). Therefore, BF-SFR provides a great level of freedom for analyzing frequency dynamic and external factors such as UV, unit's output limits, multiple control interaction. Following this, a classical application, FDUC is implemented. In particular, the impact of frequency dynamic requirement with UV assumption within BF-SFR is extended, and chance-constrained FDUC model is well redesigned.
+
+In all, the contributions in this paper can be summarized,
+
+1) A new BF-SFR solution for modeling SFR is proposed. The impact of frequency dynamic with UV assumption is investigated. By implementing it, the probabilistic distribution of frequency derivation can be well estimated. Meanwhile, the effect of various control schemes provided by converter-interfaced generators and BESS can be smoothly reconsidered.
+
+2) A new CCFDUC model with considering frequency dynamic derived from BF-SFR is designed. A chance constraint form of frequency dynamic requirement concerning nadir is derived. The convex characteristic and linearization of constructed frequency dynamic constraint is discussed.
+
+The reminder of this paper is organized: Section II introduces a Bayesian filter framework for encoding SFR and derives the solution of BF-SFR. Section III constructs a set of chance-constraint frequency dynamic constraints to enforce the impact of frequency dynamic requirements, and sequentially gives a CCFDUC model. Section IV verifies the effectiveness of BF-SFR and CCFDUC in a modified IEEE 14 bus test system and IEEE 118 bus test system, and Section V concludes on the main work in this paper.
+
+\section{The Design, Intent and \\ Limitations of the Templates}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig1}
+\caption{This is the caption for one fig.}
+\label{fig1}
+\end{figure}
+
+Considering a low-inertia grid comprised of conventional generators, converter-interfaced generators and BESS, the union frequency dynamic of studied power system can be combined as Fig. \ref{fig1}(a) and simplified as Fig. \ref{fig1}(b). The impact of homogeneous generators in Fig. \ref{fig1}(a) with similar frequency control schemes can be equivalent as an aggregated $\mathrm{CoI}$ unit, illustrated in Fig. \ref{fig1}(b). As such, the aggregated coefficients $\left\{H_{G}, D_{G}, K_{G}, F_{G}, R_{G}, T_{G}\right\},\left\{K_{W}, R_{W}, M_{W}, D_{W}, T_{W}\right\}$ and $\left\{T_{E}, R_{E}\right\}$, respectively, represent the adjusted output produced by $\mathrm{CoI}$ conventional unit block, $\mathrm{CoI}$ converter-interfaced block unit and CoI BESS block. More details on the calculation of aggregated frequency parameters can be found in $[6]$. 
+
+In Fig. \ref{fig1}(b), the reduced order transfer function of SFR concerning a step-type mismatch power disturbance $\Delta p_{{step }}(s)=\Delta p_{{step }} / s$ can be rewritten as,
+
+\begin{align}\label{eqn:1}
+& \left(M_{G} s+D_{G}\right) \Delta f(s)=\left(\frac{1}{s} \Delta p_{ {step }}\right)- \\
+& \qquad\underbrace{\left(\frac{K_{G}}{ R_{G}}\right)\left[\frac{\left(1+F_{G} T_{G} s\right)}{\left(1+T_{G} s\right)}\right] \Delta f(s)}_{\text {CoI conventional unit }}- \notag\\
+& \qquad\underbrace{\left(\frac{1}{R_{W}}\right)\left(\frac{1}{1+T_{W} s}\right) \Delta f(s)}_{\text {CoI Droop-controlled converter-interfaced unit }}-\underbrace{\left(M_{E} s+D_{E}\right) \Delta f(s)}_{\text {CoI BESS }} \notag
+\end{align}
+
+The $t$ - domain mathematical form of \eqref{eqn:1} can be transferred by utilizing the inverse Laplace transformation,
+
+\begin{subequations}\label{eqn:2}
+\begin{align}
+& M_{e q u} \Delta f^{\prime}(t)+D_{e q u} \Delta f(t)=\Delta p(t) \\
+& \Delta p(t)=\Delta p_{\text {step }}-\Delta p_{a d d}^{G}(t)-\Delta p_{a d d}^{W}(t)-\Delta p_{a d d}^{E}(t) \\
+& M_{e q u}=D_{G}+D_{W} \\
+& D_{\text {equ }}=D_{G}+D_{w}+\frac{1}{ R_{W}} +\frac{1}{ R_{E}} \\
+& \Delta p_{\text {add }}^{G}(t)=\frac{\kappa_{G} F_{G}}{ R_{G}} \Delta f(t)+\frac{1}{ T_{G} }\biggl\{ \\
+& \quad \int_{0}^{t}\left[\left(D_{e q u}+\frac{K_{G}}{ R_{G}}\right) \Delta f(t)-\Delta p_{\text {step }}\right] d t+M_{g} \Delta f(t)\biggr\} \notag\\
+& \Delta p_{a d d}^{W}(t)=\left(\frac{1}{R_{W}}\right) \Delta f(t)\\ 
+& \Delta p_{a d d}^{E}(t)=\left(\frac{1}{ R_{E}}\right) \Delta f(t)
+\end{align}
+\end{subequations}
+
+Detailed derivation on \eqref{eqn:1} $\rightarrow$ \eqref{eqn:2} can be found at appendix II. By replacing $\Delta f^{\prime}(t)|_{t = t_0 + n \Delta t}$ as its equivalent discretized form $\sfrac{[\Delta f(t_0+ (n+1)\Delta t)-\Delta f(t_0 + n\Delta t)]}{ \Delta t}$, the time-discretized form of $\Delta f(t)$ can be well estimated as below,
+
+\begin{subequations}\label{eqn:3}
+\begin{align}
+& \Delta f(t_0 +(n + 1)\Delta t)=\Delta f(t_0 + n \Delta t)+\\
+& \quad\qquad \frac{1}{M_{e q u}}\bigl[\Delta p(t_0 + n \Delta t)-D_{e q u} \Delta f(t_0 + n \Delta t)\bigr] \label{time-discretized SFR: swing equation}\\
+& \Delta p(t_0 + n \Delta t)=\Delta p_{{step }}-\Delta p_{{add }}^{G}(t_0 + n \Delta t)-\label{time-discretized SFR: mismatch power}\\
+&\quad\qquad\Delta p_{{add }}^{W}(t_0 + n \Delta t)-\Delta p_{\text {add }}^{E}(t_0 + n \Delta t) \notag\\
+&\Delta p_{a d d}^{G}(t_0 + n \Delta t)=\frac{\kappa_{G} F_{G}}{ R_{G} }\Delta f(t_0 + n\Delta t)+\label{time-discretized SFR: additional power from convertional units}\\
+& \quad\qquad \frac{1}{T_{G}}\biggl\{M_{g} \Delta f(t_0 + n\Delta t)+ \notag\\
+& \quad\qquad \sum_{n=0}^{N T}\left[\left(D_{e q u}+\frac{K_{G}}{ R_{G}}\right) \Delta f\left(t_{0}+n \Delta t\right)-\Delta p_{ {step }}\right] \Delta t\biggr\} \notag\\
+& \Delta p_{\text {add }}^{W}(t_0+n\Delta t)=\left(\frac{1}{ R_{W} }\right) \Delta f(t_0+n\Delta t) \label{time-discretized SFR: additional power from converters}\\
+& \Delta p_{\text {add }}^{E}(t_0+n\Delta t)=\left(\frac{1} { R_{E} }\right) \Delta f(t_0+n\Delta t) \label{additional power from bess}
+\end{align}
+\end{subequations}
+
+\noindent where $N T$ is a total number of simulated steps, $\Delta t$ declares a simulated discretized step (in this paper, $\Delta t=0.05 s$ ). \eqref{time-discretized SFR: swing equation} depicts the temporal evolution of frequency derivation between adjacent discretized steps; \eqref{time-discretized SFR: mismatch power} describes the derivation of mismatch power injected into power systems; \eqref{time-discretized SFR: additional power from convertional units}, \eqref{time-discretized SFR: additional power from converters} and \eqref{additional power from bess}  represent additional regulated outputs produced by different grid-connected units. Particularly, a state transfer model concerning SFR can be actually observed, extracted and illustrated as (3) from \eqref{time-discretized SFR: swing equation} - \eqref{time-discretized SFR: mismatch power}.
+
+% Since $\Delta p_{a d d}^{G}, \Delta p_{a d d}^{W}$ and $\Delta p_{a d d}^{E}$ are independent on aggregated frequency dynamic parameters and previous frequency derivation.
+Let $\mathbb{P}\left(\Delta f(t_0 +n\Delta t), \mu_{1}, \sigma_{1}\right)$ represents the posterior PDF of $\Delta f(t_0 +n \Delta t)$ at the $n-th$ discretized step; $\mathbb{P}\left(\Delta p(t_0 +n \Delta t), \mu_{2}, \sigma_{2}\right)$ represents the posterior PDF of $\Delta p(t_0 +n \Delta t)$ at the $n-th$ discretized step. $\left\{\mu_{1}, \sigma_{1}\right\}$ and $\left\{\mu_{1}, \sigma_{2}\right\}$, respectively, describes associated characterized value (e.g., expectation and standard variance) representing residuals in observation process and measured process. Then, $\mathbb{P}\left(\Delta f(t_0 +n \Delta t), \mu_{1}, \sigma_{1}\right)$ and $\mathbb{P}\left(\Delta p(t_0 +n \Delta t), \mu_{2}, \sigma_{2}\right)$ are capable to reflect the impact of UV feature on the frequency changing process. Furthermore, a Bayesian-based BF framework is implemented to depict the interactive relation between $\mathbb{P}\left(\Delta f(t_0 + n\Delta t), \mu_{1}, \sigma_{1}\right)$ and $\mathbb{P}\left(\Delta p(t_0 +n \Delta t), \mu_{2}, \sigma_{2}\right)$.
+
+\begin{strip}
+\rule{0.5\textwidth}{.4pt}
+\begin{align}\label{eqn:4}
+& \mathbb{P}\left(\Delta f(t_0+ (n+1)\Delta t), u_{1}, \sigma_{1}\right)=\mathbb{P}\left(\Delta f(t_0+ (n+ 1)\Delta t) \mid \Delta p\left(t_{0}: t_0+ (n+ 1)\Delta t\right), u_{1}, \sigma_{1}\right) =\\
+& \frac{\biggl\{\mathbb{P}\left(\Delta f(t_0+ (n+ 1)\Delta t) \mid \Delta p\left(t_{0}: n \Delta t\right), u_{1}, \sigma_{1}\right) \mathbb{P}\left(\Delta f(t_0+ (n+1)\Delta t) \mid \Delta p(t_0+(n+ 1)\Delta t), u_{1}, \sigma_{1}\right)\biggr\}}{\biggl\{\mathbb{P}\left(\Delta p(t_0+(n+1)\Delta t) \mid \Delta p\left(t_{0}: n \Delta t\right), u_{2}, \sigma_{2}\right)\biggr\}}\notag
+\end{align}
+\hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
+\end{strip}
+
+In \eqref{eqn:4}, $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t+\Delta t\right), u_{1}, \sigma_{1}\right)$ denotes an equivalent mathematical form of $\mathbb{P}\left(\Delta f(t+\Delta t), u_{1}, \sigma_{1}\right)$. It depicts that the posterior PDF of $\mathbb{P}\left(\Delta f(t+\Delta t), u_{1}, \sigma_{1}\right)$ can be fully inferred after obtaining all measured sequences $\Delta p\left(t_{0}: t+\Delta t\right)=\left\{\Delta p_{t} \mid t \in\left[t_{0}, t+\Delta t\right]\right\}$. Moreover, the calculation of $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t+\Delta t\right), u_{1}, \sigma_{1}\right)$ can be indirectly achieved by estimating its prior form $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{1}, \sigma_{1}\right)$ and a likelihood rate $\mathbb{P}\left(\Delta p(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right)$. The below gives the expression of the prior function and the likelihood ratio.
+
+$$
+\begin{gathered}
+\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{1}, \sigma_{1}\right)=\int \mathbb{P}(\Delta f(t+\Delta t) \mid \Delta f(t), \\
+\left.u_{1}, \sigma_{1}\right) \mathbb{P}\left(\Delta f(t) \mid \Delta p\left(t_{0}: t\right), u_{1}, \sigma_{1}\right) d \Delta f(t) \\
+\mathbb{P}\left(\Delta p(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right)=\int \mathbb{P}(\Delta p(t+\Delta t) \mid \Delta f(t+\Delta t) \\
+\left.u_{2}, \sigma_{2}\right) \mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right) d \Delta p(t)
+\end{gathered}
+$$
+
+Previous publications, following a free residual assumption, have confirmed that $\Delta f(t)$ can be evaluated as a closed-form analytical form [1] or an available timediscretized form [2]. Unlike existing studies mentioned before, BF-SFR considers the impact of UV on the frequency dynamic. In this work, UV is abstracted as a sequence of residuals series, and it reflects: 1) the intermittent property of converter-interfaced generators participating in frequency supporting, and 2) possible measured errors of $\Delta f(t)$ at each discretized step. By treating the differential SFR solution with residual assumption as a hidden state-transfer and decision process, both trajectory and posterior PDF with respect to $\Delta f(t)$ can be computed in a recursion mathematical form.
+
+To estimate the posterior of $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}\right.\right.$ : $\left.t), u_{1}, \sigma_{1}\right)$ and $\mathbb{P}\left(\Delta p(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right)$, the operator " $\int(\cdot)$ " can be approximately calculated by an statistical expectation of many sampled data (or called filters) from integrand function, that is, $\int(\varpi(\cdot) \mathbb{P}(\cdot)) \approx$ $1 / N \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces any functions and $\lambda_{n}$ represents sampled data generated from $\mathbb{P}(\cdot)$. Hence, (??) can be rewritten as,
+
+$$
+\begin{aligned}
+& \mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{1}, \sigma_{1}\right)= \\
+& \quad 1 / N\left(\sum_{n=1}^{N} \mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta f(t), u_{1}, \sigma_{1}\right) \lambda_{n}^{\prime}\right) \\
+& \mathbb{P}\left(\Delta p(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right)= \\
+& 1 / N\left(\sum_{n=1}^{N} \mathbb{P}\left(\Delta p(t+\Delta t) \mid \Delta f(t+\Delta t), u_{2}, \sigma_{2}\right) \lambda_{n}^{\prime \prime}\right)
+\end{aligned}
+$$
+
+where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, denote random filters following associated integrand functions. In combination with (??) and (??), the probabilistic assessment of $\mathbb{P}(\Delta f(t+$ $\Delta t, u_{1}, \sigma_{1}$ ) can be divided into two steps:
+
+- i) a Bayesian inference process in the prior stage, (??) is used to generate a number of filters to capture the likely value of $\Delta f(t+\Delta t)$;
+
+- ii) a Bayesian predication process in the prediction stage, (??) is utilized to update the posterior of $\Delta f(t+\Delta t)$. Note that $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot generated from $\mathbb{P}\left(\Delta f(t) \mid \Delta p\left(t_{0}: t\right), u_{1}, \sigma_{1}\right)$ and $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}:\right.\right.$ $\left.t), u_{2}, \sigma_{2}\right)$ since their exact functions are unknown, Sequential Important Sampling (SIS) is used to estimate the value of integrand functions. For saving space, the case of the prior stage concerning $\mathbb{P}\left(\Delta f(t) \mid \Delta p\left(t_{0}\right.\right.$ : $\left.t), u_{1}, \sigma_{1}\right)$ is took as an example to describe the solution process via SIS, another case of the posterior stage concerning $\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right)$ is in a similar way.
+
+Let $\iota(t)=\mathbb{P}\left(\Delta f(t+\Delta t) \mid \Delta p\left(t_{0}: t\right), u_{2}, \sigma_{2}\right), \iota(t)=$ $\iota(t) / \lambda(t) \cdot \lambda(t)$ where $\iota(t)$ describes the value of posterior distributions at and $\lambda(t)$ describes the proposed distribution
+
+\section{\LaTeX \ Distributions: Where to Get Them}
+\noindent IEEE recommends using the distribution from the \TeX User Group at \url{http://www.tug.org}. You can join TUG and obtain a DVD distribution or download for free  from the links provided on their website: \url{http://www.tug.org/texlive/}. The DVD includes distributions for Windows, Mac OS X and Linux operating systems.
+ 
+\section{Where to get the IEEEtran Templates}
+\noindent The {\bf{IEEE Template Selector}} will always have the most up-to-date versions of the \LaTeX\ and MSWord templates. Please see: \url{https://template-selector.ieee.org/} and follow the steps to find the correct template for your intended publication. Many publications use the IEEETran LaTeX templates, however, some publications have their own special templates. Many of these are  based on IEEEtran, but may have special instructions that vary slightly from those in this document.
+
+\section{Where to get \LaTeX \ help - user groups}
+\noindent The following on-line groups are very helpful to beginning and experienced \LaTeX\ users. A search through their archives can provide many answers to common questions.
+\begin{list}{}{}
+\item{\url{http://www.latex-community.org/}} 
+\item{\url{https://tex.stackexchange.com/} }
+\end{list}
+
+\section{Document Class Options in IEEEtran}
+\noindent At the beginning of your \LaTeX\ file you will need to establish what type of publication style you intend to use. The following list shows appropriate documentclass options for each of the types covered by IEEEtran.
+
+\begin{list}{}{}
+\item{Regular Journal Article}
+\item{{\tt{$\backslash$documentclass[journal]{IEEEtran}}}}\\
+\item{{Conference Paper}}
+\item{{\tt{$\backslash$documentclass[conference]{IEEEtran}}}}\\
+\item{Computer Society Journal Article}
+\item{{\tt{$\backslash$documentclass[10pt,journal,compsoc]{IEEEtran}}}}\\
+\item{Computer Society Conference Paper}
+\item{{\tt{$\backslash$documentclass[conference,compsoc]{IEEEtran}}}}\\
+\item{{Communications Society Journal Article}}
+\item{{\tt{$\backslash$documentclass[journal,comsoc]{IEEEtran}}}}\\
+\item{{Brief, Correspondence or Technote}}
+\item{{\tt{$\backslash$documentclass[9pt,technote]{IEEEtran}}}}
+\end{list}
+
+There are other options available for each of these when submitting for peer review or other special requirements. IEEE recommends to compose your article in the base 2-column format to make sure all your equations, tables and graphics will fit the final 2-column format. Please refer to the document ``IEEEtran\_HOWTO.pdf'' for more information on settings for peer review submission if required by your EIC.
+
+\section{How to Create Common Front Matter}
+\noindent The following sections describe general coding for these common elements. Computer Society publications and Conferences may have their own special variations and will be noted below.
+\subsection{Paper Title}
+\noindent The title of your paper is coded as:
+
+\begin{verbatim}
+\title{The Title of Your Paper}
+\end{verbatim}
+
+\noindent Please try to avoid the use of math or chemical formulas in your title if possible.
+
+\subsection{Author Names and Affiliations}
+\noindent The author section should be coded as follows:
+\begin{verbatim}
+\author{Masahito Hayashi 
+\IEEEmembership{Fellow, IEEE}, Masaki Owari
+\thanks{M. Hayashi is with Graduate School 
+of Mathematics, Nagoya University, Nagoya, 
+Japan}
+\thanks{M. Owari is with the Faculty of 
+Informatics, Shizuoka University, 
+Hamamatsu, Shizuoka, Japan.}
+}
+\end{verbatim}
+Be sure to use the $\backslash$IEEEmembership command to identify IEEE membership status.
+Please see the ``IEEEtran\_HOWTO.pdf'' for specific information on coding authors for Conferences and Computer Society publications. Note that the closing curly brace for the author group comes at the end of the thanks group. This will prevent you from creating a blank first page.
+
+\subsection{Running Heads}
+\noindent The running heads are declared by using the $\backslash${\tt{markboth}} command. There are two arguments to this command: the first contains the journal name information and the second contains the author names and paper title.
+\begin{verbatim}
+\markboth{Journal of Quantum Electronics, 
+Vol. 1, No. 1, January 2021}
+{Author1, Author2, 
+\MakeLowercase{\textit{(et al.)}: 
+Paper Title}
+\end{verbatim}
+
+\subsection{Copyright Line}
+\noindent For Transactions and Journals papers, this is not necessary to use at the submission stage of your paper. The IEEE production process will add the appropriate copyright line. If you are writing a conference paper, please see the ``IEEEtran\_HOWTO.pdf'' for specific information on how to code "Publication ID Marks".
+
+\subsection{Abstracts}
+\noindent The abstract is the first element of a paper after the $\backslash${\tt{maketitle}} macro is invoked.  The coding is simply:
+\begin{verbatim}
+\begin{abstract}
+Text of your abstract.
+\end{abstract}
+\end{verbatim}
+Please try to avoid mathematical and chemical formulas in the abstract.
+
+\subsection{Index Terms}
+\noindent The index terms are used to help other researchers discover your paper. Each society may have it's own keyword set. Contact the EIC of your intended publication for this list.
+\begin{verbatim}
+\begin{IEEEkeywords}
+Broad band networks, quality of service
+\end{IEEEkeywords}
+\end{verbatim}
+\section{How to Create Common Body Elements}
+\noindent The following sections describe common body text elements and how to code them.
+
+\subsection{Initial Drop Cap Letter}
+\noindent The first text paragraph uses a ``drop cap'' followed by the first word in ALL CAPS. This is accomplished by using the $\backslash${\tt{IEEEPARstart}} command as follows:
+\begin{verbatim}
+\IEEEPARstart{T}{his} is the first paragraph 
+of your paper. . .
+\end{verbatim}
+
+\subsection{Sections and Subsections}
+\noindent Section headings use standard \LaTeX\ commands: $\backslash${\tt{section}}, $\backslash${\tt{subsection}} and $\backslash${\tt{subsubsection}}. Numbering is handled automatically for you and varies according to type of publication. It is common to not indent the first paragraph following a section head by using $\backslash${\tt{noindent}} as follows:
+\begin{verbatim}
+\section{Section Head}
+\noindent The text of your paragraph . . .
+\end{verbatim}
+
+\subsection{Citations to the Bibliography}
+\noindent The coding for the citations are made with the \LaTeX\ $\backslash${\tt{cite}} command. This will produce individual bracketed reference numbers in the IEEE style. At the top of your \LaTeX\ file you should include:
+\begin{verbatim}
+\usepackage{cite}
+\end{verbatim}
+For a single citation code as follows:
+\begin{verbatim}
+see \cite{ams}
+\end{verbatim}
+This will display as: see \cite{ams}\\
+
+For multiple citations code as follows:
+\begin{verbatim}
+\cite{ams,oxford,lacomp}
+\end{verbatim}
+
+This will display as \cite{ams,oxford,lacomp}
+
+\subsection{Figures}
+\noindent Figures are coded with the standard \LaTeX\ commands as follows:
+\begin{verbatim}
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig1}
+\caption{This is the caption for one fig.}
+\label{fig1}
+\end{figure}
+\end{verbatim}
+The [!t] argument enables floats to the top of the page to follow IEEE style. Make sure you include:
+\begin{verbatim}
+\usepackage{graphicx}
+\end{verbatim}
+ 
+\noindent at the top of your \LaTeX file with the other package declarations. 
+
+To cross-reference your figures in the text use the following code example:
+\begin{verbatim}
+See figure \ref{fig1} ...
+\end{verbatim}
+This will produce:\\
+See figure \ref{fig1} . . .
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=2.5in]{fig1}
+\caption{This is the caption for one fig.}
+\label{fig1}
+\end{figure}
+
+\subsection{Tables}
+\noindent Tables should be coded with the standard \LaTeX\ coding. The following example shows a simple table.
+
+
+\begin{verbatim}
+\begin{table}
+\begin{center}
+\caption{Filter design equations  ...}
+\label{tab1}
+\begin{tabular}{| c | c | c |}
+\hline
+Order & Arbitrary coefficients & 
+coefficients\\
+of filter & $e_m$ &   $b_{ij}$ \\
+\hline
+1& $b_{ij}=\hat{e}.\hat{\beta_{ij}}$, 
+& $b_{00}=0$\\
+\hline
+2&$\beta_{22}=(~1,-1,-1,~~1,~~1,~~1)$ &\\ 
+\hline
+3& $b_{ij}=\hat{e}.\hat{\beta_{ij}}$, 
+& $b_{00}=0$,\\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+\end{verbatim}
+To reference the table in the text, code as follows:
+\begin{verbatim}Table~\ref{tab1} lists the closed-form...\end{verbatim}
+to produce:
+
+Table~\ref{tab1} lists the closed-form . . .
+
+
+%moved here for pagination purposes
+\begin{table}
+\begin{center}
+\caption{A Simple Table Example.}
+\label{tab1}
+\begin{tabular}{| c | c | c |}
+\hline
+Order & Arbitrary coefficients & coefficients\\
+of filter & $e_m$ &   $b_{ij}$ \\
+\hline
+1& $b_{ij}=\hat{e}.\hat{\beta_{ij}}$, & $b_{00}=0$\\
+\hline
+2&$\beta_{22}=(~1,-1,-1,~~1,~~1,~~1)$ &\\ 
+\hline
+3& $b_{ij}=\hat{e}.\hat{\beta_{ij}}$, & $b_{00}=0$,\\
+\hline 
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\subsection{Lists}
+\noindent In this section, we will consider three types of lists: simple unnumbered, numbered and bulleted. There have been numerous options added to IEEEtran to enhance the creation of lists. If your lists are more complex than those shown below, please refer to the  ``IEEEtran\_HOWTO.pdf'' for additional options.\\
+
+\noindent{\bf A plain  unnumbered list}
+
+\begin{list}{}{}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{list}
+
+\noindent coded as:
+\begin{verbatim}
+\begin{list}{}{}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{list}
+\end{verbatim}
+\noindent{\bf A simple numbered list}
+
+\begin{enumerate}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{enumerate}
+\noindent coded as: 
+\begin{verbatim}
+\begin{enumerate}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{enumerate}
+\end{verbatim}
+
+\noindent{\bf A simple bulleted list}
+
+\begin{itemize}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{itemize}
+
+\noindent coded as:
+
+\begin{verbatim}
+\begin{itemize}
+\item{bare\_jrnl.tex}
+\item{bare\_conf.tex}
+\item{bare\_jrnl\_compsoc.tex}
+\item{bare\_conf\_compsoc.tex}
+\item{bare\_jrnl\_comsoc.tex}
+\end{itemize}
+\end{verbatim}
+
+
+\subsection{Other Elements}
+\noindent For other less common elements such as Algorithms, Theorems and Proofs, and Floating Structures such as page-wide tables, figures or equations, please refer to the ``IEEEtran\_HOWTO.pdf'' section on ``Double Column Floats.''
+
+
+\section{How to Create Common Back Matter Elements}
+\noindent The following sections demonstrate common back matter elements such as Acknowledgments, Bibliographies, Appendicies and Author Biographies.
+
+\subsection{Acknowledgments}
+\noindent This should be a simple paragraph before the bibliography to thank those individuals and institutions who have supported your work on this article.
+
+\begin{verbatim}
+\section{Acknowledgments}
+\noindent Text describing those who 
+supported your paper.
+\end{verbatim}
+
+\subsection{Bibliographies}
+\noindent {\bf{References Simplified:}} A simple way of composing references is to use the $\backslash${\tt{bibitem}} macro to define the beginning of a reference as in the following examples:\\
+
+
+\noindent [6] H. Sira-Ramirez. ``On the sliding mode control of nonlinear systems,'' \textit{Systems \& Control Letters}, vol. 19, pp. 303--312, 1992.
+
+\noindent coded as:
+\begin{verbatim}
+\bibitem{Sira3}
+H. Sira-Ramirez. ``On the sliding mode 
+control of nonlinear systems,'' 
+\textit{Systems \& Control Letters}, 
+vol. 19, pp. 303--312, 1992.
+\end{verbatim}
+
+\noindent [7] A. Levant.``Exact differentiation of signals with unbounded higher derivatives,''  in \textit{Proceedings of the 45th IEEE Conference on Decision and Control}, San Diego, California, USA, pp. 5585--5590, 2006.
+
+\noindent coded as:
+\begin{verbatim}\bibitem{Levant}
+A. Levant. ``Exact differentiation of 
+signals with unbounded higher 
+derivatives,''  in \textit{Proceedings 
+of the 45th IEEE Conference on 
+Decision and Control}, San Diego, 
+California, USA, pp. 5585--5590, 2006.
+\end{verbatim}
+
+
+\noindent [8] M. Fliess, C. Join, and H. Sira-Ramirez. ``Non-linear estimation is easy,'' \textit{International Journal of Modelling, Identification and Control}, vol. 4, no. 1, pp. 12--27, 2008.
+
+\noindent coded as:
+\begin{verbatim}
+\bibitem{Cedric}
+M. Fliess, C. Join, and H. Sira-Ramirez. 
+``Non-linear estimation is easy,'' 
+\textit{International Journal of Modelling, 
+Identification and Control}, vol. 4, 
+no. 1, pp. 12--27, 2008.
+\end{verbatim}
+
+\noindent [9] R. Ortega, A. Astolfi, G. Bastin, and H. Rodriguez. ``Stabilization of food-chain systems using a port-controlled Hamiltonian description,'' in \textit{Proceedings of the American Control Conference}, Chicago, Illinois, USA, pp. 2245--2249, 2000.
+
+\noindent coded as:
+\begin{verbatim}
+\bibitem{Ortega}
+R. Ortega, A. Astolfi, G. Bastin, and H. 
+Rodriguez. ``Stabilization of food-chain 
+systems using a port-controlled Hamiltonian 
+description,'' in \textit{Proceedings of the 
+American Control Conference}, Chicago, 
+Illinois, USA, pp. 2245--2249, 2000.
+\end{verbatim}
+
+\subsection{Accented Characters in References}
+\noindent When using accented characters in references, please use the standard LaTeX coding for accents. {\bf{Do not use math coding for character accents}}. For example:
+\begin{verbatim}
+\'e, \"o, \`a, \~e 
+\end{verbatim}
+will produce: \'e, \"o, \`a, \~e 
+
+
+\subsection{Use of BibTeX}
+\noindent If you wish to use BibTeX, please see the documentation that accompanies the IEEEtran Bibliography package.
+
+\subsection{Biographies and Author Photos}
+\noindent Authors may have options to include their photo or not. Photos should be a bit-map graphic (.tif or .jpg) and sized to fit in the space allowed. Please see the coding samples below:
+\begin{verbatim}
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here without a photo.
+\end{IEEEbiographynophoto}
+\end{verbatim}
+or a biography with a photo
+
+\begin{verbatim}
+\begin{IEEEbiography}[{\includegraphics
+[width=1in,height=1.25in,clip,
+keepaspectratio]{fig1.png}}]
+{IEEE Publications Technology Team} 
+In this paragraph you can place 
+your educational, professional background 
+and research and other interests.
+\end{IEEEbiography}
+\end{verbatim}
+
+Please see the end of this document to see the output of these coding examples.
+
+
+
+\section{Mathematical Typography \\ and Why It Matters}
+
+\noindent Typographical conventions for mathematical formulas have been developed to {\bf provide uniformity and clarity of presentation across mathematical texts}. This enables the readers of those texts to both understand the author's ideas and to grasp new concepts quickly. While software such as \LaTeX \ and MathType\textsuperscript{\textregistered} can produce aesthetically pleasing math when used properly, it is also very easy to misuse the software, potentially resulting in incorrect math display.
+
+IEEE aims to provide authors with the proper guidance on mathematical typesetting style and assist them in writing the best possible article.
+
+As such, IEEE has assembled a set of examples of good and bad mathematical typesetting. You will see how various issues are dealt with. The following publications have been referenced in preparing this material:
+
+\begin{list}{}{}
+\item{\emph{Mathematics into Type}, published by the American Mathematical Society}
+\item{\emph{The Printing of Mathematics}, published by Oxford University Press}
+\item{\emph{The \LaTeX Companion}, by F. Mittelbach and M. Goossens}
+\item{\emph{More Math into LaTeX}, by G. Gr\"atzer}
+\item{AMS-StyleGuide-online.pdf, published by the American Mathematical Society}
+\end{list}
+
+Further examples can be seen at \url{http://journals.ieeeauthorcenter.ieee.org/wp-content/uploads/sites/7/IEEE-Math-Typesetting-Guide.pdf}
+
+\subsection{Display Equations}
+\noindent A simple display equation example shown below uses the ``equation'' environment. To number the equations, use the $\backslash${\tt{label}} macro to create an identifier for the equation. LaTeX will automatically number the equation for you.
+\begin{equation}
+\label{deqn_ex1}
+x = \sum_{i=0}^{n} 2{i} Q.
+\end{equation}
+
+\noindent is coded as follows:
+\begin{verbatim}
+\begin{equation}
+\label{deqn_ex1}
+x = \sum_{i=0}^{n} 2{i} Q.
+\end{equation}
+\end{verbatim}
+
+To reference this equation in the text use the $\backslash${\tt{ref}} macro. 
+Please see (\ref{deqn_ex1})\\
+\noindent is coded as follows:
+\begin{verbatim}
+Please see (\ref{deqn_ex1})\end{verbatim}
+
+\subsection{Equation Numbering}
+\noindent {\bf{Consecutive Numbering:}} Equations within an article are numbered consecutively from the beginning of the
+article to the end, i.e., (1), (2), (3), (4), (5), etc. Do not use roman numerals or section numbers for equation numbering.\\
+
+\noindent {\bf{Appendix Equations:}} The continuation of consecutively numbered equations is best in the Appendix, but numbering
+ as (A1), (A2), etc., is permissible.\\
+
+\noindent {\bf{Hyphens and Periods}}: Hyphens and periods should not be used in equation numbers, i.e., use (1a) rather than
+(1-a) and (2a) rather than (2.a) for sub-equations. This should be consistent throughout the article.
+
+\subsection{Multi-line equations and alignment}
+\noindent Here we show several examples of multi-line equations and proper alignments.
+
+\noindent {\bf{A single equation that must break over multiple lines due to length with no specific alignment.}}
+\begin{multline}
+\text{The first line of this example}\\
+\text{The second line of this example}\\
+\text{The third line of this example}
+\end{multline}
+
+\noindent is coded as:
+\begin{verbatim}
+\begin{multline}
+\text{The first line of this example}\\
+\text{The second line of this example}\\
+\text{The third line of this example}
+\end{multline}
+\end{verbatim}
+
+\noindent {\bf{A single equation with multiple lines aligned at the = signs}}
+\begin{align}
+a &= c+d \\
+b &= e+f
+\end{align}
+\noindent is coded as:
+\begin{verbatim}
+\begin{align}
+a &= c+d \\
+b &= e+f
+\end{align}
+\end{verbatim}
+
+The {\tt{align}} environment can align on multiple  points as shown in the following example:
+\begin{align}
+x &= y & X & =Y & a &=bc\\
+x' &= y' & X' &=Y' &a' &=bz
+\end{align}
+\noindent is coded as:
+\begin{verbatim}
+\begin{align}
+x &= y & X & =Y & a &=bc\\
+x' &= y' & X' &=Y' &a' &=bz
+\end{align}
+\end{verbatim}
+
+
+
+
+
+\subsection{Subnumbering}
+\noindent The amsmath package provides a {\tt{subequations}} environment to facilitate subnumbering. An example:
+
+\begin{subequations}\label{eq:2}
+\begin{align}
+f&=g \label{eq:2A}\\
+f' &=g' \label{eq:2B}\\
+\mathcal{L}f &= \mathcal{L}g \label{eq:2c}
+\end{align}
+\end{subequations}
+
+\noindent is coded as:
+\begin{verbatim}
+\begin{subequations}\label{eq:2}
+\begin{align}
+f&=g \label{eq:2A}\\
+f' &=g' \label{eq:2B}\\
+\mathcal{L}f &= \mathcal{L}g \label{eq:2c}
+\end{align}
+\end{subequations}
+
+\end{verbatim}
+
+\subsection{Matrices}
+\noindent There are several useful matrix environments that can save you some keystrokes. See the example coding below and the output.
+
+\noindent {\bf{A simple matrix:}}
+\begin{equation}
+\begin{matrix}  0 &  1 \\ 
+1 &  0 \end{matrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{matrix}  0 &  1 \\ 
+1 &  0 \end{matrix}
+\end{equation}
+\end{verbatim}
+
+\noindent {\bf{A matrix with parenthesis}}
+\begin{equation}
+\begin{pmatrix} 0 & -i \\
+ i &  0 \end{pmatrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{pmatrix} 0 & -i \\
+ i &  0 \end{pmatrix}
+\end{equation}
+\end{verbatim}
+
+\noindent {\bf{A matrix with square brackets}}
+\begin{equation}
+\begin{bmatrix} 0 & -1 \\ 
+1 &  0 \end{bmatrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{bmatrix} 0 & -1 \\ 
+1 &  0 \end{bmatrix}
+\end{equation}
+\end{verbatim}
+
+\noindent {\bf{A matrix with curly braces}}
+\begin{equation}
+\begin{Bmatrix} 1 &  0 \\ 
+0 & -1 \end{Bmatrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{Bmatrix} 1 &  0 \\ 
+0 & -1 \end{Bmatrix}
+\end{equation}\end{verbatim}
+
+\noindent {\bf{A matrix with single verticals}}
+\begin{equation}
+\begin{vmatrix} a &  b \\ 
+c &  d \end{vmatrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{vmatrix} a &  b \\ 
+c &  d \end{vmatrix}
+\end{equation}\end{verbatim}
+
+\noindent {\bf{A matrix with double verticals}}
+\begin{equation}
+\begin{Vmatrix} i &  0 \\ 
+0 & -i \end{Vmatrix}
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\begin{Vmatrix} i &  0 \\ 
+0 & -i \end{Vmatrix}
+\end{equation}\end{verbatim}
+
+\subsection{Arrays}
+\noindent The {\tt{array}} environment allows you some options for matrix-like equations. You will have to manually key the fences, but you'll have options for alignment of the columns and for setting horizontal and vertical rules. The argument to {\tt{array}} controls alignment and placement of vertical rules.
+
+A simple array
+\begin{equation}
+\left(
+\begin{array}{cccc}
+a+b+c & uv & x-y & 27\\
+a+b & u+v & z & 134
+\end{array}\right)
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\left(
+\begin{array}{cccc}
+a+b+c & uv & x-y & 27\\
+a+b & u+v & z & 134
+\end{array} \right)
+\end{equation}
+\end{verbatim}
+
+A slight variation on this to better align the numbers in the last column
+\begin{equation}
+\left(
+\begin{array}{cccr}
+a+b+c & uv & x-y & 27\\
+a+b & u+v & z & 134
+\end{array}\right)
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\left(
+\begin{array}{cccr}
+a+b+c & uv & x-y & 27\\
+a+b & u+v & z & 134
+\end{array} \right)
+\end{equation}
+\end{verbatim}
+
+An array with vertical and horizontal rules
+\begin{equation}
+\left( \begin{array}{c|c|c|r}
+a+b+c & uv & x-y & 27\\ \hline
+a+b & u+v & z & 134
+\end{array}\right)
+\end{equation}
+is coded as:
+\begin{verbatim}
+\begin{equation}
+\left(
+\begin{array}{c|c|c|r}
+a+b+c & uv & x-y & 27\\
+a+b & u+v & z & 134
+\end{array} \right)
+\end{equation}
+\end{verbatim}
+Note the argument now has the pipe "$\vert$" included to indicate the placement of the vertical rules.
+
+
+\subsection{Cases Structures}
+\noindent Many times we find cases coded using the wrong environment, i.e., {\tt{array}}. Using the {\tt{cases}} environment will save keystrokes (from not having to type the $\backslash${\tt{left}}$\backslash${\tt{lbrace}}) and automatically provide the correct column alignment.
+\begin{equation*}
+{z_m(t)} = \begin{cases}
+1,&{\text{if}}\ {\beta }_m(t) \\ 
+{0,}&{\text{otherwise.}} 
+\end{cases}
+\end{equation*}
+\noindent is coded as follows:
+\begin{verbatim}
+\begin{equation*}
+{z_m(t)} = 
+\begin{cases}
+1,&{\text{if}}\ {\beta }_m(t),\\ 
+{0,}&{\text{otherwise.}} 
+\end{cases}
+\end{equation*}
+\end{verbatim}
+\noindent Note that the ``\&'' is used to mark the tabular alignment. This is important to get  proper column alignment. Do not use $\backslash${\tt{quad}} or other fixed spaces to try and align the columns. Also, note the use of the $\backslash${\tt{text}} macro for text elements such as ``if'' and ``otherwise''.
+
+\subsection{Function Formatting in Equations}
+In many cases there is an easy way to properly format most common functions. Use of the $\backslash$ in front of the function name will in most cases, provide the correct formatting. When this does not work, the following example provides a solution using the $\backslash${\tt{text}} macro.
+
+\begin{equation*} 
+  d_{R}^{KM} = \underset {d_{l}^{KM}} {\text{arg min}} \{ d_{1}^{KM},\ldots,d_{6}^{KM}\}.
+\end{equation*}
+
+\noindent is coded as follows:
+\begin{verbatim}
+\begin{equation*} 
+ d_{R}^{KM} = \underset {d_{l}^{KM}} 
+ {\text{arg min}} \{ d_{1}^{KM},
+ \ldots,d_{6}^{KM}\}.
+\end{equation*}
+\end{verbatim}
+
+\subsection{ Text Acronyms inside equations}
+\noindent This example shows where the acronym ``MSE" is coded using $\backslash${\tt{text\{\}}} to match how it appears in the text.
+
+\begin{equation*}
+ \text{MSE} = \frac {1}{n}\sum _{i=1}^{n}(Y_{i} - \hat {Y_{i}})^{2}
+\end{equation*}
+
+\begin{verbatim}
+\begin{equation*}
+ \text{MSE} = \frac {1}{n}\sum _{i=1}^{n}
+(Y_{i} - \hat {Y_{i}})^{2}
+\end{equation*}
+\end{verbatim}
+
+\subsection{Obsolete Coding}
+\noindent Avoid the use of outdated environments, such as {\tt{eqnarray}} and \$\$ math delimiters, for display equations. The \$\$ display math delimiters are left over from PlainTeX and should not be used in \LaTeX, ever. Poor vertical spacing will result.
+\subsection{Use Appropriate Delimiters for Display Equations}
+\noindent Some improper mathematical coding advice has been given in various YouTube\textsuperscript{TM} videos on how to write scholarly articles, so please follow these good examples:\\
+
+For {\bf{single-line unnumbered display equations}}, please use the following delimiters: 
+\begin{verbatim}\[ . . . \] or \end{verbatim} 
+\begin{verbatim}\begin{equation*} . . . \end{equation*}\end{verbatim}
+Note that the * in the environment name turns off equation numbering.\\
+
+For {\bf{multiline unnumbered display equations}} that have alignment requirements, please use the following delimiters: 
+\begin{verbatim}
+\begin{align*} . . . \end{align*}
+\end{verbatim}
+
+For {\bf{single-line numbered display equations}}, please use the following delimiters: 
+\begin{verbatim}
+\begin{equation} . . . \end{equation}
+\end{verbatim}
+
+For {\bf{multiline numbered display equations}}, please use the following delimiters: 
+\begin{verbatim}
+\begin{align} . . . \end{align}
+\end{verbatim}
+
+\section{LaTeX Package Suggestions}
+\noindent Immediately after your documenttype declaration at the top of your \LaTeX\ file is the place where you should declare any packages that are being used. The following packages were used in the production of this document.
+\begin{verbatim}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,
+   labelfont=sf,textfont=sf]{subfig}
+\u00sepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{balance}
+\end{verbatim}
+
+\section{Additional Advice}
+
+Please use ``soft'' (e.g., \verb|\eqref{Eq}|) or \verb|(\ref{Eq})|
+cross references instead of ``hard'' references (e.g., \verb|(1)|).
+That will make it possible to combine sections, add equations, or
+change the order of figures or citations without having to go through
+the file line by line.
+
+Please note that the \verb|{subequations}| environment in {\LaTeX}
+will increment the main equation counter even when there are no
+equation numbers displayed. If you forget that, you might write an
+article in which the equation numbers skip from (17) to (20), causing
+the copy editors to wonder if you've discovered a new method of
+counting.
+
+{\BibTeX} does not work by magic. It doesn't get the bibliographic
+data from thin air but from .bib files. If you use {\BibTeX} to produce a
+bibliography you must send the .bib files. 
+
+{\LaTeX} can't read your mind. If you assign the same label to a
+subsubsection and a table, you might find that Table I has been cross
+referenced as Table IV-B3. 
+
+{\LaTeX} does not have precognitive abilities. If you put a
+\verb|\label| command before the command that updates the counter it's
+supposed to be using, the label will pick up the last counter to be
+cross referenced instead. In particular, a \verb|\label| command
+should not go before the caption of a figure or a table.
+
+Please do not use \verb|\nonumber| or \verb|\notag| inside the
+\verb|{array}| environment. It will not stop equation numbers inside
+\verb|{array}| (there won't be any anyway) and it might stop a wanted
+equation number in the surrounding equation.
+
+\balance
+
+\section{A Final Checklist}
+\begin{enumerate}{}{}
+\item{Make sure that your equations are numbered sequentially and there are no equation numbers missing or duplicated. Avoid hyphens and periods in your equation numbering. Stay with IEEE style, i.e., (1), (2), (3) or for sub-equations (1a), (1b). For equations in the appendix (A1), (A2), etc.}. 
+\item{Are your equations properly formatted? Text, functions, alignment points in cases and arrays, etc. }
+\item{Make sure all graphics are included.}
+\item{Make sure your references are included either in your main LaTeX file or a separate .bib file if calling the external file.}
+\end{enumerate}
+
+\begin{thebibliography}{1}
+
+\bibitem{ams}
+{\it{Mathematics into Type}}, American Mathematical Society. Online available: 
+
+\bibitem{oxford}
+T.W. Chaundy, P.R. Barrett and C. Batey, {\it{The Printing of Mathematics}}, Oxford University Press. London, 1954.
+
+\bibitem{lacomp}{\it{The \LaTeX Companion}}, by F. Mittelbach and M. Goossens
+
+\bibitem{mmt}{\it{More Math into LaTeX}}, by G. Gr\"atzer
+
+\bibitem{amstyle}{\it{AMS-StyleGuide-online.pdf,}} published by the American Mathematical Society
+
+\bibitem{Sira3}
+H. Sira-Ramirez. ``On the sliding mode control of nonlinear systems,'' \textit{Systems \& Control Letters}, vol. 19, pp. 303--312, 1992.
+
+\bibitem{Levant}
+A. Levant. ``Exact differentiation of signals with unbounded higher derivatives,''  in \textit{Proceedings of the 45th IEEE Conference on Decision and Control}, San Diego, California, USA, pp. 5585--5590, 2006.
+
+\bibitem{Cedric}
+M. Fliess, C. Join, and H. Sira-Ramirez. ``Non-linear estimation is easy,'' \textit{International Journal of Modelling, Identification and Control}, vol. 4, no. 1, pp. 12--27, 2008.
+
+\bibitem{Ortega}
+R. Ortega, A. Astolfi, G. Bastin, and H. Rodriguez. ``Stabilization of food-chain systems using a port-controlled Hamiltonian description,'' in \textit{Proceedings of the American Control Conference}, Chicago, Illinois, USA, pp. 2245--2249, 2000.
+
+\end{thebibliography}
+
+\begin{IEEEbiographynophoto}{Jane Doe}
+Biography text here without a photo.
+\end{IEEEbiographynophoto}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{fig1.png}}]{IEEE Publications Technology Team}
+In this paragraph you can place your educational, professional background and research and other interests.\end{IEEEbiography}
+
+
+\end{document}
+
+

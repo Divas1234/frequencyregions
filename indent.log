@@ -1,0 +1,31 @@
+INFO:  latexindent.pl version 3.23.9, 2024-04-06, a script to indent .tex files
+       latexindent.pl lives here: D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/scripts/latexindent/
+       Tue Apr 30 15:44:10 2024
+       Filename: d:\ieee_tpws\main_7\New_IEEEtran_how-to.tex
+INFO:  Processing switches:
+INFO:  Directory for backup files and indent.log:
+       d:\ieee_tpws\main_7
+INFO:  Perl modules are being loaded from the following directories:
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/lib/FindBin.pm
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/vendor/lib/YAML/Tiny.pm
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/lib/File/Copy.pm
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/lib/File/Basename.pm
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/lib/Getopt/Long.pm
+       C:/Users/yyp_uestc/scoop/apps/perl/current/perl/vendor/lib/File/HomeDir.pm
+INFO:  LatexIndent perl modules are being loaded from, for example:
+       D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/scripts/latexindent/LatexIndent/Document.pm
+INFO:  YAML settings read: defaultSettings.yaml
+       Reading defaultSettings.yaml from D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/scripts/latexindent/defaultSettings.yaml
+INFO:  YAML reading settings
+       Home directory is C:\Users\yyp_uestc
+       latexindent.pl didn't find indentconfig.yaml or .indentconfig.yaml
+       see all possible locations: https://latexindentpl.readthedocs.io/en/latest/sec-appendices.html#indentconfig-options)
+INFO:  Phase 1: searching for objects
+INFO:  Phase 2: finding surrounding indentation
+INFO:  Phase 3: indenting objects
+INFO:  Phase 4: final indentation check
+INFO:  Output routine:
+       Not outputting to file; see -w and -o switches for more options.
+       --------------
+INFO:  Please direct all communication/issues to:
+        https://github.com/cmhughes/latexindent.pl
