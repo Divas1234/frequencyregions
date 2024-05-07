@@ -30,15 +30,15 @@ Q.~Shi, F.~Li, and H.~Cui, ``Analytical method to aggregate multi-machine sfr
   model with applications in power system dynamic studies,'' \emph{IEEE Trans.
   Power Syst.}, vol.~33, no.~6, pp. 6355--6367, 2018.
 
-\bibitem{ye2015analytical}
-H.~Ye, W.~Pei, and Z.~Qi, ``Analytical modeling of inertial and droop responses
-  from a wind farm for short-term frequency regulation in power systems,''
-  \emph{IEEE Trans. Power Syst.}, vol.~31, no.~5, pp. 3414--3423, 2015.
-
 \bibitem{markovic2018lqr}
 U.~Markovic, Z.~Chu, P.~Aristidou, and G.~Hug, ``Lqr-based adaptive virtual
   synchronous machine for power systems with high inverter penetration,''
   \emph{IEEE Trans. Sustain Energy}, vol.~10, no.~3, pp. 1501--1512, 2018.
+
+\bibitem{ye2015analytical}
+H.~Ye, W.~Pei, and Z.~Qi, ``Analytical modeling of inertial and droop responses
+  from a wind farm for short-term frequency regulation in power systems,''
+  \emph{IEEE Trans. Power Syst.}, vol.~31, no.~5, pp. 3414--3423, 2015.
 
 \bibitem{mercier2009optimizing}
 P.~Mercier, R.~Cherkaoui, and A.~Oudalov, ``Optimizing a battery energy storage
@@ -104,22 +104,6 @@ Y.~Zhang, H.~Cui, J.~Liu, F.~Qiu, T.~Hong, R.~Yao, and F.~Li, ``Encoding
   frequency constraints in preventive unit commitment using deep learning with
   region-of-interest active sampling,'' \emph{IEEE Trans. Power Syst.},
   vol.~37, no.~3, pp. 1942--1955, 2021.
-
-\bibitem{10098683}
-J.~Zhang, Z.~Chen, N.~Zhang, and X.~Zhang, ``Frequency-constrained unit
-  commitments with linear rules extracted from simulation results considering
-  regulations from battery storage,'' \emph{J. Mod. Power Syst. Clean Energy},
-  vol.~11, no.~4, pp. 1041--1052, 2023.
-
-\bibitem{10088426}
-X.~Qi, T.~Zhao, X.~Liu, and P.~Wang, ``Three-stage stochastic unit commitment
-  for microgrids towards frequency security via renewable energy deloading,''
-  \emph{IEEE Trans. on Smart Grid}, pp. 1--1, 2023.
-
-\bibitem{6269098}
-G.~W. Chang, C.-S. Chuang, T.-K. Lu, and C.-C. Wu, ``Frequency-regulating
-  reserve constrained unit commitment for an isolated power system,''
-  \emph{IEEE Trans. Power Syst.}, vol.~28, no.~2, pp. 578--586, 2013.
 
 \bibitem{perroy2019provision}
 E.~Perroy, D.~Lucas, and V.~Debusschere, ``Provision of frequency containment
