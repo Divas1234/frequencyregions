@@ -26,6 +26,7 @@
 \usepackage{hyperref}
 \usepackage[capitalise]{cleveref}
 \usepackage[numbers,sort&compress]{natbib}
+\usepackage{annotate-equations}
 %\usepackage{mathtools, nccmath}
 \usepackage{anyfontsize}
 \setlength{\textfloatsep}{2.25pt}
@@ -61,12 +62,12 @@
 \newenvironment{newsequation}{\small\begin{equation}}{\end{equation}}
 \newenvironment{newsubequations}{\small\begin{subequations}}{\end{subequations}}
 
-\AtBeginDocument{%
-  \addtolength\abovedisplayskip{-0.5\baselineskip}%
-  \addtolength\belowdisplayskip{-0.5\baselineskip}%
-%  \addtolength\abovedisplayshortskip{-0.5\baselineskip}%
-%  \addtolength\belowdisplayshortskip{-0.5\baselineskip}%
-}
+% \AtBeginDocument{%
+%   \addtolength\abovedisplayskip{-0.5\baselineskip}%
+%   \addtolength\belowdisplayskip{-0.5\baselineskip}%
+% %  \addtolength\abovedisplayshortskip{-0.5\baselineskip}%
+% %  \addtolength\belowdisplayshortskip{-0.5\baselineskip}%
+% }
 
 \hyphenation{ve-ry-lon-g-w-ord  ev-en-long-er-com-pound-word-with-no-spaces}
 % \hyphenation{Duisauteiruredolorinre-prehenderitinvoluptatevelitesse-cillum doloreeufugiatnullapariatur}
@@ -146,13 +147,13 @@ The remainder of this paper is organized: Section {2} introduces a Bayesian-filt
 % \end{small}
 
 %Different generators usually have heterogeneous control schemes against mismatch power disturbance cases.
-For the sake of simplification, homogeneous generators with similar controls usually treated as equivalent units with aggregated parameters. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators and battery energy systems (BESS), can be written as,
+For the sake of simplification, homogeneous generators with similar controls usually treated as equivalent units with aggregated parameters. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators (renewable energy) and battery energy systems (BESS), can be rewritten as,
 
 % \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:1}
-		 & \left(M_{G} s+D_{G}\right) \varDelta f(s)=\frac{1}{s} \varDelta p_{ {step }}- \left(\frac{K_G\left(1+F_{G} T_{G} s\right)}{R_G\left(1+T_{G} s\right)}\right. \\
-		 & + \frac{K_W}{R_{W}(1+T_{W}s)} + \frac{K_W(H_Ws +D_W)}{1+T_Ws} + \left. \frac{1}{R_E(1+T_{E} s)}\right) \varDelta f(s) \notag
+		 & \left(2H_{G} s+D_{G}\right) \varDelta f(s)=\frac{1}{s} \varDelta p_{ {step }}- \left(\frac{K_G\left(1+F_{G} T_{G} s\right)}{R_G\left(1+T_{G} s\right)}+\right. \\
+		 & \frac{K_W}{R_{W}(1+T_{W}s)} + \frac{K_W(2H_Ws +D_W)}{1+T_Ws} + \left. \frac{1}{R_E(1+T_{E} s)}\right) \varDelta f(s) \notag
 	\end{align}
 \end{small}
 
@@ -195,19 +196,19 @@ For the sake of simplification, homogeneous generators with similar controls usu
 \nomenclature[P]{$\delta t$}{discretized time step ($0.05s$ in this paper)}
 \nomenclature[P]{$t_0$}{Initial time of power disturbance}
 
-The $t$ $-$ domain mathematical form of \eqref{eqn:1} can be transferred by utilizing the inverse Laplace transformation,
+The $t-$ domain mathematical form of \eqref{eqn:1} can be transferred by utilizing the inverse Laplace transformation,
 
 % \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:2}
 	\begin{align}
-		M_{\varSigma } \varDelta f^{\prime}(t) & +D_{\varSigma} \varDelta f(t)=\varDelta p(t)                                                                                        \\
-		\varDelta p(t)                         & =\varDelta p_{step}-\varDelta p_{G}(t)-\varDelta p_{W}(t)-\varDelta p_{E}(t)                                                        \\
-		M_{\varSigma}                          & =M_{G}+M_{W}                                                                                                                        \\
-		D_{\varSigma}                          & =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}                                                                                         \\
-		\varDelta p_{G}(t)                     & ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag                                                                                  \\
-		                                       & \quad\,\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G}t} \int_{0}^{t}e^{\frac{1}{T_G}\kappa} \varDelta f^{\prime}(\kappa) d \kappa \\
-		\varDelta p_{W}(t)                     & =\left({R_{W}^{-1}}\right) \varDelta f(t)                                                                                           \\
-		\varDelta p_{E}(t)                     & =\left( { R_{E}^{-1}}\right) \varDelta f(t)
+		 & 2H_{\varSigma } \varDelta f^{\prime}(t)  +D_{\varSigma} \varDelta f(t)=\varDelta p(t)  \label{eqn:2a}                                                                         \\
+		 & \varDelta p(t)                          =\varDelta p_{step}-\left(\varDelta p_{G}(t)+\varDelta p_{W}(t)+\varDelta p_{E}(t)\right) \label{eqn:2b}                              \\
+		 & M_{\varSigma}                           =M_{G}+M_{W},
+		D_{\varSigma}                           =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}   \label{eqn:2c}                                                                             \\
+		 & \varDelta p_{G}(t)                      ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag                                                                                    \\
+		 & \qquad\quad\quad\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G}t} \int_{0}^{t}e^{\frac{1}{T_G}\kappa} \varDelta f^{\prime}(\kappa) d \kappa \label{eqn:2d}                   \\
+		 & \varDelta p_{W}(t)                      =\left(K_{W} {R_{W}^{-1}}\right) \varDelta f(t) + \left(2H_{W} \varDelta f^{\prime}(t) \!+\! D_{W}\varDelta f(t)\right)\label{eqn:2e} \\
+		 & \varDelta p_{E}(t)                      =\left( { R_{E}^{-1}}\right) \varDelta f(t) \label{eqn:2f}
 	\end{align}
 \end{newsubequations}
 %\begin{figure}[!t]
@@ -217,13 +218,16 @@ The $t$ $-$ domain mathematical form of \eqref{eqn:1} can be transferred by util
 %    \label{fig1}
 %\end{figure}
 
-By replacing $\varDelta f^{\prime}(t)|_{t = t}$ as its equivalent discretized form $\sfrac{[\varDelta f(t_0+ n\delta t)-\varDelta f(t_0 + (n-1)\delta t)]}{ \delta t}$, the time-discretized form of $\varDelta f(t)$ can be estimated,
+\noindent where \cref{eqn:2a,eqn:2b} describes the chronological change of \(\varDelta f(t)\) over the entire dynamic horizons; \cref{eqn:2c} denotes equivalent frequency parameters concerning CoI-based inertia constant and droop constant; \cref{eqn:2d,eqn:2e,eqn:2c} describes rescheduled output of different types of generators,  respectively. Furthermore, by replacing $\varDelta f^{\prime}(t) = \nicefrac{[\varDelta f(t)-\varDelta f(t-\delta t)]}{ \delta t}$ into \cref{eqn:2a,eqn:2d}, the time-discretized SFR concerning $\varDelta f(t)$, as well as rescheduled output \(\langle \varDelta p_{G}(t), \varDelta p_{W}(t)\rangle\) from conventional generators and converter-interfaced ones can be estimated,
 
 % \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:3}
 	\begin{align}
-		 & \varDelta p_{G}(t)={K_{G} }{ R_{G}^{-1}} \varDelta f(t) - \varLambda \int_{0}^{t} e^{\frac{1}{T_G}(t)} \label{time-discretized SFR: additional power from convertional units} \\
-		 & \left(\varDelta f(t+\delta t) - \varDelta f(t) \right) d t: \varLambda = {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G} (t)} \notag
+		 & \varDelta f(t) = \frac{1}{2}{H_{\varSigma}^{-1}}\varDelta p(t) \delta t - \left(1 - \frac{1}{2}{D_{\varSigma}}{H_{\varSigma}^{-1}}\right)\varDelta f(t-\delta t) \delta t   \label{eqn:3a} \\
+		 & \varDelta p_{G}(t)={K_{G} }{ R_{G}^{-1}} \varDelta f(t) - \varLambda \int_{0}^{t} e^{\frac{1}{T_G}(t)} \cdot \label{eqn:3b}                                                                \\
+		 & \qquad \left(\varDelta f(t) - \varDelta f(t-\varDelta t) \right) d t: \varLambda = {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G} (t)} \notag                                                 \\
+		 & \varDelta p_{W}(t) = \left({K_{W} } R_{W}^{-1} \!+\! D_{W} \!+\! 2H_{W} \delta t\right) \varDelta f(t) -\notag                                                                             \\
+		 & \qquad \quad \qquad 2H_{W} \delta t \varDelta f(t - \delta t)  \label{eqn:3c}
 	\end{align}
 \end{newsubequations}
 
@@ -240,17 +244,20 @@ By replacing $\varDelta f^{\prime}(t)|_{t = t}$ as its equivalent discretized fo
 %   \end{align}
 % \end{newsubequations}
 
-In \eqref{time-discretized SFR: additional power from convertional units}, the uncertain variability factors are conditionally depended on frequency derivation and itself actual output restriction, to reflect this, let \(\varDelta \omega(t) = \lceil H(\varDelta f(t)), \overline{p}_{add,W}\rceil + \sigma_{add,W}\) define the uncertain variability factors. the form of SFR considering uncertain variability factors can be obtained as below,
+In \cref{eqn:3b,eqn:3c}, additional outputs of generators can be recursively estimated after observing \(\varDelta f(t\!-\! \delta t)\) and \(\varDelta f(t)\). Nevertheless, the impact of uncertain variability factors from these generators are implicitly ignored. Generally speaking, uncertain variability factors are divided into two parts; the first part comes from the restriction of rescheduled output denoted by \(\overline{p}_{G},\overline{p}_{W}\), it means that the adjustable output of generators using \cref{eqn:3b,eqn:3c} cannot be guaranteed due to generators' output limitation; the latter part is caused by the unforeseeable uncertain derivations produced by intermittent converter-interfaced generators. To address that, let \(\varDelta \omega_{1}(t)\!=\!-\left(\lceil \varDelta p_{G}(t), \overline{p}_{G} \rceil \!+\! \lceil \varDelta p_{W}(t), {p}_{W}(t)\rceil\right)  \) represent the corrected term caused by generators' output limitation, and similarly, let \(\varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma)\) denote uncertain derivations from converter-interfaced generators. Hence, the impact of uncertain variability factors can be estimated by adding \(\varDelta \omega_{1}\) and \(\varDelta \omega_{2}\) together. So, the SFR considering uncertain variability factors can be derived,
 
 % \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:3}
+\begin{newsubequations}\label{eqn:4}
 	\begin{align}
-		\varDelta f(t + \delta t)  =\varDelta f(t)+M_{\varSigma}^{-1}\bigl(\varDelta p(t)-D_{\varSigma} \varDelta f(t)\bigr) \delta t + \delta \omega\delta t \label{time-discretized SFR: swing equation} \\
-		\varDelta p(t)  =\varDelta p_{{step}}-\varDelta p_{G}(t)-\varDelta p_{W}(t)-\varDelta p_{E}(t) \label{time-discretized SFR: mismatch power}
+		\varDelta f(t) = & \frac{1}{2}{H_{\varSigma}^{-1}}\varDelta p(t) \delta t - \left(1 - \frac{1}{2}{D_{\varSigma}}{H_{\varSigma}^{-1}}\right)\varDelta f(t-\delta t) \delta t + \notag \\
+		                 & \varDelta\omega: \varDelta \omega =\varDelta \omega_{1}(t) + \varDelta \omega_{2}(t)
+		% \varDelta \omega_{1}(t)\!=\!-\left(\lceil \varDelta p_{G}(t), \overline{p}_{G} \rceil \!+\! \lceil \varDelta p_{W}(t), \overline{p}_{W}\rceil\right), \varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma), \label{eqn:4a}
 	\end{align}
 \end{newsubequations}
 
-In (4), the stochastic differential equation does not have an analytical solution due to the conditional dependency of uncertain variability factors. To address this issue, a Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Specially, let \(\varDelta f(t) \Rightarrow \varDelta f(t + \delta t)\) enforce a hidden Markov decision process, and \(\varDelta p(t) \Rightarrow \varDelta p(t+\delta t)\) de a measured state observable process, the calculation of \(\varDelta f(t + \delta t)\) in (4) can be solved alternately, as illustrated in figure.(2).
+The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have an analytical solution due to the independence between uncertain variability factors and \(\varDelta f(t)\). To address this issue, a Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Let \(\langle\mathcal{P} (\varDelta f(t)), \mathcal{P}(\varDelta p(t))\rangle\) respectively enforces the probabilistic density distribution of \(\varDelta f(t)\) and \(\varDelta p(t)\), then, the posterior distribution of \(\varDelta f(t)\) can be estimated by,
+
+% \(\varDelta f(t) \Rightarrow \varDelta f(t + \delta t)\) enforce a hidden Markov decision process, and \(\varDelta p(t) \Rightarrow \varDelta p(t+\delta t)\) be a measured state observable process, \(\varDelta f(t + \delta t)\) can be solved alternately, as illustrated in figure.(2).
 
 % \begin{table*}[b]\vspace{-0.25cm}
 % 	\normalsize
@@ -263,21 +270,37 @@ In (4), the stochastic differential equation does not have an analytical solutio
 % 	% \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
 % \end{table*}
 
-\begin{newsubequations}
+\begin{newsubequations}\label{eqn:5}
 	\begin{align}
-		 & \mathcal{P}(\varDelta f(t+\delta t) | \varDelta p(t_0: t+\delta t; \mu_1,\sigma_1))=                                                                                                                                                          \\
-		 & \frac{\mathcal{P}(\varDelta f(t+\delta t) | \varDelta p(t_0: t; \mu_1,\sigma_1)) \mathcal{P}(\varDelta p(t+\delta  t) | \varDelta f(t+\delta t; \mu_1,\sigma_1))}{\mathcal{P}(\varDelta p(t+\delta t) | \varDelta p(t_0: t; \mu_2,\sigma_2))}
+		 & \mathcal{P}(\varDelta f(t) | \varDelta p(t_0: t; \varDelta \omega))=\frac{1}{ {\mathcal{P}(\varDelta p(t) | \varDelta p(t_0: t-\delta t);\varDelta \omega)}}\cdot \notag                                                                                         \\
+		 & \quad \quad  \underbrace{\mathcal{P}(\varDelta p(t) | \varDelta f(t); \varDelta\omega)}_{\textrm{\textit{likelihood function}}}\,\, \underbrace{\mathcal{P}(\varDelta f(t) | \varDelta p(t_0: t-\delta t); \varDelta \omega)}_{\textrm{\textit{prior function}}}
 	\end{align}
 \end{newsubequations}
+% \annotate[yshift=1em]{above}{k1}{normalization factor}
+% \annotate[yshift=1em]{below}{k2}{prior probabilistic distribution}
+% \annotate[yshift=1em]{below}{k3}{likelihood function}
 
 % \noindent where \cref{time-discretized SFR: swing equation} declares the change of $\varDelta f(t)$ between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes the evolution of mismatch power. \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters,additional power from bess}  represent additional regulated outputs produced by aggregated conventional generators, aggregated wind farms and aggregated BESS.
 
-\noindent where \cref{time-discretized SFR: swing equation} declares the change of \(\varDelta f(t)\) between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes chronological mismatch power; \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters,additional power from bess}  enforces rescheduled outputs produced by aggregated conventional units, aggregated wind units and aggregated battery energy units.
+\noindent where the \(\textit{likelihood function}\) in \cref{eqn:5} declares the coupling characteristic between \(\varDelta p(t)\) and \(\varDelta f(t)\); the \(\textit{prior function}\) in \cref{eqn:5} describes the recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated steps of Bayesian filter written probabilistically, uncertain variability factors \(\varDelta \omega\) is taken into consideration over the entire frequency dynamic process.
+More detailed, both \(\textit{likelihood function}\) and \(\textit{prior function}\) can be recursively calculated as follows,
 
-Previous studies generally adhere to a free residual assumption and have provided evidence that $\varDelta f(t)$ can be achieved by either an analytical closed-form solution \cite{anderson1990low, shi2018analytical, markovic2018lqr, ye2015analytical, mercier2009optimizing, paturet2020stochastic} or a time-discretized solution \cite{vatani2015relay, oskouee2021primary, pena2018voltage, zhao2020frequency}. In contrast to previous studies that have been discussed, the BF-SFR approach incorporates the influence of residual representing UV issue. The significance of UV is understood in two main aspects: $i$) the intermittent characteristic of converter-interfaced generators participating in frequency support, leading to the inevitable residual relative to the ideal value; $ii$) potential measured residuals are due to aging behavior or aberrant operation of electrical devices. By formulating the SFR considering residual factors as a hidden Markov decision process (see Fig.~\ref{fig2}), it becomes possible to estimate the posterior distribution of $\varDelta f(t)$ using a recursive mathematical formulation.
+% \vspace{-0.125in}
+\begin{newsubequations}\label{eqn:5}
+	\begin{align}
+		 & \mathcal{P}\left(\varDelta p(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =                                           \\
+		 & \int \bigl(\mathcal{P}(\varDelta p(t) \!\mid\!  \varDelta f(t), \varDelta \omega)  \mathcal{P}\!\left(\varDelta \!f(t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
+	\end{align}
+\end{newsubequations}
+
+
+% \(\mathcal{P}(\varDelta f(t) \mid \varDelta p\left(t\right), \varDelta \omega)\)  can be estimated by estimating its prior form $\mathcal{P}\left(\varDelta f(t) \!\mid\! \varDelta p\left(t_{0}\!: \! t-\delta t \right), \varDelta \omega \right)$ and a normalized constant $\mathcal{P}\left(\varDelta p(t) \mid \varDelta f\left(t\right), \varDelta \omega \right)$, with their forms can be found in \cref{eqn:5}.
+
+% Previous studies generally adhere to a free residual assumption and have provided evidence that $\varDelta f(t)$ can be achieved by either an analytical closed-form solution \cite{anderson1990low, shi2018analytical, markovic2018lqr, ye2015analytical, mercier2009optimizing, paturet2020stochastic} or a time-discretized solution \cite{vatani2015relay, oskouee2021primary, pena2018voltage, zhao2020frequency}. In contrast to previous studies that have been discussed, the BF-SFR approach incorporates the influence of residual representing UV issue. The significance of UV is understood in two main aspects: $i$) the intermittent characteristic of converter-interfaced generators participating in frequency support, leading to the inevitable residual relative to the ideal value; $ii$) potential measured residuals are due to aging behavior or aberrant operation of electrical devices. By formulating the SFR considering residual factors as a hidden Markov decision process (see Fig.~\ref{fig2}), it becomes possible to estimate the posterior distribution of $\varDelta f(t)$ using a recursive mathematical formulation.
 
 % Since $\varDelta p_{a d d}^{G}, \varDelta p_{a d d}^{W}$ and $\varDelta p_{a d d}^{E}$ are independent on aggregated frequency dynamic parameters and previous frequency derivation.
-Let $\mathcal{P}\left(\varDelta f(t_0 \!+\!n\delta t), \mu_{1}, \sigma_{1}\right)$ represents the posterior PDF of $\varDelta f(t_0\! +\! n \delta t)$ at the $n\!-\!th$ discretized step; $\mathcal{P}(\varDelta p(t_0 \!+\!n \delta t), $ $\mu_{2}, \sigma_{2})$ denotes the posterior PDF of $\varDelta p(t_0 \!+\! n \delta t)$ at the $n\!-\!th$ discretized step. $\langle\mu_{1}, \sigma_{1}\rangle$, $\langle\mu_{2}, \sigma_{2}\rangle$, respectively, denote the expectation and variance of residuals in the observation process and measured process. $\mathcal{P}\left(\varDelta f(t_0\!+\!(n\!+\!1)\delta t)\mid \varDelta p(t_{0}: t_0+\right.$ $\left. (n\!+\! 1)\delta t\right), $ $u_{1}, \sigma_{1})$ to denote a conditional distribution of $\mathcal{P}(\varDelta f(t_0+(n+1)\delta t), $ $u_{1}, \sigma_{1})$, It describes that the posterior of $\mathcal{P}(\varDelta f(t_0 +(n+1)$ $\delta t), u_{1}, \sigma_{1})$ can be fully inferred after obtaining all measured sequences $\varDelta p\left(t_{0}: t_0+(n+1)\delta t\right)=\{\varDelta p_{t} \mid t \in[t_{0}, t_0+(n+1)\delta t]\}$. Its mathematical formulation can be derived as \cref{eqn:4} according to the Bayesian theorem.
+
+% Let $\mathcal{P}\left(\varDelta f(t_0 \!+\!n\delta t), \mu_{1}, \sigma_{1}\right)$ represents the posterior PDF of $\varDelta f(t_0\! +\! n \delta t)$ at the $n\!-\!th$ discretized step; $\mathcal{P}(\varDelta p(t_0 \!+\!n \delta t), $ $\mu_{2}, \sigma_{2})$ denotes the posterior PDF of $\varDelta p(t_0 \!+\! n \delta t)$ at the $n\!-\!th$ discretized step. $\langle\mu_{1}, \sigma_{1}\rangle$, $\langle\mu_{2}, \sigma_{2}\rangle$, respectively, denote the expectation and variance of residuals in the observation process and measured process. $\mathcal{P}\left(\varDelta f(t_0\!+\!(n\!+\!1)\delta t)\mid \varDelta p(t_{0}: t_0+\right.$ $\left. (n\!+\! 1)\delta t\right), $ $u_{1}, \sigma_{1})$ to denote a conditional distribution of $\mathcal{P}(\varDelta f(t_0+(n+1)\delta t), $ $u_{1}, \sigma_{1})$, It describes that the posterior of $\mathcal{P}(\varDelta f(t_0 +(n+1)$ $\delta t), u_{1}, \sigma_{1})$ can be fully inferred after obtaining all measured sequences $\varDelta p\left(t_{0}: t_0+(n+1)\delta t\right)=\{\varDelta p_{t} \mid t \in[t_{0}, t_0+(n+1)\delta t]\}$. Its mathematical formulation can be derived as \cref{eqn:4} according to the Bayesian theorem.
 
 \begin{figure}[!t]\vspace{-0.1in}
 	\centering
@@ -286,19 +309,7 @@ Let $\mathcal{P}\left(\varDelta f(t_0 \!+\!n\delta t), \mu_{1}, \sigma_{1}\right
 	\label{fig2}
 \end{figure}
 
-In \cref{eqn:4}, \(\mathcal{P}(\varDelta f(t_0\!+\!(n\!+\!1)\delta t \) \(\!\mid\! \varDelta p\left(t_{0}: t_0\!+\!(n\!+\!1)\delta t\right), u_{1}$, $\sigma_{1})\)  can be indirectly calculated by estimating its prior form $\mathcal{P}\left(\varDelta f(t_0 +(n+1)\delta t) \!\mid\! \varDelta p\left(t_{0}\!: \! t\right), u_{1}, \sigma_{1}\right)$ and a related normalized constant $\mathcal{P}\left(\varDelta p(t_0 +(n+1)\delta t) \mid \varDelta f\left(t_0 +\right.\right.$ $\left.\left.  (n+1)\delta t\right),  u_{2}, \sigma_{2}\right)$, with their forms can be found in \cref{eqn:5}.
 
-% \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:5}
-	\begin{align}
-		 & \mathcal{P}\left(\varDelta f(t_0\!+\!(n\!+\!1)\delta t) \!\mid\! \varDelta p\left(t_{0}\!:\! t_0\!+\!n\delta t\right), \!u_{1},\! \sigma_{1}\right)=                                                                     \\
-		 & \int \bigl\{\mathcal{P}(\varDelta f(t_0\!+\!(n\!+\!1)\delta t) \!\mid\! \varDelta f(t_0\!+\!n\delta t), \left.\!\mu_{1}, \!\sigma_{1}\right)\!\mathcal{P}\left(\varDelta f(t_0 +\!\right. \notag                         \\
-		 & \qquad\,\, \left. \!n\delta t) \!\mid\!  \varDelta p\left(t_{0}: t_0\!+\!n\delta t\right), u_{1}, \sigma_{1}\right)\bigr\} \cdot d \varDelta f(t_0 \!+\! n\delta t)\notag                                                \\
-		 & \mathcal{P}\left(\varDelta p(t_0\!+\!(n\!+\!1)\delta t) \!\mid\!  \varDelta p\left(t_{0}\!:\! \right.\right. \left. \left.  t_0\!+n\delta t\right), u_{2}, \sigma_{2}\right) =                                           \\
-		 & \int \bigl\{\mathcal{P}(\varDelta p(t_0+(n+1)\delta t) \!\mid\!  \varDelta f(t_0+(n+1)\delta t)\left.u_{2}, \sigma_{2}\right) \notag                                                                                     \\
-		 & \mathcal{P}\!\left(\varDelta \!f(t_0\!+\!(n\!+\!1)\!\delta t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t_0\!+\!n \delta t\right), \!u_{2}, \!\sigma_{2}\right) \bigr\} d \varDelta f\!(t_0\!+\!(n\!+\!1)\delta t) \notag
-	\end{align}
-\end{newsubequations}
 
 Next, let the initial time $t_{0} = 0$ and replace $\langle \varDelta f(t_0 \!+\! n \delta t)\rangle$, $\langle \varDelta p(t_0 \!+\! n\delta t) \rangle$ with their abbreviated forms $\left\langle \varDelta f(n),\varDelta p(n)\right\rangle$, \cref{eqn:5} can be further simplified as follows,
 
@@ -487,7 +498,7 @@ To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $
 	\end{align}
 \end{small}
 
-\noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15} which can be readily identified by any off-the-shelf MIP solvers and subsequently integrate it into UC. To achieve that, by introducing a set of binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+\noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15} which can be readily identified by any off-the-shelf MIP solvers and subsequently integrate it into UC. To achieve that, by introducing a set of binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearised constraints as follows,
 
 \vspace{-0.125in}
 %\begin{newsubequations}\label{eqn:16}

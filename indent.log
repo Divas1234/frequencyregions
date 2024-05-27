@@ -1,9 +1,9 @@
-INFO:  latexindent.pl version 3.23.9, 2024-04-06, a script to indent .tex files
+INFO:  latexindent.pl version 3.24, 2024-04-28, a script to indent .tex files
        latexindent.pl lives here: D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/scripts/latexindent/
-       Mon May  6 13:52:37 2024
+       Sun May 26 13:40:20 2024
        Filename: d:\ieee_tpws\main_8\New_IEEEtran_how-to.tex
 INFO:  Processing switches:
-INFO:  Directory for backup files and indent.log:
+INFO:  Directory for backup files and log file indent.log:
        d:\ieee_tpws\main_8
 INFO:  Perl modules are being loaded from the following directories:
        C:/Users/yyp_uestc/scoop/apps/perl/current/perl/lib/FindBin.pm

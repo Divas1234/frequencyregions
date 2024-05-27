@@ -21,58 +21,6 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{anderson1990low}
-P.~M. Anderson and M.~Mirheydar, ``A low-order system frequency response
-  model,'' \emph{IEEE Trans. Power Syst.}, vol.~5, no.~3, pp. 720--729, 1990.
-
-\bibitem{shi2018analytical}
-Q.~Shi, F.~Li, and H.~Cui, ``Analytical method to aggregate multi-machine sfr
-  model with applications in power system dynamic studies,'' \emph{IEEE Trans.
-  Power Syst.}, vol.~33, no.~6, pp. 6355--6367, 2018.
-
-\bibitem{markovic2018lqr}
-U.~Markovic, Z.~Chu, P.~Aristidou, and G.~Hug, ``Lqr-based adaptive virtual
-  synchronous machine for power systems with high inverter penetration,''
-  \emph{IEEE Trans. Sustain Energy}, vol.~10, no.~3, pp. 1501--1512, 2018.
-
-\bibitem{ye2015analytical}
-H.~Ye, W.~Pei, and Z.~Qi, ``Analytical modeling of inertial and droop responses
-  from a wind farm for short-term frequency regulation in power systems,''
-  \emph{IEEE Trans. Power Syst.}, vol.~31, no.~5, pp. 3414--3423, 2015.
-
-\bibitem{mercier2009optimizing}
-P.~Mercier, R.~Cherkaoui, and A.~Oudalov, ``Optimizing a battery energy storage
-  system for frequency control application in an isolated power system,''
-  \emph{IEEE Trans. Power Syst.}, vol.~24, no.~3, pp. 1469--1477, 2009.
-
-\bibitem{paturet2020stochastic}
-M.~Paturet, U.~Markovic, S.~Delikaraoglou, E.~Vrettos, P.~Aristidou, and
-  G.~Hug, ``Stochastic unit commitment in low-inertia grids,'' \emph{IEEE
-  Trans. Power Syst.}, vol.~35, no.~5, pp. 3448--3458, 2020.
-
-\bibitem{vatani2015relay}
-M.~Vatani, T.~Amraee, A.~M. Ranjbar, and B.~Mozafari, ``Relay logic for
-  islanding detection in active distribution systems,'' \emph{IET Gener.
-  Transm. Distrib.}, vol.~9, no.~12, pp. 1254--1263, 2015.
-
-\bibitem{oskouee2021primary}
-S.~S. Oskouee, S.~Kamali, and T.~Amraee, ``Primary frequency support in unit
-  commitment using a multi-area frequency model with flywheel energy storage,''
-  \emph{IEEE Trans. Power Syst.}, vol.~36, no.~6, pp. 5105--5119, 2021.
-
-\bibitem{pena2018voltage}
-A.~Pe{\~n}a~Asensio, S.~Arnaltes~G{\'o}mez, J.~L. Rodriguez-Amenedo,
-  M.~Garc{\'\i}a~Plaza, J.~Eloy-Garc{\'\i}a~Carrasco, and J.~M.
-  Alonso-Mart{\'\i}nez de~las Morenas, ``A voltage and frequency control
-  strategy for stand-alone full converter wind energy conversion systems,''
-  \emph{Energies}, vol.~11, no.~3, p. 474, 2018.
-
-\bibitem{zhao2020frequency}
-X.~Zhao, H.~Wei, J.~Qi, P.~Li, and X.~Bai, ``Frequency stability constrained
-  optimal power flow incorporating differential algebraic equations of governor
-  dynamics,'' \emph{IEEE Trans. Power Syst.}, vol.~36, no.~3, pp. 1666--1676,
-  2020.
-
 \bibitem{restrepo2005unit}
 J.~F. Restrepo and F.~D. Galiana, ``Unit commitment with primary frequency
   regulation constraints,'' \emph{IEEE Trans. Power Syst.}, vol.~20, no.~4, pp.
@@ -105,6 +53,11 @@ Y.~Zhang, H.~Cui, J.~Liu, F.~Qiu, T.~Hong, R.~Yao, and F.~Li, ``Encoding
   region-of-interest active sampling,'' \emph{IEEE Trans. Power Syst.},
   vol.~37, no.~3, pp. 1942--1955, 2021.
 
+\bibitem{oskouee2021primary}
+S.~S. Oskouee, S.~Kamali, and T.~Amraee, ``Primary frequency support in unit
+  commitment using a multi-area frequency model with flywheel energy storage,''
+  \emph{IEEE Trans. Power Syst.}, vol.~36, no.~6, pp. 5105--5119, 2021.
+
 \bibitem{perroy2019provision}
 E.~Perroy, D.~Lucas, and V.~Debusschere, ``Provision of frequency containment
   reserve through large industrial end-users pooling,'' \emph{IEEE Trans. Smart
@@ -125,6 +78,11 @@ L.~Yang, Z.~Li, Y.~Xu, J.~Zhou, and H.~Sun, ``Frequency constrained scheduling
   under multiple uncertainties via data-driven distributionally robust
   chance-constrained approach,'' \emph{IEEE Trans. Sustain Energy}, vol.~14,
   no.~2, pp. 763--776, 2023.
+
+\bibitem{paturet2020stochastic}
+M.~Paturet, U.~Markovic, S.~Delikaraoglou, E.~Vrettos, P.~Aristidou, and
+  G.~Hug, ``Stochastic unit commitment in low-inertia grids,'' \emph{IEEE
+  Trans. Power Syst.}, vol.~35, no.~5, pp. 3448--3458, 2020.
 
 \bibitem{10219063}
 H.~Zhang, R.~Li, Y.~Chen, Z.~Chu, M.~Sun, and F.~Teng, ``Risk-aware
@@ -152,5 +110,14 @@ Y.~Zhang, J.~Wang, B.~Zeng, and Z.~Hu, ``Chance-constrained two-stage unit
 P.~Demetriou, M.~Asprou, J.~Quiros-Tortos, and E.~Kyriakides, ``Dynamic ieee
   test systems for transient analysis,'' \emph{IIEEE Syst J}, vol.~11, no.~4,
   pp. 2108--2117, 2015.
+
+\bibitem{anderson1990low}
+P.~M. Anderson and M.~Mirheydar, ``A low-order system frequency response
+  model,'' \emph{IEEE Trans. Power Syst.}, vol.~5, no.~3, pp. 720--729, 1990.
+
+\bibitem{shi2018analytical}
+Q.~Shi, F.~Li, and H.~Cui, ``Analytical method to aggregate multi-machine sfr
+  model with applications in power system dynamic studies,'' \emph{IEEE Trans.
+  Power Syst.}, vol.~33, no.~6, pp. 6355--6367, 2018.
 
 \end{thebibliography}

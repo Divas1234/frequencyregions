@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3.31) (preloaded format=pdflatex 2024.4.25)  7 MAY 2024 11:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.8)  26 MAY 2024 13:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **./New_IEEEtran_how-to.tex
 (New_IEEEtran_how-to.tex
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-03-14>
+L3 programming layer <2024-04-11>
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/ieeetran\IEEEtran.
 cls
@@ -15,9 +15,9 @@ Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
 \@IEEEtrantmpdimenA=\dimen140
 \@IEEEtrantmpdimenB=\dimen141
 \@IEEEtrantmpdimenC=\dimen142
-\@IEEEtrantmpcountA=\count188
-\@IEEEtrantmpcountB=\count189
-\@IEEEtrantmpcountC=\count190
+\@IEEEtrantmpcountA=\count189
+\@IEEEtrantmpcountB=\count190
+\@IEEEtrantmpcountC=\count191
 \@IEEEtrantmptoksA=\toks17
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 5
 03.
@@ -93,27 +93,27 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <24> not available
 \IEEEiednormlabelsep=\dimen156
 \IEEEiedmathlabelsep=\dimen157
 \IEEEiedtopsep=\skip48
-\c@section=\count191
-\c@subsection=\count192
-\c@subsubsection=\count193
-\c@paragraph=\count194
-\c@IEEEsubequation=\count195
+\c@section=\count192
+\c@subsection=\count193
+\c@subsubsection=\count194
+\c@paragraph=\count195
+\c@IEEEsubequation=\count196
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
-\c@figure=\count196
-\c@table=\count197
-\@IEEEeqnnumcols=\count198
-\@IEEEeqncolcnt=\count199
-\@IEEEsubeqnnumrollback=\count266
+\c@figure=\count197
+\c@table=\count198
+\@IEEEeqnnumcols=\count199
+\@IEEEeqncolcnt=\count266
+\@IEEEsubeqnnumrollback=\count267
 \@IEEEquantizeheightA=\dimen158
 \@IEEEquantizeheightB=\dimen159
 \@IEEEquantizeheightC=\dimen160
 \@IEEEquantizeprevdepth=\dimen161
-\@IEEEquantizemultiple=\count267
+\@IEEEquantizemultiple=\count268
 \@IEEEquantizeboxA=\box51
 \@IEEEtmpitemindent=\dimen162
 \IEEEPARstartletwidth=\dimen163
-\c@IEEEbiography=\count268
+\c@IEEEbiography=\count269
 \@IEEEtranrubishbin=\box52
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/amsmath\amsmath.st
@@ -139,14 +139,14 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count269
+\inf@bad=\count270
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count270
-\leftroot@=\count271
+\uproot@=\count271
+\leftroot@=\count272
 LaTeX Info: Redefining \overline on input line 399.
 LaTeX Info: Redefining \colon on input line 410.
-\classnum@=\count272
-\DOTSCASE@=\count273
+\classnum@=\count273
+\DOTSCASE@=\count274
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -159,20 +159,20 @@ LaTeX Info: Redefining \Bigg on input line 725.
 \big@size=\dimen166
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count274
+\macc@depth=\count275
 LaTeX Info: Redefining \bmod on input line 905.
 LaTeX Info: Redefining \pmod on input line 910.
 LaTeX Info: Redefining \smash on input line 940.
 LaTeX Info: Redefining \relbar on input line 970.
 LaTeX Info: Redefining \Relbar on input line 971.
-\c@MaxMatrixCols=\count275
+\c@MaxMatrixCols=\count276
 \dotsspace@=\muskip16
-\c@parentequation=\count276
-\dspbrk@lvl=\count277
+\c@parentequation=\count277
+\dspbrk@lvl=\count278
 \tag@help=\toks19
-\row@=\count278
-\column@=\count279
-\maxfields@=\count280
+\row@=\count279
+\column@=\count280
+\maxfields@=\count281
 \andhelp@=\toks20
 \eqnshift@=\dimen167
 \alignsep@=\dimen168
@@ -208,10 +208,10 @@ y
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks23
 )
-\c@ALC@unique=\count281
-\c@ALC@line=\count282
-\c@ALC@rem=\count283
-\c@ALC@depth=\count284
+\c@ALC@unique=\count282
+\c@ALC@line=\count283
+\c@ALC@rem=\count284
+\c@ALC@depth=\count285
 \ALC@tlm=\skip54
 \algorithmicindent=\skip55
 )
@@ -222,14 +222,14 @@ nment
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count285
+\c@float@type=\count286
 \float@exts=\toks24
 \float@box=\box55
 \@float@everytoks=\toks25
 \@floatcapt=\box56
 )
 \@float@every@algorithm=\toks26
-\c@algorithm=\count286
+\c@algorithm=\count287
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/tools\array.sty
 Package: array 2023/10/16 v2.5g Tabular extension package (FMi)
@@ -269,17 +269,17 @@ ference \hbox to\hsize {\normalfont \footnotesize \hfil \box \@tempboxa \hfil }
 \else \hbox to\hsize {\normalfont \footnotesize \box \@tempboxa \hfil }\fi \fi 
 \fi  on input line 1175.
 )
-\c@KVtest=\count287
+\c@KVtest=\count288
 \sf@farskip=\skip58
 \sf@captopadj=\dimen183
 \sf@capskip=\skip59
 \sf@nearskip=\skip60
-\c@subfigure=\count288
-\c@subfigure@save=\count289
-\c@lofdepth=\count290
-\c@subtable=\count291
-\c@subtable@save=\count292
-\c@lotdepth=\count293
+\c@subfigure=\count289
+\c@subfigure@save=\count290
+\c@lofdepth=\count291
+\c@subtable=\count292
+\c@subtable@save=\count293
+\c@lotdepth=\count294
 \sf@top=\skip61
 \sf@bottom=\skip62
 )
@@ -290,8 +290,8 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ty
 Package: stfloats 2017/03/27 v3.3 Improve float mechanism and baselineskip sett
 ings
-\@dblbotnum=\count294
-\c@dblbotnumber=\count295
+\@dblbotnum=\count295
+\c@dblbotnumber=\count296
 ) (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -340,20 +340,20 @@ Package: balance 1999/02/23 4.3 (PWD)
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/l3packages/l3keys2
 e\l3keys2e.sty
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2024-03-14 L3 programming layer (loader) 
+Package: expl3 2024-04-11 L3 programming layer (loader) 
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/l3backend\l3backen
 d-pdftex.def
-File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count296
+File: l3backend-pdftex.def 2024-04-11 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count297
 \l__pdf_internal_box=\box59
 ))
 Package: l3keys2e 2024-03-14 LaTeX2e option processing using LaTeX3 keys
 )
 Package: lipsum 2021-09-20 v2.7 150 paragraphs of Lorem Ipsum dummy text
-\g__lipsum_par_int=\count297
-\l__lipsum_a_int=\count298
-\l__lipsum_b_int=\count299
+\g__lipsum_par_int=\count298
+\l__lipsum_a_int=\count299
+\l__lipsum_b_int=\count300
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/lipsum\lipsum.ltd.
 tex))
@@ -376,7 +376,7 @@ Package: cuted 2021/10/04 v2.0 Mixing onecolumn and twocolumn modes
 \ht@viper=\dimen191
 \var@@pagediscards@ht=\dimen192
 \stripsep=\skip63
-\viper@penalty=\count300
+\viper@penalty=\count301
 ) (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/units\units.sty
 Package: units 1998/08/04 v0.9b Typesetting units
 
@@ -394,7 +394,7 @@ te\xtemplate.sty
 te\xtemplate-2023-10-10.sty
 Package: xtemplate 2023-10-10 L3 Experimental prototype document functions
 \l__xtemplate_tmp_dim=\dimen193
-\l__xtemplate_tmp_int=\count301
+\l__xtemplate_tmp_int=\count302
 \l__xtemplate_tmp_muskip=\muskip18
 \l__xtemplate_tmp_skip=\skip67
 ))
@@ -413,15 +413,15 @@ Package xtemplate Info: Declaring object type 'xfrac' taking 3 argument(s) on
 
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2024/03/29 v24.3 The Babel package
-\babel@savecnt=\count302
+Package: babel 2024/04/20 v24.4 The Babel package
+\babel@savecnt=\count303
 \U@D=\dimen199
 \l@unhyphenated=\language79
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/babel\txtbabel.d
 ef)
 \bbl@readstream=\read3
-\bbl@dirlevel=\count303
+\bbl@dirlevel=\count304
 
 *************************************
 * Local config file bblopts.cfg used
@@ -504,19 +504,19 @@ LaTeX Info: Redefining \scriptscriptstyle on input line 101.
 LaTeX Info: Redefining \genfrac on input line 149.
 )) (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2023/07/08 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count304
-\calc@Bcount=\count305
+\calc@Acount=\count305
+\calc@Bcount=\count306
 \calc@Adimen=\dimen256
 \calc@Bdimen=\dimen257
 \calc@Askip=\skip68
 \calc@Bskip=\skip69
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count306
+\calc@Ccount=\count307
 \calc@Cskip=\skip70
 )
-\inf@bad=\count307
-\maxint=\count308
+\inf@bad=\count308
+\maxint=\count309
 \listwidth=\dimen258
 \eqnumsep=\dimen259
 \eqmargin=\dimen260
@@ -527,12 +527,12 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \eqdelimoffset=\muskip22
 \eqindentstep=\dimen262
 \eqstyle=\toks33
-\eqbreakdepth=\count309
-\eqinterlinepenalty=\count310
-\intereqpenalty=\count311
+\eqbreakdepth=\count310
+\eqinterlinepenalty=\count311
+\intereqpenalty=\count312
 \intereqskip=\skip73
-\prerelpenalty=\count312
-\prebinoppenalty=\count313
+\prerelpenalty=\count313
+\prebinoppenalty=\count314
 \Dmedmuskip=\muskip23
 \Dthickmuskip=\muskip24
 \eqleftskip=\skip74
@@ -545,10 +545,10 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \eq@wdNum=\dimen263
 \GRP@numbox=\box72
 \grp@wdNum=\dimen264
-\eq@lines=\count314
-\eq@curline=\count315
-\eq@badness=\count316
-\EQ@vims=\count317
+\eq@lines=\count315
+\eq@curline=\count316
+\eq@badness=\count317
+\EQ@vims=\count318
 \eq@dp=\dimen265
 \eq@wdL=\dimen266
 \eq@wdT=\dimen267
@@ -565,16 +565,16 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \eq@hshift=\dimen278
 \eq@given@sidespace=\dimen279
 \mathindent=\dimen280
-\eq@final@linecount=\count318
+\eq@final@linecount=\count319
 \eq@wdR=\dimen281
 \EQ@continue=\toks34
-\lr@level=\count319
+\lr@level=\count320
 \GRP@queue=\toks35
 \GRP@box=\box73
 \GRP@wholebox=\box74
 \darraycolsep=\skip77
-\cur@row=\count320
-\cur@col=\count321
+\cur@row=\count321
+\cur@col=\count322
 \conditionsep=\skip78
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/autobreak\autobrea
@@ -589,8 +589,8 @@ Package: autobreak 2017/02/23 v0.3 simple line breaking of long formulae
 \@autobreak@maxlhswidth=\dimen284
 \@autobreak@realmaxlhswidth=\dimen285
 \@autobreak@maxrhswidth=\dimen286
-\c@@autobreak@eqnindex=\count322
-\c@@autobreak@subeqnindex=\count323
+\c@@autobreak@eqnindex=\count323
+\c@@autobreak@subeqnindex=\count324
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/catchfile\catchf
 ile.sty
@@ -618,7 +618,7 @@ Package: tabularx 2023/07/08 v2.11c `tabularx' package (DPC)
 \TX@old@col=\dimen289
 \TX@target=\dimen290
 \TX@delta=\dimen291
-\TX@cols=\count324
+\TX@cols=\count325
 \TX@ftn=\toks40
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/tools\indentfirst.
@@ -681,16 +681,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 s.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count325
+\c@section@level=\count326
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/etoolbox\etoolbox.
 sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count326
+\etb@tempcnta=\count327
 )
 \@linkdim=\dimen293
-\Hy@linkcounter=\count327
-\Hy@pagecounter=\count328
+\Hy@linkcounter=\count328
+\Hy@pagecounter=\count329
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/hyperref\pd1enc.de
 f
@@ -702,7 +702,7 @@ Now handling font encoding PD1 ...
 sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count329
+\Hy@SavedSpaceFactor=\count330
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
@@ -716,7 +716,7 @@ Package hyperref Info: Plain pages OFF on input line 4194.
 Package hyperref Info: Backreferencing OFF on input line 4199.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4446.
-\c@Hy@tempcnt=\count330
+\c@Hy@tempcnt=\count331
 LaTeX Info: Redefining \url on input line 4784.
 \XeTeXLinkMargin=\dimen294
 
@@ -729,7 +729,7 @@ tcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count331
+\Fld@menulength=\count332
 \Field@Width=\dimen295
 \Fld@charsize=\dimen296
 Package hyperref Info: Hyper figures OFF on input line 6063.
@@ -745,9 +745,9 @@ sty
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count332
-\c@Item=\count333
-\c@Hfootnote=\count334
+\Hy@abspage=\count333
+\c@Item=\count334
+\c@Hfootnote=\count335
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
@@ -761,8 +761,8 @@ Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
 kage
 with kernel methods
 )
-\Fld@listcount=\count335
-\c@bookmark@seq@number=\count336
+\Fld@listcount=\count336
+\c@bookmark@seq@number=\count337
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/rerunfilecheck\rer
 unfilecheck.sty
@@ -809,7 +809,445 @@ Package natbib Warning: The `cite' package should not be used
 \bibsep=\skip81
 LaTeX Info: Redefining \cite on input line 694.
 LaTeX Info: Redefining \citenum on input line 708.
-\c@NAT@ctr=\count337
+\c@NAT@ctr=\count338
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/annotate-equations
+\annotate-equations.sty
+Package: annotate-equations 2023/05/06 v0.2.2 easily annotate equations using T
+ikZ
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/iftex\ifluatex.s
+ty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/frontendlayer\
+tikz.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/basiclayer\pgf
+.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/utilities\pgfr
+cs.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+futil-common.tex
+\pgfutil@everybye=\toks41
+\pgfutil@tempdima=\dimen297
+\pgfutil@tempdimb=\dimen298
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+futil-latex.def
+\pgfutil@abb=\box75
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+frcs.code.tex
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf\pgf.revision
+.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/basiclayer\pgf
+core.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/systemlayer\pg
+fsys.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+fkeys.code.tex
+\pgfkeys@pathtoks=\toks42
+\pgfkeys@temptoks=\toks43
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+fkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks44
+))
+\pgf@x=\dimen299
+\pgf@y=\dimen300
+\pgf@xa=\dimen301
+\pgf@ya=\dimen302
+\pgf@xb=\dimen303
+\pgf@yb=\dimen304
+\pgf@xc=\dimen305
+\pgf@yc=\dimen306
+\pgf@xd=\dimen307
+\pgf@yd=\dimen308
+\w@pgf@writea=\write3
+\r@pgf@reada=\read4
+\c@pgf@counta=\count339
+\c@pgf@countb=\count340
+\c@pgf@countc=\count341
+\c@pgf@countd=\count342
+\t@pgf@toka=\toks45
+\t@pgf@tokb=\toks46
+\t@pgf@tokc=\toks47
+\pgf@sys@id@count=\count343
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+)))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count344
+\pgfsyssoftpath@bigbuffer@items=\count345
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/systemlayer\
+pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/graphics-cfg\color
+.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/graphics\mathcolor
+.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+.code.tex
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+util.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+parser.code.tex
+\pgfmath@dimen=\dimen309
+\pgfmath@count=\count346
+\pgfmath@box=\box76
+\pgfmath@toks=\toks48
+\pgfmath@stack@operand=\toks49
+\pgfmath@stack@operation=\toks50
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.basic.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.trigonometric.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.random.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.comparison.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.base.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.round.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.misc.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+functions.integerarithmetics.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+calc.code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+float.code.tex
+\c@pgfmathroundto@lastzeros=\count347
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfint.
+code.tex)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen310
+\pgf@picmaxx=\dimen311
+\pgf@picminy=\dimen312
+\pgf@picmaxy=\dimen313
+\pgf@pathminx=\dimen314
+\pgf@pathmaxx=\dimen315
+\pgf@pathminy=\dimen316
+\pgf@pathmaxy=\dimen317
+\pgf@xx=\dimen318
+\pgf@xy=\dimen319
+\pgf@yx=\dimen320
+\pgf@yy=\dimen321
+\pgf@zx=\dimen322
+\pgf@zy=\dimen323
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen324
+\pgf@path@lasty=\dimen325
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen326
+\pgf@shorten@start@additional=\dimen327
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box77
+\pgf@hbox=\box78
+\pgf@layerbox@main=\box79
+\pgf@picture@serial@count=\count348
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen328
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen329
+\pgf@pt@y=\dimen330
+\pgf@pt@temp=\dimen331
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen332
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen333
+\pgf@sys@shading@range@num=\count349
+\pgf@shadingcount=\count350
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box80
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/basiclayer\p
+gfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/modules\pgfm
+oduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box81
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/modules\pgfm
+oduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/compatibility\
+pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen334
+\pgf@nodesepend=\dimen335
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/compatibility\
+pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/utilities\pgff
+or.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/utilities\pgfk
+eys.sty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+fkeys.code.tex))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/pgf/math\pgfmath.s
+ty
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/math\pgfmath
+.code.tex))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/utilities\pg
+ffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen336
+\pgffor@skip=\dimen337
+\pgffor@stack=\toks51
+\pgffor@toks=\toks52
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries\pg
+flibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count351
+\pgfplotmarksize=\dimen338
+)
+\tikz@lastx=\dimen339
+\tikz@lasty=\dimen340
+\tikz@lastxsaved=\dimen341
+\tikz@lastysaved=\dimen342
+\tikz@lastmovetox=\dimen343
+\tikz@lastmovetoy=\dimen344
+\tikzleveldistance=\dimen345
+\tikzsiblingdistance=\dimen346
+\tikz@figbox=\box82
+\tikz@figbox@bg=\box83
+\tikz@tempbox=\box84
+\tikz@tempbox@bg=\box85
+\tikztreelevel=\count352
+\tikznumberofchildren=\count353
+\tikznumberofcurrentchild=\count354
+\tikz@fig@count=\count355
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/modules\pgfm
+odulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count356
+\pgfmatrixcurrentcolumn=\count357
+\pgf@matrix@numberofcolumns=\count358
+)
+\tikz@expandcount=\count359
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibrarybackgrounds.code.tex
+File: tikzlibrarybackgrounds.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@layerbox@background=\box86
+\pgf@layerboxsaved@background=\box87
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries\pg
+flibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\arrowsize=\dimen347
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.callouts.code.tex
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.callouts.code.tex))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/libraries/sh
+apes\pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodepartlowerbox=\box88
+\pgfnodeparttwobox=\box89
+\pgfnodepartthreebox=\box90
+\pgfnodepartfourbox=\box91
+\pgfnodeparttwentybox=\box92
+\pgfnodepartnineteenbox=\box93
+\pgfnodeparteighteenbox=\box94
+\pgfnodepartseventeenbox=\box95
+\pgfnodepartsixteenbox=\box96
+\pgfnodepartfifteenbox=\box97
+\pgfnodepartfourteenbox=\box98
+\pgfnodepartthirteenbox=\box99
+\pgfnodeparttwelvebox=\box100
+\pgfnodepartelevenbox=\box101
+\pgfnodeparttenbox=\box102
+\pgfnodepartninebox=\box103
+\pgfnodeparteightbox=\box104
+\pgfnodepartsevenbox=\box105
+\pgfnodepartsixbox=\box106
+\pgfnodepartfivebox=\box107
+)))
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/tikzmark\tikzlibra
+rytikzmark.code.tex
+File: tikzlibrarytikzmark.code.tex 2022/08/24 v1.15 TikZ library for marking po
+sitions in a document
+
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/l3packages/xparse\
+xparse.sty
+Package: xparse 2024-03-14 L3 Experimental document command parser
+)
+\l__sn_x_dim=\dimen348
+\l__sn_y_dim=\dimen349
+\l__sn_xa_dim=\dimen350
+\l__sn_ya_dim=\dimen351
+)
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/pgf/frontendlaye
+r/tikz/libraries\tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)
+\c@eqnannotatenode=\count360
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/anyfontsize\anyfon
 tsize.sty
@@ -827,10 +1265,10 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 tex
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/generic/xkeyval\xkvutils
 .tex
-\XKV@toks=\toks41
-\XKV@tempa@toks=\toks42
+\XKV@toks=\toks53
+\XKV@tempa@toks=\toks54
 )
-\XKV@depth=\count338
+\XKV@depth=\count361
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/koma-script\tocbas
@@ -860,19 +1298,19 @@ Already applied: [0000/00/00] Usage of raw or classic option list on input line
  368.
 )
 \scr@dte@tocline@numberwidth=\skip82
-\scr@dte@tocline@numbox=\box75
+\scr@dte@tocline@numbox=\box108
 )
 Package tocbasic Info: setting babel extension for `nlo' on input line 187.
 Package tocbasic Info: setting babel extension for `nls' on input line 188.
-\nomlabelwidth=\dimen297
-\nom@tempdim=\dimen298
+\nomlabelwidth=\dimen352
+\nom@tempdim=\dimen353
 \nomitemsep=\skip83
 )
-\@nomenclaturefile=\write3
-\openout3 = `New_IEEEtran_how-to.nlo'.
+\@nomenclaturefile=\write4
+\openout4 = `New_IEEEtran_how-to.nlo'.
 
 Package nomencl Info: Writing nomenclature file New_IEEEtran_how-to.nlo on inpu
-t line 36.
+t line 37.
 
 
 LaTeX Warning: Unused global option(s):
@@ -880,10 +1318,10 @@ LaTeX Warning: Unused global option(s):
 
 (New_IEEEtran_how-to.aux
 
-LaTeX Warning: Label `eqn:3' multiply defined.
+LaTeX Warning: Label `eqn:5' multiply defined.
 
 
-LaTeX Warning: Label `eqn:3@cref' multiply defined.
+LaTeX Warning: Label `eqn:5@cref' multiply defined.
 
 
 LaTeX Warning: Label `fig12' multiply defined.
@@ -906,24 +1344,24 @@ LaTeX Warning: Label `fig12@cref' multiply defined.
 )
 \openout1 = `New_IEEEtran_how-to.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
-LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
+LaTeX Font Info:    ... okay on input line 79.
 
 -- Lines per column: 58 (exact).
 Package caption Info: Begin \AtBeginDocument code.
@@ -933,17 +1371,17 @@ Package caption Info: End \AtBeginDocument code.
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/context/base/mkii\supp-p
 df.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count339
-\scratchdimen=\dimen299
-\scratchbox=\box76
-\nofMPsegments=\count340
-\nofMParguments=\count341
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count342
-\MPscratchDim=\dimen300
-\MPnumerator=\count343
-\makeMPintoPDFobject=\count344
-\everyMPtoPDFconversion=\toks44
+\scratchcounter=\count362
+\scratchdimen=\dimen354
+\scratchbox=\box109
+\nofMPsegments=\count363
+\nofMParguments=\count364
+\everyMPshowfont=\toks55
+\MPscratchCnt=\count365
+\MPscratchDim=\dimen355
+\MPnumerator=\count366
+\makeMPintoPDFobject=\count367
+\everyMPtoPDFconversion=\toks56
 )
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/epstopdf-pkg\epsto
 pdf-base.sty
@@ -955,13 +1393,13 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 sys.cfg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
-Package hyperref Info: Link coloring OFF on input line 78.
+Package hyperref Info: Link coloring OFF on input line 79.
  (New_IEEEtran_how-to.out) (New_IEEEtran_how-to.out)
-\@outlinefile=\write4
-\openout4 = `New_IEEEtran_how-to.out'.
+\@outlinefile=\write5
+\openout5 = `New_IEEEtran_how-to.out'.
 
 LaTeX Font Info:    Trying to load font information for OT1+stix on input line 
-95.
+96.
 
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/stix\ot1stix.fd
 File: ot1stix.fd 2015/04/17 v1.1.2-latex STIX OT1 font definitions
@@ -983,69 +1421,39 @@ ommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/enc/dvips/stix/stix-ot1.enc
 
 
 ] [2]
-Overfull \hbox (3.25333pt too wide) detected at line 156
-[]
- []
-
-
-Overfull \hbox (4.82559pt too wide) detected at line 270
-[]
- []
-
-
-LaTeX Warning: Reference `additional power from bess' on page 1 undefined on in
-put line 275.
-
-
-LaTeX Warning: Reference `time-discretized SFR: additional power from converter
-s' on page 1 undefined on input line 275.
-
-
-LaTeX Warning: Reference `time-discretized SFR: additional power from conventio
-nal units' on page 1 undefined on input line 275.
-
-
-LaTeX Warning: Reference `eqn:4' on page 1 undefined on input line 280.
-
-<fig2.pdf, id=79, 315.90422pt x 110.42255pt>
+<fig2.pdf, id=88, 315.90422pt x 110.42255pt>
 File: fig2.pdf Graphic file (type pdf)
 <use fig2.pdf>
-Package pdftex.def Info: fig2.pdf  used on input line 284.
+Package pdftex.def Info: fig2.pdf  used on input line 307.
 (pdftex.def)             Requested size: 201.60439pt x 68.65501pt.
 
-LaTeX Warning: Reference `eqn:4' on page 1 undefined on input line 289.
-
-[3 <./fig2.pdf>]
-Overfull \hbox (3.46497pt too wide) detected at line 312
+Overfull \hbox (3.46497pt too wide) detected at line 323
 []
  []
 
-
-LaTeX Warning: Reference `eqn:4' on page 4 undefined on input line 332.
-
-
-Underfull \hbox (badness 3088) in paragraph at lines 332--333
-[]\OT1/ptm/m/it/10 Bayesian pred-i-ca-tion \OT1/ptm/m/n/10 in the pre-dic-tion 
-stage, []
+[3 <./fig2.pdf>]
+Underfull \hbox (badness 2334) in paragraph at lines 343--344
+[] \OT1/ptm/m/n/10 is used to up-date the pos-te-rior of $\OML/cmm/m/it/10 ^^Af
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (46.71973pt too wide) in paragraph at lines 332--333
+Overfull \hbox (46.71973pt too wide) in paragraph at lines 343--344
 \OMS/cmsy/m/n/10 P []$ $[]$ \OT1/ptm/m/n/10 and $\OMS/cmsy/m/n/10 P [] []$
  []
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 332--333
+Underfull \hbox (badness 2042) in paragraph at lines 343--344
 \OT1/ptm/m/n/10 as an ex-am-ple to de-scribe the cal-cu-lat-ing pro-cess
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 332--333
+Underfull \hbox (badness 1888) in paragraph at lines 343--344
 \OT1/ptm/m/n/10 us-ing SIS, the case of the lat-ter (pos-te-rior) stage
  []
 
 
-Overfull \hbox (3.44368pt too wide) in paragraph at lines 335--336
+Overfull \hbox (3.44368pt too wide) in paragraph at lines 346--347
 []\OT1/ptm/m/n/10 Let $\OML/cmm/m/it/10 ^^S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n\
 OT1/cmr/m/n/10 )  =  \OMS/cmsy/m/n/10 P [] \OML/cmm/m/it/10 ; ^^S\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ) = ([]\OML/cmm/m/it/10 =[]\OT1/cmr/m/n/10
@@ -1053,102 +1461,101 @@ OT1/cmr/m/n/10 )  =  \OMS/cmsy/m/n/10 P [] \OML/cmm/m/it/10 ; ^^S\OT1/cmr/m/n/1
  []
 
 
-Overfull \hbox (0.6689pt too wide) detected at line 345
+Overfull \hbox (0.6689pt too wide) detected at line 356
 []
  []
 
 
-LaTeX Warning: Reference `eqn:4' on page 4 undefined on input line 360.
-
-
-LaTeX Warning: Reference `eqn:4' on page 4 undefined on input line 392.
-
-
-Overfull \hbox (3.06313pt too wide) in paragraph at lines 372--397
-[][] 
- []
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 406.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 406.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 406.
+(hyperref)                removed on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 406.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 406.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 406.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 422.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 422.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 422.
+(hyperref)                removed on input line 417.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 422.
+(hyperref)                removing `math shift' on input line 417.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 433.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 433.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 422.
+(hyperref)                removed on input line 433.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 422.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 433.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 433.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 433.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./fig3.pdf): PDF inclusion: found PDF versio
 n <1.7>, but at most version <1.5> allowed
-<fig3.pdf, id=180, 600.97325pt x 211.2683pt>
+<fig3.pdf, id=186, 600.97325pt x 211.2683pt>
 File: fig3.pdf Graphic file (type pdf)
 <use fig3.pdf>
-Package pdftex.def Info: fig3.pdf  used on input line 426.
+Package pdftex.def Info: fig3.pdf  used on input line 437.
 (pdftex.def)             Requested size: 252.0pt x 88.587pt.
 
 LaTeX Warning: Reference `additional power from bess' on page 1 undefined on in
-put line 431.
+put line 442.
 
 
 LaTeX Warning: Reference `time-discretized SFR: additional power from converter
-s' on page 1 undefined on input line 431.
+s' on page 1 undefined on input line 442.
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 431--432
+LaTeX Warning: Reference `time-discretized SFR: additional power from convertio
+nal units' on page 1 undefined on input line 442.
+
+
+Underfull \hbox (badness 1609) in paragraph at lines 442--443
 \OT1/ptm/m/n/10 grid-connected units, it is im-per-a-tive that both con-ven-
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 431--432
+Underfull \hbox (badness 2343) in paragraph at lines 442--443
 \OT1/ptm/m/n/10 tional gen-er-a-tors, con-vert-ers and BESS are ca-pa-ble of
  []
 
+
+Underfull \hbox (badness 2165) in paragraph at lines 442--443
+\OT1/ptm/m/n/10 serv-ing as re-serves dur-ing im-bal-anced dis-tur-bances, [[],
+
+ []
+
 [4]
-Overfull \hbox (1.96478pt too wide) in paragraph at lines 480--480
+Overfull \hbox (1.96478pt too wide) in paragraph at lines 491--491
  \OT1/ptm/m/it/10 C. $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 chance \OMS/cmsy/m/n/10
  ^^@ \OML/cmm/m/it/10 constraint\OT1/cmr/m/n/10 )  \OML/cmm/m/it/10 nadir  cons
 traint  reformulation$ 
@@ -1156,90 +1563,91 @@ traint  reformulation$
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 480.
+(hyperref)                removing `math shift' on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
+(hyperref)                removed on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
+(hyperref)                removed on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 480.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 480.
+(hyperref)                removed on input line 491.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 480.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
 
 
-Overfull \hbox (3.7002pt too wide) in paragraph at lines 532--533
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 491.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 491.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 491.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 491.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 491.
+
+
+Overfull \hbox (3.7002pt too wide) in paragraph at lines 543--544
 []\OT1/ptm/m/n/10 Let $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10
  )  =  [] []$
  []
 
 
-Overfull \hbox (4.38206pt too wide) in paragraph at lines 532--533
+Overfull \hbox (4.38206pt too wide) in paragraph at lines 543--544
 []$ \OT1/ptm/m/n/10 de-scribe the ap-prox-i-mated fit-ting func-tion of $[]\OT1
 /cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10 )$
  []
 
 
-Overfull \hbox (4.25987pt too wide) detected at line 539
+Overfull \hbox (4.25987pt too wide) detected at line 550
 []
  []
 
+[5 <./fig3.pdf>]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-42.
+53.
+
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-[5 <./fig3.pdf>]
-Overfull \hbox (2.80177pt too wide) detected at line 552
+Overfull \hbox (2.80177pt too wide) detected at line 563
 []
  []
 
@@ -1247,49 +1655,45 @@ Overfull \hbox (2.80177pt too wide) detected at line 552
 
 pdfTeX warning: pdflatex.exe (file ./fig8_LOADandWINDscurves.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig8_LOADandWINDscurves.pdf, id=451, 597.95796pt x 208.1637pt>
+<fig8_LOADandWINDscurves.pdf, id=452, 597.95796pt x 208.1637pt>
 File: fig8_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig8_LOADandWINDscurves.pdf>
-Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 721.
+Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 732.
 (pdftex.def)             Requested size: 252.0pt x 87.72672pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig5_new_SFRcurves.pdf, id=452, 591.04817pt x 211.79927pt>
+<fig5_new_SFRcurves.pdf, id=453, 591.04817pt x 211.79927pt>
 File: fig5_new_SFRcurves.pdf Graphic file (type pdf)
 <use fig5_new_SFRcurves.pdf>
-Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 728.
+Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 739.
 (pdftex.def)             Requested size: 252.0pt x 90.30273pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig6_SFRPDFinformations.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig6_SFRPDFinformations.pdf, id=453, 596.21445pt x 220.66942pt>
+<fig6_SFRPDFinformations.pdf, id=454, 596.21445pt x 220.66942pt>
 File: fig6_SFRPDFinformations.pdf Graphic file (type pdf)
 <use fig6_SFRPDFinformations.pdf>
-Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 734.
+Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 745.
 (pdftex.def)             Requested size: 252.0pt x 93.26976pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig7_surface.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<fig7_surface.pdf, id=454, 1389.49007pt x 673.64331pt>
+<fig7_surface.pdf, id=455, 1389.49007pt x 673.64331pt>
 File: fig7_surface.pdf Graphic file (type pdf)
 <use fig7_surface.pdf>
-Package pdftex.def Info: fig7_surface.pdf  used on input line 740.
+Package pdftex.def Info: fig7_surface.pdf  used on input line 751.
 (pdftex.def)             Requested size: 226.79655pt x 90.33145pt.
-[7 <./fig8_LOADandWINDscurves.pdf> <./fig5_new_SFRcurves.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: mu
-ltiple pdfs with page group included in a single page
->]
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 753--762
+[7]
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 764--773
 [][] 
  []
 
 
-Overfull \hbox (1.27168pt too wide) in paragraph at lines 764--765
+Overfull \hbox (1.27168pt too wide) in paragraph at lines 775--776
 []\OT1/ptm/m/n/10 In Ta-ble []IV[], both sched-ule costs solved by FDUC/CCFDUC
  []
 
@@ -1297,81 +1701,87 @@ Overfull \hbox (1.27168pt too wide) in paragraph at lines 764--765
 
 pdfTeX warning: pdflatex.exe (file ./fig9_OnlineUnitRes.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig9_OnlineUnitRes.pdf, id=1079, 435.17178pt x 141.65823pt>
+<fig9_OnlineUnitRes.pdf, id=476, 435.17178pt x 141.65823pt>
 File: fig9_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig9_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 768.
+Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 779.
 (pdftex.def)             Requested size: 201.60245pt x 61.4306pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig10_powerbalance2and3.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig10_powerbalance2and3.pdf, id=1081, 595.00595pt x 204.58533pt>
+<fig10_powerbalance2and3.pdf, id=478, 595.00595pt x 204.58533pt>
 File: fig10_powerbalance2and3.pdf Graphic file (type pdf)
 <use fig10_powerbalance2and3.pdf>
-Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 777.
+Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 788.
 (pdftex.def)             Requested size: 252.0pt x 86.64635pt.
+[8 <./fig8_LOADandWINDscurves.pdf> <./fig5_new_SFRcurves.pdf
 
+pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <./fig6_SFRPDFinformations.pdf
 
-pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig11_RoCOFandnadirdistributionINFO.pdf, id=1083, 595.59918pt x 209.18852pt>
-File: fig11_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
-<use fig11_RoCOFandnadirdistributionINFO.pdf>
-Package pdftex.def Info: fig11_RoCOFandnadirdistributionINFO.pdf  used on input
- line 786.
-(pdftex.def)             Requested size: 252.0pt x 88.50653pt.
-[8 <./fig6_SFRPDFinformations.pdf> <./fig7_surface.pdf> <./fig9_OnlineUnitRes.p
-df
+pdfTeX warning: pdflatex.exe (file ./fig6_SFRPDFinformations.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./fig7_surface.pdf> <./fig9_OnlineUnitRes.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig9_OnlineUnitRes.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
-> <./fig10_powerbalance2and3.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig10_powerbalance2and3.pdf): PDF inclusio
-n: multiple pdfs with page group included in a single page
 >]
+
+pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
+PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<fig11_RoCOFandnadirdistributionINFO.pdf, id=1643, 595.59918pt x 209.18852pt>
+File: fig11_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
+<use fig11_RoCOFandnadirdistributionINFO.pdf>
+Package pdftex.def Info: fig11_RoCOFandnadirdistributionINFO.pdf  used on input
+ line 797.
+(pdftex.def)             Requested size: 252.0pt x 88.50653pt.
+
 
 pdfTeX warning: pdflatex.exe (file ./fig13_SFRcurveandadditionaPower.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig13_SFRcurveandadditionaPower.pdf, id=1789, 602.25pt x 217.28879pt>
+<fig13_SFRcurveandadditionaPower.pdf, id=1652, 602.25pt x 217.28879pt>
 File: fig13_SFRcurveandadditionaPower.pdf Graphic file (type pdf)
 <use fig13_SFRcurveandadditionaPower.pdf>
 Package pdftex.def Info: fig13_SFRcurveandadditionaPower.pdf  used on input lin
-e 795.
+e 806.
 (pdftex.def)             Requested size: 252.0pt x 90.91916pt.
-<fig12_cost_and_wastepower.pdf, id=1790, 586.36264pt x 216.14452pt>
+<fig12_cost_and_wastepower.pdf, id=1653, 586.36264pt x 216.14452pt>
 File: fig12_cost_and_wastepower.pdf Graphic file (type pdf)
 <use fig12_cost_and_wastepower.pdf>
-Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 802.
+Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 813.
 
 (pdftex.def)             Requested size: 252.0pt x 92.89085pt.
 
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 824--833
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 835--844
 [][] 
  []
 
-<fig14_bigcase_LOADandWINDscurves.pdf, id=1795, 597.14995pt x 206.04076pt>
+<fig14_bigcase_LOADandWINDscurves.pdf, id=1658, 597.14995pt x 206.04076pt>
 File: fig14_bigcase_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig14_bigcase_LOADandWINDscurves.pdf>
 Package pdftex.def Info: fig14_bigcase_LOADandWINDscurves.pdf  used on input li
-ne 838.
+ne 849.
 (pdftex.def)             Requested size: 252.0pt x 86.94838pt.
-<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=1796, 597.5143pt x 211.334
+<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=1659, 597.5143pt x 211.334
 55pt>
 File: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
 <use fig15_bigcase_RoCOFandnadirdistributionINFO.pdf>
 Package pdftex.def Info: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf  used 
-on input line 845.
+on input line 856.
 (pdftex.def)             Requested size: 252.0pt x 89.13074pt.
-<fig16_bigcase_OnlineUnitRes.pdf, id=1797, 434.45714pt x 143.65369pt>
+<fig16_bigcase_OnlineUnitRes.pdf, id=1660, 434.45714pt x 143.65369pt>
 File: fig16_bigcase_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig16_bigcase_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 85
-2.
+Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 86
+3.
 (pdftex.def)             Requested size: 201.5962pt x 61.43011pt.
-[9 <./fig11_RoCOFandnadirdistributionINFO.pdf> <./fig13_SFRcurveandadditionaPow
-er.pdf
+[9 <./fig10_powerbalance2and3.pdf> <./fig11_RoCOFandnadirdistributionINFO.pdf
+
+pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+> <./fig13_SFRcurveandadditionaPower.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig13_SFRcurveandadditionaPower.pdf): PDF 
 inclusion: multiple pdfs with page group included in a single page
@@ -1383,30 +1793,31 @@ ion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./fig14_bigcase_LOADandWINDscurves.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
-> <./fig15_bigcase_RoCOFandnadirdistributionINFO.pdf
-
-pdfTeX warning: pdflatex.exe (file ./fig15_bigcase_RoCOFandnadirdistributionINF
-O.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] (New_IEEEtran_how-to.bbl
-Underfull \hbox (badness 3590) in paragraph at lines 25--27
-[]\OT1/stix/m/n/9 P. M. An-der-son and M. Mirhey-dar, ``A low-order sys-tem
- []
-
-
-Underfull \hbox (badness 1968) in paragraph at lines 77--80
+Underfull \hbox (badness 1968) in paragraph at lines 25--28
 \OT1/stix/m/n/9 fre-quency reg-u-la-tion con-straints,'' \OT1/stix/m/it/9 IEEE 
 Trans. Power Syst.\OT1/stix/m/n/9 ,
  []
 
-[10 <./fig16_bigcase_OnlineUnitRes.pdf>]
-Underfull \hbox (badness 1852) in paragraph at lines 124--128
+
+Underfull \hbox (badness 1852) in paragraph at lines 77--81
 []\OT1/stix/m/n/9 L. Yang, Z. Li, Y. Xu, J. Zhou, and H. Sun, ``Fre-quency
  []
 
 
-Underfull \hbox (badness 3713) in paragraph at lines 124--128
+Underfull \hbox (badness 3713) in paragraph at lines 77--81
 \OT1/stix/m/n/9 driven dis-tri-bu-tion-ally ro-bust chance-constrained ap-proac
 h,''
+ []
+
+[10 <./fig15_bigcase_RoCOFandnadirdistributionINFO.pdf> <./fig16_bigcase_Online
+UnitRes.pdf
+
+pdfTeX warning: pdflatex.exe (file ./fig16_bigcase_OnlineUnitRes.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 3590) in paragraph at lines 115--117
+[]\OT1/stix/m/n/9 P. M. An-der-son and M. Mirhey-dar, ``A low-order sys-tem
  []
 
 ) [11
@@ -1414,7 +1825,7 @@ h,''
 ] (New_IEEEtran_how-to.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
-L3 programming layer <2024-03-14>
+L3 programming layer <2024-04-11>
  ***********
 
 
@@ -1427,13 +1838,13 @@ Package rerunfilecheck Info: File `New_IEEEtran_how-to.out' has not changed.
 (rerunfilecheck)             Checksum: 29F34D7F4DBBA032AF33A6E6F6DE78A8;2043.
  ) 
 Here is how much of TeX's memory you used:
- 18860 strings out of 474424
- 336362 string characters out of 5739382
- 1987496 words of memory out of 5000000
- 40721 multiletter control sequences out of 15000+600000
- 610480 words of font info for 130 fonts, out of 8000000 for 9000
+ 32113 strings out of 474370
+ 646078 string characters out of 5738179
+ 1990754 words of memory out of 5000000
+ 53757 multiletter control sequences out of 15000+600000
+ 612164 words of font info for 132 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
- 110i,15n,107p,1735b,676s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,15n,107p,1735b,665s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/ST
 IXGeneral-Bold.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/typ
 e1/public/stix/STIXGeneral-Italic.pfb><D:/CommonSoftwares/ProductiveCodingEdito
@@ -1467,9 +1878,9 @@ ourier/ucrr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type
 /type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX
 /fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/M
 iKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on New_IEEEtran_how-to.pdf (11 pages, 6221906 bytes).
+Output written on New_IEEEtran_how-to.pdf (11 pages, 6220062 bytes).
 PDF statistics:
- 4100 PDF objects out of 4296 (max. 8388607)
- 149 named destinations out of 1000 (max. 500000)
- 159 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4098 PDF objects out of 4296 (max. 8388607)
+ 141 named destinations out of 1000 (max. 500000)
+ 171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

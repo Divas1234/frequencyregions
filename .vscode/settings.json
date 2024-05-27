@@ -1,0 +1,21 @@
+{
+  "editor.fontSize": 24,
+  "apc.font.family": "Geist Mono",
+  "apc.monospace.font.family": "Geist Mono",
+  "apc.stylesheet": {},
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
+  "editor.wordWrapColumn": 120,
+  "vim.textwidth": 180,
+  "prettier.proseWrap": "always",
+  "workbench.editor.wrapTabs": true,
+  "notebook.output.wordWrap": true,
+  "chat.editor.wordWrap": "on",
+  "html.format.wrapLineLength": 180,
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": false,
+  "files.autoSaveWorkspaceFilesOnly": false,
+  "markdown.extension.print.onFileSave": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "bookmarks.useWorkaroundForFormatters": true
+}
