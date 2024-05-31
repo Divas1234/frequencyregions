@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2024)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: New_IEEEtran_how-to.aux
+The style file: ieeetran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: reference.bib
+Repeated entry---line 787 of file reference.bib
+ : @article{zhang2020modeling
+ :                           ,
+I'm skipping whatever remains of this entry
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+
+Done.
+You've used 19 entries,
+            4087 wiz_defined-function locations,
+            923 strings with 10967 characters,
+and the built_in function-call counts, 18852 in all, are:
+= -- 1576
+> -- 486
+< -- 214
++ -- 287
+- -- 82
+* -- 952
+:= -- 2692
+add.period$ -- 38
+call.type$ -- 19
+change.case$ -- 19
+chr.to.int$ -- 489
+cite$ -- 19
+duplicate$ -- 1262
+empty$ -- 1284
+format.name$ -- 95
+if$ -- 4396
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 203
+newline$ -- 80
+num.names$ -- 19
+pop$ -- 404
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 1443
+stack$ -- 0
+substring$ -- 1175
+swap$ -- 1188
+text.length$ -- 51
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 19
+warning$ -- 0
+while$ -- 87
+width$ -- 21
+write$ -- 225
+(There was 1 error message)

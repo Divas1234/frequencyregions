@@ -112,7 +112,7 @@
 \vspace{-0.105in}
 
 \section{Introduction}
-\IEEEPARstart{T}{he} increasing penetration of renewable energy has given rise to a risk of instability frequency dynamics and scheduled commitments due to these converter-interfaced generators' uncertain output features and decoupling frequency supporting capabilities. To address this problem, sufficient frequency regulation resources and associated modeling methods become essential to guarantee the validity of scheduled commitments. As such, it is critical to find an accurate and efficient SFR method, facilitating subsequently frequency security analysis and scheduled commitment calculating.
+\IEEEPARstart{T}{he} increasing penetration of renewable energy has given rise to a risk of instability frequency dynamics and scheduled commitments due to these converter-interfaced generators' uncertain output features and decoupling frequency supporting capabilities. To address this problem, sufficient frequency regulation resources and associated modeling methods become essential to guarantee the validity of scheduled commitments. As such, finding an accurate and efficient SFR method facilitates subsequent frequency security analysis and scheduled commitment calculating.
 
 Existing studies on modeling frequency dynamics can be categorized into analytical and discretized methods. The analytical model aims to reflect the average response of all generators following a mismatch power disturbance. It is broadly based on a center-of-inertia (CoI) theorem, where homogeneous generators with similar P-F characteristics are abstracted into an aggregated unit. The derived aggregated unit usually keeps a one- or two-order form for fetching analytical formulation. Ref. 1 proposed a two-order transfer function of reheated thermal generators and constructed a simplified SFR model for conventional thermal-generators-dominated systems. Ref. 2 proposed a refined frequency-regulation parameters identification method for such systems consisting of multiple machines with heterogeneous parameters and derived a refined analytical SFR model. Ref. 3 incorporated the one-order P-F characteristics from converter-interfaced generators into the baseline model and extended a flexible SFR model for such systems with a high share of renewable energy. These aforementioned analytical models generally produce similar results, where the impact of specific generators on the average response of frequency dynamics lies in the selection of local frequency-regulation parameters. Another explanation for such settings is that complicated and heterogeneous control schemes would complicate the union transfer function of the whole system and result in a resolvable form.
 
@@ -121,12 +121,12 @@ This model uses deterministic or stochastic finite differential techniques to ca
 
 To incorporate the uncertain variability characteristic from converter-interfaced generators into frequency dynamic. Ref. 8 treated the uncertain variability factors as an \(\widehat{i}\) to process that is expressed by stochastic differential equations. Since the uncertain factors in the \(\widehat{i}\) to process are broadly like a Gaussian distribution following good conjugation properties, the frequency dynamic derived from the \(\widehat{i}\) to process keeps an analytical solution. These uncertain variability factors usually depend on frequency derivations; the suggested distribution of uncertain variability characteristics is conditional and unknown. From this perspective, existing methods considering uncertain variability factors based on the \(\widehat{i}\) to process cannot reflect the dependable uncertain variability factors on frequency dynamic.
 
-It is essential to review critical frequency characteristics for scheduled problems like unit commitment, optimal power flow, and economic dispatch to meet frequency security requirements. Ref.7 constructed RoCoF, nadir, and Qss constraints derived from analytical SFR models and developed a frequency-constrained unit commitment (FCUC). However, the challenge with FCUC and other similar frequency-constrained dispatch models is linearizing nonlinear frequency constraints. To address this, Ref.8 constructed a max-affine-derived linear frequency nadir constraint and incorporated it into FCUC. Ref.9 utilized a specific neural network to establish linear regression relationships between maximum frequency derivation and various frequency-regulating parameters. Ref.10 applied the most miniature square model to calculate the regression parameters of the derived linearized nadir constraint. Alternatively, Ref. 10 sorted out a sequence of discretized frequency derivation constraints over a predetermined simulated horizon. Since these frequency derivation constraints for each time slice must consist of RoCoF, nadir, and Qss types, this method usually has a high level of accuracy yet with more complexity. While these multiple generators participating in SFR usually keep an apparent P-F characteristic, the uncertain variability characteristic of intermittent resources is implicitly ignored throughout the dynamic response process, although their P-F characteristic has been reconsidered with free-noise assumptions.
+It is essential to review critical frequency characteristics for scheduled problems like unit commitment, optimal power flow, and economic dispatch to meet frequency security requirements. Ref.7 constructed RoCoF, nadir, and Qss constraints derived from analytical SFR models and developed a frequency-constrained unit commitment (FCUC). However, the challenge with FCUC and other similar frequency-constrained dispatch models is linearizing nonlinear frequency constraints. To address this, Ref.8 constructed a max-affine-derived linear frequency nadir constraint and incorporated it into FCUC. Ref.9 utilized a specific neural network to establish linear regression relationships between maximum frequency derivation and various frequency-regulating parameters. Ref.10 applied the most miniature square model to calculate the regression parameters of the derived linearized nadir constraint. Alternatively, Ref. 10 sorted out a sequence of discretized frequency derivation constraints over a predetermined simulated horizon. Since these frequency derivation constraints for each time slice must consist of RoCoF, nadir, and Qss types, this method usually has a high level of accuracy yet with more complexity. While these multiple generators participating in SFR usually keep an apparent P-F characteristic, the uncertain variability characteristic of intermittent resources is implicitly ignored throughout the dynamic response process. However, their P-F characteristic has been reconsidered with free-noise assumptions.
 
-Motivated by such concerns, this work constructs a new SFR model considering uncertain variability from converter-interfaced generators. Since the uncertain variability characteristic retreats as a stochastic waveform sequence within a Bayesian-filter framework that can be measured by phase measurement unit (PMU), the trajectory of frequency derivation through the proposed model is more accurate with the help of PMU data. In addition, the probabilistic density distribution concerning frequency derivation considering uncertain variability can also be derived. Subsequently, the chronological derivation and related probabilistic distribution of frequency dynamic are abstracted, reformulated as chance-constrained frequency constraints, and integrated into UC studies. Accordingly, a refined chance-constrained FCUC is developed.
+Motivated by such concerns, this work constructs a new SFR model considering uncertain variability factors from converter-interfaced generators. Since the uncertain variability characteristic retreats as a stochastic waveform sequence and can be measured by phase measurement unit (PMU), the estimation of frequency derivation through the proposed model is more accurate with the help of PMU data. In addition, the probabilistic density distribution of frequency derivation considering uncertain variability factors can also be derived. Subsequently, chronological derivation and related probabilistic distribution of frequency dynamic are abstracted, reformulated as chance-constrained frequency constraints, and subsequently integrated into UC studies. Accordingly, a refined chance-constrained FCUC is developed.
 
 To summarize, two significant contributions in this work are described below,
-1) a new SFR model considering uncertain variability factors from converter-interfaced generators is proposed. The proposed model can estimate frequency derivation and associated probabilistic distribution against mismatch power disturbance.
+1) A new SFR model is proposed, considering uncertain variability factors in converter-interfaced generators. The proposed model can estimate frequency derivation and associated probabilistic distribution against mismatch power disturbance.
 2) an extended chance-constraint FCUC is constructed. Both probabilistic properties of frequency derivation under an uncertain variability environment can be smoothly incorporated.
 
 The remainder of this paper is organized: Section {2} introduces a Bayesian-filter-derived SFR model. Section {3} constructs chance-constraint frequency dynamic constraints. {4} extends the formulation of chance-constraint FCUC. Section {5} verifies the effectiveness of the proposed model in a modified IEEE 14 bus test system and IEEE 118 bus test system, and Section {6} summarizes the primary findings and conclusions presented in this research.
@@ -134,7 +134,6 @@ The remainder of this paper is organized: Section {2} introduces a Bayesian-filt
 \vspace{-0.125in}
 \section{Modeling BF-SFR through Bayesian-Filter}
 
-% Considering a low-inertia grid comprised of conventional generators, wind farms and BESS, it is seen that the effect of homogeneous generators with comparable control schemes can be seen as an aggregated CoI block. Define aggregated parameters $\displaystyle\left\{H_{G}, D_{G}, K_{G}, F_{G}, R_{G}, T_{G}\right\},\left\{K_{W}, R_{W}, M_{W}, D_{W}, T_{W}\right\}$ and $\left\{T_{E}, R_{E}\right\}$ represent the adjusted output produced by CoI conventional generator block, CoI wind farm block and CoI BESS block. Further details on the derivation from frequency parameters of individual units to aggregated unit block can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling,zhang2021encoding}.
 % The transfer function of SFR concerning a occurred step-type power disturbance $\varDelta p_{\textrm{step }}(s)=\varDelta p_{{step }} / s$ can be rewritten as,
 
 % \vspace{-0.125in}
@@ -147,7 +146,7 @@ The remainder of this paper is organized: Section {2} introduces a Bayesian-filt
 % \end{small}
 
 %Different generators usually have heterogeneous control schemes against mismatch power disturbance cases.
-For the sake of simplification, homogeneous generators with similar controls usually treated as equivalent units with aggregated parameters. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators (renewable energy) and battery energy systems (BESS), can be rewritten as,
+Homogeneous generators are usually treated as equivalent units with aggregated parameters for simplification. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators (renewable energy), and battery energy systems (BESS) can be rewritten as,
 
 % \vspace{-0.125in}
 \begin{small}
@@ -218,7 +217,7 @@ The $t-$ domain mathematical form of \eqref{eqn:1} can be transferred by utilizi
 %    \label{fig1}
 %\end{figure}
 
-\noindent where \cref{eqn:2a,eqn:2b} describes the chronological change of \(\varDelta f(t)\) over the entire dynamic horizons; \cref{eqn:2c} denotes equivalent frequency parameters concerning CoI-based inertia constant and droop constant; \cref{eqn:2d,eqn:2e,eqn:2c} describes rescheduled output of different types of generators,  respectively. Furthermore, by replacing $\varDelta f^{\prime}(t) = \nicefrac{[\varDelta f(t)-\varDelta f(t-\delta t)]}{ \delta t}$ into \cref{eqn:2a,eqn:2d}, the time-discretized SFR concerning $\varDelta f(t)$, as well as rescheduled output \(\langle \varDelta p_{G}(t), \varDelta p_{W}(t)\rangle\) from conventional generators and converter-interfaced ones can be estimated,
+\noindent where \cref{eqn:2a,eqn:2b} describes the chronological change of \(\varDelta f(t)\) over the entire dynamic horizons; \cref{eqn:2c} denotes equivalent frequency parameters consisting of CoI-based inertia constant and droop constant; \cref{eqn:2d,eqn:2e,eqn:2c} describes the scheduled output of different generators,  respectively. Furthermore, by replacing $\varDelta f^{\prime}(t) = \nicefrac{[\varDelta f(t)-\varDelta f(t-\delta t)]}{ \delta t}$ into \cref{eqn:2a,eqn:2d}, the time-discretized SFR concerning $\varDelta f(t)$, as well as rescheduled output \(\langle \varDelta p_{G}(t), \varDelta p_{W}(t)\rangle\) from conventional generators and converter-interfaced ones can be estimated,
 
 % \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:3}
@@ -244,7 +243,7 @@ The $t-$ domain mathematical form of \eqref{eqn:1} can be transferred by utilizi
 %   \end{align}
 % \end{newsubequations}
 
-In \cref{eqn:3b,eqn:3c}, additional outputs of generators can be recursively estimated after observing \(\varDelta f(t\!-\! \delta t)\) and \(\varDelta f(t)\). Nevertheless, the impact of uncertain variability factors from these generators are implicitly ignored. Generally speaking, uncertain variability factors are divided into two parts; the first part comes from the restriction of rescheduled output denoted by \(\overline{p}_{G},\overline{p}_{W}\), it means that the adjustable output of generators using \cref{eqn:3b,eqn:3c} cannot be guaranteed due to generators' output limitation; the latter part is caused by the unforeseeable uncertain derivations produced by intermittent converter-interfaced generators. To address that, let \(\varDelta \omega_{1}(t)\!=\!-\left(\lceil \varDelta p_{G}(t), \overline{p}_{G} \rceil \!+\! \lceil \varDelta p_{W}(t), {p}_{W}(t)\rceil\right)  \) represent the corrected term caused by generators' output limitation, and similarly, let \(\varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma)\) denote uncertain derivations from converter-interfaced generators. Hence, the impact of uncertain variability factors can be estimated by adding \(\varDelta \omega_{1}\) and \(\varDelta \omega_{2}\) together. So, the SFR considering uncertain variability factors can be derived,
+In \cref{eqn:3b,eqn:3c}, \(\langle \varDelta p_{G}(t), \varDelta p_{W}(t) \rangle\) can be recursively calculated after observing \(\varDelta f(t\!-\! \delta t)\) and \(\varDelta f(t)\). Nevertheless, the impact of uncertain variability factors is implicitly ignored. Generally speaking, uncertain variability factors are divided into two parts; the first part comes from the restriction of \(\varDelta p_{G}(t)\) denoted by \(\overline{p}_{G},\overline{p}_{W}\), it means that the adjustable output of generators using \cref{eqn:3b,eqn:3c} cannot be kept due to generators' output limitation; the latter part is caused by the unforeseeable uncertain derivations produced by intermittent converter-interfaced generators. To address that, let \(\varDelta \omega_{1}(t)\!=\!-\left(\lceil \varDelta p_{G}(t), \overline{p}_{G} \rceil \!+\! \lceil \varDelta p_{W}(t), {p}_{W}(t)\rceil\right)  \) represent the corrected term caused by generators' output limitation, and similarly, let \(\varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma)\) denote uncertain derivations from converter-interfaced generators. Hence, the impact of uncertain variability factors can be estimated by adding \(\varDelta \omega_{1}\) and \(\varDelta \omega_{2}\) together. So, the SFR considering uncertain variability factors can be derived,
 
 % \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:4}
@@ -255,7 +254,7 @@ In \cref{eqn:3b,eqn:3c}, additional outputs of generators can be recursively est
 	\end{align}
 \end{newsubequations}
 
-The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have an analytical solution due to the independence between uncertain variability factors and \(\varDelta f(t)\). To address this issue, a Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Let \(\langle\mathcal{P} (\varDelta f(t)), \mathcal{P}(\varDelta p(t))\rangle\) respectively enforces the probabilistic density distribution of \(\varDelta f(t)\) and \(\varDelta p(t)\), then, the posterior distribution of \(\varDelta f(t)\) can be estimated by,
+The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have an analytical solution due to the independence between uncertain variability factors and \(\varDelta f(t)\). To solve this, a Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Let \(\mathcal{P} (\varDelta f(t)), \mathcal{P}(\varDelta p(t))\), respectively, enforces the probabilistic density distribution of \(\varDelta f(t)\) and \(\varDelta p(t)\), then, the posterior distribution of \(\varDelta f(t)\) can be estimated by,
 
 % \(\varDelta f(t) \Rightarrow \varDelta f(t + \delta t)\) enforce a hidden Markov decision process, and \(\varDelta p(t) \Rightarrow \varDelta p(t+\delta t)\) be a measured state observable process, \(\varDelta f(t + \delta t)\) can be solved alternately, as illustrated in figure.(2).
 
@@ -282,17 +281,16 @@ The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have
 
 % \noindent where \cref{time-discretized SFR: swing equation} declares the change of $\varDelta f(t)$ between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes the evolution of mismatch power. \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters,additional power from bess}  represent additional regulated outputs produced by aggregated conventional generators, aggregated wind farms and aggregated BESS.
 
-\noindent where the \(\textit{likelihood function}\) in \cref{eqn:5} declares the coupling characteristic between \(\varDelta p(t)\) and \(\varDelta f(t)\); the \(\textit{prior function}\) in \cref{eqn:5} describes the recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated steps of Bayesian filter written probabilistically, uncertain variability factors \(\varDelta \omega\) is taken into consideration over the entire frequency dynamic process.
-More detailed, both \(\textit{likelihood function}\) and \(\textit{prior function}\) can be recursively calculated as follows,
+\noindent where \(\textit{likelihood function}\) in \cref{eqn:5} declares coupling properties between \(\varDelta p(t)\) and \(\varDelta f(t)\); \(\textit{prior function}\) describes the recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated steps of the Bayesian filter written probabilistically, the influence of \(\varDelta \omega\) can be well incorporated over the entire frequency dynamic process.
+In which, \(\textit{prior function}\) can be recursively calculated as follows,
 
 % \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:5}
+\begin{newsubequations}\label{eqn:6}
 	\begin{align}
-		 & \mathcal{P}\left(\varDelta p(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =                                           \\
-		 & \int \bigl(\mathcal{P}(\varDelta p(t) \!\mid\!  \varDelta f(t), \varDelta \omega)  \mathcal{P}\!\left(\varDelta \!f(t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
+		 & \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =                                           \\
+		 & \int \bigl(\mathcal{P}(\varDelta f(t) \!\mid\!  \varDelta f(t_0:t-\delta t), \varDelta \omega)  \mathcal{P}\!\left(\varDelta \!f(t-\delta t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
 	\end{align}
 \end{newsubequations}
-
 
 % \(\mathcal{P}(\varDelta f(t) \mid \varDelta p\left(t\right), \varDelta \omega)\)  can be estimated by estimating its prior form $\mathcal{P}\left(\varDelta f(t) \!\mid\! \varDelta p\left(t_{0}\!: \! t-\delta t \right), \varDelta \omega \right)$ and a normalized constant $\mathcal{P}\left(\varDelta p(t) \mid \varDelta f\left(t\right), \varDelta \omega \right)$, with their forms can be found in \cref{eqn:5}.
 
@@ -309,35 +307,34 @@ More detailed, both \(\textit{likelihood function}\) and \(\textit{prior functio
 	\label{fig2}
 \end{figure}
 
+% Next, let the initial time $t_{0} = 0$ and replace $\langle \varDelta f(t_0 \!+\! n \delta t)\rangle$, $\langle \varDelta p(t_0 \!+\! n\delta t) \rangle$ with their abbreviated forms $\left\langle \varDelta f(n),\varDelta p(n)\right\rangle$, \cref{eqn:5} can be further simplified as follows,
 
-
-Next, let the initial time $t_{0} = 0$ and replace $\langle \varDelta f(t_0 \!+\! n \delta t)\rangle$, $\langle \varDelta p(t_0 \!+\! n\delta t) \rangle$ with their abbreviated forms $\left\langle \varDelta f(n),\varDelta p(n)\right\rangle$, \cref{eqn:5} can be further simplified as follows,
-
-\vspace{-0.125in}
-\begin{newsubequations}\label{eqn:6}
-	\begin{align}
-		 & \mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)= \int \bigl\{\mathcal{P}(\varDelta f(n+1) \mid \bigr. \label{eqn:6a}                              \\
-		 & \qquad\quad \bigl. \varDelta f(n), \left.u_{1}, \sigma_{1}\right) \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\bigr\} d \varDelta f(n+1) \notag \\
-		 & \mathcal{P}\left(\varDelta p(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)=  \int \bigl\{\mathcal{P}(\varDelta p(n+1)\!\mid\! \bigr. \label{eqn:6b}                         \\
-		 & \bigl. \varDelta f(n+1)\left.u_{2}, \sigma_{2}\right) \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right) \bigr\}d \varDelta f(n+1)\notag
-	\end{align}
-\end{newsubequations}
+% \vspace{-0.125in}
+% \begin{newsubequations}\label{eqn:6}
+% 	\begin{align}
+% 		 & \mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)= \int \bigl\{\mathcal{P}(\varDelta f(n+1) \mid \bigr. \label{eqn:6a}                              \\
+% 		 & \qquad\quad \bigl. \varDelta f(n), \left.u_{1}, \sigma_{1}\right) \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\bigr\} d \varDelta f(n+1) \notag \\
+% 		 & \mathcal{P}\left(\varDelta p(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)=  \int \bigl\{\mathcal{P}(\varDelta p(n+1)\!\mid\! \bigr. \label{eqn:6b}                         \\
+% 		 & \bigl. \varDelta f(n+1)\left.u_{2}, \sigma_{2}\right) \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right) \bigr\}d \varDelta f(n+1)\notag
+% 	\end{align}
+% \end{newsubequations}
 
 To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
+
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:7}
 	\begin{align}
 		 & \mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{1}, \sigma_{1}\right)\!= \label{eqn-7: sequential relation of adjacent frequency derivations} \\
 		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta f(n+1) \mid \varDelta f(n), u_{1}, \sigma_{1}\right)\lambda_{n}^{\prime}\notag                                       \\
-		 & \mathcal{P}\left(\varDelta p(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{2}, \sigma_{2}\right) \!=\label{eqn-7: sequential relation of adjuctable outputs}             \\
+		 & \mathcal{P}\left(\varDelta p(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{2}, \sigma_{2}\right) \!=\label{eqn-7: sequential relation of adjustable outputs}             \\
 		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta p(n+1) \mid \varDelta f(n+1), u_{2}, \sigma_{2}\right)\lambda_{n}^{\prime\prime} \notag                              \\
 		 & \lambda_{n}^{\prime} = \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\notag                                                       \\
 		 & \lambda_{n}^{\prime\prime} = \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)\notag
 	\end{align}
 \end{newsubequations}
 
-\noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7: sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjuctable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps:
+\noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7: sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjustable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps:
 \begin{itemize}
 	\item[$\,\,i)$ ] \textit{Bayesian inference} in the prior stage, here, \eqref{eqn-7: sequential relation of adjacent frequency derivations} is used to generate \textit{filters} to capture the likely value of $\varDelta f(n+1)$;
 	\item[$ii)$] \textit{Bayesian predication} in the prediction stage, \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the integrated functions. Specially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar solution.
@@ -368,7 +365,7 @@ Let $\iota(n)\!=\!\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left({0}:
 % % \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
 % \end{table*}
 
-Substituting $\iota(n+1) = \lambda (n+1)\gamma(n+1), \iota(n) = \lambda (n)\gamma(n)$ into \eqref{eqn:4}, $\iota(n+1)$ can be recursively calculated through \eqref{eqn:8}. In \eqref{eqn:8}, another critical issue to be reviewed is the selection of the proposed distribution. Here, the recursive transfer distribution $\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)$ can be availability used to simplify the calculation process. Accordingly, the updating weight \eqref{eqn:8} can be reduced as,
+Substituting $\iota(n+1) = \lambda (n+1)\gamma(n+1), \iota(n) = \lambda (n)\gamma(n)$ into \eqref{eqn:4}, $\iota(n+1)$ can be recursively calculated through \eqref{eqn:8}. In \eqref{eqn:8}, another critical issue to be reviewed is the selection of the proposed distribution. Here, the recursive transfer distribution $\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)$ can be used to simplify the calculation process. Accordingly, the updating weight \eqref{eqn:8} can be reduced as,
 
 \vspace{-0.125in}
 \begin{align}\label{eqn:9}

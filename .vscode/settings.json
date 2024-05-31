@@ -17,5 +17,19 @@
   "files.autoSaveWorkspaceFilesOnly": false,
   "markdown.extension.print.onFileSave": true,
   "code-runner.saveAllFilesBeforeRun": true,
-  "bookmarks.useWorkaroundForFormatters": true
+  "bookmarks.useWorkaroundForFormatters": true,
+  "cSpell.words": [
+    "FCUC",
+    "linearizing"
+  ],
+  "editor.tokenColorCustomizations": {
+    "comments": "",
+    "textMateRules": []
+  },
+  "grammarly.selectors": [
+    {
+      "language": "latex",
+      "scheme": "file"
+    }
+  ]
 }
