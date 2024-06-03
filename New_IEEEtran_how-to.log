@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.25)  31 MAY 2024 11:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.4.25)  3 JUN 2024 16:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1347,12 +1347,6 @@ LaTeX Warning: Unused global option(s):
 
 (./New_IEEEtran_how-to.aux
 
-LaTeX Warning: Label `eqn:5' multiply defined.
-
-
-LaTeX Warning: Label `eqn:5@cref' multiply defined.
-
-
 LaTeX Warning: Label `fig12' multiply defined.
 
 
@@ -1457,41 +1451,61 @@ ngEditors/texlive/2024/texmf-dist/fonts/enc/dvips/stix/stix-ot1.enc}
 <fig2.pdf, id=88, 315.90422pt x 110.42255pt>
 File: fig2.pdf Graphic file (type pdf)
 <use fig2.pdf>
-Package pdftex.def Info: fig2.pdf  used on input line 305.
+Package pdftex.def Info: fig2.pdf  used on input line 306.
 (pdftex.def)             Requested size: 201.60439pt x 68.65501pt.
-
-Overfull \hbox (3.46497pt too wide) detected at line 319
+ [3 <./fig2.pdf>]
+Overfull \hbox (3.12663pt too wide) detected at line 332
 []
  []
 
-[3 <./fig2.pdf>]
+
+LaTeX Warning: Reference `eqn:5' on page 4 undefined on input line 345.
+
+
+LaTeX Warning: Reference `eqn:6' on page 4 undefined on input line 345.
+
+
+LaTeX Warning: Reference `eqn:6' on page 4 undefined on input line 345.
+
+
+LaTeX Warning: Reference `eqn-7: sequential relation of adjacent frequency deri
+vations' on page 4 undefined on input line 360.
+
+
+LaTeX Warning: Reference `eqn-7: sequential relation of adjustable outputs' on 
+page 4 undefined on input line 360.
+
+
+LaTeX Warning: Reference `eqn-7: sequential relation of adjacent frequency deri
+vations' on page 4 undefined on input line 362.
+
 
 LaTeX Warning: Reference `eqn-7: sequential relation of adjuctable outputs' on 
-page 4 undefined on input line 339.
+page 4 undefined on input line 363.
 
 
-Underfull \hbox (badness 2334) in paragraph at lines 339--340
+Underfull \hbox (badness 2334) in paragraph at lines 363--364
 [] \OT1/ptm/m/n/10 is used to up-date the pos-te-rior of $\OML/cmm/m/it/10 ^^Af
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 +
  []
 
 
-Overfull \hbox (46.71973pt too wide) in paragraph at lines 339--340
+Overfull \hbox (46.71973pt too wide) in paragraph at lines 363--364
 \OMS/cmsy/m/n/10 P []$ $[]$ \OT1/ptm/m/n/10 and $\OMS/cmsy/m/n/10 P [] []$
  []
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 339--340
+Underfull \hbox (badness 2042) in paragraph at lines 363--364
 \OT1/ptm/m/n/10 as an ex-am-ple to de-scribe the cal-cu-lat-ing pro-cess
  []
 
 
-Underfull \hbox (badness 1888) in paragraph at lines 339--340
+Underfull \hbox (badness 1888) in paragraph at lines 363--364
 \OT1/ptm/m/n/10 us-ing SIS, the case of the lat-ter (pos-te-rior) stage
  []
 
 
-Overfull \hbox (3.44368pt too wide) in paragraph at lines 342--343
+Overfull \hbox (3.44368pt too wide) in paragraph at lines 366--367
 []\OT1/ptm/m/n/10 Let $\OML/cmm/m/it/10 ^^S\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 n\
 OT1/cmr/m/n/10 )  =  \OMS/cmsy/m/n/10 P [] \OML/cmm/m/it/10 ; ^^S\OT1/cmr/m/n/1
 0 (\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 ) = ([]\OML/cmm/m/it/10 =[]\OT1/cmr/m/n/10
@@ -1499,101 +1513,104 @@ OT1/cmr/m/n/10 )  =  \OMS/cmsy/m/n/10 P [] \OML/cmm/m/it/10 ; ^^S\OT1/cmr/m/n/1
  []
 
 
-Overfull \hbox (0.6689pt too wide) detected at line 352
+Overfull \hbox (0.6689pt too wide) detected at line 376
 []
  []
 
 
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 413.
+LaTeX Warning: Reference `eqn:6b' on page 4 undefined on input line 420.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 413.
+(hyperref)                removing `math shift' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 413.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 413.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 413.
+(hyperref)                removed on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 413.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 429.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 429.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 429.
+(hyperref)                removed on input line 437.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 429.
+(hyperref)                removing `math shift' on input line 437.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 453.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 453.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 429.
+(hyperref)                removed on input line 453.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 429.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 453.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 453.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 453.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./fig3.pdf): PDF inclusion: found PDF versio
 n <1.7>, but at most version <1.5> allowed
-<fig3.pdf, id=186, 600.97325pt x 211.2683pt>
+<fig3.pdf, id=180, 600.97325pt x 211.2683pt>
 File: fig3.pdf Graphic file (type pdf)
 <use fig3.pdf>
-Package pdftex.def Info: fig3.pdf  used on input line 433.
+Package pdftex.def Info: fig3.pdf  used on input line 457.
 (pdftex.def)             Requested size: 252.0pt x 88.587pt.
 
 LaTeX Warning: Reference `additional power from bess' on page 1 undefined on in
-put line 438.
+put line 462.
 
 
 LaTeX Warning: Reference `time-discretized SFR: additional power from converter
-s' on page 1 undefined on input line 438.
+s' on page 1 undefined on input line 462.
 
 
 LaTeX Warning: Reference `time-discretized SFR: additional power from convertio
-nal units' on page 1 undefined on input line 438.
+nal units' on page 1 undefined on input line 462.
 
 
-Underfull \hbox (badness 1609) in paragraph at lines 438--439
+Underfull \hbox (badness 1609) in paragraph at lines 462--463
 \OT1/ptm/m/n/10 grid-connected units, it is im-per-a-tive that both con-ven-
  []
 
 
-Underfull \hbox (badness 2343) in paragraph at lines 438--439
+Underfull \hbox (badness 2343) in paragraph at lines 462--463
 \OT1/ptm/m/n/10 tional gen-er-a-tors, con-vert-ers and BESS are ca-pa-ble of
  []
 
 
-Underfull \hbox (badness 2165) in paragraph at lines 438--439
+Underfull \hbox (badness 2165) in paragraph at lines 462--463
 \OT1/ptm/m/n/10 serv-ing as re-serves dur-ing im-bal-anced dis-tur-bances, [[],
 
  []
 
-[4 <./fig3.pdf>]
-Overfull \hbox (1.96478pt too wide) in paragraph at lines 487--487
+[4]
+Overfull \hbox (1.96478pt too wide) in paragraph at lines 511--511
  \OT1/ptm/m/it/10 C. $\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 chance \OMS/cmsy/m/n/10
  ^^@ \OML/cmm/m/it/10 constraint\OT1/cmr/m/n/10 )  \OML/cmm/m/it/10 nadir  cons
 traint  reformulation$ 
@@ -1601,91 +1618,91 @@ traint  reformulation$
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 487.
+(hyperref)                removing `math shift' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
+(hyperref)                removed on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
+(hyperref)                removed on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\leavevmode@ifvmode' on input line 487.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                \kern 1.66702pt
-(hyperref)                removed on input line 487.
+(hyperref)                removed on input line 511.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 487.
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
 
 
-Overfull \hbox (3.7002pt too wide) in paragraph at lines 539--540
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 511.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 511.
+
+
+Overfull \hbox (3.7002pt too wide) in paragraph at lines 563--564
 []\OT1/ptm/m/n/10 Let $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10
  )  =  [] []$
  []
 
 
-Overfull \hbox (4.38206pt too wide) in paragraph at lines 539--540
+Overfull \hbox (4.38206pt too wide) in paragraph at lines 563--564
 []$ \OT1/ptm/m/n/10 de-scribe the ap-prox-i-mated fit-ting func-tion of $[]\OT1
 /cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10 )$
  []
 
-
-Overfull \hbox (4.25987pt too wide) detected at line 546
+[5 <./fig3.pdf>]
+Overfull \hbox (4.25987pt too wide) detected at line 570
 []
  []
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 5
-49.
+73.
 
 (d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/tex/latex/p
 snfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [5]
-Overfull \hbox (2.80177pt too wide) detected at line 559
+)
+Overfull \hbox (2.80177pt too wide) detected at line 583
 []
  []
 
@@ -1693,45 +1710,45 @@ Overfull \hbox (2.80177pt too wide) detected at line 559
 
 pdfTeX warning: pdflatex.exe (file ./fig8_LOADandWINDscurves.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig8_LOADandWINDscurves.pdf, id=453, 597.95796pt x 208.1637pt>
+<fig8_LOADandWINDscurves.pdf, id=449, 597.95796pt x 208.1637pt>
 File: fig8_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig8_LOADandWINDscurves.pdf>
-Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 728.
+Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 752.
 (pdftex.def)             Requested size: 252.0pt x 87.72672pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig5_new_SFRcurves.pdf, id=454, 591.04817pt x 211.79927pt>
+<fig5_new_SFRcurves.pdf, id=450, 591.04817pt x 211.79927pt>
 File: fig5_new_SFRcurves.pdf Graphic file (type pdf)
 <use fig5_new_SFRcurves.pdf>
-Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 735.
+Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 759.
 (pdftex.def)             Requested size: 252.0pt x 90.30273pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig6_SFRPDFinformations.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig6_SFRPDFinformations.pdf, id=455, 596.21445pt x 220.66942pt>
+<fig6_SFRPDFinformations.pdf, id=451, 596.21445pt x 220.66942pt>
 File: fig6_SFRPDFinformations.pdf Graphic file (type pdf)
 <use fig6_SFRPDFinformations.pdf>
-Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 741.
+Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 765.
 (pdftex.def)             Requested size: 252.0pt x 93.26976pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig7_surface.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<fig7_surface.pdf, id=456, 1389.49007pt x 673.64331pt>
+<fig7_surface.pdf, id=452, 1389.49007pt x 673.64331pt>
 File: fig7_surface.pdf Graphic file (type pdf)
 <use fig7_surface.pdf>
-Package pdftex.def Info: fig7_surface.pdf  used on input line 747.
+Package pdftex.def Info: fig7_surface.pdf  used on input line 771.
 (pdftex.def)             Requested size: 226.79655pt x 90.33145pt.
-[7 <./fig8_LOADandWINDscurves.pdf>]
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 760--769
+[7]
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 784--793
 [][] 
  []
 
 
-Overfull \hbox (1.27168pt too wide) in paragraph at lines 771--772
+Overfull \hbox (1.27168pt too wide) in paragraph at lines 795--796
 []\OT1/ptm/m/n/10 In Ta-ble []IV[], both sched-ule costs solved by FDUC/CCFDUC
  []
 
@@ -1739,41 +1756,25 @@ Overfull \hbox (1.27168pt too wide) in paragraph at lines 771--772
 
 pdfTeX warning: pdflatex.exe (file ./fig9_OnlineUnitRes.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig9_OnlineUnitRes.pdf, id=839, 435.17178pt x 141.65823pt>
+<fig9_OnlineUnitRes.pdf, id=474, 435.17178pt x 141.65823pt>
 File: fig9_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig9_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 775.
+Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 799.
 (pdftex.def)             Requested size: 201.60245pt x 61.4306pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig10_powerbalance2and3.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig10_powerbalance2and3.pdf, id=841, 595.00595pt x 204.58533pt>
+<fig10_powerbalance2and3.pdf, id=476, 595.00595pt x 204.58533pt>
 File: fig10_powerbalance2and3.pdf Graphic file (type pdf)
 <use fig10_powerbalance2and3.pdf>
-Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 784.
+Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 808.
 (pdftex.def)             Requested size: 252.0pt x 86.64635pt.
+[8 <./fig8_LOADandWINDscurves.pdf> <./fig5_new_SFRcurves.pdf
 
-
-pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
-PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig11_RoCOFandnadirdistributionINFO.pdf, id=843, 595.59918pt x 209.18852pt>
-File: fig11_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
-<use fig11_RoCOFandnadirdistributionINFO.pdf>
-Package pdftex.def Info: fig11_RoCOFandnadirdistributionINFO.pdf  used on input
- line 793.
-(pdftex.def)             Requested size: 252.0pt x 88.50653pt.
-
-
-pdfTeX warning: pdflatex.exe (file ./fig13_SFRcurveandadditionaPower.pdf): PDF 
-inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig13_SFRcurveandadditionaPower.pdf, id=852, 602.25pt x 217.28879pt>
-File: fig13_SFRcurveandadditionaPower.pdf Graphic file (type pdf)
-<use fig13_SFRcurveandadditionaPower.pdf>
-Package pdftex.def Info: fig13_SFRcurveandadditionaPower.pdf  used on input lin
-e 802.
-(pdftex.def)             Requested size: 252.0pt x 90.91916pt.
-[8 <./fig5_new_SFRcurves.pdf> <./fig6_SFRPDFinformations.pdf
+pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: mu
+ltiple pdfs with page group included in a single page
+> <./fig6_SFRPDFinformations.pdf
 
 pdfTeX warning: pdflatex.exe (file ./fig6_SFRPDFinformations.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
@@ -1782,35 +1783,54 @@ n: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./fig9_OnlineUnitRes.pdf): PDF inclusion: mu
 ltiple pdfs with page group included in a single page
 >]
-<fig12_cost_and_wastepower.pdf, id=1661, 586.36264pt x 216.14452pt>
+
+pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
+PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<fig11_RoCOFandnadirdistributionINFO.pdf, id=1647, 595.59918pt x 209.18852pt>
+File: fig11_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
+<use fig11_RoCOFandnadirdistributionINFO.pdf>
+Package pdftex.def Info: fig11_RoCOFandnadirdistributionINFO.pdf  used on input
+ line 817.
+(pdftex.def)             Requested size: 252.0pt x 88.50653pt.
+
+
+pdfTeX warning: pdflatex.exe (file ./fig13_SFRcurveandadditionaPower.pdf): PDF 
+inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<fig13_SFRcurveandadditionaPower.pdf, id=1656, 602.25pt x 217.28879pt>
+File: fig13_SFRcurveandadditionaPower.pdf Graphic file (type pdf)
+<use fig13_SFRcurveandadditionaPower.pdf>
+Package pdftex.def Info: fig13_SFRcurveandadditionaPower.pdf  used on input lin
+e 826.
+(pdftex.def)             Requested size: 252.0pt x 90.91916pt.
+<fig12_cost_and_wastepower.pdf, id=1657, 586.36264pt x 216.14452pt>
 File: fig12_cost_and_wastepower.pdf Graphic file (type pdf)
 <use fig12_cost_and_wastepower.pdf>
-Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 809.
+Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 833.
 
 (pdftex.def)             Requested size: 252.0pt x 92.89085pt.
 
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 831--840
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 855--864
 [][] 
  []
 
-<fig14_bigcase_LOADandWINDscurves.pdf, id=1666, 597.14995pt x 206.04076pt>
+<fig14_bigcase_LOADandWINDscurves.pdf, id=1662, 597.14995pt x 206.04076pt>
 File: fig14_bigcase_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig14_bigcase_LOADandWINDscurves.pdf>
 Package pdftex.def Info: fig14_bigcase_LOADandWINDscurves.pdf  used on input li
-ne 845.
+ne 869.
 (pdftex.def)             Requested size: 252.0pt x 86.94838pt.
-<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=1667, 597.5143pt x 211.334
+<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=1663, 597.5143pt x 211.334
 55pt>
 File: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
 <use fig15_bigcase_RoCOFandnadirdistributionINFO.pdf>
 Package pdftex.def Info: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf  used 
-on input line 852.
+on input line 876.
 (pdftex.def)             Requested size: 252.0pt x 89.13074pt.
-<fig16_bigcase_OnlineUnitRes.pdf, id=1668, 434.45714pt x 143.65369pt>
+<fig16_bigcase_OnlineUnitRes.pdf, id=1664, 434.45714pt x 143.65369pt>
 File: fig16_bigcase_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig16_bigcase_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 85
-9.
+Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 88
+3.
 (pdftex.def)             Requested size: 201.5962pt x 61.43011pt.
 [9 <./fig10_powerbalance2and3.pdf> <./fig11_RoCOFandnadirdistributionINFO.pdf
 
@@ -1828,7 +1848,11 @@ ion: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./fig14_bigcase_LOADandWINDscurves.pdf): PDF
  inclusion: multiple pdfs with page group included in a single page
->] (./New_IEEEtran_how-to.bbl
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+(./New_IEEEtran_how-to.bbl
 Underfull \hbox (badness 1968) in paragraph at lines 25--28
 \OT1/stix/m/n/9 fre-quency reg-u-la-tion con-straints,'' \OT1/stix/m/it/9 IEEE 
 Trans. Power Syst.\OT1/stix/m/n/9 ,
@@ -1873,13 +1897,13 @@ Package rerunfilecheck Info: File `New_IEEEtran_how-to.out' has not changed.
 (rerunfilecheck)             Checksum: 29F34D7F4DBBA032AF33A6E6F6DE78A8;2043.
  ) 
 Here is how much of TeX's memory you used:
- 32100 strings out of 474116
- 653396 string characters out of 5727597
- 1988190 words of memory out of 5000000
- 53706 multiletter control sequences out of 15000+600000
- 612164 words of font info for 132 fonts, out of 8000000 for 9000
+ 32103 strings out of 474116
+ 653315 string characters out of 5727597
+ 1991190 words of memory out of 5000000
+ 53709 multiletter control sequences out of 15000+600000
+ 613300 words of font info for 133 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
- 110i,15n,107p,1733b,667s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,15n,107p,1733b,661s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/typ
 e1/public/stix/STIXGeneral-Bold.pfb><d:/CommonSoftwares/ProductiveCodingEditors
 /texlive/2024/texmf-dist/fonts/type1/public/stix/STIXGeneral-Italic.pfb><d:/Com
@@ -1919,10 +1943,10 @@ tiveCodingEditors/texlive/2024/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><d:
 /CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb><d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/tex
 mf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on New_IEEEtran_how-to.pdf (11 pages, 5952399 bytes).
+Output written on New_IEEEtran_how-to.pdf (11 pages, 5954162 bytes).
 PDF statistics:
- 4120 PDF objects out of 4296 (max. 8388607)
- 2286 compressed objects within 23 object streams
- 141 named destinations out of 1000 (max. 500000)
+ 4116 PDF objects out of 4296 (max. 8388607)
+ 2282 compressed objects within 23 object streams
+ 140 named destinations out of 1000 (max. 500000)
  171 words of extra memory for PDF output out of 10000 (max. 10000000)
 

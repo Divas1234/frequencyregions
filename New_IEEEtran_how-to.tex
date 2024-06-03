@@ -269,10 +269,10 @@ The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have
 % 	% \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
 % \end{table*}
 
-\begin{newsubequations}\label{eqn:5}
+\begin{newsubequations}\label{eqn:5a}
 	\begin{align}
-		 & \mathcal{P}(\varDelta f(t) | \varDelta p(t_0: t; \varDelta \omega))=\frac{1}{ {\mathcal{P}(\varDelta p(t) | \varDelta p(t_0: t-\delta t);\varDelta \omega)}}\cdot \notag                                                                                         \\
-		 & \quad \quad  \underbrace{\mathcal{P}(\varDelta p(t) | \varDelta f(t); \varDelta\omega)}_{\textrm{\textit{likelihood function}}}\,\, \underbrace{\mathcal{P}(\varDelta f(t) | \varDelta p(t_0: t-\delta t); \varDelta \omega)}_{\textrm{\textit{prior function}}}
+		 & posterior: \mathcal{P}(\varDelta f(t)\! | \varDelta p(t_0\!:\! t); \varDelta \omega)\!=\!\underbrace{\mathcal{P}(\varDelta p(t) | \varDelta f(t); \varDelta\omega)}_{\textrm{\textit{likelihood function}}}\\
+		 &\qquad \underbrace{\mathcal{P}(\varDelta f(t) | \varDelta p(t_0\!:\! t\!-\!\delta t); \varDelta \omega)}_{\textrm{\textit{prior function}}} { {\mathcal{P}^{-1}(\varDelta p(t) | \varDelta p(t_0\!:\! t\!-\!\delta t);\varDelta \omega)}}\notag
 	\end{align}
 \end{newsubequations}
 % \annotate[yshift=1em]{above}{k1}{normalization factor}
@@ -281,14 +281,15 @@ The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have
 
 % \noindent where \cref{time-discretized SFR: swing equation} declares the change of $\varDelta f(t)$ between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes the evolution of mismatch power. \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters,additional power from bess}  represent additional regulated outputs produced by aggregated conventional generators, aggregated wind farms and aggregated BESS.
 
-\noindent where \(\textit{likelihood function}\) in \cref{eqn:5} declares coupling properties between \(\varDelta p(t)\) and \(\varDelta f(t)\); \(\textit{prior function}\) describes the recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated steps of the Bayesian filter written probabilistically, the influence of \(\varDelta \omega\) can be well incorporated over the entire frequency dynamic process.
+\noindent where \(\textit{likelihood function}\) in \eqref{eqn:5a} declares coupling properties between \(\varDelta p(t)\) and \(\varDelta f(t)\); and \(\textit{prior function}\) describes the sequential recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated processes of the Bayesian filter written probabilistically, the impact of uncertain variability factors denoted by \(\varDelta \omega\) can be well incorporated over the entire frequency dynamic process.
 In which, \(\textit{prior function}\) can be recursively calculated as follows,
 
 % \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:6}
+\begin{newsubequations}\label{eqn:6a}
 	\begin{align}
-		 & \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =                                           \\
-		 & \int \bigl(\mathcal{P}(\varDelta f(t) \!\mid\!  \varDelta f(t_0:t-\delta t), \varDelta \omega)  \mathcal{P}\!\left(\varDelta \!f(t-\delta t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
+		 & prior: \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =\int \bigl(\mathcal{P}(\varDelta f(t) \!\mid\! \\
+		 & \varDelta f(t_0:t-\delta t), \varDelta \omega) \cdot
+		\mathcal{P}\!\left(\varDelta \!f(t-\delta t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
 	\end{align}
 \end{newsubequations}
 
@@ -319,25 +320,47 @@ In which, \(\textit{prior function}\) can be recursively calculated as follows,
 % 	\end{align}
 % \end{newsubequations}
 
-To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
-
+In \cref{eqn:5a,eqn:6a{}}, \textit{prior function} and \textit{posterior function} can not be directly solved because their distributional types and expressions are unknown. Therefore, a sequential importance sampling (SIS) algorithm is applied here to address this issue. 
+Let \(\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)\) denote the importance density, which can be treated as the replaceable proposed function for generating samples (filters); and \(\lambda (\varDelta f(t_0:t))\) describes the importance weight, which are approximations to the posterior probabilistic of the samples following \eqref{eqn:7a}, then, \eqref{eqn:6a} can be estimated as the product between the importance density and weight, i.e., \(\mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)=\mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t))\). 
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:7}
 	\begin{align}
-		 & \mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{1}, \sigma_{1}\right)\!= \label{eqn-7: sequential relation of adjacent frequency derivations} \\
-		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta f(n+1) \mid \varDelta f(n), u_{1}, \sigma_{1}\right)\lambda_{n}^{\prime}\notag                                       \\
-		 & \mathcal{P}\left(\varDelta p(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{2}, \sigma_{2}\right) \!=\label{eqn-7: sequential relation of adjustable outputs}             \\
-		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta p(n+1) \mid \varDelta f(n+1), u_{2}, \sigma_{2}\right)\lambda_{n}^{\prime\prime} \notag                              \\
-		 & \lambda_{n}^{\prime} = \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\notag                                                       \\
-		 & \lambda_{n}^{\prime\prime} = \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)\notag
+		{weigh}: &\lambda (\varDelta f(t_0:t)) = \frac{\mathcal{P} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)} \label{eqn:7a}\\
+		density: &\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t); \varDelta \omega)\cdot \notag\\
+		&\mathcal{Q}(\varDelta f(t-\delta t)|\varDelta p(t_0\!:\!t-\delta t);\varDelta \omega)  \label{eqn:7b}
 	\end{align}
 \end{newsubequations}
+
+Again, by supposing the recursive type of the importance density and sequentially transferring it as \eqref{eqn:7b}, the similar recursive form of importance weight can be derived as,
+
+\vspace{-0.125in}
+\begin{newsubequations}
+	\begin{align}
+		&\textit{recursive weight}: \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a}\\ 
+		&\qquad \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
+	\end{align}
+\end{newsubequations}
+
+To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
+
+
+% \vspace{-0.125in}
+% \begin{newsubequations}\label{eqn:7}
+% 	\begin{align}
+% 		 & \mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{1}, \sigma_{1}\right)\!= \label{eqn-7: sequential relation of adjacent frequency derivations} \\
+% 		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta f(n+1) \mid \varDelta f(n), u_{1}, \sigma_{1}\right)\lambda_{n}^{\prime}\notag                                       \\
+% 		 & \mathcal{P}\left(\varDelta p(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{2}, \sigma_{2}\right) \!=\label{eqn-7: sequential relation of adjustable outputs}             \\
+% 		 & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta p(n+1) \mid \varDelta f(n+1), u_{2}, \sigma_{2}\right)\lambda_{n}^{\prime\prime} \notag                              \\
+% 		 & \lambda_{n}^{\prime} = \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\notag                                                       \\
+% 		 & \lambda_{n}^{\prime\prime} = \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)\notag
+% 	\end{align}
+% \end{newsubequations}
 
 \noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7: sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjustable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps:
 \begin{itemize}
 	\item[$\,\,i)$ ] \textit{Bayesian inference} in the prior stage, here, \eqref{eqn-7: sequential relation of adjacent frequency derivations} is used to generate \textit{filters} to capture the likely value of $\varDelta f(n+1)$;
-	\item[$ii)$] \textit{Bayesian predication} in the prediction stage, \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the integrated functions. Specially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar solution.
+	\item[$ii)$] \textit{Bayesian predication} in the prediction stage, \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the integrated functions. Especially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar solution.
 \end{itemize}
 
 Let $\iota(n)\!=\!\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left({0}: n\right), u_{2}, \sigma_{2}\right), \iota(n)=(\nicefrac{\iota(n)}{ \lambda(n)}) \!\cdot\! \lambda(n)$ where $\iota(n)$ is the original probabilistic density function of posterior distribution at $t\!\! = \!\!n \delta t$; $\lambda(n)$ enforces a proposed function. $\gamma(n) \!=\! \nicefrac{\iota(n)}{\lambda(n)}$ represents a likelihood coefficient. Hence, the \!$filters$\! following $\iota(n)$ can be alternatively sampled from $\lambda(n)$ with a related weight coefficient $\gamma(n)$, i.e., $\iota(n) = $ $\lambda (n)\gamma(n)$.
@@ -408,7 +431,7 @@ In \eqref{eqn:9}, the likelihood rate in each iteration can be recursively deriv
 \section{Frequency constraint reformulation}
 \vspace{-0.0250in}
 
-This section examines the represented criteria of frequency dynamic requirements, including RoCoF, nadir, and frequency containment reserve (FCR). These needs are reevaluated and integrated into the restrictions considered in UC problems. Fig. \ref{fig3} provides a visualization of the physical significance concerning these feature criteria. Remarkably, the reconstructed chance-constrained frequency nadir constraint is derived from the proposed BF-SFR approach derived in section II, other constraints related to RoCoF and FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
+This section examines the represented criteria of frequency dynamic requirements, including RoCoF, nadir, and frequency containment reserve (FCR). These needs are reevaluated and integrated into the restrictions considered in UC problems. Fig. \ref{fig3} visualizes the physical significance of these feature criteria. Remarkably, the reconstructed chance-constrained frequency nadir constraint is derived from the proposed BF-SFR approach derived in section II, other constraints related to RoCoF and FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
 
 \vspace{-0.225in}
 \subsection{$RoCoF \,\,constraint$}

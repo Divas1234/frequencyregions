@@ -1,18 +1,18 @@
 # Fdb version 4
-["bibtex New_IEEEtran_how-to"] 1717122957.79412 "New_IEEEtran_how-to.aux" "New_IEEEtran_how-to.bbl" "New_IEEEtran_how-to" 1717126459.94907 2
+["bibtex New_IEEEtran_how-to"] 1717404000.30377 "New_IEEEtran_how-to.aux" "New_IEEEtran_how-to.bbl" "New_IEEEtran_how-to" 1717404303.61965 2
   "./reference.bib" 1692261863 15726 4c4a4b6a3fc2d82cf775c49451579004 ""
-  "New_IEEEtran_how-to.aux" 1717126457 21181 c211cabe414c071591e8e60f7f7f6c1d "pdflatex"
+  "New_IEEEtran_how-to.aux" 1717404300 20711 9722ca65041dbbab9addf2cfbd077c65 "pdflatex"
   "d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1714029110 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   (generated)
   "New_IEEEtran_how-to.bbl"
   "New_IEEEtran_how-to.blg"
   (rewritten before read)
-["pdflatex"] 1717126455.15721 "New_IEEEtran_how-to.tex" "New_IEEEtran_how-to.pdf" "New_IEEEtran_how-to" 1717126459.94967 0
-  "New_IEEEtran_how-to.aux" 1717126457 21181 c211cabe414c071591e8e60f7f7f6c1d "pdflatex"
-  "New_IEEEtran_how-to.bbl" 1717122958 5421 1bded080b3f7ad37a41fcf5b7f2e3a32 "bibtex New_IEEEtran_how-to"
+["pdflatex"] 1717404298.52475 "New_IEEEtran_how-to.tex" "New_IEEEtran_how-to.pdf" "New_IEEEtran_how-to" 1717404303.62028 0
+  "New_IEEEtran_how-to.aux" 1717404300 20711 9722ca65041dbbab9addf2cfbd077c65 "pdflatex"
+  "New_IEEEtran_how-to.bbl" 1717404000 5421 1bded080b3f7ad37a41fcf5b7f2e3a32 "bibtex New_IEEEtran_how-to"
   "New_IEEEtran_how-to.nls" 1716701363 7713 c4433967cba19a5a1bdb8dafeb2e6879 ""
-  "New_IEEEtran_how-to.out" 1717126457 2043 29f34d7f4dbba032af33a6e6f6de78a8 "pdflatex"
-  "New_IEEEtran_how-to.tex" 1717126450 103442 fd5f79fe7314edb9baf4abf9ff2e58b5 ""
+  "New_IEEEtran_how-to.out" 1717404300 2043 29f34d7f4dbba032af33a6e6f6de78a8 "pdflatex"
+  "New_IEEEtran_how-to.tex" 1717404293 105638 ed20704339f3c9729373e020b6813780 ""
   "d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1714028856 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/enc/dvips/stix/stix-ot1.enc" 1714029822 2123 c05637b8ff9e77fb5412b3bfe67fa91a ""
   "d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1714028976 3524 cb3e574dea2d1052e39280babc910dc8 ""

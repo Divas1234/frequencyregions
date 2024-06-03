@@ -499,6 +499,8 @@ INPUT ./fig3.pdf
 INPUT ./fig3.pdf
 INPUT ./fig3.pdf
 INPUT ./fig3.pdf
+INPUT d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmb7t.vf
 INPUT d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/tfm/adobe/times/ptmb8r.tfm
 INPUT d:/CommonSoftwares/ProductiveCodingEditors/texlive/2024/texmf-dist/fonts/vf/adobe/times/ptmrc7t.vf

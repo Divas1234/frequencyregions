@@ -5,8 +5,8 @@
   "apc.stylesheet": {},
   "editor.wordWrap": "wordWrapColumn",
   "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
-  "editor.wordWrapColumn": 120,
-  "vim.textwidth": 180,
+  "editor.wordWrapColumn": 200,
+  "vim.textwidth": 200,
   "prettier.proseWrap": "always",
   "workbench.editor.wrapTabs": true,
   "notebook.output.wordWrap": true,
@@ -20,11 +20,12 @@
   "bookmarks.useWorkaroundForFormatters": true,
   "cSpell.words": [
     "FCUC",
-    "linearizing"
+    "linearizing",
+    "soluted"
   ],
   "editor.tokenColorCustomizations": {
-    "comments": "",
-    "textMateRules": []
+    "textMateRules": [],
+    "comments": ""
   },
   "grammarly.selectors": [
     {
