@@ -5,8 +5,8 @@
   "apc.stylesheet": {},
   "editor.wordWrap": "wordWrapColumn",
   "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
-  "editor.wordWrapColumn": 200,
-  "vim.textwidth": 200,
+  "editor.wordWrapColumn": 100,
+  "vim.textwidth": 100,
   "prettier.proseWrap": "always",
   "workbench.editor.wrapTabs": true,
   "notebook.output.wordWrap": true,
@@ -32,5 +32,6 @@
       "language": "latex",
       "scheme": "file"
     }
-  ]
+  ],
+  "git.ignoreLimitWarning": true
 }

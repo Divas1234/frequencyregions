@@ -28,42 +28,42 @@
 \nomenclatureentry{P$M_{e}$@[{$M_{e}$}]\begingroup Inertia of BESS $e$\nomeqref {1}|nompageref}{3}
 \nomenclatureentry{P$\delta t$@[{$\delta t$}]\begingroup discretized time step ($0.05s$ in this paper)\nomeqref {1}|nompageref}{3}
 \nomenclatureentry{P$t_0$@[{$t_0$}]\begingroup Initial time of power disturbance\nomeqref {1}|nompageref}{3}
-\nomenclatureentry{P$RoCoF_{\textrm{max}}$@[{$RoCoF_{\textrm{max}}$}]\begingroup Threshold of Rate-of-Change-of-Frequency(RoCoF)\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$\varDelta f_{\textrm{max}}$@[{$\varDelta f_{\textrm{max}}$}]\begingroup Threshold of frequency nadir\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$t$@[{$t$}]\begingroup Index of scheduling period, $t\in[1,2,...,NT]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$g$@[{$g$}]\begingroup Index of conventional generators, $g\in[1,2...,NG]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$w$@[{$w$}]\begingroup Index of wind farms, $w\in[1,2,...,NW]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$e$@[{$e$}]\begingroup Index of Battery Electrical Storage System (BESS), $e\in[1,2,...,NE]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$b$@[{$b$}]\begingroup Index of bus,$b\in[1,2,...,NB]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{I$l$@[{$l$}]\begingroup Index of transmission line, $l\in[1,2,...,NL]$\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$\epsilon$@[{$\epsilon$}]\begingroup Risk of confidence level\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$M$@[{$M$}]\begingroup A big number\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$\pi_q$@[{$\pi_q$}]\begingroup Probability of sampled residuals\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$z_q$@[{$z_q$}]\begingroup Auxiliary binary decision variables\nomeqref {20}|nompageref}{6}
-\nomenclatureentry{P$c_{g}^{\textrm{up/dw/nl}}$@[{$c_{g}^{\textrm{up/dw/nl}}$}]\begingroup Shut-up/shut-down/no-load cost of unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{I$s$@[{$s$}]\begingroup Index of stochastic scenario, $s\in[1,2,...,NS]$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{I$z$@[{$z$}]\begingroup Index of unit's production cost blocks, $z\in[1,2,...,NZ]$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{P$e^{\textrm{VoLL}}$@[{$e^{\textrm{VoLL}}$}]\begingroup Risk cost of Value-of-Lost-Load (VoLL)\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\pi_s$@[{$\pi_s$}]\begingroup Possibility of stochastic scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$F_g^{z}$@[{$F_g^{z}$}]\begingroup Slope of cost block $z$ of conventional unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$u_{g,t}$@[{$u_{g,t}$}]\begingroup Shut-up decision of conventional unit $g$ at time $t$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$v_{g,t}$@[{$v_{g,t}$}]\begingroup Shut-down decision of conventional unit $g$ at time $t$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$x_{g,t}$@[{$x_{g,t}$}]\begingroup Operation status of conventional unit $g$ at time $t$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$u_{e,s,t}^{\text{dis}}$@[{$u_{e,s,t}^{\text{dis}}$}]\begingroup Discharge status of BESS at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$u_{e,s,t}^{\text{ch}}$@[{$u_{e,s,t}^{\text{ch}}$}]\begingroup Charge status of BESS at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$p_{g,s,t}$@[{$p_{g,s,t}$}]\begingroup Power of unit $g$ at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$p_{e,s,t}^{\text{dis/ch}}$@[{$p_{e,s,t}^{\text{dis/ch}}$}]\begingroup Discharge/charge power of BESS $e$ at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$p_{w,s,t}$@[{$p_{w,s,t}$}]\begingroup Output of wind farm $w$ at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$\varDelta p_{d,s,t}$@[{$\varDelta p_{d,s,t}$}]\begingroup Forced-load-curtailment at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$\varDelta p_{w,s,t}$@[{$\varDelta p_{w,s,t}$}]\begingroup Wind curtailment at time $t$ under scenario $s$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\kappa_{l,b}$@[{$\kappa_{l,b}$}]\begingroup Generator-shift-distribution-factor between line $l$ and injected power located at bus $b$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$p_{l}^{\textrm{max}}$@[{$p_{l}^{\textrm{max}}$}]\begingroup Capacity of transmission line $l$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\gamma_g^{\textrm{su/sd}}$@[{$\gamma_g^{\textrm{su/sd}}$}]\begingroup Start-up/shut-down capacity of conventional unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\gamma_g^{\textrm{ru/sd}}$@[{$\gamma_g^{\textrm{ru/sd}}$}]\begingroup Ramp-up/ramp-down rate of conventional unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$p_g^{\textrm{min/max}}$@[{$p_g^{\textrm{min/max}}$}]\begingroup Min/max output of conventional unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$p_e^{\textrm{dis/ch, max}}$@[{$p_e^{\textrm{dis/ch, max}}$}]\begingroup Discharging/charging capacity of BESS $e$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\eta_e^{\textrm{dis/ch}}$@[{$\eta_e^{\textrm{dis/ch}}$}]\begingroup Discharging/charging efficiency of BESS $e$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{v$p_{g,s,t}^{(z)}$@[{$p_{g,s,t}^{(z)}$}]\begingroup Output of conventional unit $g$ at time $t$ under scenario $s$ corresponding to related cost block $z$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$k_{g}^{(z)}$@[{$k_{g}^{(z)}$}]\begingroup Slope of operation cost block $z$ of unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{p$\omega_{g}^{(z)}$@[{$\omega_{g}^{(z)}$}]\begingroup Intercept of production cost block $z$ of unit $g$\nomeqref {22}|nompageref}{6}
-\nomenclatureentry{I$q$@[{$q$}]\begingroup Index of hyperplane, $q\in[1,2,...,NQ]$\nomeqref {22}|nompageref}{6}
+\nomenclatureentry{P$RoCoF_{\textrm{max}}$@[{$RoCoF_{\textrm{max}}$}]\begingroup Threshold of Rate-of-Change-of-Frequency(RoCoF)\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$\varDelta f_{\textrm{max}}$@[{$\varDelta f_{\textrm{max}}$}]\begingroup Threshold of frequency nadir\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$t$@[{$t$}]\begingroup Index of scheduling period, $t\in[1,2,...,NT]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$g$@[{$g$}]\begingroup Index of conventional generators, $g\in[1,2...,NG]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$w$@[{$w$}]\begingroup Index of wind farms, $w\in[1,2,...,NW]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$e$@[{$e$}]\begingroup Index of Battery Electrical Storage System (BESS), $e\in[1,2,...,NE]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$b$@[{$b$}]\begingroup Index of bus,$b\in[1,2,...,NB]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{I$l$@[{$l$}]\begingroup Index of transmission line, $l\in[1,2,...,NL]$\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$\epsilon$@[{$\epsilon$}]\begingroup Risk of confidence level\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$M$@[{$M$}]\begingroup A big number\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$\pi_q$@[{$\pi_q$}]\begingroup Probability of sampled residuals\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$z_q$@[{$z_q$}]\begingroup Auxiliary binary decision variables\nomeqref {19}|nompageref}{5}
+\nomenclatureentry{P$c_{g}^{\textrm{up/dw/nl}}$@[{$c_{g}^{\textrm{up/dw/nl}}$}]\begingroup Shut-up/shut-down/no-load cost of unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{I$s$@[{$s$}]\begingroup Index of stochastic scenario, $s\in[1,2,...,NS]$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{I$z$@[{$z$}]\begingroup Index of unit's production cost blocks, $z\in[1,2,...,NZ]$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{P$e^{\textrm{VoLL}}$@[{$e^{\textrm{VoLL}}$}]\begingroup Risk cost of Value-of-Lost-Load (VoLL)\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\pi_s$@[{$\pi_s$}]\begingroup Possibility of stochastic scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$F_g^{z}$@[{$F_g^{z}$}]\begingroup Slope of cost block $z$ of conventional unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$u_{g,t}$@[{$u_{g,t}$}]\begingroup Shut-up decision of conventional unit $g$ at time $t$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$v_{g,t}$@[{$v_{g,t}$}]\begingroup Shut-down decision of conventional unit $g$ at time $t$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$x_{g,t}$@[{$x_{g,t}$}]\begingroup Operation status of conventional unit $g$ at time $t$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$u_{e,s,t}^{\text{dis}}$@[{$u_{e,s,t}^{\text{dis}}$}]\begingroup Discharge status of BESS at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$u_{e,s,t}^{\text{ch}}$@[{$u_{e,s,t}^{\text{ch}}$}]\begingroup Charge status of BESS at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$p_{g,s,t}$@[{$p_{g,s,t}$}]\begingroup Power of unit $g$ at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$p_{e,s,t}^{\text{dis/ch}}$@[{$p_{e,s,t}^{\text{dis/ch}}$}]\begingroup Discharge/charge power of BESS $e$ at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$p_{w,s,t}$@[{$p_{w,s,t}$}]\begingroup Output of wind farm $w$ at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$\varDelta p_{d,s,t}$@[{$\varDelta p_{d,s,t}$}]\begingroup Forced-load-curtailment at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$\varDelta p_{w,s,t}$@[{$\varDelta p_{w,s,t}$}]\begingroup Wind curtailment at time $t$ under scenario $s$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\kappa_{l,b}$@[{$\kappa_{l,b}$}]\begingroup Generator-shift-distribution-factor between line $l$ and injected power located at bus $b$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$p_{l}^{\textrm{max}}$@[{$p_{l}^{\textrm{max}}$}]\begingroup Capacity of transmission line $l$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\gamma_g^{\textrm{su/sd}}$@[{$\gamma_g^{\textrm{su/sd}}$}]\begingroup Start-up/shut-down capacity of conventional unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\gamma_g^{\textrm{ru/sd}}$@[{$\gamma_g^{\textrm{ru/sd}}$}]\begingroup Ramp-up/ramp-down rate of conventional unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$p_g^{\textrm{min/max}}$@[{$p_g^{\textrm{min/max}}$}]\begingroup Min/max output of conventional unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$p_e^{\textrm{dis/ch, max}}$@[{$p_e^{\textrm{dis/ch, max}}$}]\begingroup Discharging/charging capacity of BESS $e$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\eta_e^{\textrm{dis/ch}}$@[{$\eta_e^{\textrm{dis/ch}}$}]\begingroup Discharging/charging efficiency of BESS $e$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{v$p_{g,s,t}^{(z)}$@[{$p_{g,s,t}^{(z)}$}]\begingroup Output of conventional unit $g$ at time $t$ under scenario $s$ corresponding to related cost block $z$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$k_{g}^{(z)}$@[{$k_{g}^{(z)}$}]\begingroup Slope of operation cost block $z$ of unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{p$\omega_{g}^{(z)}$@[{$\omega_{g}^{(z)}$}]\begingroup Intercept of production cost block $z$ of unit $g$\nomeqref {21}|nompageref}{6}
+\nomenclatureentry{I$q$@[{$q$}]\begingroup Index of hyperplane, $q\in[1,2,...,NQ]$\nomeqref {21}|nompageref}{6}

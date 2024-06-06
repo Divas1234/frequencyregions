@@ -134,6 +134,7 @@ The remainder of this paper is organized: Section {2} introduces a Bayesian-filt
 \vspace{-0.125in}
 \section{Modeling BF-SFR through Bayesian-Filter}
 
+This section analyzes the impact of uncertain variability factors on the SFR and constructs a new Bayesian-filter-based SFR model to address that. Furthermore, the section derives the posterior of frequency derivation against mismatch power cases and sequentially describes its calculation process through the sequential importance sampling (SIS) algorithm.
 % The transfer function of SFR concerning a occurred step-type power disturbance $\varDelta p_{\textrm{step }}(s)=\varDelta p_{{step }} / s$ can be rewritten as,
 
 % \vspace{-0.125in}
@@ -146,7 +147,7 @@ The remainder of this paper is organized: Section {2} introduces a Bayesian-filt
 % \end{small}
 
 %Different generators usually have heterogeneous control schemes against mismatch power disturbance cases.
-Homogeneous generators are usually treated as equivalent units with aggregated parameters for simplification. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators (renewable energy), and battery energy systems (BESS) can be rewritten as,
+Homogeneous generators are usually treated as one equivalent unit with aggregated parameters for simplification. Therefore, the union frequency dynamic for the system consisting of conventional generators, converters-interfaced generators (renewable energy), and battery energy systems (BESS) can be rewritten as,
 
 % \vspace{-0.125in}
 \begin{small}
@@ -320,19 +321,21 @@ In which, \(\textit{prior function}\) can be recursively calculated as follows,
 % 	\end{align}
 % \end{newsubequations}
 
-In \cref{eqn:5a,eqn:6a{}}, \textit{prior function} and \textit{posterior function} can not be directly solved because their distributional types and expressions are unknown. Therefore, a sequential importance sampling (SIS) algorithm is applied here to address this issue. 
-Let \(\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)\) denote the importance density, which can be treated as the replaceable proposed function for generating samples (filters); and \(\lambda (\varDelta f(t_0:t))\) describes the importance weight, which are approximations to the posterior probabilistic of the samples following \eqref{eqn:7a}, then, \eqref{eqn:6a} can be estimated as the product between the importance density and weight, i.e., \(\mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)=\mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t))\). 
+In \cref{eqn:5a,eqn:6a}, \textit{prior function} and \textit{posterior function} can not be directly solved because their distributional types and expressions are unknown. Therefore, a sequential importance sampling (SIS) algorithm is applied here to address this issue. 
+Let \(\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)\) denote the importance density, which can be treated as the replaceable proposed function for generating samples (filters); and \(\lambda (\varDelta f(t_0:t))\) describes the importance weight, which are approximations to the posterior probabilistic of the samples following \eqref{eqn:7a}, then, \eqref{eqn:6a} can be estimated as the product between the importance density and weight, 
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:7}
 	\begin{align}
-		{weigh}: &\lambda (\varDelta f(t_0:t)) = \frac{\mathcal{P} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)} \label{eqn:7a}\\
+		&\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)=\label{eqn:7a}\\
+		&\quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t))\notag\\
+		{weight}: &\lambda (\varDelta f(t_0:t)) = \frac{\mathcal{P} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)} \label{eqn:7b}\\
 		density: &\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t); \varDelta \omega)\cdot \notag\\
-		&\mathcal{Q}(\varDelta f(t-\delta t)|\varDelta p(t_0\!:\!t-\delta t);\varDelta \omega)  \label{eqn:7b}
+		&\mathcal{Q}(\varDelta f(t-\delta t)|\varDelta p(t_0\!:\!t-\delta t);\varDelta \omega)  \label{eqn:7c}
 	\end{align}
 \end{newsubequations}
 
-Again, by supposing the recursive type of the importance density and sequentially transferring it as \eqref{eqn:7b}, the similar recursive form of importance weight can be derived as,
+By supposing the recursive type of the importance density and sequentially transferring it as \eqref{eqn:7c}, the similar recursive form of importance weight can be derived as,
 
 \vspace{-0.125in}
 \begin{newsubequations}
@@ -342,7 +345,19 @@ Again, by supposing the recursive type of the importance density and sequentiall
 	\end{align}
 \end{newsubequations}
 
-To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
+Let \(\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\) equals to the transfer function \(\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\), and then, \eqref{eqn:8a} can be rewritten as,
+
+\begin{newsubequations}
+	\begin{align}
+		&\lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot 
+		\mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\label{eqn:9a}
+	\end{align}
+\end{newsubequations}
+
+By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance density concerning \eqref{eqn:7c} can be directly derived. Subsequently, by updating the weight through \eqref{eqn:7b} and sequentially substituting \cref{eqn:7b,eqn:7c} into \eqref{eqn:7a}, the posterior distribution of \(\varDelta f(t)\) concerning \eqref{eqn:5a} can be recursively solved. For intuitively illustrating the implementing process of the posterior distribution of \(\varDelta f(t)\). 
+
+
+% To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
 
 
 % \vspace{-0.125in}
@@ -357,75 +372,76 @@ To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid
 % 	\end{align}
 % \end{newsubequations}
 
-\noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7: sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjustable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps:
-\begin{itemize}
-	\item[$\,\,i)$ ] \textit{Bayesian inference} in the prior stage, here, \eqref{eqn-7: sequential relation of adjacent frequency derivations} is used to generate \textit{filters} to capture the likely value of $\varDelta f(n+1)$;
-	\item[$ii)$] \textit{Bayesian predication} in the prediction stage, \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the integrated functions. Especially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar solution.
-\end{itemize}
+% \noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7: sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjustable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps:
+% \begin{itemize}
+% 	\item[$\,\,i)$ ] \textit{Bayesian inference} in the prior stage, here, \eqref{eqn-7: sequential relation of adjacent frequency derivations} is used to generate \textit{filters} to capture the likely value of $\varDelta f(n+1)$;
+% 	\item[$ii)$] \textit{Bayesian predication} in the prediction stage, \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\! \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the integrated functions. Especially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar solution.
+% \end{itemize}
 
-Let $\iota(n)\!=\!\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left({0}: n\right), u_{2}, \sigma_{2}\right), \iota(n)=(\nicefrac{\iota(n)}{ \lambda(n)}) \!\cdot\! \lambda(n)$ where $\iota(n)$ is the original probabilistic density function of posterior distribution at $t\!\! = \!\!n \delta t$; $\lambda(n)$ enforces a proposed function. $\gamma(n) \!=\! \nicefrac{\iota(n)}{\lambda(n)}$ represents a likelihood coefficient. Hence, the \!$filters$\! following $\iota(n)$ can be alternatively sampled from $\lambda(n)$ with a related weight coefficient $\gamma(n)$, i.e., $\iota(n) = $ $\lambda (n)\gamma(n)$.
+% Let $\iota(n)\!=\!\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left({0}: n\right), u_{2}, \sigma_{2}\right), \iota(n)=(\nicefrac{\iota(n)}{ \lambda(n)}) \!\cdot\! \lambda(n)$ where $\iota(n)$ is the original probabilistic density function of posterior distribution at $t\!\! = \!\!n \delta t$; $\lambda(n)$ enforces a proposed function. $\gamma(n) \!=\! \nicefrac{\iota(n)}{\lambda(n)}$ represents a likelihood coefficient. Hence, the \!$filters$\! following $\iota(n)$ can be alternatively sampled from $\lambda(n)$ with a related weight coefficient $\gamma(n)$, i.e., $\iota(n) = $ $\lambda (n)\gamma(n)$.
 
-\vspace{-0.125in}
-% \begin{table}[b]\normalsize
-% \rule{1.0\textwidth}{.1pt}
-\begin{small}
-	\begin{align}\label{eqn:8}
-		 & \gamma(n\!+\! 1)=
-		\frac{\iota(\varDelta f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_2,\sigma_2)}=\gamma(n)\times                                                                     \\
-		 & \qquad\,\, \left(\frac{\iota(\varDelta f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)\iota(\varDelta p(n\!+\!1)|\varDelta f(n\!+\!1),\!\mu_2,\!\sigma_2)}{\lambda(\varDelta f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)}\right)\notag
-	\end{align}
-\end{small}
-% \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
-% \end{table}
-% \begin{table*}[b]\normalsize
-% \rule{1.0\textwidth}{.1pt}
-% \begin{align}\label{eqn:8}
-% &\gamma(n+1)=
-% \frac{\iota(\varDelta f(n+1)|\varDelta p(0:n+1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n+1)|\varDelta p(0:n+1),\mu_2,\sigma_2)}=\\
-% &\qquad \frac{\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(\varDelta p(n+1),\mu_2,\sigma_2)\iota(\varDelta p(n+1)|\varDelta f(\varDelta p(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\lambda(\varDelta f(n)|\varDelta p(0:n),\mu_1,\sigma_1)}=\notag\\
-% &\qquad \gamma(n)\left(\frac{\iota(\varDelta f(n+1)|\varDelta f(t),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta f(t),\mu_1,\sigma_1)}\right)\notag
-% \end{align}
+% \vspace{-0.125in}
+% % \begin{table}[b]\normalsize
+% % \rule{1.0\textwidth}{.1pt}
+% \begin{small}
+% 	\begin{align}\label{eqn:8}
+% 		 & \gamma(n\!+\! 1)=
+% 		\frac{\iota(\varDelta f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_2,\sigma_2)}=\gamma(n)\times                                                                     \\
+% 		 & \qquad\,\, \left(\frac{\iota(\varDelta f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)\iota(\varDelta p(n\!+\!1)|\varDelta f(n\!+\!1),\!\mu_2,\!\sigma_2)}{\lambda(\varDelta f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)}\right)\notag
+% 	\end{align}
+% \end{small}
 % % \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
-% \end{table*}
+% % \end{table}
+% % \begin{table*}[b]\normalsize
+% % \rule{1.0\textwidth}{.1pt}
+% % \begin{align}\label{eqn:8}
+% % &\gamma(n+1)=
+% % \frac{\iota(\varDelta f(n+1)|\varDelta p(0:n+1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n+1)|\varDelta p(0:n+1),\mu_2,\sigma_2)}=\\
+% % &\qquad \frac{\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(\varDelta p(n+1),\mu_2,\sigma_2)\iota(\varDelta p(n+1)|\varDelta f(\varDelta p(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\lambda(\varDelta f(n)|\varDelta p(0:n),\mu_1,\sigma_1)}=\notag\\
+% % &\qquad \gamma(n)\left(\frac{\iota(\varDelta f(n+1)|\varDelta f(t),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta f(t),\mu_1,\sigma_1)}\right)\notag
+% % \end{align}
+% % % \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt}
+% % \end{table*}
 
-Substituting $\iota(n+1) = \lambda (n+1)\gamma(n+1), \iota(n) = \lambda (n)\gamma(n)$ into \eqref{eqn:4}, $\iota(n+1)$ can be recursively calculated through \eqref{eqn:8}. In \eqref{eqn:8}, another critical issue to be reviewed is the selection of the proposed distribution. Here, the recursive transfer distribution $\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)$ can be used to simplify the calculation process. Accordingly, the updating weight \eqref{eqn:8} can be reduced as,
+% Substituting $\iota(n+1) = \lambda (n+1)\gamma(n+1), \iota(n) = \lambda (n)\gamma(n)$ into \eqref{eqn:4}, $\iota(n+1)$ can be recursively calculated through \eqref{eqn:8}. In \eqref{eqn:8}, another critical issue to be reviewed is the selection of the proposed distribution. Here, the recursive transfer distribution $\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)$ can be used to simplify the calculation process. Accordingly, the updating weight \eqref{eqn:8} can be reduced as,
 
-\vspace{-0.125in}
-\begin{align}\label{eqn:9}
-	 & \gamma(n+1)=
-	\gamma(n)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)
-\end{align}
+% \vspace{-0.125in}
+% \begin{align}\label{eqn:9}
+% 	 & \gamma(n+1)=
+% 	\gamma(n)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)
+% \end{align}
 
-In \eqref{eqn:9}, the likelihood rate in each iteration can be recursively derived from $\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)$. On this basis, let $\langle \varDelta f^{(n)}(t+(n+1)\delta t), \left( \varDelta p\right)^{(n)}(t+(n+1)\delta t)\rangle$ define the sampled \textit{filters} from the pro-selected proposed function $\lambda^{\prime}(n+1)$ in the inference stage and $\lambda^{\prime\prime}(n+1)$ in the predication stage; $\langle\gamma^{\prime}(n+1),\gamma^{\prime\prime}(n+1)\rangle$ represent the likelihood rate at $t\!=\! t_0 + (n+1)\delta t$ at these two stages. Table \ref{table: modeling BF-SFR} describes the Pseudo-Code of the proposed BF-SFR method.
+% In \eqref{eqn:9}, the likelihood rate in each iteration can be recursively derived from $\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)$. On this basis, let $\langle \varDelta f^{(n)}(t+(n+1)\delta t), \left( \varDelta p\right)^{(n)}(t+(n+1)\delta t)\rangle$ define the sampled \textit{filters} from the pro-selected proposed function $\lambda^{\prime}(n+1)$ in the inference stage and $\lambda^{\prime\prime}(n+1)$ in the predication stage; $\langle\gamma^{\prime}(n+1),\gamma^{\prime\prime}(n+1)\rangle$ represent the likelihood rate at $t\!=\! t_0 + (n+1)\delta t$ at these two stages. Table \ref{table: modeling BF-SFR} describes the Pseudo-Code of the proposed BF-SFR method.
 
-\begin{table}[!t]\vspace{-0.250in}
-	\caption{The simulation of BF-SFR through SIS algorithm}\label{table: modeling BF-SFR}
-	\begin{tabular}{cl}
-		\hline
-		NO. & \qquad\qquad\qquad\qquad Calculation processes                                                                                     \\
-		\hline
-		1   & \textbf{Initialize}: $\text{Discretized step}\,\, \delta t \!= \!0.05 s$; Initialized time $t_0 \!=\! 0s$                          \\
-		    & \qquad \qquad\,  $\text{Counter}$\, $n$ = 0; \text{Filter number} \, $NT$ = 1000                                                   \\
-		2   & \textbf{For}\,\, $n = 0$, \textbf{Then}                                                                                            \\
-		3   & \quad\textbf{Let} $t=t_0+\delta t\times n$, \textbf{Then}                                                                          \\
-		4   & \qquad \textbf{Inference process}:                                                                                                 \\
-		    & \qquad Generating possible (instant) filters                                                                                       \\
-		    & \qquad $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$  from proposed distribution:                                 \\
-		    & \qquad $\lambda^{\prime}(n+1)\sim\mathcal{P}(\varDelta f(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0\!:\!t_0 \!+\! n\delta t),$    \\
-		    & \qquad $\mu_1,\sigma_1)$ in \eqref{eqn:6a};                                                                                        \\
-		5   & \qquad  \textbf{Prediction process}:                                                                                               \\
-		    & \qquad Generating possible observation filters                                                                                     \\
-		    & \qquad $\left(\varDelta p\right)^{(n)}(t_0 \!+\! (n\!+\!1)\delta t)$ from normalized distribution:                                 \\
-		    & \qquad  $\lambda^{\prime\prime}(n+1)\sim\mathcal{P}(\varDelta p(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0:t_0 \!+\! n\delta t),$ \\
-		    & \qquad $\mu_2,\sigma_2)$ in \eqref{eqn:6b};                                                                                        \\
-		6   & \qquad \textbf{Updating weight coefficients:}                                                                                      \\
-		    & \qquad Calculating $\gamma^{\prime}\,\text{and}\, \gamma^{\prime\prime}$ through \eqref{eqn:9}, and                                \\
-		    & \qquad Re-estimate original filters $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$ via \eqref{eqn:4}               \\
-		7   & \quad \textbf{End Let}                                                                                                             \\
-		8   & \textbf{End For}                                                                                                                   \\
-		\hline
-	\end{tabular}
-\end{table}
+
+% \begin{table}[!t]\vspace{-0.250in}
+% 	\caption{The simulation of BF-SFR through SIS algorithm}\label{table: modeling BF-SFR}
+% 	\begin{tabular}{cl}
+% 		\hline
+% 		NO. & \qquad\qquad\qquad\qquad Calculation processes                                                                                     \\
+% 		\hline
+% 		1   & \textbf{Initialize}: $\text{Discretized step}\,\, \delta t \!= \!0.05 s$; Initialized time $t_0 \!=\! 0s$                          \\
+% 		    & \qquad \qquad\,  $\text{Counter}$\, $n$ = 0; \text{Filter number} \, $NT$ = 1000                                                   \\
+% 		2   & \textbf{For}\,\, $n = 0$, \textbf{Then}                                                                                            \\
+% 		3   & \quad\textbf{Let} $t=t_0+\delta t\times n$, \textbf{Then}                                                                          \\
+% 		4   & \qquad \textbf{Inference process}:                                                                                                 \\
+% 		    & \qquad Generating possible (instant) filters                                                                                       \\
+% 		    & \qquad $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$  from proposed distribution:                                 \\
+% 		    & \qquad $\lambda^{\prime}(n+1)\sim\mathcal{P}(\varDelta f(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0\!:\!t_0 \!+\! n\delta t),$    \\
+% 		    & \qquad $\mu_1,\sigma_1)$ in \eqref{eqn:6a};                                                                                        \\
+% 		5   & \qquad  \textbf{Prediction process}:                                                                                               \\
+% 		    & \qquad Generating possible observation filters                                                                                     \\
+% 		    & \qquad $\left(\varDelta p\right)^{(n)}(t_0 \!+\! (n\!+\!1)\delta t)$ from normalized distribution:                                 \\
+% 		    & \qquad  $\lambda^{\prime\prime}(n+1)\sim\mathcal{P}(\varDelta p(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0:t_0 \!+\! n\delta t),$ \\
+% 		    & \qquad $\mu_2,\sigma_2)$ in \eqref{eqn:6b};                                                                                        \\
+% 		6   & \qquad \textbf{Updating weight coefficients:}                                                                                      \\
+% 		    & \qquad Calculating $\gamma^{\prime}\,\text{and}\, \gamma^{\prime\prime}$ through \eqref{eqn:9}, and                                \\
+% 		    & \qquad Re-estimate original filters $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$ via \eqref{eqn:4}               \\
+% 		7   & \quad \textbf{End Let}                                                                                                             \\
+% 		8   & \textbf{End For}                                                                                                                   \\
+% 		\hline
+% 	\end{tabular}
+% \end{table}
 
 \vspace{-0.100in}
 \section{Frequency constraint reformulation}
@@ -459,7 +475,7 @@ To mitigate rapid changes in the inertia response, the change of RoCoF, indicate
 	\label{fig3}
 \end{figure}
 
-To guarantee sufficient frequency reserve provided by grid-connected units, it is imperative that both conventional generators, converters and BESS are capable of serving as reserves during imbalanced disturbances, \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\! \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\! \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\! p_{e, s, t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in \cref{time-discretized SFR: additional power from convertional units,time-discretized SFR: additional power from converters,additional power from bess}, another equivalent constraint regarding $FCR$ can be derived,
+To guarantee sufficient frequency reserve provided by grid-connected units, conventional generators, converters, and BESS must be capable of serving as reserves during imbalanced disturbances, \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\! \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\! \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\! p_{e, s, t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}, another equivalent constraint regarding $FCR$ can be derived,
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
@@ -570,7 +586,7 @@ Let $\hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!=\!\max\left(\alpha_{\iota,1}^{(q)}\ti
 	\end{align}
 \end{small}
 
-In \cref{eqn:18}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between pre-selected hyperplane and all evaluation points. In the term of problem solving, \eqref{eqn:18} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:18} can be found in \cite{ding2021two,zhang2020modeling}
+In \cref{eqn:18}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between the pre-selected hyperplane and all evaluation points. In terms of problem-solving, \eqref{eqn:18} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:18} can be found in \cite{ding2021two,zhang2020modeling}
 
 Substituting $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ derived from \cref{eqn:18} into \cref{eqn:16}, a convex form of \eqref{eqn:16} can be obtained as follows,
 
