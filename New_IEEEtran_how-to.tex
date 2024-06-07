@@ -456,7 +456,7 @@ This section examines frequency requirements, i.e., RoCoF, nadir, and frequency 
 
 The RoCoF denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response.
 % It is required that $\varDelta f^{\prime}(t)$ does not exceed the maximum rate of change of frequency, denoted as $RoCoF_{\text{max}}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! RoCoF_{\text{max}}$. 
-Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, so, the $RoCoF$ constraint can be expressed,
+Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, so, the RoCoF constraint can be expressed,
 
 % \vspace{-0.125in}
 % \begin{small}
@@ -487,6 +487,7 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 
 To guarantee sufficient frequency reserve provided by grid-connected units, conventional generators, converters, and BESS must be capable of serving as reserves during imbalanced disturbances, \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\! \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\! \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\! p_{e, s, t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}, another equivalent constraint regarding $FCR$ can be derived,
 
+The FCR constraint aims to ensure sufficient frequency reserves provided by homogeneous generators concerning additional output under primary frequency response. Substituting \cref{eqn:3a,eqn:3b,eqn:2f} into 
 
 
 
