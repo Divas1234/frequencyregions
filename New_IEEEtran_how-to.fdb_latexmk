@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex New_IEEEtran_how-to"] 1717750142.42104 "New_IEEEtran_how-to.aux" "New_IEEEtran_how-to.bbl" "New_IEEEtran_how-to" 1717750142.66245 2
+["bibtex New_IEEEtran_how-to"] 1717810544.67751 "New_IEEEtran_how-to.aux" "New_IEEEtran_how-to.bbl" "New_IEEEtran_how-to" 1717810555.05971 2
   "./reference.bib" 1692261863 15726 4c4a4b6a3fc2d82cf775c49451579004 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/bibtex/bst/ieeetran/ieeetran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "New_IEEEtran_how-to.aux" 1717750141 20392 0a46c3a69a99a77996a9ccf618d4f02d "pdflatex"
+  "New_IEEEtran_how-to.aux" 1717810550 20360 7bd11df069dd3e2cd167d2a8ae64525d "pdflatex"
   (generated)
   "New_IEEEtran_how-to.bbl"
   "New_IEEEtran_how-to.blg"
   (rewritten before read)
-["pdflatex"] 1717750139.88192 "d:/ieee_tpws/main_8/New_IEEEtran_how-to.tex" "New_IEEEtran_how-to.pdf" "New_IEEEtran_how-to" 1717750142.66263 0
+["pdflatex"] 1717810545.9063 "New_IEEEtran_how-to.tex" "New_IEEEtran_how-to.pdf" "New_IEEEtran_how-to" 1717810555.06021 0
   "C:/Users/yyp_uestc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1715149480 86068 ecdcc1876d169dc9a3f6be1adcfa7b6f ""
   "C:/Users/yyp_uestc/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1715149548 24242710 f52ced6ec0909249f82f676396b3847b ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -270,12 +270,11 @@
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xcolor/xcolor.sty" 1700127522 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xfrac/xfrac.sty" 1708099996 14847 00e49ca86bcb9e60825f609034895f26 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "New_IEEEtran_how-to.aux" 1717750141 20392 0a46c3a69a99a77996a9ccf618d4f02d "pdflatex"
-  "New_IEEEtran_how-to.bbl" 1717750142 5544 1bded080b3f7ad37a41fcf5b7f2e3a32 "bibtex New_IEEEtran_how-to"
+  "New_IEEEtran_how-to.aux" 1717810550 20360 7bd11df069dd3e2cd167d2a8ae64525d "pdflatex"
+  "New_IEEEtran_how-to.bbl" 1717810545 5263 963d4ddf0344673066eb01bd68705251 "bibtex New_IEEEtran_how-to"
   "New_IEEEtran_how-to.nls" 1716701363 7713 c4433967cba19a5a1bdb8dafeb2e6879 ""
-  "New_IEEEtran_how-to.out" 1717750141 2043 29f34d7f4dbba032af33a6e6f6de78a8 "pdflatex"
-  "New_IEEEtran_how-to.tex" 1717750135 107815 9d81a190083e333e802bf29ca9b6c6f7 ""
-  "d:/ieee_tpws/main_8/New_IEEEtran_how-to.tex" 1717750135 107815 9d81a190083e333e802bf29ca9b6c6f7 ""
+  "New_IEEEtran_how-to.out" 1717810550 2051 63153fc5741307c776dfe03774d04d6a "pdflatex"
+  "New_IEEEtran_how-to.tex" 1717810511 109370 35fe91dea6f47d1f8f119da67e505eb3 ""
   "fig10_powerbalance2and3.pdf" 1692014786 314521 a33bc26f1b61c3852bebef2ef974e65e ""
   "fig11_RoCOFandnadirdistributionINFO.pdf" 1692014295 256412 e52e7a0b6ea0038bf0dc14d1ff5c7459 ""
   "fig12_cost_and_wastepower.pdf" 1692021202 311128 97269e29b44cc599455db2e0f4af007b ""

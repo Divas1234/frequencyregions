@@ -347,6 +347,7 @@ By supposing the recursive type of the importance density and sequentially trans
 
 Let \(\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\) equals to the transfer function \(\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\), and then, \eqref{eqn:8a} can be rewritten as,
 
+\vspace{-0.125in}
 \begin{newsubequations}
 	\begin{align}
 		 & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot
@@ -449,12 +450,12 @@ By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance 
 
 This section examines frequency requirements, i.e., RoCoF, nadir, and frequency containment reserve (FCR), and these needs are reevaluated into constraints and incorporated into UC studies. Among them, a new chance-constrained formulation of frequency nadir constraint is derived based on the BF-SFR; remaining constraints concerning RoCoF/FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
 
-% \vspace{-0.225in}
+ \vspace{-0.225in}
 \subsection{$RoCoF \,\,constraint$}
 % \vspace{-0.0125in}
 %To prevent $\varDelta f(t)$ from changing too fast at inertia response, the differential of frequency derivation $\varDelta f(t)$, denoted by $\varDelta f^{\prime}(t)$, is included, i.e., $\varDelta f^{\prime}(t)\leq RoCoF_{\text{max}}$. Since $\varDelta f^{\prime}(t)$  $=\nicefrac{\varDelta p_{\text{step} }}{M_{\text{equ}}}: M_{\text{equ}} = M_G+M_{W}$, the $RoCoF$ constraint can be obtained,
 
-The RoCoF denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response.
+The RoCoF denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response (IR).
 % It is required that $\varDelta f^{\prime}(t)$ does not exceed the maximum rate of change of frequency, denoted as $RoCoF_{\text{max}}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! RoCoF_{\text{max}}$. 
 Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, so, the RoCoF constraint can be expressed,
 
@@ -467,10 +468,11 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 % 	\end{align}
 % \end{small}
 
+\vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:10}
 		            & 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}\leq \overline{\gamma}_{rocof}, \forall g, t                                                                                                    \\
-		\rightarrow & \sum_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum_{w\in\mathcal{W}} H_{w}, \forall g, t \notag
+		\rightarrow & \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall g, t \notag
 	\end{align}
 \end{small}
 
@@ -485,23 +487,43 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 	\label{fig3}
 \end{figure}
 
-To guarantee sufficient frequency reserve provided by grid-connected units, conventional generators, converters, and BESS must be capable of serving as reserves during imbalanced disturbances, \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\! \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\! \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\! p_{e, s, t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}, another equivalent constraint regarding $FCR$ can be derived,
+% To guarantee sufficient frequency reserve provided by grid-connected units, conventional generators, converters, and BESS must be capable of serving as reserves during imbalanced disturbances, \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\! \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\! \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\! p_{e, s, t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}, another equivalent constraint regarding $FCR$ can be derived,
 
-The FCR constraint aims to ensure sufficient frequency reserves provided by homogeneous generators concerning additional output under primary frequency response. Substituting \cref{eqn:3a,eqn:3b,eqn:2f} into 
+Next, the FCR constraint aims to ensure sufficient frequency reserves provided by homogeneous generators concerning additional output at primary frequency response (PFR). By taking \cref{eqn:3a,eqn:3b,eqn:2f} into consideration, the FCR constraint is expressed as follows:
 
-
+% \vspace{-0.125in}
+% \begin{newsubequations}\label{eqn:11}
+% 	\begin{align}
+% 		 & \sum\nolimits_{w=0}^{NW} \left( p_{w}^{\text{max}} - p_{w, s, t} \right)\geq R_W^{-1}\varDelta f(t) \label{eqn:11a}                                                                  \\
+% 		 & \sum\nolimits_{e=0}^{NE} \left( p_{e}^{\text{max}} -p_{e, s, t}^{\text{dis}}\right)\geq {R_E^{-1}}\varDelta f(t) \label{eqn:11b}                                                     \\
+% 		 & \sum\nolimits_{g=0}^{NG} \left( p_{g}^{\text{max}} -p_{g, s, t}\right)\geq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)\!-\! {K_G(1-F_G)}\notag                                              \\
+% 		 & { R_{G}^{-1} }\!e^{-\frac{1}{T_G} (t)}\!\!\left(\!\sum_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \! \varDelta f^{\prime}(t_0 + i \delta t) \!\right)\!\!\delta t\label{eqn:11c}
+% 	\end{align}
+% \end{newsubequations}
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
 	\begin{align}
-		 & \sum\nolimits_{w=0}^{NW} \left( p_{w}^{\text{max}} - p_{w, s, t} \right)\geq R_W^{-1}\varDelta f(t) \label{eqn:11a}                                                                  \\
-		 & \sum\nolimits_{e=0}^{NE} \left( p_{e}^{\text{max}} -p_{e, s, t}^{\text{dis}}\right)\geq {R_E^{-1}}\varDelta f(t) \label{eqn:11b}                                                     \\
-		 & \sum\nolimits_{g=0}^{NG} \left( p_{g}^{\text{max}} -p_{g, s, t}\right)\geq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)\!-\! {K_G(1-F_G)}\notag                                              \\
-		 & { R_{G}^{-1} }\!e^{-\frac{1}{T_G} (t)}\!\!\left(\!\sum_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \! \varDelta f^{\prime}(t_0 + i \delta t) \!\right)\!\!\delta t\label{eqn:11c}
+		 \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                                                  \\
+		 \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right)&\geq \varDelta p_{E}(t), t\in(t_{IR}, t_{PFR}] \label{eqn:11b}                                                     \\
+		 \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)&\geq \varDelta p_{G}(t), t\in(t_{IR}, t_{PFR}]\label{eqn:11c}                                              
 	\end{align}
 \end{newsubequations}
 
-Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
+\noindent
+where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time of the PFR. Let \(\langle \overline{\varDelta p_{W}}, \overline{\varDelta p_{E}}, \overline{\varDelta p_{G}}\rangle\) denotes, respectively, the maximum of \(\varDelta p_{W}(t), \varDelta p_{E}(t), \varDelta p_{G}(t)\), a concise form of \cref{eqn:11a,eqn:11b,eqn:11c} can be calculated as follows:
+
+\begin{newsubequations}\label{eqn:11}
+	\begin{align}
+		 \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                                                  \\
+		 \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right)&\geq \varDelta p_{E}(t), t\in(t_{IR}, t_{PFR}] \label{eqn:11b}                                                     \\
+		 \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)&\geq \varDelta p_{G}(t), t\in(t_{IR}, t_{PFR}]\label{eqn:11c}                                              
+	\end{align}
+\end{newsubequations}
+
+% where \(\overline{\varDelta p_{W}} = (K_W R_W^{-1} + D_{W})\varDelta f_{nadir}\), \(\overline{\varDelta p_{E}} = R_E^{-1}\varDelta f_{nadir}\), and \(\overline{\varDelta p_{G}} = K_G R_G^{-1} \varDelta f_{nadir}\).
+
+% Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
 
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:12}
@@ -511,7 +533,7 @@ Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined
 	\end{align}
 \end{newsubequations}
 
-%Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing adjustable output of conventional generators, can be rewritten as,
+%Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing the adjustable output of conventional generators, can be rewritten as
 In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
 
 \vspace{-0.125in}
@@ -539,7 +561,7 @@ By substituting the maximum limit of changeable output in \eqref{eqn:13} into \e
 
 \vspace{-0.2in}
 \subsection{$(chance-constraint)\,\, nadir \,\,constraint\,\, reformulation$}
-To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method, as a result, a chance-constrained nadir constraint can be formulated as follows:
+To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method. As a result, a chance-constrained nadir constraint can be formulated as follows:
 
 \vspace{-0.125in}
 \begin{small}
@@ -571,7 +593,7 @@ To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $
 	\end{align}
 \end{small}
 
-\noindent where \eqref{eqn:16} represents an approximately mix-integer linearized constraints of \eqref{eqn:15}. $z_{q} = 0$ indicates an active constraint where the $nadir$ must be required for the predefined uncertain variability condition; $z_{{q}} = 1$ describes an inactive constraint where the \eqref{eqn:15} at the predefined sampled uncertain condition $q$ could be ignored. Accordingly, the redesigned chance constraint \eqref{eqn:16} has been reshaped as an equivalence of restricting the number of $z_{q}, 1\leq q\leq N\!Q$ to be ones. It is important to mention that the mathematical reformulation of the similar type constraint \eqref{eqn:15} are not limited to the form \eqref{eqn:16}. By directly introducing $z_{q}$ but no longer introducing $M$, a bi-linear type mixed integer reformulation of \eqref{eqn:15} is also feasible, that is,
+\noindent where \eqref{eqn:16} represents an approximately mix-integer linearized constraints of \eqref{eqn:15}. $z_{q} = 0$ indicates an active constraint where the $nadir$ must be required for the predefined uncertain variability condition; $z_{{q}} = 1$ describes an inactive constraint where the \eqref{eqn:15} at the predefined sampled uncertain condition $q$ could be ignored. Accordingly, the redesigned chance constraint \eqref{eqn:16} has been reshaped as an equivalence of restricting the number of $z_{q}, 1\leq q\leq N\!Q$ to be ones. It is important to mention that the mathematical reformulation of the similar type constraint \eqref{eqn:15} is not limited to the form \eqref{eqn:16}. By directly introducing $z_{q}$ but no longer introducing $M$, a bi-linear type mixed integer reformulation of \eqref{eqn:15} is also feasible, that is,
 %\begin{newsubequations}\label{eqn:17}
 %\begin{align}
 %% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
@@ -637,7 +659,7 @@ Substituting $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ derived from \cref{eqn:18} int
 \nomenclature[P]{$z_q$}{Auxiliary binary decision variables}
 
 \vspace{-0.125in}
-\section{Proposed UC model:CCFDUC}
+\section{Proposed UC model: CCFDUC}
 
 This section presents a comprehensive articulation of CCFDUC in this work. The form of the suggested UC model can be constructed by adding frequency dynamic restrictions from section III into the baseline UC problem.
 
@@ -733,7 +755,7 @@ This section presents a comprehensive articulation of CCFDUC in this work. The f
 \nomenclature[I]{$q$}{Index of hyperplane, $q\in[1,2,...,NQ]$}
 
 
-In the above formulation, Eqs. \eqref{20-a} -\eqref{20-v} define a baseline UC model, \cite{zhang2020modeling}, Eqs. \eqref{21-a}-\eqref{21-l} denote frequency dynamic constraints in line with the actual frequency requirements. It worth noting that the newly redesigned nadir constraint \eqref{21-e}-\eqref{21-f} is based on BF-SFR which is significantly different with previous SFR approach or UC studies.
+In the above formulation, Eqs. \eqref{20-a} -\eqref{20-v} define a baseline UC model, \cite{zhang2020modeling}, Eqs. \eqref{21-a}-\eqref{21-l} denote frequency dynamic constraints in line with the actual frequency requirements. It is worth noting that the newly redesigned nadir constraint \eqref{21-e}-\eqref{21-f} is based on BF-SFR, which is significantly different from the previous SFR approach or UC studies.
 
 Next, \cref{20-a} denotes the objective of the UC problem; it seeks to minimize the overall cost associated with conventional generators. Constraints \labelcref{20-b,20-c} specify the minimum up-time and down-time requirements for all conventional generators, respectively. Constraints \labelcref{20-d,20-e} ensure the coherence of the shut-up/shut-down choice and the operational condition of any individual conventional generator. Constraint \labelcref{20-f} delineates the constraint pertaining to the online power balance restriction. Constraint \labelcref{20-g} denotes the constraint that represents the capacity of each transmission line. Constraints \labelcref{20-h,20-i} ensure the compliance of the up-forward and down-forward ramping rates of each conventional generator throughout consecutive dispatching periods. Constraints \labelcref{20-j,20-k} delineate the stipulation for the provision of up-forward and down-forward spinning reserve capacity generated by individual conventional generator. Constraint \eqref{20-l} indicate the minimize/minimize power of multiple generators. Constraints \labelcref{20-m,20-n} introduce limitations on the amount of abandoned wind output and forced-load-curtailment. Constraints \labelcref{20-o,20-p} specify the binding of charging/discharging capacities for each BESS. Constraint \labelcref{20-q} signifies a coupling restriction between the energy of BESS and the corresponding discharging/charging decisions. Constraint \labelcref{20-r} establishes a periodic energy regulation policy for each BESS. Constraint \labelcref{20-s} underscores the exclusiveness of the discharging and charging choices made by each BESS.
 Constraint \labelcref{20-t} enforces that the output of individual conventional generator is equal to the total of the segmented outputs generated on each block of its linearized fuel cost curve. Constraint \eqref{20-u} enforces the binding restriction of each segmented output. Constraint \labelcref{20-v} specifies the operational cost associated with each particular conventional generator. Constraints \labelcref{21-a,21-b,21-c,21-d,21-e,21-f} correspond to the RoCoF, nadir and FCR constraint, respectively. It is noteworthy to mention that the original chance nadir constraint \eqref{eqn:15} has been transformed into a collection of convex constraints using SAA. Constraints \labelcref{21-g,21-h,21-i,21-j} declare aggregated values of the system inertia, damping, droop and fraction of output generated by reheaters. Constraints \labelcref{21-k,21-l} represent the aggregated droop coefficient of wind farms and BESS. Constraint \labelcref{21-m,21-n} describe the feasible region of binary decision variables and continuous decision variables, respectively.
