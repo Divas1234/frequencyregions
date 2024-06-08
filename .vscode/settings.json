@@ -5,8 +5,8 @@
   "apc.stylesheet": {},
   "editor.wordWrap": "wordWrapColumn",
   "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
-  "editor.wordWrapColumn": 200,
-  "vim.textwidth": 200,
+  "editor.wordWrapColumn": 180,
+  "vim.textwidth": 180,
   "prettier.proseWrap": "always",
   "workbench.editor.wrapTabs": true,
   "notebook.output.wordWrap": true,
@@ -33,5 +33,25 @@
       "scheme": "file"
     }
   ],
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ab307e",
+    "activityBar.background": "#ab307e",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#25320e",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#ab307e",
+    "statusBar.background": "#832561",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#ab307e",
+    "statusBarItem.remoteBackground": "#832561",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#832561",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#83256199",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  },
+  "peacock.color": "#832561"
 }

@@ -255,7 +255,7 @@ In \cref{eqn:3b,eqn:3c}, \(\langle \varDelta p_{G}(t), \varDelta p_{W}(t) \rangl
 	\end{align}
 \end{newsubequations}
 
-The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have an analytical solution due to the independence between uncertain variability factors and \(\varDelta f(t)\). To solve this, a Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Let \(\mathcal{P} (\varDelta f(t)), \mathcal{P}(\varDelta p(t))\), respectively, enforces the probabilistic density distribution of \(\varDelta f(t)\) and \(\varDelta p(t)\), then, the posterior distribution of \(\varDelta f(t)\) can be estimated by,
+The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have an analytical solution due to the independence between uncertain variability factors and \(\varDelta f(t)\). To solve this, the Bayesian filter framework is introduced to estimate the posterior distribution of \(\varDelta f(t)\). Let \(\mathcal{P} (\varDelta f(t)), \mathcal{P}(\varDelta p(t))\), respectively, enforces the probabilistic density distribution of \(\varDelta f(t)\) and \(\varDelta p(t)\), then, the posterior distribution of \(\varDelta f(t)\) can be estimated by,
 
 % \(\varDelta f(t) \Rightarrow \varDelta f(t + \delta t)\) enforce a hidden Markov decision process, and \(\varDelta p(t) \Rightarrow \varDelta p(t+\delta t)\) be a measured state observable process, \(\varDelta f(t + \delta t)\) can be solved alternately, as illustrated in figure.(2).
 
@@ -272,15 +272,15 @@ The stochastic differential equation (SDE) defined in \cref{eqn:4} does not have
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:5a}
 	\begin{align}
-		 & posterior: \mathcal{P}(\varDelta f(t)\! | \varDelta p(t_0\!:\! t); \varDelta \omega)\!=\!\underbrace{\mathcal{P}(\varDelta p(t) | \varDelta f(t); \varDelta\omega)}_{\textrm{\textit{likelihood function}}}                                     \\
-		 & \qquad \underbrace{\mathcal{P}(\varDelta f(t) | \varDelta p(t_0\!:\! t\!-\!\delta t); \varDelta \omega)}_{\textrm{\textit{prior function}}} { {\mathcal{P}^{-1}(\varDelta p(t) | \varDelta p(t_0\!:\! t\!-\!\delta t);\varDelta \omega)}}\notag
+		 & Posterior:\! \mathcal{P}(\varDelta f(t)\! | \varDelta p(t_0\!:\! t); \varDelta \omega)\!=\!\underbrace{\mathcal{P}(\varDelta p(t) | \varDelta f(t); \!\varDelta\omega)}_{\textrm{\textit{Likelihood function}}}                                 \\
+		 & \qquad \underbrace{\mathcal{P}(\varDelta f(t) | \varDelta p(t_0\!:\! t\!-\!\delta t); \varDelta \omega)}_{\textrm{\textit{Prior function}}} { {\mathcal{P}^{-1}(\varDelta p(t) | \varDelta p(t_0\!:\! t\!-\!\delta t);\varDelta \omega)}}\notag
 	\end{align}
 \end{newsubequations}
 % \annotate[yshift=1em]{above}{k1}{normalization factor}
 % \annotate[yshift=1em]{below}{k2}{prior probabilistic distribution}
 % \annotate[yshift=1em]{below}{k3}{likelihood function}
 
-% \noindent where \cref{time-discretized SFR: swing equation} declares the change of $\varDelta f(t)$ between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes the evolution of mismatch power. \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters,additional power from bess}  represent additional regulated outputs produced by aggregated conventional generators, aggregated wind farms and aggregated BESS.
+% \noindent where \cref{time-discretized SFR: swing equation} declares the change of $\varDelta f(t)$ between adjacent discretized steps; \cref{time-discretized SFR: mismatch power} describes the evolution of mismatch power. \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}  represent additional regulated outputs produced by aggregated conventional generators, aggregated wind farms and aggregated BESS.
 
 \noindent where \(\textit{likelihood function}\) in \eqref{eqn:5a} declares coupling properties between \(\varDelta p(t)\) and \(\varDelta f(t)\); and \(\textit{prior function}\) describes the sequential recursive process from \(\varDelta f(t_0: t-\delta t)\) to \(\varDelta f(t)\). Using the prior and predicated processes of the Bayesian filter written probabilistically, the impact of uncertain variability factors denoted by \(\varDelta \omega\) can be well incorporated over the entire frequency dynamic process.
 In which, \(\textit{prior function}\) can be recursively calculated as follows,
@@ -288,7 +288,7 @@ In which, \(\textit{prior function}\) can be recursively calculated as follows,
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:6a}
 	\begin{align}
-		 & prior: \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =\int \bigl(\mathcal{P}(\varDelta f(t) \!\mid\! \\
+		 & Prior: \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t-\delta t \right), \varDelta \omega\right) =\int \bigl(\mathcal{P}(\varDelta f(t) \!\mid\! \\
 		 & \varDelta f(t_0:t-\delta t), \varDelta \omega) \cdot
 		\mathcal{P}\!\left(\varDelta \!f(t-\delta t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t-\delta t\right), \varDelta \omega\right) \bigr) d \varDelta f(t) \notag
 	\end{align}
@@ -327,11 +327,11 @@ Let \(\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)\) d
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:7}
 	\begin{align}
-		          & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)=\label{eqn:7a}                                                                   \\
-		          & \quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t))\notag                                                                                  \\
-		{weight}: & \lambda (\varDelta f(t_0:t)) = \frac{\mathcal{P} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)} \label{eqn:7b} \\
-		density:  & \mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t); \varDelta \omega)\cdot \notag                              \\
-		          & \mathcal{Q}(\varDelta f(t-\delta t)|\varDelta p(t_0\!:\!t-\delta t);\varDelta \omega)  \label{eqn:7c}
+		           & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)=\label{eqn:7a}                                                                   \\
+		           & \quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t))\notag                                                                                  \\
+		{Weight}:  & \lambda (\varDelta f(t_0:t)) = \frac{\mathcal{P} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega)} \label{eqn:7b} \\
+		{Density}: & \mathcal{Q} (\varDelta f(t) | \varDelta p(t_0\!:\!t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t); \varDelta \omega)\cdot \notag                              \\
+		           & \mathcal{Q}(\varDelta f(t-\delta t)|\varDelta p(t_0\!:\!t-\delta t);\varDelta \omega)  \label{eqn:7c}
 	\end{align}
 \end{newsubequations}
 
@@ -340,8 +340,8 @@ By supposing the recursive type of the importance density and sequentially trans
 \vspace{-0.125in}
 \begin{newsubequations}
 	\begin{align}
-		 & \textit{recursive weight}: \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a}                                                                                                                                   \\
-		 & \qquad \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
+		 & \textit{Recursive weight}: \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a}                                                                                                                                             \\
+		 & \qquad\,\,\,\,\, \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
 	\end{align}
 \end{newsubequations}
 
@@ -448,16 +448,16 @@ By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance 
 \section{Frequency constraint reformulation}
 \vspace{-0.0250in}
 
-This section examines frequency requirements, i.e., RoCoF, nadir, and frequency containment reserve (FCR), and these needs are reevaluated into constraints and incorporated into UC studies. Among them, a new chance-constrained formulation of frequency nadir constraint is derived based on the BF-SFR; remaining constraints concerning RoCoF/FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
+This section examines frequency requirements, i.e., RoCoF, nadir, and frequency containment reserve (FCR), among them, a refined chance-constrained formulation of frequency nadir constraint is derived based on the BF-SFR described in section II; remaining constraints concerning RoCoF/FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards, ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
 
- \vspace{-0.225in}
+\vspace{-0.225in}
 \subsection{$RoCoF \,\,constraint$}
 % \vspace{-0.0125in}
 %To prevent $\varDelta f(t)$ from changing too fast at inertia response, the differential of frequency derivation $\varDelta f(t)$, denoted by $\varDelta f^{\prime}(t)$, is included, i.e., $\varDelta f^{\prime}(t)\leq RoCoF_{\text{max}}$. Since $\varDelta f^{\prime}(t)$  $=\nicefrac{\varDelta p_{\text{step} }}{M_{\text{equ}}}: M_{\text{equ}} = M_G+M_{W}$, the $RoCoF$ constraint can be obtained,
 
-The RoCoF denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response (IR).
+The RoCoF constraint denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response (IR).
 % It is required that $\varDelta f^{\prime}(t)$ does not exceed the maximum rate of change of frequency, denoted as $RoCoF_{\text{max}}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! RoCoF_{\text{max}}$. 
-Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, so, the RoCoF constraint can be expressed,
+Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, and then, the RoCoF constraint can be expressed,
 
 % \vspace{-0.125in}
 % \begin{small}
@@ -472,7 +472,7 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 \begin{small}
 	\begin{align}\label{eqn:10}
 		            & 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}\leq \overline{\gamma}_{rocof}, \forall g, t                                                                                                    \\
-		\rightarrow & \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall g, t \notag
+		\rightarrow & \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
 	\end{align}
 \end{small}
 
@@ -504,20 +504,26 @@ Next, the FCR constraint aims to ensure sufficient frequency reserves provided b
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
 	\begin{align}
-		 \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                                                  \\
-		 \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right)&\geq \varDelta p_{E}(t), t\in(t_{IR}, t_{PFR}] \label{eqn:11b}                                                     \\
-		 \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)&\geq \varDelta p_{G}(t), t\in(t_{IR}, t_{PFR}]\label{eqn:11c}                                              
+		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), \forall t\in(t_{IR},t_{PFR}] \label{eqn:11a}  \\
+		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) &\geq \varDelta p_{E}(t), \forall t\in(t_{IR}, t_{PFR}] \label{eqn:11b} \\
+		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) & \geq \varDelta p_{G}(t), \forall t\in(t_{IR}, t_{PFR}]\label{eqn:11c}\\
+         \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &+ \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) + \notag\\
+        \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) & \geq \varDelta p_{step},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:11d} 
 	\end{align}
 \end{newsubequations}
 
 \noindent
-where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time of the PFR. Let \(\langle \overline{\varDelta p_{W}}, \overline{\varDelta p_{E}}, \overline{\varDelta p_{G}}\rangle\) denotes, respectively, the maximum of \(\varDelta p_{W}(t), \varDelta p_{E}(t), \varDelta p_{G}(t)\), a concise form of \cref{eqn:11a,eqn:11b,eqn:11c} can be calculated as follows:
+where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time of the PFR. Let \(\langle \overline{\varDelta p_{W}}, \overline{\varDelta p_{E}}, \overline{\varDelta p_{G}}\rangle\) denotes, respectively, the maximum of \(\varDelta p_{W}(t), \varDelta p_{E}(t), \varDelta p_{G}(t)\), a conservative form of \cref{eqn:11a,eqn:11b,eqn:11c} can be calculated as follows:
 
+\vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
 	\begin{align}
-		 \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                                                  \\
-		 \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right)&\geq \varDelta p_{E}(t), t\in(t_{IR}, t_{PFR}] \label{eqn:11b}                                                     \\
-		 \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)&\geq \varDelta p_{G}(t), t\in(t_{IR}, t_{PFR}]\label{eqn:11c}                                              
+		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \overline{\varDelta p_{W}}, \notag                                                                                                                                                               \\
+		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{W}} = (K_W R_W^{-1} + D_{W})\varDelta f_{nadir}, \forall t\in(t_{IR},t_{PFR}] \label{eqn:12a} \\
+		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \overline{\varDelta p_{E}}, \notag                                                                                                                                                               \\
+		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{E}} = R_E^{-1}\varDelta f_{nadir}, \forall t\in(t_{IR}, t_{PFR}] \label{eqn:12b}                                                                              \\
+		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \overline{\varDelta p_{G}}, \notag                                                                                                                                                               \\
+		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{G}} = K_G R_G^{-1} \varDelta f_{nadir},\forall t\in(t_{IR}, t_{PFR}]\label{eqn:12c}
 	\end{align}
 \end{newsubequations}
 
@@ -525,52 +531,81 @@ where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time o
 
 % Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
 
-\vspace{-0.125in}
-\begin{newsubequations}\label{eqn:12}
-	\begin{align}
-		 & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta f_{\text{max}}}{R_W},\forall s,t                 \\
-		 & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \! \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t
-	\end{align}
-\end{newsubequations}
+% \vspace{-0.125in}
+% \begin{newsubequations}\label{eqn:12}
+% 	\begin{align}
+% 		 & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta f_{\text{max}}}{R_W},\forall s,t                 \\
+% 		 & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \! \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t
+% 	\end{align}
+% \end{newsubequations}
 
 %Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing the adjustable output of conventional generators, can be rewritten as
-In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
+% In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
 
-\vspace{-0.125in}
-% \begin{subequations}\label{eqn:13}
-\begin{small}
-	\begin{align}\label{eqn:13}
-		 & {{K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}}\right )\left( n\delta t \right)} \notag                                   \\
-		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}} \right)\notag                                                   \\
-		 & \qquad \left( e^{-\frac{1}{T_G} (t)}\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)}  \right) \delta t\notag                                              \\
-		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)- {K_G(1-F_G)}{ R_{G}^{-1} }\times \notag                                                                              \\
-		 & \quad \quad\, e^{-\frac{1}{T_G} (t)}\left(\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \varDelta f^{\prime}(t_0 + i \delta t) \right) \delta t \notag \\
-		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) \leq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}
-	\end{align}
-\end{small}
-% \end{subequations}
+% \vspace{-0.125in}
+% % \begin{subequations}\label{eqn:13}
+% \begin{small}
+% 	\begin{align}\label{eqn:13}
+% 		 & {{K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}}\right )\left( n\delta t \right)} \notag                                   \\
+% 		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}} \right)\notag                                                   \\
+% 		 & \qquad \left( e^{-\frac{1}{T_G} (t)}\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)}  \right) \delta t\notag                                              \\
+% 		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)- {K_G(1-F_G)}{ R_{G}^{-1} }\times \notag                                                                              \\
+% 		 & \quad \quad\, e^{-\frac{1}{T_G} (t)}\left(\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \varDelta f^{\prime}(t_0 + i \delta t) \right) \delta t \notag \\
+% 		 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) \leq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}
+% 	\end{align}
+% \end{small}
+% % \end{subequations}
 
-By substituting the maximum limit of changeable output in \eqref{eqn:13} into \eqref{eqn:14}, a relaxed constraint on the FCR for conventional generators is calculated,
+% By substituting the maximum limit of changeable output in \eqref{eqn:13} into \eqref{eqn:14}, a relaxed constraint on the FCR for conventional generators is calculated,
 
-\vspace{-0.115in}
-\begin{small}
-	\begin{align}\label{eqn:14}
-		\sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}, \forall s,t
-	\end{align}
-\end{small}
+% \vspace{-0.115in}
+% \begin{small}
+% 	\begin{align}\label{eqn:14}
+% 		\sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}, \forall s,t
+% 	\end{align}
+% \end{small}
 
 \vspace{-0.2in}
-\subsection{$(chance-constraint)\,\, nadir \,\,constraint\,\, reformulation$}
-To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method. As a result, a chance-constrained nadir constraint can be formulated as follows:
+\subsection{$(Chance-constrained)\,\, nadir \,\,constraint$}
+
+% To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method. As a result, a chance-constrained nadir constraint can be formulated as follows:
+
+The frequency nadir constraint aims to avoid \(\varDelta f(t)\)  beyond its predefined threshold \(\varDelta f_{nadir}\) at the PFR process.
+Since the posterior of frequency derivation considering uncertain variability factors can be accurately solved through the Bayesian filter method, a chance-constrained nadir constraint can be derived as follows,
 
 \vspace{-0.125in}
 \begin{small}
-	\begin{align}\label{eqn:15}
-		 & \mathcal{P}\left(\varDelta f_{\text{nadir}} \leq \varDelta f_{\text{max}}\right) \geq 1-\epsilon
+	\begin{align}\label{eqn:13}
+		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag                                    \\
+		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \,in\, \textrm{\cref{eqn:7a}}
 	\end{align}
 \end{small}
 
-\noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+% \vspace{-0.125in}
+% \begin{small}
+% 	\begin{align}\label{eqn:15}
+% 		 & \mathcal{P}\left(\varDelta f_{\text{nadir}} \leq \varDelta f_{\text{max}}\right) \geq 1-\epsilon
+% 	\end{align}
+% \end{small}
+
+\noindent
+where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{eqn:13}; \(\varDelta f(t)\) can be generated from its posterior distribution denoted by \eqref{eqn:13}. Using sampled average approximate (SAA) method, \cref{eqn:13} can be reshaped as the deterministic form \eqref{eqn:14a}, which is listed below,
+
+\vspace{-0.125in}
+\begin{small}
+	\begin{align}
+		\left(\varDelta f(t)\right)^{(n)} - M \tau_{n}\!           & \leq \!\varDelta f_{nadir}, \notag\\
+        &\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \forall n \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:14a} \\
+		\frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} & \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:14b}
+	\end{align}
+\end{small}
+
+\noindent
+where \(\tau_{SFR}\) is a binary indicator describing whether \((\varDelta f(t))^{(n)}\) satisfying the frequency derivation requirement, e.g., if \((\varDelta f (t))^{(n)}\leq \varDelta f_{nadir}\), then  \(\tau_{SFR}=0\) and otherwise  \(\tau_{SFR}=1\).
+
+$\varDelta f_{nadir}$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+
+% \noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
 
 \vspace{-0.125in}
 %\begin{newsubequations}\label{eqn:16}
