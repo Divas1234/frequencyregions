@@ -203,7 +203,7 @@ The $t-$ domain mathematical form of \eqref{eqn:1} can be transferred by utilizi
 	\begin{align}
 		 & 2H_{\varSigma } \varDelta f^{\prime}(t)  +D_{\varSigma} \varDelta f(t)=\varDelta p(t)  \label{eqn:2a}                                                                         \\
 		 & \varDelta p(t)                          =\varDelta p_{step}-\left(\varDelta p_{G}(t)+\varDelta p_{W}(t)+\varDelta p_{E}(t)\right) \label{eqn:2b}                              \\
-		 & M_{\varSigma}                           =M_{G}+M_{W},
+		 & H_{\varSigma}                           =H_{G}+H_{W},
 		D_{\varSigma}                           =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}   \label{eqn:2c}                                                                             \\
 		 & \varDelta p_{G}(t)                      ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag                                                                                    \\
 		 & \qquad\quad\quad\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G}t} \int_{0}^{t}e^{\frac{1}{T_G}\kappa} \varDelta f^{\prime}(\kappa) d \kappa \label{eqn:2d}                   \\
@@ -471,7 +471,7 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:10}
-		            & 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}\leq \overline{\gamma}_{rocof}, \forall g, t                                                                                                    \\
+		            & 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}\leq \overline{\gamma}_{rocof}, \forall g, t                                                                                                                    \\
 		\rightarrow & \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
 	\end{align}
 \end{small}
@@ -504,11 +504,11 @@ Next, the FCR constraint aims to ensure sufficient frequency reserves provided b
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
 	\begin{align}
-		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &\geq \varDelta p_{W}(t), \forall t\in(t_{IR},t_{PFR}] \label{eqn:11a}  \\
-		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) &\geq \varDelta p_{E}(t), \forall t\in(t_{IR}, t_{PFR}] \label{eqn:11b} \\
-		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) & \geq \varDelta p_{G}(t), \forall t\in(t_{IR}, t_{PFR}]\label{eqn:11c}\\
-         \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right) &+ \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) + \notag\\
-        \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) & \geq \varDelta p_{step},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:11d} 
+		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \varDelta p_{W}(t), \forall t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                     \\
+		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \varDelta p_{E}(t), \forall t\in(t_{IR}, t_{PFR}] \label{eqn:11b}                                    \\
+		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \varDelta p_{G}(t), \forall t\in(t_{IR}, t_{PFR}]\label{eqn:11c}                                     \\
+		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & + \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) + \notag \\
+		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \varDelta p_{step},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:11d}
 	\end{align}
 \end{newsubequations}
 
@@ -518,11 +518,11 @@ where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time o
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:11}
 	\begin{align}
-		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \overline{\varDelta p_{W}}, \notag                                                                                                                                                               \\
+		\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \overline{\varDelta p_{W}}, \notag                                                                                                                                                                       \\
 		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{W}} = (K_W R_W^{-1} + D_{W})\varDelta f_{nadir}, \forall t\in(t_{IR},t_{PFR}] \label{eqn:12a} \\
-		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \overline{\varDelta p_{E}}, \notag                                                                                                                                                               \\
+		\sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \overline{\varDelta p_{E}}, \notag                                                                                                                                                                       \\
 		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{E}} = R_E^{-1}\varDelta f_{nadir}, \forall t\in(t_{IR}, t_{PFR}] \label{eqn:12b}                                                                              \\
-		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \overline{\varDelta p_{G}}, \notag                                                                                                                                                               \\
+		\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \overline{\varDelta p_{G}}, \notag                                                                                                                                                                       \\
 		                                                                                               & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{G}} = K_G R_G^{-1} \varDelta f_{nadir},\forall t\in(t_{IR}, t_{PFR}]\label{eqn:12c}
 	\end{align}
 \end{newsubequations}
@@ -571,12 +571,12 @@ where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time o
 % To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method. As a result, a chance-constrained nadir constraint can be formulated as follows:
 
 The frequency nadir constraint aims to avoid \(\varDelta f(t)\)  beyond its predefined threshold \(\varDelta f_{nadir}\) at the PFR process.
-Since the posterior of frequency derivation considering uncertain variability factors can be accurately solved through the Bayesian filter method, a chance-constrained nadir constraint can be derived as follows,
+Since the posterior of frequency derivation considering uncertain variability factors can be accurately solved through the Bayesian filter method, a chance-constrained frequency nadir constraint can be derived as follows,
 
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:13}
-		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag                                    \\
+		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag      \\
 		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \,in\, \textrm{\cref{eqn:7a}}
 	\end{align}
 \end{small}
@@ -589,63 +589,76 @@ Since the posterior of frequency derivation considering uncertain variability fa
 % \end{small}
 
 \noindent
-where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{eqn:13}; \(\varDelta f(t)\) can be generated from its posterior distribution denoted by \eqref{eqn:13}. Using sampled average approximate (SAA) method, \cref{eqn:13} can be reshaped as the deterministic form \eqref{eqn:14a}, which is listed below,
+where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{eqn:13}; \(\varDelta f(t)\) can be generated from its posterior distribution denoted by \eqref{eqn:13}. Using sampled average approximate (SAA) method, \cref{eqn:13} can be equivalently reshaped as the deterministic form \eqref{eqn:14a}, which is listed below,
 
 \vspace{-0.125in}
-\begin{small}
-	\begin{align}
-		\left(\varDelta f(t)\right)^{(n)} - M \tau_{n}\!           & \leq \!\varDelta f_{nadir}, \notag\\
-        &\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \forall n \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:14a} \\
-		\frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} & \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:14b}
-	\end{align}
-\end{small}
+\begin{newsubequations}
+	\begin{small}
+		\begin{align}
+			\left(\varDelta f(t)\right)^{(n)} - M \tau_{n}\!              & \leq \!\varDelta f_{nadir}, \label{eqn:14a}                             \\
+			\forall n                                                     & \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}]  \notag             \\
+			\frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} & \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:14b}
+		\end{align}
+	\end{small}
+\end{newsubequations}
 
+\vspace{-0.125in}
 \noindent
-where \(\tau_{SFR}\) is a binary indicator describing whether \((\varDelta f(t))^{(n)}\) satisfying the frequency derivation requirement, e.g., if \((\varDelta f (t))^{(n)}\leq \varDelta f_{nadir}\), then  \(\tau_{SFR}=0\) and otherwise  \(\tau_{SFR}=1\).
-
-$\varDelta f_{nadir}$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
-
-% \noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+where \((\varDelta f(t))^{(n)}\), following its posterior \eqref{eqn:7a}, enforces possible realization of \(\varDelta f(t)\). \(\tau_{SFR}\) denotes a binary indicator describing whether \((\varDelta f(t))^{(n)}\) satisfying the frequency security requirement, e.g., if \((\varDelta f (t))^{(n)}\!\leq\! \varDelta f_{nadir}\), then  \(\tau_{SFR}\!=\!0\), and vice versa. Despite that the posterior function \eqref{eqn:7a} depends on the initial mismatch power \(\varDelta p_{step}\), equivalent frequency parameters \(\langle H_{\varSigma}, D_{\varSigma}\rangle\), and aggregated generators' parameters \(\{\langle R_{G},F_{G},K_{G}\rangle), \langle K_{W},R_{W}\rangle, R_{E}\}\), and various uncertain variability factors \(\varDelta \omega(t)\). Therefore, \cref{eqn:7a} can be mathematically described as the nonlinear relation of the variables above. Furthermore, to prevent introducing nonlinear terms purposes, a linearized soft-linked function needs to be reconstructed to approximate the posterior function  \eqref{eqn:7a} as follows:
 
 \vspace{-0.125in}
-%\begin{newsubequations}\label{eqn:16}
-%\begin{align}
-%% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
-%&\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\forall q \label{16-a}\\
-%&\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q \label{16-b}
-%\end{align}
-%\end{newsubequations}
+\begin{newsubequations}
+	\begin{small}
+		\begin{align}
+			&\varDelta  f(t) =\!\!\!\!\!\! \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right)+\right.\notag\\
+			&\left. \alpha_{m}^{(4)}\right):H_{\varSigma} \!=\! H_{G} + H_{W}, D_{\varSigma} \!=\! D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}} \label{eqn:15a}
+		\end{align}
+	\end{small}
+\end{newsubequations}
 
-%\begin{newsequation}\label{eqn:16}
-%    \begin{align}
-%        % &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
-%         & \Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q
-%    \end{align}
-%\end{newsequation}
-\begin{small}
-	\begin{align}\label{eqn:16}
-		 & \Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q
-	\end{align}
-\end{small}
-
-\noindent where \eqref{eqn:16} represents an approximately mix-integer linearized constraints of \eqref{eqn:15}. $z_{q} = 0$ indicates an active constraint where the $nadir$ must be required for the predefined uncertain variability condition; $z_{{q}} = 1$ describes an inactive constraint where the \eqref{eqn:15} at the predefined sampled uncertain condition $q$ could be ignored. Accordingly, the redesigned chance constraint \eqref{eqn:16} has been reshaped as an equivalence of restricting the number of $z_{q}, 1\leq q\leq N\!Q$ to be ones. It is important to mention that the mathematical reformulation of the similar type constraint \eqref{eqn:15} is not limited to the form \eqref{eqn:16}. By directly introducing $z_{q}$ but no longer introducing $M$, a bi-linear type mixed integer reformulation of \eqref{eqn:15} is also feasible, that is,
-%\begin{newsubequations}\label{eqn:17}
-%\begin{align}
-%% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
-%&\left(\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!- \!\varDelta f_{\text{max}} \right) \left(1-z_{q}\right) \leq 0,\forall q \label{17-a}\\
-%&\sum\nolimits_{q=1}^{NQ} \pi_{q} z_{q}\! \leq \epsilon,\forall q \label{17-b}
-%\end{align}
-%\end{newsubequations}
-
-\vspace{-0.125in}
-\begin{small}
-	\begin{align}\label{eqn:17}
-		% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
-		 & \boxed{\left(\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!- \!\varDelta f_{\text{max}} \right) \left(1-z_{q}\right) \leq 0},\sum\nolimits_{q=1}^{NQ} \pi_{q} z_{q}\! \leq \epsilon,\forall q
-	\end{align}
-\end{small}
-
-The boxed term in \cref{eqn:17} can be rewritten as $\Psi\!(\wp, \hat{\zeta}^{(q)}\!) -  z_{q} \Psi\!(\wp, \hat{\zeta}^{(q)}\!) \!- \! (1\!\!-\!\!z_{q})\varDelta f_{\text{max}}\!\! \leq\!\! 0,\forall q$ where the nonlinear term $\Psi\!(\wp, \hat{\zeta}^{(q)})\!$ needs to be further linearized and the bi-linear term $\langle z_{q} \times \Psi\!(\wp, \hat{\zeta}^{(q)}\!)\rangle$ should be reformulated through McCormick linearization method. For pretending the resulting constraint from being excessive complexity, \eqref{eqn:16} is utilized to approximate \eqref{eqn:15}. Note that \eqref{eqn:16} cannot be directly incorporated into UC due to the nonlinear property of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$, therefore, a ``max-affine'' PWL method, \cite{paturet2020stochastic,10219063,9765359}, is implemented to estimate the original value of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$.
+%$\varDelta f_{nadir}$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+%
+%% \noindent where $\epsilon$ is the confidence risk level associated with the chance constraint \eqref{eqn:15}; $\varDelta f_{\text{nadir} }$ is closely dependent with the initial imbalance disturbance $\varDelta p_{\text{step}}$, aggregated frequency parameters of various grid-connected units $\langle M_{G},\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},$ $R_{E}\rangle $ and external UV characteristic $\langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $. For simplification purpose, let ${\wp}=\langle M_{G},$ $\! D_{G}, \!R_{G}, \!K_{G}, \!T_{G}, R_{W},\!R_{E}\rangle $ and ${\zeta} = \langle \mu_{1}, \sigma_{1}, \mu_{2}, \sigma_{2}\rangle $, and then, $\varDelta f_{\text{nadir}}$ can be  rewritten a nonlinear mapping function $\Psi(\wp, \zeta)$, $i.e.$, $\varDelta f_{\text{nadir}} = \Psi(\wp, \zeta)$. Furthermore, a Sampled Average Approximate (SAA) method is used to construct the deterministic convex formulation of \eqref{eqn:15}, which can be readily identified by any off-the-shelf MIP solvers and subsequently integrated into UC. To achieve that, by introducing a binary indicator variable $z_{q}\in\{0,1\} \!:\!q\!\in\!\{1, 2,\ldots, N\!Q\}$ and using the Big-M method \cite{ding2021two,zhang2020modeling},  \cref{eqn:15} can be equivalently reformulated with a set of linearized constraints as follows,
+%
+%\vspace{-0.125in}
+%%\begin{newsubequations}\label{eqn:16}
+%%\begin{align}
+%%% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
+%%&\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\forall q \label{16-a}\\
+%%&\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q \label{16-b}
+%%\end{align}
+%%\end{newsubequations}
+%
+%%\begin{newsequation}\label{eqn:16}
+%%    \begin{align}
+%%        % &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
+%%         & \Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q
+%%    \end{align}
+%%\end{newsequation}
+%\begin{small}
+%	\begin{align}\label{eqn:16}
+%		 & \Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!\leq \!\varDelta f_{\text{max}} \!+\! M z_{q},\sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q
+%	\end{align}
+%\end{small}
+%
+%\noindent where \eqref{eqn:16} represents an approximately mix-integer linearized constraints of \eqref{eqn:15}. $z_{q} = 0$ indicates an active constraint where the $nadir$ must be required for the predefined uncertain variability condition; $z_{{q}} = 1$ describes an inactive constraint where the \eqref{eqn:15} at the predefined sampled uncertain condition $q$ could be ignored. Accordingly, the redesigned chance constraint \eqref{eqn:16} has been reshaped as an equivalence of restricting the number of $z_{q}, 1\leq q\leq N\!Q$ to be ones. It is important to mention that the mathematical reformulation of the similar type constraint \eqref{eqn:15} is not limited to the form \eqref{eqn:16}. By directly introducing $z_{q}$ but no longer introducing $M$, a bi-linear type mixed integer reformulation of \eqref{eqn:15} is also feasible, that is,
+%%\begin{newsubequations}\label{eqn:17}
+%%\begin{align}
+%%% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
+%%&\left(\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!- \!\varDelta f_{\text{max}} \right) \left(1-z_{q}\right) \leq 0,\forall q \label{17-a}\\
+%%&\sum\nolimits_{q=1}^{NQ} \pi_{q} z_{q}\! \leq \epsilon,\forall q \label{17-b}
+%%\end{align}
+%%\end{newsubequations}
+%
+%\vspace{-0.125in}
+%\begin{small}
+%	\begin{align}\label{eqn:17}
+%		% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
+%		 & \boxed{\left(\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!- \!\varDelta f_{\text{max}} \right) \left(1-z_{q}\right) \leq 0},\sum\nolimits_{q=1}^{NQ} \pi_{q} z_{q}\! \leq \epsilon,\forall q
+%	\end{align}
+%\end{small}
+%
+%The boxed term in \cref{eqn:17} can be rewritten as $\Psi\!(\wp, \hat{\zeta}^{(q)}\!) -  z_{q} \Psi\!(\wp, \hat{\zeta}^{(q)}\!) \!- \! (1\!\!-\!\!z_{q})\varDelta f_{\text{max}}\!\! \leq\!\! 0,\forall q$ where the nonlinear term $\Psi\!(\wp, \hat{\zeta}^{(q)})\!$ needs to be further linearized and the bi-linear term $\langle z_{q} \times \Psi\!(\wp, \hat{\zeta}^{(q)}\!)\rangle$ should be reformulated through McCormick linearization method. For pretending the resulting constraint from being excessive complexity, \eqref{eqn:16} is utilized to approximate \eqref{eqn:15}. Note that \eqref{eqn:16} cannot be directly incorporated into UC due to the nonlinear property of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$, therefore, a ``max-affine'' PWL method, \cite{paturet2020stochastic,10219063,9765359}, is implemented to estimate the original value of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$.
 
 Let $\hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!=\!\max\left(\alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)\right.$ $\left. + \alpha_{\iota,4}^{(q)} \right) $ describe the approximated fitting function of $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ given a stochastic uncertain realization $\hat{\zeta}^{(q)}$; $\langle \tilde{H}_{\text{equ}}^{(q)}, \tilde{D}_{\text{equ}}^{(q)}, \tilde{F}_G^{(q)}$, $\tilde{R}_G^{(q)}$ denotes a possible set of aggregated frequency parameters with the respect of $\hat{\zeta}^{(q)}$. In such a situation, $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ can be evaluated by observing the maximum value of constructed hyperplane $\Theta_{\iota\in\{1,2,3,4\}}^{(q)}$ where $\Theta_{\iota}^{(q)} = \alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)$. Particularly, the selection of fitting parameters $\langle \alpha_{\iota, 1}^{(q)},\alpha_{\iota, 2}^{(q)}, \alpha_{\iota, 3}^{(q)}, \alpha_{\iota, 4}^{(q)}  \rangle$ can be solved by minimizing the loose function defined by $\vartheta_{\text{loss}} \!=\! \hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!-\! \Psi(\wp, \hat{\zeta}^{(q)})$. As such, the below lists a detailed optimization model for calculating fitting parameters.
 
