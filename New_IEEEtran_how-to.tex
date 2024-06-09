@@ -355,11 +355,10 @@ Let \(\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omeg
 	\end{align}
 \end{newsubequations}
 
-By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance density concerning \eqref{eqn:7c} can be directly derived. Subsequently, by updating the weight through \eqref{eqn:7b} and sequentially substituting \cref{eqn:7b,eqn:7c} into \eqref{eqn:7a}, the posterior distribution of \(\varDelta f(t)\) concerning \eqref{eqn:5a} can be recursively solved. For intuitively illustrating the implementing process of the posterior distribution of \(\varDelta f(t)\).
-
+By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance density in \eqref{eqn:7c} can be directly derived. Subsequently, by updating the weight through \eqref{eqn:7b} and sequentially substituting \cref{eqn:7b,eqn:7c} into \eqref{eqn:7a}, the posterior distribution of \(\varDelta f(t)\) in \eqref{eqn:5a} can be recursively solved. 
+%For intuitively illustrating the implementing process of the posterior distribution of \(\varDelta f(t)\).
 
 % To calculate the posterior function of $\mathcal{P}(\varDelta f(n\!+\!1) \! \mid\! \varDelta p(0 \!:\! n),$ $ u_{1}, \sigma_{1})$ and $\mathcal{P}(\varDelta p(n\!+\!1) \!\mid\! \varDelta p(0\!:\!n), u_{2}, \sigma_{2})$, the operator $\!\!\int(\cdot)\!\!$  in \eqref{eqn:5} can be approximately estimated by an expectation of a certain number of sampled data (or called $filters$), i.e., $\int\varpi[\varDelta f(n)] d\varDelta f(n) \!\approx\! \frac{1}{N}$ $ \sum_{n=1}^{N} \varpi\left(\lambda_{n}\right) \lambda_{n}$ where $\varpi$ enforces associated integrated function in \eqref{eqn:6} and $\lambda_{n}$ represents possible $filters$ generated from the prior of $\varDelta f(n)$. Hence, \eqref{eqn:6} can be rewritten as,
-
 
 % \vspace{-0.125in}
 % \begin{newsubequations}\label{eqn:7}
@@ -471,8 +470,8 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:10}
-		            2{H_{\varSigma}^{-1}}{\varDelta p_{step}}&\leq \overline{\gamma}_{rocof}, \forall g, t \rightarrow                                                                                                                   \\
-		 \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!&\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
+		2{H_{\varSigma}^{-1}}{\varDelta p_{step}}      & \leq \overline{\gamma}_{rocof}, \forall g, t \rightarrow                                                                                                   \\
+		\sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \! & \geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
 	\end{align}
 \end{small}
 
@@ -576,8 +575,8 @@ Since the posterior of frequency derivation considering uncertain variability fa
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:13}
-		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag      \\
-		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) 
+		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag \\
+		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega)
 	\end{align}
 \end{small}
 
@@ -595,7 +594,7 @@ where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{e
 \begin{newsubequations}
 	\begin{small}
 		\begin{align}
-			\left(\varDelta f(t)\right)^{(n)} - M \tau_{n}\!              & \leq \!\varDelta f_{nadir}, \label{eqn:14a}                             \\
+			\left(\varDelta f(t)\right)^{(n)} - \varXi \tau_{n}\!              & \leq \!\varDelta f_{nadir}, \label{eqn:14a}                             \\
 			\forall n                                                     & \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}]  \notag             \\
 			\frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} & \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:14b}
 		\end{align}
@@ -610,8 +609,8 @@ where \((\varDelta f(t))^{(n)}\), following its posterior \eqref{eqn:7a}, enforc
 \begin{newsubequations}
 	\begin{small}
 		\begin{align}
-			&\varDelta  f(t) =\!\!\!\!\!\! \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right)+\right.\notag\\
-			&\left. \alpha_{m}^{(4)}\right):H_{\varSigma} \!=\! H_{G} + H_{W}, D_{\varSigma} \!=\! D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}} \label{eqn:15a}
+			 & \varDelta  f(t) =\!\!\!\!\!\! \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right)+\right.\notag \\
+			 & \left. \alpha_{m}^{(4)}\right):H_{\varSigma} \!=\! H_{G} + H_{W}, D_{\varSigma} \!=\! D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}} \label{eqn:15a}
 		\end{align}
 	\end{small}
 \end{newsubequations}
@@ -667,8 +666,8 @@ where \(\alpha_{m}^{(i)}:i\in\{1,2,3,4\}\) are fitting parameters of the \(m\)-t
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:16}
-		 \min & \sum\nolimits_{r\in\mathcal{R}} \Biggl\{\max\limits_{m\in\{1,2,...,m,...,M\}} \Bigl(\alpha_{m}^{(1)}{H}_{\varSigma}^{(n)} + \alpha_{m}^{(2)} {D}_{\varSigma}^{(n)} +\\
-		 & \alpha_{m}^{(3)}\left(\frac{{F}_G^{(n)}}{{R}_G^{(n)} }\right)+ \alpha_{m}^{(n)} \Bigr)- \varDelta f(t)\Biggr\} ^{2}, \forall n\in\{1,2,...,n,...,N\}\notag
+		\min & \sum\nolimits_{r\in\mathcal{R}} \Biggl\{\max\limits_{m\in\{1,2,...,m,...,M\}} \Bigl(\alpha_{m}^{(1)}{H}_{\varSigma}^{(n)} + \alpha_{m}^{(2)} {D}_{\varSigma}^{(n)} + \\
+		& \alpha_{m}^{(3)}\left(\frac{{F}_G^{(n)}}{{R}_G^{(n)} }\right)+ \alpha_{m}^{(n)} \Bigr)- \varDelta f(t)\Biggr\} ^{2}, \forall n\in\{1,2,...,n,...,N\}\notag
 	\end{align}
 \end{small}
 
@@ -681,7 +680,7 @@ where \(\alpha_{m}^{(i)}:i\in\{1,2,3,4\}\) are fitting parameters of the \(m\)-t
 % 	\end{align}
 % \end{small}
 
-In \cref{eqn:16}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between the pre-selected hyperplane and all evaluation points. In terms of problem-solving, \eqref{eqn:18} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:18} can be found in \cite{ding2021two,zhang2020modeling}
+In \cref{eqn:16}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between the pre-selected hyperplane and all evaluation points. In terms of problem-solving, \cref{eqn:16} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:16} can be found in \cite{ding2021two,zhang2020modeling}
 
 % Next, substituting $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ derived from \cref{eqn:18} into \cref{eqn:16}, a convex form of \eqref{eqn:16} can be obtained as follows,
 
@@ -691,8 +690,8 @@ Next, substituting the equivalent form in \eqref{eqn:15a} concerning \(\varDelta
 \begin{newsubequations}
 	\begin{small}
 		\begin{align}
-			&\left(\varDelta f(t)\right)^{(n)} \!-\! M \tau_{n}\!  \leq \!\!\!\!\!\!\! \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \right.\label{eqn:17a}\\
-			&\left. \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right)+\alpha_{m}^{(4)}\right), \forall n \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}]  \notag             \\
+			& \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right) + \alpha_{m}^{(4)}\right)- \notag \\
+			& \varXi \tau_{n}\!  \leq \varDelta f_{nadir}, \forall n \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}]  \label{eqn:17a} \\
 			& \frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:17b}
 		\end{align}
 	\end{small}
@@ -731,64 +730,70 @@ Next, substituting the equivalent form in \eqref{eqn:15a} concerning \(\varDelta
 \nomenclature[P]{$z_q$}{Auxiliary binary decision variables}
 
 \vspace{-0.125in}
-\section{Proposed UC model: CCFDUC}
+\section{The proposed FCUC model}
 
-This section presents a comprehensive articulation of CCFDUC in this work. The form of the suggested UC model can be constructed by adding frequency dynamic restrictions from section III into the baseline UC problem.
+This section presents a comprehensive articulation of the proposed FCUC in this work. The form of the suggested UC model can be constructed by adding frequency constraints from section III into the baseline UC studies.
 
 \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:20}
+\begin{newsubequations}\label{eqn:18}
 	\begin{align}
-		 & \min\!\!\sum\nolimits_{t=1}^{N\!T}\left[ \sum\nolimits_{g=1}^{N\!G}\left( c_{g}^{\text{up}} u_{g,t} +  c_{g}^{\text{dw}} u_{g,t} +  c_{g}^{\text{nl}} u_{g,t}\right)\right. + \label{20-a}                                  \\
-		 & \left. \sum\nolimits_{s = 1}^{NS} \pi_{s} \!\!\left(\sum\nolimits_{g=1}^{NG}\sum\nolimits_{z = 1}^{NZ}F_{g}^{z}\left(p_{g,s,t}^{(z)}\right) \!+\! e^{\text{VoLL}}\sum\nolimits_{d = 1}^{ND} p_{d,s,t}\right)\right]\!\notag \\
-		 & s.t., \sum\nolimits_{m=\lceil t - T_{g}^{\text{su}} + 1, 0\rceil}^{t} u_{g,m} \leq x_{g,t}, \forall g, t \label{20-b}                                                                                                       \\
-		 & \sum\nolimits_{m=\lceil t - T_{g}^{\text{sd}} + 1, 0\rceil}^{t} u_{g,m} \leq 1 - x_{g,t}, \forall g, t \label{20-c}                                                                                                         \\
-		 & x_{g,t} - x_{g,t-1} = u_{g,t} - v_{g,t}, \forall g, t \label{20-d}                                                                                                                                                          \\
-		 & u_{g,t} + v_{g,t} \leq 1, \forall g, t \label{20-e}                                                                                                                                                                         \\
-		 & \sum\nolimits_{g =1}^{NG} p_{g,s,t} + \sum\nolimits_{w}^{NW} \left(p_{w,s,t}\! -\! \varDelta p_{w,s,t}\right) + \sum\nolimits_{e = 1}^{NE} \left(p_{e,s,t}^{\text{dis}} - \right. \notag                                    \\
-		 & \left.\varDelta p_{e,s,t}^{\text{ch}}\right) -\sum\nolimits_{d=1}^{ND}\left(p_{d,t} - \varDelta p_{d,s,t}\right) = 0, \forall g, w, e, s, t \label{20-f}                                                                    \\
-		 & \vert \sum\nolimits_{b = 1}^{NB} \kappa_{l,b}\left( \sum\nolimits_{g = 1}^{NG_b} p_{g,s,t} + \sum\nolimits_{w =1}^{NW_b} \left( p_{w,s,t} - \varDelta p_{w,s,t}\right)  \!+ \! \right. \label{20-g}                         \\
-		 & \qquad \qquad \quad\sum\nolimits_{e = 1}^{NE_b} \left(p_{e,s,t}^{\text{dis}} - \varDelta p_{e,s,t}^{\text{ch}}\right) -  \notag                                                                                             \\
-		 & \qquad \qquad \quad \left.\sum\nolimits_{d=1}^{ND}\left(p_{d,t} - \varDelta p_{d,s,t}\right) \right) \vert \leq p_{i}^{\text{max}}, \forall t, l, s \notag                                                                  \\
-		 & p_{g,s,t} - p_{g,s,t -1} \leq \gamma_{g}^{\text{ru}} x_{g,t} + p_{g}^{\text{max}}\left(1 - x_{g,t}\right) + \notag                                                                                                          \\
-		 & \qquad \qquad \gamma_{g}^{\text{su}}\left(x_{g,t} - x_{g, t-1}\right), \forall g, s, t \label{20-h}                                                                                                                         \\
-		 & p_{g,s,t-1} - p_{g,s,t} \leq \gamma_{g}^{\text{rd}} x_{g,t} + p_{g}^{\text{max}}\left(1 - x_{g,t-1}\right) + \notag                                                                                                         \\
-		 & \qquad \qquad \gamma_{g}^{\text{sd}}\left(x_{g,t-1} - x_{g, t}\right), \forall g, s, t \label{20-i}                                                                                                                         \\
-		 & \sum\nolimits_{g=1}^{NG}\left( x_{g,t} p_{g}^{\text{max}} - p_{g,s,t}\right) + \sum\nolimits_{e=1}^{NE}\left(p_{e,s,t}^{\text{dis, max}} - p_{e,s,t}^{\text{dis}}\right) \geq \notag                                        \\
-		 & \qquad \qquad \varrho_{1}^{+} \sum\nolimits_{d=1}^{ND} p_{d,t} + \varrho_{2}^{+}\sum\nolimits_{e=1}^{NE} p_{w,s,t}^{\text{max}}, \forall s, t \label{20-j}                                                                  \\
-		 & \sum\nolimits_{g=1}^{NG}\left( p_{g,s,t} - x_{g,t} p_{g}^{\text{min}}\right) + \sum\nolimits_{e=1}^{NE}\left(p_{e,s,t}^{\text{ch, max}} - p_{e,s,t}^{\text{ch}}\right) \geq \notag                                          \\
-		 & \qquad \qquad \varrho_{1}^{-} \sum_{d=1}^{ND} p_{d,t} + \varrho_{2}^{-}\sum\nolimits_{e=1}^{NE} p_{w,s,t}^{\text{max}}, \forall s, t \label{20-k}                                                                           \\
-		 & x_{g,t} p_{g}^{\text{max}} \leq p_{g,s,t} \leq x_{g,t}p_{g}^{\text{max}}, \forall s, t \label{20-l}                                                                                                                         \\
-		 & 0\leq \varDelta p_{w,s,t} \leq p_{w,s,t}^{\text{max}}, \forall w, s, t \label{20-m}                                                                                                                                         \\
-		 & 0\leq \varDelta p_{d,s,t} \leq  p_{d,t}, \forall d, s, t \label{20-n}                                                                                                                                                       \\
-		 & 0 \leq p_{e,s,t}^{\text{dis}} \leq u_{e,s,t}^{\text{dis}} p_{e}^{\text{dis,max}}, \forall e,s,t \label{20-o}                                                                                                                \\
-		 & 0 \leq p_{e,s,t}^{\text{ch}} \leq u_{e,s,t}^{\text{ch}} p_{e}^{\text{ch,max}}, \forall e,s,t \label{20-p}                                                                                                                   \\
-		 & q_{e,s,t+1} = q_{e,s,t} + \left(\eta_{e}^{\text{ch}}p_{e,s,t}^{\text{ch}} - \eta_{e}^{\text{dis}} p_{e,s,t}^{\text{dis}} \right)\delta t , \forall e,s,t \label{20-q}                                                       \\
-		 & q_{e,s,t = 1} = q_{e,s,t = NT},  \forall e,s,t \label{20-r}                                                                                                                                                                 \\
-		 & u_{e,s,t}^{\text{dis}} + u_{e,s,t}^{\text{ch}} \leq 1, \forall e,s,t \label{20-s}                                                                                                                                           \\
-		 & p_{g,s,t} = \sum\nolimits_{z=1}^{NZ} p_{g,s,t}^{(z)},  \forall z, g,s, t\label{20-t}                                                                                                                                        \\
-		 & 0 \leq p_{g,s,t}^{(z)} \leq x_{g,t} p_{g,s,t}^{\text{max}}, \forall z, g,s, t\label{20-u}                                                                                                                                   \\
-		 & F_{g}^{z}\left( p_{g,s,t}^{(z)}\right) \geq k_{g}^{(z)} p_{g,s,t}^{(z)} + x_{g,t} \omega_{g}^{(z)}, \forall z, g, s, t \label{20-v}
+		 & Objective\,\, function: \min\sum\nolimits_{t\in\mathcal{T}} \!\!\Bigg\{ \! \sum\nolimits_{g\in\mathcal{G}}\Bigl( C_{g}^{{up}} u_{g,t} \!+\! C_{g}^{{dw}} v_{g,t} +\notag                                  \\
+		 &C_{g}^{nl} x_{g,t}\Bigr) + \sum\nolimits_{s\in\mathcal{S}} \mathbf{Prob}_{s} \biggl(\sum\nolimits_{g\in\mathcal{G}} \sum\nolimits_{z\in\mathcal{Z}} \left(\varsigma_{g,z}^{(1)} p_{g,s,t}^{(z)} + \varsigma_{g,z}^{(2)}\right) + \notag \\
+        &\qquad\qquad\qquad\quad\,\,\, \sum\nolimits_{d \in\mathcal{D}} C_{{VoLL}}\varDelta p_{d,s,t}\biggr)\Biggr\}\label{18-a}\\
+		 & Subject\,\,to, \sum\nolimits_{m\in \mathcal{M}\{t + 1 +T_{g}^{{su}}, t\}} u_{g,m} \leq x_{g,t}, \forall g, t \label{18-b}                                                                                                       \\
+		 & \sum\nolimits_{m \in \mathcal{M} \{ t +1 -T_{g}^{{sd}}, t\}} v_{g,m} \leq 1 - x_{g,t}, \forall g, t \label{18-c}                                                                                                         \\
+		 & u_{g,t} - v_{g,t} = x_{g,t} - x_{g,t-1}, \forall g, t \label{18-d}                                                                                                                                                          \\
+		 & u_{g,t} + v_{g,t} \leq 1, \forall g, t \label{18-e}                                                                                                                                                                         \\
+		 & \sum\nolimits_{g \in \mathcal{G}} p_{g,s,t} + \sum\nolimits_{w\in\mathcal{W}} p_{w,s,t} +\label{18-f} \\
+		 & \sum\nolimits_{e\in\mathcal{E}}p_{e,s,t}^{{dis}} - \sum\nolimits_{e\in\mathcal{E}}p_{e,s,t}^{{ch}} = \sum\nolimits_{d\in\mathcal{D}}\left(p_{d,t} - \varDelta p_{d,s,t}\right), \forall s, t \notag                                                                    \\
+		 \Bigl \vert & \sum\nolimits_{b \in \mathcal{B}} \kappa_{l,b}\left( \sum\nolimits_{g \in\mathcal{G}_b } p_{g,s,t} + \sum\nolimits_{w \in\mathcal{W}_b} p_{w,s,t}  + \sum\nolimits_{e \in\mathcal{E}} p_{e,s,t}^{{dis}} -  \right. \notag                        \\
+		 & \sum\nolimits_{e \in\mathcal{E}} \varDelta p_{e,s,t}^{{ch}} \!-\!  \sum\nolimits_{d\in\mathcal{D}_{b}}\left(p_{d,t} - \varDelta p_{d,s,t}\right) \Bigr \vert \leq p_{i}^{\text{max}}, \forall t, l, s \label{18-g}        \\
+		 & p_{g,s,t} - p_{g,s,t -1} \leq \gamma_{g}^{{ru}} x_{g,t} + \overline{p_{g}}\left(1 - x_{g,t}\right) + \notag                                                                                                          \\
+		 & \gamma_{g}^{{su}}\left(x_{g,t} - x_{g, t-1}\right), \forall g, s, t \label{18-h}                                                                                                                         \\
+		 & p_{g,s,t-1} - p_{g,s,t} \leq \gamma_{g}^{{rd}} x_{g,t} + \overline{p_{g}} \left(1 - x_{g,t-1}\right) + \notag                                                                                                         \\
+		 & \gamma_{g}^{{sd}}\left(x_{g,t-1} - x_{g, t}\right), \forall g, s, t \label{18-i}                                                                                                                         \\
+		 & \sum\nolimits_{g\in\mathcal{G}} \left( x_{g,t} \overline{p_{g}} - p_{g,s,t}\right) + \sum\nolimits_{e\in\mathcal{E}}\left(\overline{p_{e}^{dis}} - p_{e,s,t}^{dis}\right) \geq \notag                                        \\
+		 & \varrho_{up}^{(1)} \sum\nolimits_{d\in\mathcal{D}} p_{d,t} + \varrho_{up}^{(2)}\sum\nolimits_{e\in\mathcal{E}} \overline{p_{w,s,t}}, \forall s, t \label{18-j}                                                                  \\
+		 & \sum\nolimits_{g\in\mathcal{G}}\left( p_{g,s,t} - x_{g,t} \overline{p_{g}}\right) + \sum\nolimits_{e\in\mathcal{E}}\left(p_{e,s,t}^{{ch}} - \underline{p_{e}^{ch}}\right) \geq \notag                                          \\
+		 & \varrho_{dw}^{(1)} \sum\nolimits_{d\in\mathcal{D}} p_{d,t} + \varrho_{dw}^{(2)}\sum\nolimits_{e\in\mathcal{E}} \overline{p_{w,s,t}}, \forall s, t \label{18-k}                                                                           \\
+		 & x_{g,t} \underline{p_{g}} \leq p_{g,s,t} \leq x_{g,t} \overline{p_{g}}, \forall g, s, t \label{18-l}                                                                                                                         \\
+		 & 0\leq p_{w,s,t} \leq \overline{p_{w,s,t}}, \forall w, s, t \label{18-m}                                                                                                                                         \\
+		 & 0\leq \varDelta p_{d,s,t} \leq  p_{d,t}, \forall d, s, t \label{18-n}                                                                                                                                                       \\
+		 & \underline{p_{e}^{{dis}}} \upsilon_{e,s,t}^{{dis}} \leq p_{e,s,t}^{{dis}} \leq \overline{p_{e}^{{dis}}} \upsilon_{e,s,t}^{{dis}} , \forall e,s,t \label{18-o}                                                                                                                \\
+		 & \underline{p_{e}^{{ch}}} \upsilon_{e,s,t}^{{ch}} \leq p_{e,s,t}^{{ch}} \leq \overline{p_{e}^{{ch}}} \upsilon_{e,s,t}^{{ch}} , \forall e,s,t \label{18-p}                                                                                                                   \\
+		 & q_{e,s,t+1} = q_{e,s,t} \!+\! \left(\eta_{e}^{{ch}}p_{e,s,t}^{{ch}} \!-\! \eta_{e}^{{dis}} p_{e,s,t}^{{dis}} \right)\!\delta t\!:\! \delta t \!=\! 1, \forall e,s,t \label{18-q}                                                       \\
+		 %& q_{e,s,t = 1} = q_{e,s,t = NT},  \forall e,s,t \label{20-r}                                                                                                                                                                 \\
+         & \sum\nolimits_{t\in\mathcal{T}} q_{e,s,t} \leq \overline{q_{e}},\forall e,s \label{18-r}\\
+		 & \upsilon_{e,s,t}^{{dis}}  + \upsilon_{e,s,t}^{{ch}} \leq 1, \forall e,s,t \label{18-s}                                                                                                                                           \\
+		 & p_{g,s,t} = \sum\nolimits_{z\in\mathcal{Z}} p_{g,s,t}^{(z)},0 \leq p_{g,s,t}^{(z)} \leq \frac{1}{NZ} x_{g,t}\overline{p_{g}},  \forall z, g,s, t\label{18-t}                                                                                                                                        \\
+         & \sum\nolimits_{g\in\mathcal{G}} H_{g} x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w},\forall  t \qquad \,\, \label{18-u}                        \\
+         &\sum\nolimits_{w\in\mathcal{W}} \left( \overline{p_{w,s,t}} - p_{w,s, t} \right) + \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p_{e}^{dis}} \upsilon_{e,s, t}^{dis} -p_{e,s, t}^{{dis}}\right) + \notag \\
+		 &\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g,s, t}\right) \geq \varDelta p_{step}, \forall s, t \label{18-v}\\		 
+         & \sum\nolimits_{w\in\mathcal{W}} \!\! \left( \overline{p_{w,s,t}} \!-\! p_{w,s, t} \right) \!\geq\! (K_W R_W^{-1} \!+\! D_{W})\varDelta f_{nadir}, \forall s,t \label{18-w}                                                       \\
+		 & \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p_{e}^{dis}} - p_{e,s, t} \right) \geq (R_E^{-1})\varDelta f_{nadir}, \forall s,t  \label{18-x}                                                            \\
+		 & \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p_{g}} - p_{g,s, t} \right) \geq (K_G R_G^{-1})\varDelta f_{nadir}, \forall s, t \label{18-y}\\
+		 & \frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\}\label{18-z} 
 	\end{align}
 \end{newsubequations}
-\vspace{-0.20cm}
+\vspace{-0.6250cm}
 \begin{newsubequations}\label{eqn:21}
 	\begin{align}
-		 & \sum\nolimits_{g=1}^{NG}M_{g} x_{g,t} \!\geq\! \slfrac{\varDelta p_{\text{step}} }{RoCoF_{\text{max}} } \!-\! \sum\nolimits_{w = 1}^{MW} \!M_{w}, \forall  t \qquad \,\, \label{21-a}                        \\
-		 & \sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}, \forall s,t \label{21-b}                                                       \\
-		 & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta f_{\text{max}}}{R_W},\forall s,t  \label{21-c}                                                            \\
-		 & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \! \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t \label{21-d}                                             \\
-		 & \sum\nolimits_{q=1}^{NQ} \pi_{q} \phi_{q,t} \leq \epsilon, \forall q,t \label{21-e}                                                                                                                          \\
-		 & \alpha_{\iota,1}^{(q)}{H}_{\text{equ},t} + \alpha_{\iota,2}^{(q)} {D}_{\text{equ},t} + \alpha_{\iota,3}^{(q)}\left(\slfrac{{F}_{G,t}}{{R}_{G,t} }\right) + \alpha_{\iota,4}^{(q)} \label{21-f}               \\
-		 & \qquad \qquad \quad   \!\leq \!\varDelta f_{\text{max}} \!+\! M \phi_{q,t},\forall q \notag, \iota\in\{1,2,3,4\}                                                                                             \\
-		 & M_{\text{equ},t}\! = \! p_{\text{base}}^{-1}\left(\sum\nolimits_{g = 1}^{NG}\!\left(M_{g}p_{g}^{\text{max}}\right)x_{g,t} \!+\! \sum\nolimits_{w= 1}^{NW} \!\left(M_{w} p_{w,s,t}\right)\right) \label{21-g} \\
-		 & D_{\text{equ},t}\! = \! p_{\text{base}}^{-1}\left(\sum\nolimits_{g = 1}^{NG}\left(D_{g} p_{g}^{\text{max}}\right)x_{g,t} + \sum\nolimits_{w= 1}^{NW} \left(R_{w}^{-1} p_{w,s,t}\right) + \right.\notag       \\
-		 & \qquad\qquad \qquad \left. \sum\nolimits_{e = 1}^{NE} \left(R_{e}^{-1} p_{e}^{\text{max}}\right)\right), \forall t \label{21-h}                                                                              \\
-		 & R_{G,t}^{-1} = p_{\text{base}}^{-1} \sum\nolimits_{g=1}^{NG} \left(K_{g}R_{g}^{-1}p_{g}^{\text{max}}\right)x_{g,t}, \forall t \label{21-i}                                                                   \\
-		 & F_{G,t} = p_{\text{base}}^{-1} \sum\nolimits_{g=1}^{NG} \left(K_{g}F_{g}R_{g}^{-1}p_{g}^{\text{max}}\right)x_{g,t}, \forall t \label{21-j}                                                                   \\
-		 & R_{W,t}^{-1} = p_{\text{base}}^{-1} \sum\nolimits_{w=1}^{NW} \left(K_{w}R_{w}^{-1}p_{w,s,t}\right), \forall t \label{21-k}                                                                                   \\
-		 & R_{E,t}^{-1} = p_{\text{base}}^{-1} \sum\nolimits_{e=1}^{NE} \left(K_{e}R_{e}^{-1}p_{e}^{\text{max}}\right), \forall t \label{21-l}                                                                          \\
-		 & x_{g,t}\in \{0,1\},u_{g,t}\in \{0,1\},v_{g,t}\in \{0,1\}, u_{e,s, t}^{\text{dis / ch}}\in \{0,1\} \label{21-m}                                                                                               \\
-		 & p_{g,s,t}\in\mathbb{R}^{+}, \varDelta p_{w,s,t}\in\mathbb{R}^{+}, \varDelta p_{d,s,t} \in\mathbb{R}^{+}, p_{g,s,t}^{\text{dis / ch}}\in\mathbb{R}^{+} \label{21-n}
+		 &\max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma,t} +  \alpha_{m}^{(2)} D_{\varSigma,t} + \alpha_{m}^{(3)} \left(\frac{F_{G,t}}{R_{G,t}}\right) +\right. \notag \\
+		 & \left. \alpha_{m}^{(4)}\right)-\varXi \tau_{n,t}\!  \leq \varDelta f_{nadir}, \forall n \in\{1,2,...n,...,N\} \label{19-a}\\
+		 & H_{\varSigma,t} =  H_{G,t} + H_{W,t},\forall t \label{19-b} \\
+		 & D_{\varSigma,t} =  D_{G,t} + D_{W,t} + R_{W,t}^{-1} + R_{E,t}^{-1}, \forall t \label{19-c}       \\
+		 & H_{G,t} =  \frac{1}{p_{base}}\sum\nolimits_{g \in\mathcal{G}}\left(H_{g}\overline{p_{g}}\right) x_{g,t},\forall t \label{19-d} \\
+		 & D_{W,t} =  \frac{1}{p_{base}}\sum\nolimits_{w \in\mathcal{W}}D_{w} \overline{p_{w,s,t}} , \forall t \label{19-e}\\
+		 & R_{G,t}^{-1} =  \frac{1}{p_{base}} \sum\nolimits_{g \in\mathcal{G}} \left(\frac{K_{g}}{R_{g}} \right) \overline{p_{g}} x_{g,t}, \forall t \label{19-f}                                                                   \\
+		 & R_{W,t}^{-1} = \frac{1}{p_{base}} \sum\nolimits_{w\in\mathcal{W}} \left(\frac{K_{w}}{R_{w}}\right) \overline{p_{w,s,t}}, \forall t \label{19-g}                                                                                   \\
+		 & R_{E, t}^{-1} = \frac{1}{p_{base}} \sum\nolimits_{e\in\mathcal{E}   } \left(\frac{1}{R_{e}}\right) \overline{p_{e}^{dis}}, \forall t \label{19-h}                                                                          \\
+         & F_{G,t} = \frac{1}{p_{base}} \sum\nolimits_{g \in\mathcal{G}} \left(\frac{K_{g}F_{g}}{R_{g}}  \right) \overline{p_{g}} x_{g,t}, \forall t \label{19-i}                                                                   \\
+		 & x_{g,t}\in \{0,1\},u_{g,t}\in \{0,1\},v_{g,t}\in \{0,1\}, \tau_{n,t}\in \{0,1\},\notag\\
+         & \upsilon_{e,s,t}^{{dis}}\in \{0,1\}, \upsilon_{e,s,t}^{{ch}}\in \{0,1\}\label{19-j}                                                                                               \\
+		 & p_{g,s,t}\in\mathbb{R}^{+}, \! p_{w,s,t}\in\mathbb{R}^{+}, \! \varDelta p_{d,s,t} \in\mathbb{R}^{+}, \! p_{g,s,t}^{(z)}\!\in\! \mathbb{R}^{+},\! p_{e,s,t}^{{dis}}\!\in\! \mathbb{R}^{+}, \notag\\
+         & p_{e,s,t}^{{ch}}\in\mathbb{R}^{+},H_{\varSigma,t}\in\mathbb{R}^{+},D_{\varSigma,t}\in\mathbb{R}^{+},H_{G,t}\in\mathbb{R}^{+},H_{W,t}\in\mathbb{R}^{+},\notag \\
+         & D_{G,t}\in\mathbb{R}^{+},D_{W,t}\in\mathbb{R}^{+}, R_{G,t}\in\mathbb{R}^{+},R_{W,t}\in\mathbb{R}^{+} \notag\\
+         &R_{E,t}\in\mathbb{R}^{+},F_{G,t}\in\mathbb{R}^{+}  \label{19-k}
 	\end{align}
 \end{newsubequations}
 
@@ -827,10 +832,26 @@ This section presents a comprehensive articulation of CCFDUC in this work. The f
 \nomenclature[I]{$q$}{Index of hyperplane, $q\in[1,2,...,NQ]$}
 
 
-In the above formulation, Eqs. \eqref{20-a} -\eqref{20-v} define a baseline UC model, \cite{zhang2020modeling}, Eqs. \eqref{21-a}-\eqref{21-l} denote frequency dynamic constraints in line with the actual frequency requirements. It is worth noting that the newly redesigned nadir constraint \eqref{21-e}-\eqref{21-f} is based on BF-SFR, which is significantly different from the previous SFR approach or UC studies.
+In the above formulation, \cref{18-a} denotes the objective function of the FCUC problem; it seeks to minimize the overall cost associated with conventional generators. 
+Constraints \labelcref{18-b,18-c} specify conventional generators' minimum up-time and down-time requirements, respectively. 
+Constraints \labelcref{18-d,18-e} ensure the coherence of the shut-up/shut-down choice and the operational condition of any individual conventional generator. 
+Constraint \labelcref{18-f} delineates the constraint about power balance restriction. 
+Constraint \labelcref{18-g} denotes the constraint that represents the capacity of each transmission line. 
+Constraints \labelcref{18-h,18-i} ensure the compliance of each conventional generator's up-forward and down-forward ramping rates throughout consecutive dispatching periods.
+Constraints \labelcref{18-j,18-k} delineate the stipulation for providing up-forward and down-forward spinning reserve capacity generated by conventional generators. 
+Constraint \eqref{18-l} indicates the minimize/minimize output of conventional generators. 
+Constraints \labelcref{18-m,18-n} introduce limitations on actual wind output and forced-load-curtailment. 
+Constraints \labelcref{18-o,18-p} specify the binding of charging/discharging capacities for each BESS. 
+Constraint \labelcref{18-q} signifies a coupling restriction between the energy of BESS and the corresponding discharging/charging decisions.
+Constraint \labelcref{18-r} establishes the maximum cumulative charging/discharge amount for each BESS.
+Constraint \labelcref{18-s} underscores the exclusiveness of the discharging and charging choices made by each BESS.
+Constraint \labelcref{18-t} enforces that the output of the conventional generator is equal to the total of the segmented outputs generated on each block of its linearized fuel cost curve. 
+Constraints \labelcref{18-u} defines the security requirement of the RoCoF under imbalanced disturbances.
+Constraints \labelcref{18-v,18-w,18-x,18-y} denote the additional output of multiple generators participating in the frequency-supporting process.
+Constraints \labelcref{18-z} represent the binding of FCR.
+Constraints \labelcref{19-a,19-b,19-c,19-d,19-e,19-f,19-g,19-h,19-i} list the aggregated frequency parameters of homogeneous generators concerning the current operation status.
+Constraints \labelcref{19-j,19-k} describe the feasible region of binary and continuous decision variables, respectively.
 
-Next, \cref{20-a} denotes the objective of the UC problem; it seeks to minimize the overall cost associated with conventional generators. Constraints \labelcref{20-b,20-c} specify the minimum up-time and down-time requirements for all conventional generators, respectively. Constraints \labelcref{20-d,20-e} ensure the coherence of the shut-up/shut-down choice and the operational condition of any individual conventional generator. Constraint \labelcref{20-f} delineates the constraint pertaining to the online power balance restriction. Constraint \labelcref{20-g} denotes the constraint that represents the capacity of each transmission line. Constraints \labelcref{20-h,20-i} ensure the compliance of the up-forward and down-forward ramping rates of each conventional generator throughout consecutive dispatching periods. Constraints \labelcref{20-j,20-k} delineate the stipulation for the provision of up-forward and down-forward spinning reserve capacity generated by individual conventional generator. Constraint \eqref{20-l} indicate the minimize/minimize power of multiple generators. Constraints \labelcref{20-m,20-n} introduce limitations on the amount of abandoned wind output and forced-load-curtailment. Constraints \labelcref{20-o,20-p} specify the binding of charging/discharging capacities for each BESS. Constraint \labelcref{20-q} signifies a coupling restriction between the energy of BESS and the corresponding discharging/charging decisions. Constraint \labelcref{20-r} establishes a periodic energy regulation policy for each BESS. Constraint \labelcref{20-s} underscores the exclusiveness of the discharging and charging choices made by each BESS.
-Constraint \labelcref{20-t} enforces that the output of individual conventional generator is equal to the total of the segmented outputs generated on each block of its linearized fuel cost curve. Constraint \eqref{20-u} enforces the binding restriction of each segmented output. Constraint \labelcref{20-v} specifies the operational cost associated with each particular conventional generator. Constraints \labelcref{21-a,21-b,21-c,21-d,21-e,21-f} correspond to the RoCoF, nadir and FCR constraint, respectively. It is noteworthy to mention that the original chance nadir constraint \eqref{eqn:15} has been transformed into a collection of convex constraints using SAA. Constraints \labelcref{21-g,21-h,21-i,21-j} declare aggregated values of the system inertia, damping, droop and fraction of output generated by reheaters. Constraints \labelcref{21-k,21-l} represent the aggregated droop coefficient of wind farms and BESS. Constraint \labelcref{21-m,21-n} describe the feasible region of binary decision variables and continuous decision variables, respectively.
 
 \vspace{-0.125in}
 \section{case studies and analysis}

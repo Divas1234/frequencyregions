@@ -4,7 +4,7 @@
   "apc.monospace.font.family": "Geist Mono",
   "apc.stylesheet": {},
   "editor.wordWrap": "wordWrapColumn",
-  "editor.fontFamily": "Gill Sans MT, Candara, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
   "editor.wordWrapColumn": 180,
   "vim.textwidth": 180,
   "prettier.proseWrap": "always",
