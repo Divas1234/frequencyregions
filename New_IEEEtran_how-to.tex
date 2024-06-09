@@ -471,8 +471,8 @@ Since the maximum of \(\varDelta f^{\prime}(t)\) equals to $\nicefrac{\varDelta 
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:10}
-		            & 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}\leq \overline{\gamma}_{rocof}, \forall g, t                                                                                                                    \\
-		\rightarrow & \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
+		            2{H_{\varSigma}^{-1}}{\varDelta p_{step}}&\leq \overline{\gamma}_{rocof}, \forall g, t \rightarrow                                                                                                                   \\
+		 \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \!&\geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}] \notag
 	\end{align}
 \end{small}
 
@@ -577,7 +577,7 @@ Since the posterior of frequency derivation considering uncertain variability fa
 \begin{small}
 	\begin{align}\label{eqn:13}
 		 & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag      \\
-		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \,in\, \textrm{\cref{eqn:7a}}
+		 & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) 
 	\end{align}
 \end{small}
 
@@ -604,7 +604,7 @@ where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{e
 
 \vspace{-0.125in}
 \noindent
-where \((\varDelta f(t))^{(n)}\), following its posterior \eqref{eqn:7a}, enforces possible realization of \(\varDelta f(t)\). \(\tau_{SFR}\) denotes a binary indicator describing whether \((\varDelta f(t))^{(n)}\) satisfying the frequency security requirement, e.g., if \((\varDelta f (t))^{(n)}\!\leq\! \varDelta f_{nadir}\), then  \(\tau_{SFR}\!=\!0\), and vice versa. Despite that the posterior function \eqref{eqn:7a} depends on the initial mismatch power \(\varDelta p_{step}\), equivalent frequency parameters \(\langle H_{\varSigma}, D_{\varSigma}\rangle\), and aggregated generators' parameters \(\{\langle R_{G},F_{G},K_{G}\rangle), \langle K_{W},R_{W}\rangle, R_{E}\}\), and various uncertain variability factors \(\varDelta \omega(t)\). Therefore, \cref{eqn:7a} can be mathematically described as the nonlinear relation of the variables above. Furthermore, to prevent introducing nonlinear terms purposes, a linearized soft-linked function needs to be reconstructed to approximate the posterior function  \eqref{eqn:7a} as follows:
+where \((\varDelta f(t))^{(n)}\), following its posterior \eqref{eqn:7a}, enforces possible realization of \(\varDelta f(t)\). \(\tau_{SFR}\) denotes a binary indicator describing whether \((\varDelta f(t))^{(n)}\) satisfying the frequency security requirement, e.g., if \((\varDelta f (t))^{(n)}\!\leq\! \varDelta f_{nadir}\), then  \(\tau_{SFR}\!=\!0\), and vice versa. Despite that the posterior function \eqref{eqn:7a} depends on the initial mismatch power \(\varDelta p_{step}\), equivalent frequency parameters \(\langle H_{\varSigma}, D_{\varSigma}\rangle\), and aggregated generators' parameters \(\{\langle R_{G},F_{G},K_{G}\rangle), \langle K_{W},R_{W}\rangle, R_{E}\}\), and various uncertain variability factors \(\varDelta \omega(t)\). Therefore, \cref{eqn:7a} can be mathematically described as the nonlinear relation of the variables above. Furthermore, to prevent introducing nonlinear terms purposes, a linearized fitting function soft-linking to frequency parameters is reconstructed as \eqref{eqn:7a} to approximate the posterior function.
 
 \vspace{-0.125in}
 \begin{newsubequations}
@@ -656,32 +656,56 @@ where \((\varDelta f(t))^{(n)}\), following its posterior \eqref{eqn:7a}, enforc
 %		% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
 %		 & \boxed{\left(\Psi\!\left(\wp, \hat{\zeta}^{(q)}\!\right) \!- \!\varDelta f_{\text{max}} \right) \left(1-z_{q}\right) \leq 0},\sum\nolimits_{q=1}^{NQ} \pi_{q} z_{q}\! \leq \epsilon,\forall q
 %	\end{align}
-%\end{small}
+% \end{small}
 %
 %The boxed term in \cref{eqn:17} can be rewritten as $\Psi\!(\wp, \hat{\zeta}^{(q)}\!) -  z_{q} \Psi\!(\wp, \hat{\zeta}^{(q)}\!) \!- \! (1\!\!-\!\!z_{q})\varDelta f_{\text{max}}\!\! \leq\!\! 0,\forall q$ where the nonlinear term $\Psi\!(\wp, \hat{\zeta}^{(q)})\!$ needs to be further linearized and the bi-linear term $\langle z_{q} \times \Psi\!(\wp, \hat{\zeta}^{(q)}\!)\rangle$ should be reformulated through McCormick linearization method. For pretending the resulting constraint from being excessive complexity, \eqref{eqn:16} is utilized to approximate \eqref{eqn:15}. Note that \eqref{eqn:16} cannot be directly incorporated into UC due to the nonlinear property of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$, therefore, a ``max-affine'' PWL method, \cite{paturet2020stochastic,10219063,9765359}, is implemented to estimate the original value of $\Psi\!(\wp, \hat{\zeta}^{(q)}\!)$.
 
-Let $\hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!=\!\max\left(\alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)\right.$ $\left. + \alpha_{\iota,4}^{(q)} \right) $ describe the approximated fitting function of $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ given a stochastic uncertain realization $\hat{\zeta}^{(q)}$; $\langle \tilde{H}_{\text{equ}}^{(q)}, \tilde{D}_{\text{equ}}^{(q)}, \tilde{F}_G^{(q)}$, $\tilde{R}_G^{(q)}$ denotes a possible set of aggregated frequency parameters with the respect of $\hat{\zeta}^{(q)}$. In such a situation, $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ can be evaluated by observing the maximum value of constructed hyperplane $\Theta_{\iota\in\{1,2,3,4\}}^{(q)}$ where $\Theta_{\iota}^{(q)} = \alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)$. Particularly, the selection of fitting parameters $\langle \alpha_{\iota, 1}^{(q)},\alpha_{\iota, 2}^{(q)}, \alpha_{\iota, 3}^{(q)}, \alpha_{\iota, 4}^{(q)}  \rangle$ can be solved by minimizing the loose function defined by $\vartheta_{\text{loss}} \!=\! \hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!-\! \Psi(\wp, \hat{\zeta}^{(q)})$. As such, the below lists a detailed optimization model for calculating fitting parameters.
+% Let $\hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!=\!\max\left(\alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)\right.$ $\left. + \alpha_{\iota,4}^{(q)} \right) $ describe the approximated fitting function of $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ given a stochastic uncertain realization $\hat{\zeta}^{(q)}$; $\langle \tilde{H}_{\text{equ}}^{(q)}, \tilde{D}_{\text{equ}}^{(q)}, \tilde{F}_G^{(q)}$, $\tilde{R}_G^{(q)}$ denotes a possible set of aggregated frequency parameters with the respect of $\hat{\zeta}^{(q)}$. In such a situation, $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ can be evaluated by observing the maximum value of constructed hyperplane $\Theta_{\iota\in\{1,2,3,4\}}^{(q)}$ where $\Theta_{\iota}^{(q)} = \alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\frac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right)$. Particularly, the selection of fitting parameters $\langle \alpha_{\iota, 1}^{(q)},\alpha_{\iota, 2}^{(q)}, \alpha_{\iota, 3}^{(q)}, \alpha_{\iota, 4}^{(q)}  \rangle$ can be solved by minimizing the loose function defined by $\vartheta_{\text{loss}} \!=\! \hat{\Psi}(\wp, \hat{\zeta}^{(q)}) \!-\! \Psi(\wp, \hat{\zeta}^{(q)})$. As such, the below lists a detailed optimization model for calculating fitting parameters.
+\noindent
+where \(\alpha_{m}^{(i)}:i\in\{1,2,3,4\}\) are fitting parameters of the \(m\)-th hyperplane. Using \cref{eqn:15a}, the maximum frequency derivation can be estimated by automatically selecting the nearest hyperplane to the posterior \eqref{eqn:7a}. Following the discussion mentioned, the associated optimization model concerning fitting parameters can be constructed as below,
 
 \vspace{-0.125in}
 \begin{small}
-	\begin{align}\label{eqn:18}
-		 & \min\!\!\sum\nolimits_{r=1}^{N\!R}\left( \!\max \!\left(\alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\nicefrac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right) + \alpha_{\iota,4}^{(q)} \right)\right.\notag \\
-		 & \qquad\qquad \qquad - \Psi (\wp, \hat{\zeta}^{(q)})\Bigr)^{2}, \forall \iota\in\{1,2,3\}
+	\begin{align}\label{eqn:16}
+		 \min & \sum\nolimits_{r\in\mathcal{R}} \Biggl\{\max\limits_{m\in\{1,2,...,m,...,M\}} \Bigl(\alpha_{m}^{(1)}{H}_{\varSigma}^{(n)} + \alpha_{m}^{(2)} {D}_{\varSigma}^{(n)} +\\
+		 & \alpha_{m}^{(3)}\left(\frac{{F}_G^{(n)}}{{R}_G^{(n)} }\right)+ \alpha_{m}^{(n)} \Bigr)- \varDelta f(t)\Biggr\} ^{2}, \forall n\in\{1,2,...,n,...,N\}\notag
 	\end{align}
 \end{small}
 
-In \cref{eqn:18}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between the pre-selected hyperplane and all evaluation points. In terms of problem-solving, \eqref{eqn:18} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:18} can be found in \cite{ding2021two,zhang2020modeling}
 
-Substituting $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ derived from \cref{eqn:18} into \cref{eqn:16}, a convex form of \eqref{eqn:16} can be obtained as follows,
+% \vspace{-0.125in}
+% \begin{small}
+% 	\begin{align}\label{eqn:18}
+% 		 & \min\!\!\sum\nolimits_{r=1}^{N\!R}\left( \!\max \!\left(\alpha_{\iota,1}^{(q)}\tilde{H}_{\text{equ}}^{(q)} + \alpha_{\iota,2}^{(q)} \tilde{D}_{\text{equ}}^{(q)} + \alpha_{\iota,3}^{(q)}\left(\nicefrac{\tilde{F}_G^{(q)}}{\tilde{R}_G^{(q)} }\right) + \alpha_{\iota,4}^{(q)} \right)\right.\notag \\
+% 		 & \qquad\qquad \qquad - \Psi (\wp, \hat{\zeta}^{(q)})\Bigr)^{2}, \forall \iota\in\{1,2,3\}
+% 	\end{align}
+% \end{small}
+
+In \cref{eqn:16}, the inner $``\max"$ operator automatically selects the most suitable hyperplane closet to each evaluation point, and the outer $``\min"$ operator guarantees the global accuracy between the pre-selected hyperplane and all evaluation points. In terms of problem-solving, \eqref{eqn:18} can be solved by directly calling \code{Ipopt} solver or reformulating it as its recursive form and subsequently invoking existing MIP solver, e.g., \code{Gurobi}, \code{IBM CPLEX}, etc. More detailed on the calculation of \eqref{eqn:18} can be found in \cite{ding2021two,zhang2020modeling}
+
+% Next, substituting $\hat{\Psi}(\wp, \hat{\zeta}^{(q)})$ derived from \cref{eqn:18} into \cref{eqn:16}, a convex form of \eqref{eqn:16} can be obtained as follows,
+
+Next, substituting the equivalent form in \eqref{eqn:15a} concerning \(\varDelta f(t)\) derived from \eqref{eqn:16} into \cref{eqn:14a,eqn:14b}, a convex form of frequency nadir constraint can be obtained as follows,
 
 \vspace{-0.125in}
-\begin{small}
-	\begin{align}\label{eqn:19}
-		% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
-		 & \alpha_{\iota,1}^{(q)}{H}_{\text{equ}} + \alpha_{\iota,2}^{(q)} {D}_{\text{equ}} + \alpha_{\iota,3}^{(q)}\left(\slfrac{{F}_G}{{R}_G }\right) + \alpha_{\iota,4}^{(q)}  \\
-		 & \qquad \qquad \qquad \,\, \leq \!\varDelta f_{\text{max}} \!+\! M z_{q}; \sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q \notag, \iota\in\{1,2,3,4\}
-	\end{align}
-\end{small}
+\begin{newsubequations}
+	\begin{small}
+		\begin{align}
+			&\left(\varDelta f(t)\right)^{(n)} \!-\! M \tau_{n}\!  \leq \!\!\!\!\!\!\! \max\limits_{m\in\{1,2,...,m,...,M\}}\left(\alpha_{m}^{(1)} H_{\varSigma} +  \alpha_{m}^{(2)} D_{\varSigma} + \right.\label{eqn:17a}\\
+			&\left. \alpha_{m}^{(3)} \left(\frac{F_{G}}{R_{G}}\right)+\alpha_{m}^{(4)}\right), \forall n \in\{1,2,...n,...,N\},\forall t\in(t_{IR}, t_{PFR}]  \notag             \\
+			& \frac{1}{{N}}\sum\nolimits_{n\in\{1,2,...n,...,N\}}  \tau_{n} \leq \varepsilon_{SFR},\forall n \in \{1,2,...n,...,N\} \label{eqn:17b}
+		\end{align}
+	\end{small}
+\end{newsubequations}
+
+% \vspace{-0.125in}
+% \begin{small}
+% 	\begin{align}\label{eqn:19}
+% 		% &\varDelta f_{\text{nadir}}\!=\!\Psi(\wp, \zeta):\\
+% 		 & \alpha_{\iota,1}^{(q)}{H}_{\text{equ}} + \alpha_{\iota,2}^{(q)} {D}_{\text{equ}} + \alpha_{\iota,3}^{(q)}\left(\slfrac{{F}_G}{{R}_G }\right) + \alpha_{\iota,4}^{(q)}  \\
+% 		 & \qquad \qquad \qquad \,\, \leq \!\varDelta f_{\text{max}} \!+\! M z_{q}; \sum\nolimits_{q=1}^{NQ}  \pi_{q} z_{q}\! \leq \epsilon,\forall q \notag, \iota\in\{1,2,3,4\}
+% 	\end{align}
+% \end{small}
 
 \nomenclature[P]{$RoCoF_{\textrm{max}}$}{Threshold of Rate-of-Change-of-Frequency(RoCoF)}
 \nomenclature[P]{$\varDelta f_{\textrm{max}}$}{Threshold of frequency nadir}

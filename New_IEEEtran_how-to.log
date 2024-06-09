@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.8)  8 JUN 2024 17:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.8)  9 JUN 2024 12:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1458,11 +1458,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 454.
 
 
-Overfull \hbox (0.81824pt too wide) detected at line 476
-[]
- []
-
-
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 481.
 
@@ -1542,85 +1537,64 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 569.
 
 [4 <./fig3.pdf>]
-Overfull \hbox (3.7002pt too wide) in paragraph at lines 663--664
-[]\OT1/ptm/m/n/10 Let $[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10
- )  =  [] []$
- []
 
-
-Overfull \hbox (4.38206pt too wide) in paragraph at lines 663--664
-[]$ \OT1/ptm/m/n/10 de-scribe the ap-prox-i-mated fit-ting func-tion of $[]\OT1
-/cmr/m/n/10 (\OML/cmm/m/it/10 }; []\OT1/cmr/m/n/10 )$
- []
-
-
-Overfull \hbox (4.25987pt too wide) detected at line 670
-[]
- []
+LaTeX Warning: Reference `eqn:18' on page 5 undefined on input line 684.
 
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 6
-73.
+84.
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 
-LaTeX Warning: Reference `eqn:16' on page 1 undefined on input line 675.
-
-
-LaTeX Warning: Reference `eqn:16' on page 5 undefined on input line 675.
-
-
-Overfull \hbox (2.80177pt too wide) detected at line 683
-[]
- []
+LaTeX Warning: Reference `eqn:18' on page 5 undefined on input line 684.
 
 [5]
 
-LaTeX Warning: Reference `eqn:15' on page 6 undefined on input line 809.
+LaTeX Warning: Reference `eqn:15' on page 6 undefined on input line 833.
 
 [6]
 
 pdfTeX warning: pdflatex.exe (file ./fig8_LOADandWINDscurves.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig8_LOADandWINDscurves.pdf, id=431, 597.95796pt x 208.1637pt>
+<fig8_LOADandWINDscurves.pdf, id=434, 597.95796pt x 208.1637pt>
 File: fig8_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig8_LOADandWINDscurves.pdf>
-Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 852.
+Package pdftex.def Info: fig8_LOADandWINDscurves.pdf  used on input line 876.
 (pdftex.def)             Requested size: 252.0pt x 87.72672pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig5_new_SFRcurves.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig5_new_SFRcurves.pdf, id=432, 591.04817pt x 211.79927pt>
+<fig5_new_SFRcurves.pdf, id=435, 591.04817pt x 211.79927pt>
 File: fig5_new_SFRcurves.pdf Graphic file (type pdf)
 <use fig5_new_SFRcurves.pdf>
-Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 859.
+Package pdftex.def Info: fig5_new_SFRcurves.pdf  used on input line 883.
 (pdftex.def)             Requested size: 252.0pt x 90.30273pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig6_SFRPDFinformations.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig6_SFRPDFinformations.pdf, id=433, 596.21445pt x 220.66942pt>
+<fig6_SFRPDFinformations.pdf, id=436, 596.21445pt x 220.66942pt>
 File: fig6_SFRPDFinformations.pdf Graphic file (type pdf)
 <use fig6_SFRPDFinformations.pdf>
-Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 865.
+Package pdftex.def Info: fig6_SFRPDFinformations.pdf  used on input line 889.
 (pdftex.def)             Requested size: 252.0pt x 93.26976pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig7_surface.pdf): PDF inclusion: found PD
 F version <1.7>, but at most version <1.5> allowed
-<fig7_surface.pdf, id=434, 1389.49007pt x 673.64331pt>
+<fig7_surface.pdf, id=437, 1389.49007pt x 673.64331pt>
 File: fig7_surface.pdf Graphic file (type pdf)
 <use fig7_surface.pdf>
-Package pdftex.def Info: fig7_surface.pdf  used on input line 871.
+Package pdftex.def Info: fig7_surface.pdf  used on input line 895.
 (pdftex.def)             Requested size: 226.79655pt x 90.33145pt.
 
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 884--893
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 908--917
 [][] 
  []
 
 
-Overfull \hbox (0.71162pt too wide) in paragraph at lines 895--896
+Overfull \hbox (0.71162pt too wide) in paragraph at lines 919--920
 []\OT1/ptm/m/n/10 In Ta-ble []III[], both sched-ule costs solved by FDUC/CCFDUC
 
  []
@@ -1629,10 +1603,10 @@ Overfull \hbox (0.71162pt too wide) in paragraph at lines 895--896
 
 pdfTeX warning: pdflatex.exe (file ./fig9_OnlineUnitRes.pdf): PDF inclusion: fo
 und PDF version <1.7>, but at most version <1.5> allowed
-<fig9_OnlineUnitRes.pdf, id=444, 435.17178pt x 141.65823pt>
+<fig9_OnlineUnitRes.pdf, id=447, 435.17178pt x 141.65823pt>
 File: fig9_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig9_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 899.
+Package pdftex.def Info: fig9_OnlineUnitRes.pdf  used on input line 923.
 (pdftex.def)             Requested size: 201.60245pt x 61.4306pt.
 
 Underfull \vbox (badness 2205) has occurred while \output is active []
@@ -1649,38 +1623,41 @@ n: multiple pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex.exe (file ./fig10_powerbalance2and3.pdf): PDF inclusio
 n: found PDF version <1.7>, but at most version <1.5> allowed
-<fig10_powerbalance2and3.pdf, id=1236, 595.00595pt x 204.58533pt>
+<fig10_powerbalance2and3.pdf, id=1239, 595.00595pt x 204.58533pt>
 File: fig10_powerbalance2and3.pdf Graphic file (type pdf)
 <use fig10_powerbalance2and3.pdf>
-Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 908.
+Package pdftex.def Info: fig10_powerbalance2and3.pdf  used on input line 932.
 (pdftex.def)             Requested size: 252.0pt x 86.64635pt.
 
 
 pdfTeX warning: pdflatex.exe (file ./fig11_RoCOFandnadirdistributionINFO.pdf): 
 PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig11_RoCOFandnadirdistributionINFO.pdf, id=1238, 595.59918pt x 209.18852pt>
+<fig11_RoCOFandnadirdistributionINFO.pdf, id=1241, 595.59918pt x 209.18852pt>
 File: fig11_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
 <use fig11_RoCOFandnadirdistributionINFO.pdf>
 Package pdftex.def Info: fig11_RoCOFandnadirdistributionINFO.pdf  used on input
- line 917.
+ line 941.
 (pdftex.def)             Requested size: 252.0pt x 88.50653pt.
 
-LaTeX Warning: Reference `eqn:14' on page 1 undefined on input line 922.
+LaTeX Warning: Reference `eqn:19' on page 1 undefined on input line 946.
+
+
+LaTeX Warning: Reference `eqn:14' on page 1 undefined on input line 946.
 
 
 
 pdfTeX warning: pdflatex.exe (file ./fig13_SFRcurveandadditionaPower.pdf): PDF 
 inclusion: found PDF version <1.7>, but at most version <1.5> allowed
-<fig13_SFRcurveandadditionaPower.pdf, id=1246, 602.25pt x 217.28879pt>
+<fig13_SFRcurveandadditionaPower.pdf, id=1248, 602.25pt x 217.28879pt>
 File: fig13_SFRcurveandadditionaPower.pdf Graphic file (type pdf)
 <use fig13_SFRcurveandadditionaPower.pdf>
 Package pdftex.def Info: fig13_SFRcurveandadditionaPower.pdf  used on input lin
-e 926.
+e 950.
 (pdftex.def)             Requested size: 252.0pt x 90.91916pt.
-<fig12_cost_and_wastepower.pdf, id=1247, 586.36264pt x 216.14452pt>
+<fig12_cost_and_wastepower.pdf, id=1249, 586.36264pt x 216.14452pt>
 File: fig12_cost_and_wastepower.pdf Graphic file (type pdf)
 <use fig12_cost_and_wastepower.pdf>
-Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 933.
+Package pdftex.def Info: fig12_cost_and_wastepower.pdf  used on input line 957.
 
 (pdftex.def)             Requested size: 252.0pt x 92.89085pt.
 [8 <./fig9_OnlineUnitRes.pdf> <./fig10_powerbalance2and3.pdf
@@ -1700,28 +1677,28 @@ inclusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./fig12_cost_and_wastepower.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (0.8465pt too wide) in paragraph at lines 955--964
+Overfull \hbox (0.8465pt too wide) in paragraph at lines 979--988
 [][] 
  []
 
-<fig14_bigcase_LOADandWINDscurves.pdf, id=2921, 597.14995pt x 206.04076pt>
+<fig14_bigcase_LOADandWINDscurves.pdf, id=2924, 597.14995pt x 206.04076pt>
 File: fig14_bigcase_LOADandWINDscurves.pdf Graphic file (type pdf)
 <use fig14_bigcase_LOADandWINDscurves.pdf>
 Package pdftex.def Info: fig14_bigcase_LOADandWINDscurves.pdf  used on input li
-ne 969.
+ne 993.
 (pdftex.def)             Requested size: 252.0pt x 86.94838pt.
-<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=2922, 597.5143pt x 211.334
+<fig15_bigcase_RoCOFandnadirdistributionINFO.pdf, id=2925, 597.5143pt x 211.334
 55pt>
 File: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf Graphic file (type pdf)
 <use fig15_bigcase_RoCOFandnadirdistributionINFO.pdf>
 Package pdftex.def Info: fig15_bigcase_RoCOFandnadirdistributionINFO.pdf  used 
-on input line 976.
+on input line 1000.
 (pdftex.def)             Requested size: 252.0pt x 89.13074pt.
-<fig16_bigcase_OnlineUnitRes.pdf, id=2923, 434.45714pt x 143.65369pt>
+<fig16_bigcase_OnlineUnitRes.pdf, id=2926, 434.45714pt x 143.65369pt>
 File: fig16_bigcase_OnlineUnitRes.pdf Graphic file (type pdf)
 <use fig16_bigcase_OnlineUnitRes.pdf>
-Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 98
-3.
+Package pdftex.def Info: fig16_bigcase_OnlineUnitRes.pdf  used on input line 10
+07.
 (pdftex.def)             Requested size: 201.5962pt x 61.43011pt.
 (New_IEEEtran_how-to.bbl
 Underfull \hbox (badness 1968) in paragraph at lines 25--28
@@ -1739,7 +1716,7 @@ O.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 pdfTeX warning: pdflatex.exe (file ./fig16_bigcase_OnlineUnitRes.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 3590) in paragraph at lines 109--111
+Underfull \hbox (badness 3590) in paragraph at lines 98--100
 []\OT1/stix/m/n/9 P. M. An-der-son and M. Mirhey-dar, ``A low-order sys-tem
  []
 
@@ -1761,13 +1738,13 @@ Package rerunfilecheck Info: File `New_IEEEtran_how-to.out' has not changed.
 (rerunfilecheck)             Checksum: B716D824B5BADA459F6C8E4D9CDBAD06;1983.
  ) 
 Here is how much of TeX's memory you used:
- 32111 strings out of 474370
- 645729 string characters out of 5738179
- 1992754 words of memory out of 5000000
- 53755 multiletter control sequences out of 15000+600000
+ 32107 strings out of 474370
+ 645664 string characters out of 5738179
+ 1989754 words of memory out of 5000000
+ 53751 multiletter control sequences out of 15000+600000
  612193 words of font info for 132 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
- 110i,15n,107p,1735b,631s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,15n,107p,1735b,633s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/ST
 IXGeneral-Bold.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/typ
 e1/public/stix/STIXGeneral-Italic.pfb><D:/CommonSoftwares/ProductiveCodingEdito
@@ -1801,9 +1778,9 @@ ourier/ucrr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type
 /type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX
 /fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/M
 iKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on New_IEEEtran_how-to.pdf (10 pages, 6206406 bytes).
+Output written on New_IEEEtran_how-to.pdf (10 pages, 6199431 bytes).
 PDF statistics:
- 4072 PDF objects out of 4296 (max. 8388607)
+ 4071 PDF objects out of 4296 (max. 8388607)
  141 named destinations out of 1000 (max. 500000)
  171 words of extra memory for PDF output out of 10000 (max. 10000000)
 
