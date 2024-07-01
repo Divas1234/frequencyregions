@@ -515,8 +515,6 @@ INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\adobe\courier\
 INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\adobe\times\ptmrc7t.tfm
 INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\public\cm\cmbx8.tfm
-INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
-INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\vf\adobe\times\ptmrc7t.vf
 INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\adobe\times\ptmr8r.tfm
 INPUT .\fig8_LOADandWINDscurves.pdf
@@ -545,6 +543,8 @@ INPUT .\fig9_OnlineUnitRes.pdf
 INPUT .\fig9_OnlineUnitRes.pdf
 INPUT .\fig9_OnlineUnitRes.pdf
 INPUT .\fig9_OnlineUnitRes.pdf
+INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\vf\adobe\times\ptmb7t.vf
+INPUT D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\fonts\tfm\adobe\times\ptmb8r.tfm
 INPUT .\fig10_powerbalance2and3.pdf
 INPUT .\fig10_powerbalance2and3.pdf
 INPUT .\fig10_powerbalance2and3.pdf
