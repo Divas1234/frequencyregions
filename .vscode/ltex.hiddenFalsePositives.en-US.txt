@@ -1,2 +1,0 @@
-{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QConstraint 18-s underscores the exclusiveness of the discharging and charging choices made by each BESS.\\E$"}
-{"rule":"ENGLISH_WORD_REPEAT_BEGINNING_RULE","sentence":"^\\QConstraints 19-a,19-b,19-c,19-d,19-e,19-f,19-g,19-h,19-i list the aggregated frequency parameters of homogeneous generators concerning the current operation status.\\E$"}

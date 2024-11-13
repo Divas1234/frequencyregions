@@ -1,38 +1,47 @@
 {
-  "editor.fontSize": 24,
-  "apc.font.family": "Geist Mono",
-  "apc.monospace.font.family": "Geist Mono",
-  "apc.stylesheet": {},
-  "editor.wordWrap": "wordWrapColumn",
-  "editor.fontFamily": "Candara, Consolas, 'Courier New', monospace",
-  "editor.wordWrapColumn": 180,
-  "vim.textwidth": 180,
-  "prettier.proseWrap": "always",
-  "workbench.editor.wrapTabs": true,
-  "notebook.output.wordWrap": true,
-  "chat.editor.wordWrap": "on",
-  "html.format.wrapLineLength": 180,
-  "files.autoSave": "onFocusChange",
-  "editor.formatOnSave": false,
-  "files.autoSaveWorkspaceFilesOnly": false,
-  "markdown.extension.print.onFileSave": true,
-  "code-runner.saveAllFilesBeforeRun": true,
-  "bookmarks.useWorkaroundForFormatters": true,
-  "cSpell.words": [
-    "FCUC",
-    "linearizing",
-    "soluted"
-  ],
-  "editor.tokenColorCustomizations": {
-    "textMateRules": [],
-    "comments": ""
-  },
-  "grammarly.selectors": [
-    {
-      "language": "latex",
-      "scheme": "file"
-    }
-  ],
-  "git.ignoreLimitWarning": true,
-  "terminal.integrated.fontSize": 18
+    "cSpell.words": [
+        "soluted"
+    ],
+    "cSpell.showAutocompleteSuggestions": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "One Dark italic",
+                "scope": [
+                    "comment",
+                    "entity.other.attribute-name",
+                    "keyword",
+                    "markup.underline.link",
+                    "storage.modifier",
+                    "storage.type",
+                    "string.url",
+                    "variable.language.super",
+                    "variable.language.this"
+                ],
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "name": "One Dark italic reset",
+                "scope": [
+                    "keyword.operator",
+                    "keyword.other.type",
+                    "storage.modifier.import",
+                    "storage.modifier.package",
+                    "storage.type.built-in",
+                    "storage.type.function.arrow",
+                    "storage.type.generic",
+                    "storage.type.java",
+                    "storage.type.primitive"
+                ],
+                "settings": {
+                    "fontStyle": ""
+                }
+            }
+        ],
+        "comments": "#ff00ff"
+    },
+    "window.autoDetectColorScheme": true,
+    "editor.fontFamily": "SF PRO, Candara, Monoid, Menlo, Consolas, 'Courier New', monospace"
 }
