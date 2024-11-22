@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  13 NOV 2024 15:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  22 NOV 2024 17:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/ieee_tpws/main_9/New_IEEEtran_how-to.tex
-(d:/ieee_tpws/main_9/New_IEEEtran_how-to.tex
+**d:/ieee_tpws/main_9/manuscript.tex
+(d:/ieee_tpws/main_9/manuscript.tex
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
 (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/ieeetran\IEEEtran.cls
@@ -945,16 +945,16 @@ Package tocbasic Info: setting babel extension for `nls' on input line 188.
 \nomitemsep=\skip83
 )
 \@nomenclaturefile=\write4
-\openout4 = `New_IEEEtran_how-to.nlo'.
+\openout4 = `manuscript.nlo'.
 
-Package nomencl Info: Writing nomenclature file New_IEEEtran_how-to.nlo on input line 37.
+Package nomencl Info: Writing nomenclature file manuscript.nlo on input line 37.
 
 
 LaTeX Warning: Unused global option(s):
     [lettersize].
 
-(New_IEEEtran_how-to.aux)
-\openout1 = `New_IEEEtran_how-to.aux'.
+(manuscript.aux)
+\openout1 = `manuscript.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
 LaTeX Font Info:    ... okay on input line 70.
@@ -999,24 +999,25 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package hyperref Info: Link coloring OFF on input line 70.
- (New_IEEEtran_how-to.out) (New_IEEEtran_how-to.out)
+ (manuscript.out) (manuscript.out)
 \@outlinefile=\write5
-\openout5 = `New_IEEEtran_how-to.out'.
+\openout5 = `manuscript.out'.
 
  (nomenclatures_list.tex)
 LaTeX Font Info:    Trying to load font information for OT1+stix on input line 92.
  (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/stix\ot1stix.fd
 File: ot1stix.fd 2015/04/17 v1.1.2-latex STIX OT1 font definitions
-) (New_IEEEtran_how-to.nls
-LaTeX Font Info:    Trying to load font information for U+msa on input line 4.
- (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/amsfonts\umsa.fd
+)
+No file manuscript.nls.
+
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 141.
+(D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 4.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 141.
  (D:\CommonSoftwares\ProductiveCodingEditors\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-
 )
 
 [1{C:/Users/yyp_uestc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/enc/dvips/base/8r.enc}{D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/enc/dvips/stix/stix-ot1.enc}
@@ -1025,46 +1026,50 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 
 
-
-[2]
-
-
-Overfull \hbox (5.88416pt too wide) in paragraph at lines 235--240
+Overfull \hbox (5.88416pt too wide) in paragraph at lines 215--220
 \OMS/cmsy/m/n/10 ^^@  [] $
  []
 
 
 
-[3] (New_IEEEtran_how-to.bbl
+[2]
+
+
+LaTeX Warning: Reference `eqn:11a' on page 3 undefined on input line 320.
+
+
+LaTeX Warning: Reference `eqn:11b' on page 3 undefined on input line 320.
+
+(manuscript.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 24.
 
 )
 
-
-
-[4
-
-] (New_IEEEtran_how-to.aux)
+[3] (manuscript.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
  ***********
-Package rerunfilecheck Info: File `New_IEEEtran_how-to.out' has not changed.
-(rerunfilecheck)             Checksum: 567079ECD2A57EBC94158D6D5D333F24;491.
+
+
+LaTeX Warning: There were undefined references.
+
+Package rerunfilecheck Info: File `manuscript.out' has not changed.
+(rerunfilecheck)             Checksum: 74F609F8805DF88EE169F211B6431017;980.
  ) 
 Here is how much of TeX's memory you used:
- 31494 strings out of 473899
- 630280 string characters out of 5724142
- 1201374 words of memory out of 5000000
- 53729 multiletter control sequences out of 15000+600000
- 603338 words of font info for 117 fonts, out of 8000000 for 9000
+ 31500 strings out of 473899
+ 630001 string characters out of 5724142
+ 1190347 words of memory out of 5000000
+ 53730 multiletter control sequences out of 15000+600000
+ 603858 words of font info for 117 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
- 110i,15n,107p,953b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on New_IEEEtran_how-to.pdf (4 pages, 337293 bytes).
+ 110i,15n,107p,944b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on manuscript.pdf (3 pages, 308174 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 38 named destinations out of 1000 (max. 500000)
- 29 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 227 PDF objects out of 1000 (max. 8388607)
+ 45 named destinations out of 1000 (max. 500000)
+ 53 words of extra memory for PDF output out of 10000 (max. 10000000)
 

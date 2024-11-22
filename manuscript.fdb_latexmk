@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex New_IEEEtran_how-to"] 1731478571.35974 "New_IEEEtran_how-to.aux" "New_IEEEtran_how-to.bbl" "New_IEEEtran_how-to" 1731483452.80841 0
+["bibtex manuscript"] 1732268221.34836 "manuscript.aux" "manuscript.bbl" "manuscript" 1732268626.62518 0
   "./reference.bib" 1692261863 15726 4c4a4b6a3fc2d82cf775c49451579004 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/bibtex/bst/ieeetran/ieeetran.bst" 1440622569 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "New_IEEEtran_how-to.aux" 1731483452 5001 663a1d2175f60ee976d4af8934e46dd6 "pdflatex"
+  "manuscript.aux" 1732268626 5649 3fdcb888e1e6ee18401b1e5e69ceafa5 "pdflatex"
   (generated)
-  "New_IEEEtran_how-to.bbl"
-  "New_IEEEtran_how-to.blg"
+  "manuscript.bbl"
+  "manuscript.blg"
   (rewritten before read)
-["pdflatex"] 1731483451.28041 "d:/ieee_tpws/main_9/New_IEEEtran_how-to.tex" "New_IEEEtran_how-to.pdf" "New_IEEEtran_how-to" 1731483452.80879 0
+["pdflatex"] 1732268625.04422 "d:/ieee_tpws/main_9/manuscript.tex" "manuscript.pdf" "manuscript" 1732268626.62561 0
   "C:/Users/yyp_uestc/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1729773620 137400 998bff5d27a71170369ae30640ff4818 ""
   "C:/Users/yyp_uestc/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1729773646 11950595 3a25b72764a1cacc09d63e555cd1096d ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/enc/dvips/base/8r.enc" 1458473887 4993 80dc9bab7f31fb78a000ccfed0e27cab ""
@@ -35,7 +35,6 @@
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/tfm/public/cm/cmr9.tfm" 1136765053 1292 6b21b9c2c7bebb38aa2273f7ca0fb3af ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/tfm/public/cm/cmsy6.tfm" 1136765053 1116 933a60c408fc0a863a92debe84b2d294 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/tfm/public/cm/cmsy9.tfm" 1136765053 1116 25a7bf822c58caf309a702ef79f4afbb ""
-  "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/tfm/public/stix/ot1-stixgeneral-bold.tfm" 1362145614 3496 53794fdf32c109dcb33ef59065d53da2 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/tfm/public/stix/ot1-stixgeneral.tfm" 1362145614 3588 31d25f5cc9630a8fc38be6125acf9fc3 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb" 1247596667 30251 6afa5cb1d0204815a708a080681d4674 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1247596667 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
@@ -53,7 +52,6 @@
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb" 1247596666 32716 08e384dc442464e7285e891af9f45947 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb" 1247596666 32442 c975af247b6702f7ca0c299af3616b80 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb" 1247596670 30212 f7062d6da71d1ec66ffb8906891648f7 ""
-  "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Bold.pfb" 1356261742 250376 bf3a400e1273354c5c26332493ec1650 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb" 1356261742 547522 236ff2bb503aa0bb9279bcfcb1c68020 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmb8a.pfb" 1136824548 44729 fea0975e20ec51c992338362f05f1146 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb" 1136824548 44656 0cbca70e0534538582128f6b54593cca ""
@@ -253,17 +251,17 @@
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xfrac/xfrac.sty" 1718270407 14945 a207ee7fd6b8cf6d82afb367c583ddd3 ""
   "D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
-  "New_IEEEtran_how-to.aux" 1731483452 5001 663a1d2175f60ee976d4af8934e46dd6 "pdflatex"
-  "New_IEEEtran_how-to.bbl" 1731478571 901 628a2a8c68e066122d1514411e0b8455 "bibtex New_IEEEtran_how-to"
-  "New_IEEEtran_how-to.nls" 1717931298 7713 4ee9baf30e8727b5a236310b54b52e0f ""
-  "New_IEEEtran_how-to.out" 1731483452 491 567079ecd2a57ebc94158d6d5d333f24 "pdflatex"
-  "New_IEEEtran_how-to.tex" 1731483450 102433 d6ca014f3cf05281cb2876e35a0de2ea ""
-  "d:/ieee_tpws/main_9/New_IEEEtran_how-to.tex" 1731483450 102433 d6ca014f3cf05281cb2876e35a0de2ea ""
+  "d:/ieee_tpws/main_9/manuscript.tex" 1732268623 86209 533bf8e9a3c6d0de38a5856cec0624a4 ""
+  "manuscript.aux" 1732268626 5649 3fdcb888e1e6ee18401b1e5e69ceafa5 "pdflatex"
+  "manuscript.bbl" 1732268221 901 628a2a8c68e066122d1514411e0b8455 "bibtex manuscript"
+  "manuscript.nls" 0 -1 0 ""
+  "manuscript.out" 1732268626 980 74f609f8805df88ee169f211b6431017 "pdflatex"
+  "manuscript.tex" 1732268623 86209 533bf8e9a3c6d0de38a5856cec0624a4 ""
   "nomenclatures_list.tex" 1729773953 2321 e51798e9c42422aa558933dcc5b9d836 ""
   (generated)
-  "New_IEEEtran_how-to.aux"
-  "New_IEEEtran_how-to.log"
-  "New_IEEEtran_how-to.nlo"
-  "New_IEEEtran_how-to.out"
-  "New_IEEEtran_how-to.pdf"
+  "manuscript.aux"
+  "manuscript.log"
+  "manuscript.nlo"
+  "manuscript.out"
+  "manuscript.pdf"
   (rewritten before read)

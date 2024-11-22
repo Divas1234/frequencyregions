@@ -76,11 +76,11 @@
 
 \title{ \vspace{-0.5em}
 
-{\fontfamily{stix}\selectfont \fontsize{20}{20}\selectfont Harnessing Bayesian-Filter-Derived SFR Method Considering Uncertain-variability Features in Refined FCUC} }
+	{\fontfamily{stix}\selectfont \fontsize{20}{20}\selectfont Harnessing Bayesian-Filter-Derived SFR Method Considering Uncertain-variability Features in Refined FCUC} }
 \vspace{-2.5in}
 
 \author{\fontsize{11}{8} \selectfont Yiping Yuan, \textit{Member, IEEE}, Zhou Liu, \textit{Senior Member, IEEE}, Weihao Hu, \textit{Senior Member, IEEE},  Marjan Popov, \textit{Fellow, IEEE}, Qi
-Huang, \textit{Fellow, IEEE}, Zhe Chen, \textit{Fellow, IEEE} \vspace{-2.5em}}
+	Huang, \textit{Fellow, IEEE}, Zhe Chen, \textit{Fellow, IEEE} \vspace{-2.5em}}
 % \thanks{Manuscript created October, 2020; This work was developed by the IEEE Publication Technology Department. This work is distributed under the \LaTeX \ Project Public License (LPPL) (
 % http://www.latex-project.org/ ) version 1.3. A copy of the LPPL, version 1.3, is included in the base \LaTeX \ documentation of all distributions of \LaTeX \
 % released 2003/12/01 or later. The opinions expressed here are entirely that of the author. No warranty is expressed or implied. User assumes all risk.}}
@@ -92,38 +92,19 @@ Huang, \textit{Fellow, IEEE}, Zhe Chen, \textit{Fellow, IEEE} \vspace{-2.5em}}
 \vspace{-2.5em}
 \begin{abstract}
 
-	% The influence of uncertain variability characteristic from converter-interfaced generators becomes significant in power system operation. This paper proposes a new Bayesian-filter-derived system
-	% frequency response (SFR) method and a chance-constrained frequency dynamic unit commitment model to achieve suitable frequency resource management with uncertain variability characteristics. The
-	% SFR is modeled as a sequential deterministic process in a Bayesian filter framework, where the impact of uncertain variability characteristics is treated as a stochastic sequence following
-	% specific probabilistic density functions, and the calculation of frequency derivation and rescheduled output of different generators participating in SFR are alternately performed. In contrast
-	% to prior methodologies, such as the analytical and time-discretized methods, the proposed SFR method can assess the change of frequency derivation and offers an estimation of the posterior
-	% distribution. Furthermore, the proposed SFR method is reshaped as a set of chance-constrained frequency dynamic restrictions and integrated into unit commitment, and a refined frequency dynamic
-	% unit commitment is extended.  Several results on a modified version of the IEEE 6 bus test system and a 118 bus test system are implemented e validity of the proposed SFR method and unit
-	% commitment model.
-
-	% The frequency changing fills with probabilistic feature under uncertain-variability environment along with the penetration of converter-interfaced generators, this mentioned feature becomes
-	% bottlenecks in selecting suitable scheduled commitments under power system operations. To address this gap, a Bayesian-filter-derived system-frequency-response(SFR) model is proposed and a
-	% refined frequency-constrained unit commitment (FCUC) model is subsequently extended. Specially, the uncertain variability feature on modeling SFR due to stochastic intermittent output, frequency
-	% containment resource restriction, etc., is treated as a chronological random sequence following specific probabilistic distribution, and the frequency changing is extracted as a sequential
-	% deterministic process in the Bayesian-filter framework; Through Bayesian-inference derivation, the posterior probabilistic distribution of frequency changing and the rescheduling output of
-	% different generators participating in SFR are alternately performed. In contrast to prior methodologies, the proposed SFR method can exactly capture the change of frequency derivation
-	% considering uncertain variability factors and offers an estimation of its posterior distribution, therefore, the calculated scheduled commitment through FCUC considering probabilistic SFR
-	% feature can well require actual frequency dynamic requirements. Several results on a modified version of the IEEE 6 bus test system and a 118 bus test system are implemented to check the
-	% validity of  proposed FCUC model.
-
-Frequency dynamic fills with uncertain-variability features due to the increasing penetration of converter-interfaced generators, where this feature trends to be bottlenecks in selecting scheduled
-commitments solved by Frequency-Constrained Unit Commitment(FCUC). To address this, a Bayesian-filter-derived System-Frequency-Response(SFR) model is proposed and a refined FCUC(r-FCUC) is extended.
-Significantly, the uncertain-variability feature due to the intermittent output of converter-interfaced generators, PMU measured error, etc., is treated as a chronological stochastic process. As such,
-the frequency dynamic can be extracted as a sequential deterministic process within a Bayesian-filter framework, on this basis, an improved Bayesian-Filter-derived SFR model is established. In
-contrast to existing methodologies such as analytical SFR or time-discrete SFR methods, the proposed method can capture the trajectory of frequency dynamics in the uncertain-variability environment
-and estimate its posterior distribution.  Furthermore, the frequency dynamic via the proposed SFR method is reshaped as a set of chance-constrained frequency dynamic constraints and subsequently
-integrated into r-FCUC. Since reformulated frequency dynamic constraints in r-FCUC consider uncertain-variability features, the calculated scheduled commitment through r-FCUC can well require actual
-frequency requirements. Several results on a modified IEEE 6 bus test system and IEEE 118 bus test system are implemented to check the validity of the proposed methods.
+	Frequency dynamic fills with uncertain-variability features due to the increasing penetration of converter-interfaced generators, where this feature trends to be bottlenecks in selecting scheduled
+	commitments solved by Frequency-Constrained Unit Commitment(FCUC). To address this, a Bayesian-filter-derived System-Frequency-Response(SFR) model is proposed and a refined FCUC(r-FCUC) is extended.
+	Significantly, the uncertain-variability feature due to the intermittent output of converter-interfaced generators, PMU measured error, etc., is treated as a chronological stochastic process. As such,
+	the frequency dynamic can be extracted as a sequential deterministic process within a Bayesian-filter framework, on this basis, an improved Bayesian-Filter-derived SFR model is established. In
+	contrast to existing methodologies such as analytical SFR or time-discrete SFR methods, the proposed method can capture the trajectory of frequency dynamics in the uncertain-variability environment
+	and estimate its posterior distribution.  Furthermore, the frequency dynamic via the proposed SFR method is reshaped as a set of chance-constrained frequency dynamic constraints and subsequently
+	integrated into r-FCUC. Since reformulated frequency dynamic constraints in r-FCUC consider uncertain-variability features, the calculated scheduled commitment through r-FCUC can well require actual
+	frequency requirements. Several results on a modified IEEE 6 bus test system and IEEE 118 bus test system are implemented to check the validity of the proposed methods.
 \end{abstract}
 
 % \vspace{-0.175in}
 \begin{IEEEkeywords}
-Uncertain-variability, Bayesian filter, system frequency response, converter-interfaced generators, frequency-constrained unit commitment.
+	Uncertain-variability, Bayesian filter, system frequency response, converter-interfaced generators, frequency-constrained unit commitment.
 \end{IEEEkeywords}
 
 \vspace{-0.12in}
@@ -162,7 +143,6 @@ excellent conjugate properties of Gaussian distribution families, the SFR derive
 uncertain-variability features typically depend on frequency variations in the actual engineering process. Thereby, the distribution of uncertain-variability features is conditional and unknown. From
 this standpoint, existing models in [ ] addressing uncertain-variability factors cannot accurately reflect the reliable uncertain-variability factors related to frequency dynamics.
 
-
 Furthermore, the scheduling plan solved by FCUC should be checked to ensure that the system have capabilities to satisfy frequency security requirements. Generally, frequency security requirements
 consist of rate-of-frequency-of-change (RoCoF), frequency nadir, and quasi-steady-state frequency derivation (Qss); they are usually reshaped as a group of linear or nonlinear constraints.  Ref.7
 constructed a set of nonlinear RoCoF, nadir, and Qss constraints derived from analytical SFR model and developed a FCUC.  Ref.8 constructed a max-affine-derived linear frequency nadir constraint and
@@ -194,9 +174,9 @@ Mathematically, the transfer function of SFR concerning a occurred step-type pow
 \vspace{-0.125in}
 \begin{small}
 	\begin{align}\label{eqn:1}
-		 & \left(M_{G} s+D_{G}\right) \varDelta f(s)=\left({1/s} \varDelta p_{ \text{step}}\right)-                                                                                                                                                          \\
-		 & \qquad {\left({K_{G}}{ R_{G}^{-1}}\right)\left[ {\left(1+F_{G} T_{G} s\right)}/{\left(1+T_{G} s\right)}\right] \varDelta f(s)}- \notag                                                              \\
-		 & \qquad {\left({K_W R_{W}^{-1}}\right)\left[{(H_W + D_W)}/{(1+T_{W} s)}\right] \varDelta f(s)} - \notag                                                                              \\
+		 & \left(M_{G} s+D_{G}\right) \varDelta f(s)=\left({1/s} \varDelta p_{ \text{step}}\right)-                                                                          \\
+		 & \qquad {\left({K_{G}}{ R_{G}^{-1}}\right)\left[ {\left(1+F_{G} T_{G} s\right)}/{\left(1+T_{G} s\right)}\right] \varDelta f(s)}- \notag                            \\
+		 & \qquad {\left({K_W R_{W}^{-1}}\right)\left[{(H_W + D_W)}/{(1+T_{W} s)}\right] \varDelta f(s)} - \notag                                                            \\
 		 & \qquad {\left({R_{W}^{-1}}\right)\left[{1}/({1+T_{W} s})\right] \varDelta f(s)} - {\left({R_{E}^{-1}}\right)\left[{1}/({1+T_{E} s})\right] \varDelta f(s)} \notag
 	\end{align}
 \end{small}
@@ -206,12 +186,12 @@ The time domain expression of \eqref{eqn:1} can be transferred by utilizing inve
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:2}
 	\begin{align}
-		 & 2H_{\varSigma } \varDelta f^{\prime}(t)  +D_{\varSigma} \varDelta f(t)=\varDelta p(t)  \label{eqn:2a} \\
+		 & 2H_{\varSigma } \varDelta f^{\prime}(t)  +D_{\varSigma} \varDelta f(t)=\varDelta p(t)  \label{eqn:2a}                                                                  \\
 		 & \varDelta p(t) \! =\!\varDelta p_{step}\!-\!\left(\varDelta p_{G}(t)\!+\!\varDelta p_{W,1}(t)\!+\!\varDelta p_{W,2}(t)\!+\! \varDelta p_{E}(t)\right) \!\label{eqn:2b} \\
-		 & H_{\varSigma}  =H_{G}+H_{W}, D_{\varSigma}  =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}   \label{eqn:2c}  \\
-		 & \varDelta p_{G}(t)   ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag  \\
-		 & \qquad\quad\quad\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{t}{T_G}} \!\!\!\int_{0}^{t}\!\!\! e^{\frac{\kappa}{T_G}} \varDelta f^{\prime}(\kappa) d \kappa \label{eqn:2d}  \\
-		 & \varDelta p_{W,1}(t) =\left(K_{W} {R_{W}^{-1}}\right) \varDelta f(t) \!+\! \left(2H_{W}\! \varDelta f^{\prime}(t) \!+\! D_{W}\varDelta f(t)\right)\label{eqn:2e} \\
+		 & H_{\varSigma}  =H_{G}+H_{W}, D_{\varSigma}  =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}   \label{eqn:2c}                                                               \\
+		 & \varDelta p_{G}(t)   ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag                                                                                                \\
+		 & \qquad\quad\quad\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{t}{T_G}} \!\!\!\int_{0}^{t}\!\!\! e^{\frac{\kappa}{T_G}} \varDelta f^{\prime}(\kappa) d \kappa \label{eqn:2d} \\
+		 & \varDelta p_{W,1}(t) =\left(K_{W} {R_{W}^{-1}}\right) \varDelta f(t) \!+\! \left(2H_{W}\! \varDelta f^{\prime}(t) \!+\! D_{W}\varDelta f(t)\right)\label{eqn:2e}       \\
 		 & \varDelta p_{W,2}(t)  =\left( { R_{W}^{-1}}\right) \varDelta f(t), \varDelta p_{E}(t)  =\left( { R_{E}^{-1}}\right) \varDelta f(t) \label{eqn:2g}
 	\end{align}
 \end{newsubequations}
@@ -224,273 +204,156 @@ The time domain expression of \eqref{eqn:1} can be transferred by utilizing inve
 \vspace{-0.125in}
 \begin{newsubequations}\label{eqn:3}
 	\begin{align}
-		 & \varDelta f(t+\delta t) = \Bigl [ 0.5{H_{\varSigma}^{-1}}\varDelta p(t)  - \alpha_1\varDelta f(t) \Bigr ] \delta t   \label{eqn:3a}   \\
+		 & \varDelta f(t+\delta t) = \Bigl [ 0.5{H_{\varSigma}^{-1}}\varDelta p(t)  - \alpha_1\varDelta f(t) \Bigr ] \delta t   \label{eqn:3a}                                                                  \\
 		 & \varDelta p_{G}(t)\!=\!{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!-\! \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\left[\varDelta f(t+\delta t) \!-\! \varDelta f(t) \right] dt  \label{eqn:3b} \\
-		 & \varDelta p_{W,1}(t) = \alpha_3 \varDelta f(t + \delta t) - 2H_{W} \delta t \varDelta f(t)  \label{eqn:3c}   \\
-		 & \alpha_1 = 0.5{D_{\varSigma}}{H_{\varSigma}^{-1}}-1 \label{eqn:3d}  \\
-		 & \alpha_2 = {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G} t} \label{eqn:3e}  \\
+		 & \varDelta p_{W,1}(t) = \alpha_3 \varDelta f(t + \delta t) - 2H_{W} \delta t \varDelta f(t)  \label{eqn:3c}                                                                                           \\
+		 & \alpha_1 = 0.5{D_{\varSigma}}{H_{\varSigma}^{-1}}-1 \label{eqn:3d}                                                                                                                                   \\
+		 & \alpha_2 = {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G} t} \label{eqn:3e}                                                                                                                             \\
 		 & \alpha_3 = {K_{W} } R_{W}^{-1} \!+\! D_{W} \!+\! 2H_{W} \delta t \label{eqn:3f}
 	\end{align} \end{newsubequations}
 
 It can be observed that \(\varDelta f(t\!+\!\delta t)\) is close to \(\varDelta p(t)\) while all generators are automatically adjusting their additional outputs so as to eliminate the imbalanced power disturbance.
-Despite that \( \varDelta p_{G}(t), \varDelta p_{W,1}(t) \) in \eqref{eqn:3b} and \eqref{eqn:3b} can be recursively solved after observing \(\varDelta f(t\!+\! \delta t)\) and \(\varDelta f(t)\), the uncertain variability feature has not yet introduced. To address this, a corrected solution regarding $\varDelta f (t\!+\!\delta t)$ that considers uncertain variability features is categorized. The uncertain-variability feature contains two parts; the first part is caused by unlimited restriction of additional outputs \(\langle \varDelta p_{G}(t),\varDelta p_{W, 1},\varDelta p_{W,2}\rangle\), it means that the additional output of generators who provide frequency support under SFR cannot be reached due to their maximum outputs restriction. Unforeseeable uncertain output characteristics of converter-interfaced generators, as well as possible measured errors cause the second part. 
+Despite that \( \varDelta p_{G}(t), \varDelta p_{W,1}(t) \) in \eqref{eqn:3b} and \eqref{eqn:3b} can be recursively solved after observing \(\varDelta f(t\!+\! \delta t)\) and \(\varDelta f(t)\), the uncertain variability feature has not yet introduced. To address this, a corrected solution regarding $\varDelta f (t\!+\!\delta t)$ that considers uncertain variability features is categorized. The uncertain-variability feature contains two parts; the first part is caused by unlimited restriction of additional outputs \(\langle \varDelta p_{G}(t),\varDelta p_{W, 1},\varDelta p_{W,2}\rangle\), it means that the additional output of generators who provide frequency support under SFR cannot be reached due to their maximum outputs restriction. Unforeseeable uncertain output characteristics of converter-interfaced generators, as well as possible measured errors cause the second part.
 Let \(\varDelta \omega_{1}(t)\!=\!-\!\left(\lceil \varDelta p_{G}(t), \overline{p}_{G} \rceil \!+\! \lceil \varDelta p_{W,1}(t), {p}_{W,1}(t)\rceil  \!+\! \lceil \varDelta p_{W,1}(t), {p}_{W,2}(t)\rceil\right)  \) enforces the corrected term for preventing generators from exceeding their maximize outputs, \(\varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma)\) describes uncertain fluctuations of converter-interfaced
 generators, thus, uncertain-variability features can be estimated by adding \(\varDelta \omega_{1}\) and \(\varDelta \omega_{2}\) together,
 \vspace{-0.125in}
 
 \begin{newsubequations}\label{eqn:4}
 	\begin{align}
-		\varDelta f(t\!+\!\delta t) \!=\!  \left\{ 0.5 {H_{\varSigma}^{-1}}[\varDelta p(t) \!+\! \varDelta \omega_1 \!+\!  \varDelta \omega_2 ] \!-\! \alpha_1 \varDelta f(t)\right\} \delta t 
+		\varDelta f(t\!+\!\delta t) \!=\!  \left\{ 0.5 {H_{\varSigma}^{-1}}[\varDelta p(t) \!+\! \varDelta \omega_1 \!+\!  \varDelta \omega_2 ] \!-\! \alpha_1 \varDelta f(t)\right\} \delta t
 		\label{eqn:4a}\end{align}
 \end{newsubequations}
 
 In \eqref{eqn:4}, the above equation does not keep a closed analytical solution because \(\varDelta \omega \!=\! \varDelta \omega_1 \!+\! \varDelta \omega_2\) doesn't belong to any prior distribution, therefore, the Bayesian filter is applied to address it. Let \(\mathcal{P} (\varDelta f(t))\!,\! \mathcal{P}(\varDelta p(t))\) enforces the posterior of \(\varDelta f(t)\) and \(\varDelta p(t)\), \(\varDelta f(t) \Rightarrow \varDelta f(t + \delta t)\) can be retreated as a hidden decision process, while \(\varDelta p(t)\Rightarrow \varDelta p(t+\delta t)\) be an observable process. Consequently, \(\varDelta f(t + \delta t)\) can be solved alternately, as illustrated in figure.(2).
 
-\vspace{-0.125in} 
-  \begin{newsubequations}
- 	\begin{align} 
- 		& \mathcal{P}(\varDelta f(t+ \delta t)|\varDelta p(t_0\!:\! t \!+\! \delta t); \varDelta \omega)\!=\!\overbrace{\mathcal{P}(\varDelta p(t\!+\!\delta t) | \varDelta f(t\!+\!\delta t); \!\varDelta\omega)}^{\textrm{{likelihood function}}} \notag\\
-        & \underbrace{\mathcal{P}(\varDelta f(t\!+\! \delta t) \!|\! \varDelta p(t_0\!:\! t)\!;\! \varDelta \omega)}_{\textrm{{prior function}}} { {\mathcal{P}^{-1}\!(\varDelta p(t\!+\!\delta t) \!|\! \varDelta p(t_0\!:\! t);\!\varDelta \omega)}}\label{eqn:5}
-    \end{align}
-\end{newsubequations}  
+\vspace{-0.25in}
+\begin{newsubequations}
+	\begin{align}
+		 & \mathcal{P}(\varDelta f(t+ \delta t)|\varDelta p(t_0\!:\! t \!+\! \delta t); \varDelta \omega)\!=\!\overbrace{\mathcal{P}(\varDelta p(t\!+\!\delta t) | \varDelta f(t\!+\!\delta t); \!\varDelta\omega)}^{\textrm{{likelihood function}}} \notag          \\
+		 & \underbrace{\mathcal{P}(\varDelta f(t\!+\! \delta t) \!|\! \varDelta p(t_0\!:\! t)\!;\! \varDelta \omega)}_{\textrm{{prior function}}} { {\mathcal{P}^{-1}\!(\varDelta p(t\!+\!\delta t) \!|\! \varDelta p(t_0\!:\! t);\!\varDelta \omega)}}\label{eqn:5}
+	\end{align}
+\end{newsubequations}
+\vspace{-0.125in}
 
 \noindent where the {likelihood} in \eqref{eqn:5} describes relation between \(\varDelta p(t+\delta t)\) and \(\varDelta f(t+\delta t)\); prior function describes sequential recursive processes concerning frequency dynamic from \(\varDelta f(t_0\!:\! t)\) to \(\varDelta f(t \!+\! \delta t)\). Using the prior and predicated processes within the Bayesian inference framework, the impact of uncertain-variability features, denoted by \(\varDelta \omega\), can be well incorporated. The expression of the {prior function} in \eqref{eqn:5} can be recursively estimated as follows,
 
-\vspace{-0.125in} 
+\vspace{-0.125in}
 \begin{newsubequations}
-		\begin{align} 
-			& \quad \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t+\delta t \right), \varDelta \omega\right) = \label{eqn:6} \\
-			& \int\! \bigl[ \mathcal{P}(\varDelta f(t\!+\! \delta t) \!\mid\! \varDelta f(t_0\!:\! t), \varDelta \omega) \mathcal{P}\!\left(\varDelta \!f(t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t\right), \varDelta \omega\right) \bigr] d\varDelta f(t) \notag
-		\end{align}
+	\begin{align}
+		 & \quad \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t+\delta t \right), \varDelta \omega\right) = \label{eqn:6}                                                                                                                     \\
+		 & \int\! \bigl[ \mathcal{P}(\varDelta f(t\!+\! \delta t) \!\mid\! \varDelta f(t_0\!:\! t), \varDelta \omega) \mathcal{P}\!\left(\varDelta \!f(t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t\right), \varDelta \omega\right) \bigr] d\varDelta f(t) \notag
+	\end{align}
 \end{newsubequations}
 
 Both probabilistic functions in \eqref{eqn:5} and \eqref{eqn:6} can not be directly solved because their distributions are unknown, hence, the sequential important sampling algorithm (SIS) is applied to address this issue.  Let \(\mathcal{Q} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)\) denote the importance distribution, which can be treated as a replaceable proposal distribution for
 generating samples (filters); \(\lambda (\varDelta f(t_0\!:\!t\!+\!\delta t))\) describes the importance weight, which are approximations to the posterior distribution of samples (filters) following \eqref{eqn:7a}, then, the posterior \eqref{eqn:6} can be indirectly approximated as the product between the importance distribution \eqref{eqn:7b} and the importance weight \eqref{eqn:7b},
-\vspace{-0.125in} 
+\vspace{-0.125in}
 
-\begin{newsubequations}\label{eqn:7} 
+\begin{newsubequations}\label{eqn:7}
 	\begin{align}
-		& \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)=\label{eqn:7a} \\
-		& \quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t+\delta t))\notag \\
-		& \lambda (\varDelta f(t_0:t+\delta t)) = \frac{\mathcal{P} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}\label{eqn:7b} \\
-		& \mathcal{Q} (\varDelta f(t\!+\!\delta t) | \varDelta p(t_0\!:\!t\!+\!\delta t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t\!+\!\delta t)|\varDelta f(t_0\!:\!t); \varDelta \omega)\cdot \notag \\
-		& \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)  \label{eqn:7c}
+		 & \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)=\label{eqn:7a}                                                                                                                                                     \\
+		 & \quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t+\delta t))\notag                                                                                                            \\
+		 & \lambda (\varDelta f(t_0:t+\delta t)) = \frac{\mathcal{P} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}\label{eqn:7b} \\
+		 & \mathcal{Q} (\varDelta f(t\!+\!\delta t) | \varDelta p(t_0\!:\!t\!+\!\delta t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t\!+\!\delta t)|\varDelta f(t_0\!:\!t); \varDelta \omega)\cdot \notag                                                \\
+		 & \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)  \label{eqn:7c}
 	\end{align}
 \end{newsubequations}
 
 By supposing the recursive type of the importance density and transferring \eqref{eqn:7c} into it, the recursive form of importance weight can be derived as,
 
-\vspace{-0.125in} 
-\begin{newsubequations} 
-	\begin{align} 
-		& \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a} \\
-		& \qquad\,\,\,\,\, \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
-\end{align} \end{newsubequations}
+\vspace{-0.125in}
+\begin{newsubequations}
+	\begin{align}
+		 & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a}                                                                                                                                                                        \\
+		 & \qquad\,\,\,\,\, \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
+	\end{align} \end{newsubequations}
 
 Let \(\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\) equals to the value of transfer function \(\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)\), then \eqref{eqn:8a} can be rewritten as,
-\vspace{-0.125in} 
+\vspace{-0.125in}
 
-\begin{newsubequations} 
+\begin{newsubequations}
 	\begin{align}
-		     & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\label{eqn:9a}
-		\end{align} 
+		 & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\label{eqn:9a}
+	\end{align}
 \end{newsubequations}
 
 By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance density can be directly derived. Subsequently, by updating the weight through \eqref{eqn:7b} and
 substituting \cref{eqn:7b,eqn:7c} into \eqref{eqn:7a}, the posterior distribution regarding \(\varDelta f(t)\) in \eqref{eqn:5} can be recursively solved.
 
+\vspace{-0.100in} \section{Frequency constraint reformulation} \vspace{-0.0250in}
 
-% \vspace{-0.125in} \begin{newsubequations}\label{eqn:7}      \begin{align}           & \mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\!  \varDelta p\left({0}\!:\! n\right), u_{1}, \sigma_{1}\right)\!=
-% \label{eqn-7: sequential relation of adjacent frequency derivations} \\
-% & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta f(n+1) \mid \varDelta f(n), u_{1}, \sigma_{1}\right)\lambda_{n}^{\prime}\notag \\
-% & \mathcal{P}\left(\varDelta p(n\!+\!1) \!\mid\! \varDelta p\left({0}\!:\! n\right), u_{2}, \sigma_{2}\right) \!=\label{eqn-7: sequential relation of adjustable outputs}             \\
-% & \quad N^{-1}\sum\nolimits_{n=1}^{N} \mathcal{P}\left(\varDelta p(n+1) \mid \varDelta f(n+1), u_{2}, \sigma_{2}\right)\lambda_{n}^{\prime\prime} \notag \\
-% & \lambda_{n}^{\prime} = \mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0: n\right), u_{1}, \sigma_{1}\right)\notag \\
-% & \lambda_{n}^{\prime\prime} = \mathcal{P}\left(\varDelta f(n+1) \!\mid\!  \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)\notag      \end{align}  \end{newsubequations}
+This section examines frequency dynamic requirements within a union two-stage scheduling framework. On this basis, a revised formulation of frequency nadir restriction based on the proposed SFR model considering uncertain-variability features is extended, remaining frequency constraints including RoCoF and FCR can be found in [].
 
-% \noindent where $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$, respectively, represent random filters following associated integrated functions in (7b) and (7d). In combination with \eqref{eqn-7:
-% sequential relation of adjacent frequency derivations} and \eqref{eqn-7: sequential relation of adjustable outputs}, the posterior probabilistic assessment of $\varDelta f(n+1)$ concerning
-% $\mathcal{P}(\varDelta f(n+1))$ can be carried out with the below steps: \begin{itemize}      \item[$\,\,i)$ ] \textit{Bayesian inference} in the prior stage, here, \eqref{eqn-7: sequential relation
-% of adjacent frequency derivations} is used to generate \textit{filters} to capture the likely value of $\varDelta f(n+1)$; %     \item[$ii)$] \textit{Bayesian predication} in the prediction stage,
-% \eqref{eqn:4} and \eqref{eqn-7: sequential relation of adjuctable outputs} is used to update the posterior of $\varDelta f(n+1)$. Since $\lambda^{\prime}, \lambda_{n}^{\prime \prime}$ cannot
-% directly be generated from $\mathcal{P}\left(\varDelta f(n) \!\mid\!  \varDelta p\left(0\!:\! n\right), u_{1},\right.$ $\left. \sigma_{1}\right)$ and $\mathcal{P}\left(\varDelta f(n\!+\!1) \!\mid\!
-% \varDelta p\left(0\!:\!\right.\right.\left.n), u_{2}, \sigma_{2}\right)$ because their functions are unknown, Therefore, sequential Important Sampling (SIS) method is used to calculate the
-% integrated functions.  Especially, $\mathcal{P}(\varDelta f(n) \!\!\mid\!\! \varDelta p(0\!:\! n), \!u_{1},\!\sigma_{1})$ at the $n\!-\!th$ prior stage is taken as an example to describe the
-% calculating process using SIS, the case of the latter (posterior) stage concerning $\mathcal{P}\left(\varDelta f(n+1) \!\mid\! \varDelta p\left(0: n\right), u_{2}, \sigma_{2}\right)$ is in a similar
-% solution.  % \end{itemize}
+\vspace{-0.125in}
 
-% Let $\iota(n)\!=\!\mathcal{P}\left(\varDelta f(n) \!\mid\! \varDelta p\left({0}: n\right), u_{2}, \sigma_{2}\right), \iota(n)=(\nicefrac{\iota(n)}{ \lambda(n)}) \!\cdot\!  \lambda(n)$ where
-% $\iota(n)$ is the original probabilistic density function of posterior distribution at $t\!\! = \!\!n \delta t$; $\lambda(n)$ enforces a proposed function.  $\gamma(n) \!=\!
-% \nicefrac{\iota(n)}{\lambda(n)}$ represents a likelihood coefficient. Hence, the \!$filters$\!  following $\iota(n)$ can be alternatively sampled from $\lambda(n)$ with a related weight coefficient
-% $\gamma(n)$, i.e., $\iota(n) = $ $\lambda (n)\gamma(n)$.
+\subsection{RoCoF constraint}
 
-% % \vspace{-0.125in} % % \begin{table}[b]\normalsize % % \rule{1.0\textwidth}{.1pt} % \begin{small} % \begin{align}\label{eqn:8} %          & \gamma(n\!+\! 1)= % \frac{\iota(\varDelta
-% f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n\!+\!1)|\varDelta p(0\!:\!n\!+\!1),\mu_2,\sigma_2)}=\gamma(n)\times \\
-% %          & \qquad\,\, \left(\frac{\iota(\varDelta f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)\iota(\varDelta p(n\!+\!1)|\varDelta f(n\!+\!1),\!\mu_2,\!\sigma_2)}{\lambda(\varDelta
-% f(n\!+\!1)|\varDelta f(t),\!\mu_1,\!\sigma_1)}\right)\notag %     \end{align} % \end{small} % % \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt} % % \end{table} % % \begin{table*}[b]\normalsize % %
-% \rule{1.0\textwidth}{.1pt} % % \begin{align}\label{eqn:8} % % &\gamma(n+1)= % % \frac{\iota(\varDelta f(n+1)|\varDelta p(0:n+1),\mu_1,\sigma_1)}{\lambda(\varDelta f(n+1)|\varDelta
-% p(0:n+1),\mu_2,\sigma_2)}=\\
-% % % &\qquad \frac{\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(\varDelta p(n+1),\mu_2,\sigma_2)\iota(\varDelta p(n+1)|\varDelta f(\varDelta
-% p(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)\lambda(\varDelta f(n)|\varDelta p(0:n),\mu_1,\sigma_1)}=\notag\\
-% % % &\qquad \gamma(n)\left(\frac{\iota(\varDelta f(n+1)|\varDelta f(t),\mu_1,\sigma_1)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)}{\lambda(\varDelta f(n+1)|\varDelta
-% f(t),\mu_1,\sigma_1)}\right)\notag % % \end{align} % % % \hspace{0.5\textwidth}\rule{0.5\textwidth}{.4pt} % % \end{table*} % Substituting $\iota(n+1) = \lambda (n+1)\gamma(n+1), \iota(n) = \lambda
-% (n)\gamma(n)$ into \eqref{eqn:4}, $\iota(n+1)$ can be recursively calculated through \eqref{eqn:8}. In \eqref{eqn:8}, another critical issue to be reviewed is the selection of the proposed
-% distribution. Here, the recursive transfer distribution $\iota(\varDelta f(n+1)|\varDelta f(n),\mu_1,\sigma_1)$ can be used to simplify the calculation process. Accordingly, the updating weight
-% \eqref{eqn:8} can be reduced as,
+\vspace{-0.0125in}
+RoCoF constraint aims to mitigate possible rapid changes of frequency derivation in the inertia response. Mathematically speaking, it is required that the differentiation of $\varDelta f^{\prime}(t)$ should not exceed the maximum rate of change of frequency, denoted as $\gamma_{rocof}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! \gamma_{rocof}$. Since the maximum of $\varDelta f^{\prime}(t)$ equals to $\nicefrac{\varDelta p_{{step} }}{2 H_{\varSigma}}$, then RoCoF constraint can be expressed as below,
 
-% % \vspace{-0.125in} % \begin{align}\label{eqn:9} %      & \gamma(n+1)= %     \gamma(n)\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2) % \end{align}
+\vspace{-0.125in}
+\begin{small}
+	\begin{align}\label{eqn:10}
+		0.5{H_{\varSigma}^{-1}}{\varDelta p_{{step}}} & \leq \gamma_{rocof}                                                                                   \\
+		\quad\,\,\,                                   & \Leftrightarrow H_{G} + H_{W}\!\geq\! 0.5 \times ({\varDelta p_{{step} }} \gamma_{rocof}^{-1}) \notag
+	\end{align}
+\end{small}
 
-% % In \eqref{eqn:9}, the likelihood rate in each iteration can be recursively derived from $\iota(\varDelta p(n+1)|\varDelta f(n+1),\mu_2,\sigma_2)$. On this basis, let $\langle \varDelta
-% f^{(n)}(t+(n+1)\delta t), \left( \varDelta p\right)^{(n)}(t+(n+1)\delta t)\rangle$ define the sampled \textit{filters} from the pro-selected proposed function $\lambda^{\prime}(n+1)$ in the
-% inference stage and $\lambda^{\prime\prime}(n+1)$ in the predication stage; $\langle\gamma^{\prime}(n+1),\gamma^{\prime\prime}(n+1)\rangle$ represent the likelihood rate at $t\!=\! t_0 + (n+1)\delta
-% t$ at these two stages. Table \ref{table: modeling BF-SFR} describes the Pseudo-Code of the proposed BF-SFR method.
+\vspace{-0.15in}
 
+\subsection{FCR constraint}
 
-% % \begin{table}[!t]\vspace{-0.250in} %     \caption{The simulation of BF-SFR through SIS algorithm}\label{table: modeling BF-SFR} %     \begin{tabular}{cl} %         \hline % NO.  &
-% \qquad\qquad\qquad\qquad Calculation processes
-% \\
-% %         \hline %         1   & \textbf{Initialize}: $\text{Discretized step}\,\, \delta t \!= \!0.05 s$; Initialized time $t_0 \!=\! 0s$                          \\
-% %             & \qquad \qquad\,  $\text{Counter}$\, $n$ = 0; \text{Filter number} \, $NT$ = 1000
-% \\
-% %         2   & \textbf{For}\,\, $n = 0$, \textbf{Then}
-% \\
-% %         3   & \quad\textbf{Let} $t=t_0+\delta t\times n$, \textbf{Then}
-% \\
-% %         4   & \qquad \textbf{Inference process}:
-% \\
-% %             & \qquad Generating possible (instant) filters
-% \\
-% %             & \qquad $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$  from proposed distribution:
-% \\
-% %             & \qquad $\lambda^{\prime}(n+1)\sim\mathcal{P}(\varDelta f(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0\!:\!t_0 \!+\! n\delta t),$    \\
-% %             & \qquad $\mu_1,\sigma_1)$ in \eqref{eqn:6a};
-% \\
-% %         5   & \qquad  \textbf{Prediction process}:
-% \\
-% %             & \qquad Generating possible observation filters
-% \\
-% %             & \qquad $\left(\varDelta p\right)^{(n)}(t_0 \!+\! (n\!+\!1)\delta t)$ from normalized distribution:
-% \\
-% %             & \qquad  $\lambda^{\prime\prime}(n+1)\sim\mathcal{P}(\varDelta p(t_0\!+\!(n\!+\!1)\delta t)| \varDelta p(t_0:t_0 \!+\! n\delta t),$ \\
-% %             & \qquad $\mu_2,\sigma_2)$ in \eqref{eqn:6b};
-% \\
-% %         6   & \qquad \textbf{Updating weight coefficients:}
-% \\
-% %             & \qquad Calculating $\gamma^{\prime}\,\text{and}\, \gamma^{\prime\prime}$ through \eqref{eqn:9}, and
-% \\
-% %             & \qquad Re-estimate original filters $\left(\varDelta f\right)^{(n)}(t_0 \!+ \!(n\!+\!1) \delta t)$ via \eqref{eqn:4}               \\
-% %         7   & \quad \textbf{End Let}
-% \\
-% %         8   & \textbf{End For}
-% \\
-% %         \hline %     \end{tabular} % \end{table}
+The restriction of FCR constraint is used to ensure sufficient frequency reserves provided by grid-connected generators that could provide frequency-supporting. By taking \cref{eqn:3a,eqn:3b} into consideration, the mathematical form of FCR constraint is expressed as follows,
 
-% \vspace{-0.100in} \section{Frequency constraint reformulation} \vspace{-0.0250in}
+\vspace{-0.125in}
+\begin{newsubequations}
+	\label{eqn:11}
+	\begin{align}
+		&\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) \geq{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!- \label{eqn:11a}\\
+		&\qquad \qquad \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\ \left[\varDelta f(t+\delta t) - \varDelta f(t)\right] dt,t \in (t_{IR}, t_{PFR}]\notag  \\
+		&\sum\nolimits_{w\in\mathcal{W}_{1}} \left( \overline{p}_{w} - p_{w, t} \right) \geq \alpha_3 \varDelta f(t+\delta t) - 2H_W \delta t \varDelta f(t) \notag \\
+		&\qquad\qquad\qquad\qquad\qquad t \in (t_{IR}, t_{PFR}] \label{eqn:11b}\\
+	    &\sum\nolimits_{w\in\mathcal{W}_{2}} \left( \overline{p}_{w} - p_{w, t} \right) \geq R_{W}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11c}\\
+		& \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} -p_{e, t}\right)  \geq R_{E}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11d}
+	\end{align}\end{newsubequations}
 
-% This section examines frequency requirements, i.e., RoCoF, nadir, and frequency containment reserve (FCR), among them, a refined chance-constrained formulation of frequency nadir constraint is
-% derived based on the BF-SFR described in section II; remaining constraints concerning RoCoF/FCR can be found in \cite{restrepo2005unit, teng2015stochastic, chu2020towards,
-% ding2021two,zhang2020modeling, zhang2021encoding,oskouee2021primary,perroy2019provision,wang2021adaptive}.
+Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated
+by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
 
-% \vspace{-0.225in} \subsection{$RoCoF \,\,constraint$} % \vspace{-0.0125in} %To prevent $\varDelta f(t)$ from changing too fast at inertia response, the differential of frequency derivation
-% $\varDelta f(t)$, denoted by $\varDelta f^{\prime}(t)$, is included, i.e., $\varDelta f^{\prime}(t)\leq RoCoF_{\text{max}}$. Since $\varDelta f^{\prime}(t)$ $=\nicefrac{\varDelta p_{\text{step}
-% }}{M_{\text{equ}}}: M_{\text{equ}} = M_G+M_{W}$, the $RoCoF$ constraint can be obtained,
+\vspace{-0.125in}
+\begin{newsubequations}\label{eqn:12}
+	\begin{align}
+		 & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta f_{\text{max}}}{R_W},\forall s,t                  \\
+		 & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \!  \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t
+	\end{align}
+\end{newsubequations}
 
-% The RoCoF constraint denoted by \(\varDelta f^{\prime} (t)\) aims to mitigate the possible rapid changes in the inertia response (IR).  % It is required that $\varDelta f^{\prime}(t)$ does not
-% exceed the maximum rate of change of frequency, denoted as $RoCoF_{\text{max}}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! RoCoF_{\text{max}}$.  Since the maximum of \(\varDelta
-% f^{\prime}(t)\) equals to $\nicefrac{\varDelta p_{\text{step} }}{M_{\varSigma}}$, \cite{garcia2021requirements}, and then, the RoCoF constraint can be expressed,
+% Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing the adjustable output of conventional generators, can
+% be rewritten as
+% % In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
 
-% % \vspace{-0.125in} % \begin{small} %     \begin{align}\label{eqn:10} %          & \slfrac{\varDelta p_{\text{step} }}{M_{\text{equ} }}\leq RoCoF_{\text{max}}
-% \\
-% %          & \quad\,\,\,\Longleftrightarrow M_{G} \!\geq\! \slfrac{\varDelta p_{\text{step} }}{RoCoF_{\text{max} }} \!-\! M_W, \forall g, t  \notag
-% \\
-% %          & \quad\,\,\,\Longleftrightarrow \sum\nolimits_{g=1}^{NG}M_{g}x_{g,t} \!\geq\! \frac{\varDelta p_{\text{step} }}{RoCoF_{\text{max} }} \!-\! \sum\nolimits_{w=1}^{NW} M_{w}, \forall g, t
-% \notag %     \end{align} % \end{small}
+% \vspace{-0.125in}
+% \begin{subequations}\label{eqn:13}
+% 	\begin{small}
+% 		\begin{align}\label{eqn:13}
+% 			 & {{K_{G} }{ R_{G}^{-1}} \varDelta f(t) - \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}}\right )\left( n\delta t \right)} \notag                                    \\
+% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}} \right)\notag                                                   \\
+% 			 & \qquad \left( e^{-\frac{1}{T_G} (t)}\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)}  \right) \delta t\notag                                              \\
+% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)- {K_G(1-F_G)}{ R_{G}^{-1} }\times \notag                                                                              \\
+% 			 & \quad \quad\, e^{-\frac{1}{T_G} (t)}\left(\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \varDelta f^{\prime}(t_0 + i \delta t) \right) \delta t \notag \\
+% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) \leq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}
+% 		\end{align}
+% 	\end{small}
+% \end{subequations}
 
-% \vspace{-0.125in} \begin{small} \begin{align}\label{eqn:10} 2{H_{\varSigma}^{-1}}{\varDelta p_{step}}      & \leq \overline{\gamma}_{rocof}, \forall g, t \rightarrow
-% \\
-% \sum\nolimits_{g\in\mathcal{G}}H_{g}x_{g,t} \! & \geq\! \frac{1}{2}{\varDelta p_{{step} }}{\overline{\gamma}_{rocof}^{-1}} \!-\! \sum\nolimits_{w\in\mathcal{W}} H_{w}, \forall t\in(t_{DB}, t_{IR}]
-% \notag \end{align} \end{small}
+% By substituting the maximum limit of changeable output in \eqref{eqn:13} into \eqref{eqn:14}, a relaxed constraint on the FCR for conventional generators is calculated,
 
-
-% \vspace{-0.15in} \subsection{$FCR \,\,constraint$}
-
-% \begin{figure}[!t]\vspace{-0.25cm} \centering \includegraphics[width=1.0\linewidth]{fig3} \caption{Three frequency dynamic requirements: $RoCoF$, $nadir$ and $FCR$} \label{fig3} \end{figure}
-
-% % To guarantee sufficient frequency reserve provided by grid-connected units, conventional generators, converters, and BESS must be capable of serving as reserves during imbalanced disturbances,
-% \cite{zhang2020modeling,9964327}. In combination with (3), the binding of the additional power $\langle \varDelta p_{add}^{G}, \varDelta p_{add}^{W}, \varDelta p_{add}^{E}\rangle$ from different
-% units is obtained, $i.e.,$, $\sum_{g=1}^{NG}\! p_{g, s, t}\!\geq\!  \varDelta p_{add}^{G}(t)$;  $\sum_{w=1}^{NG}\! p_{w, s, t}\!\geq\!  \varDelta p_{add}^{W}(t)$ and  $\sum_{e=1}^{NE}\!  p_{e, s,
-% t}\!\geq\! \varDelta p_{add}^{E}(t), \forall t, s$. By replacing $\langle\varDelta p_{add}^{G}(t), \varDelta p_{add}^{W}(t), \varDelta p_{add}^{E}(t)\rangle$ with their analytical formulations in
-% \cref{time-discretized SFR: additional power from conventional units,time-discretized SFR: additional power from converters, additional power from bess}, another equivalent constraint regarding
-% $FCR$ can be derived,
-
-% Next, the FCR constraint aims to ensure sufficient frequency reserves provided by homogeneous generators concerning additional output at primary frequency response (PFR). By taking
-% \cref{eqn:3a,eqn:3b,eqn:2f} into consideration, the FCR constraint is expressed as follows:
-
-% % \vspace{-0.125in} % \begin{newsubequations}\label{eqn:11} %     \begin{align} %          & \sum\nolimits_{w=0}^{NW} \left( p_{w}^{\text{max}} - p_{w, s, t} \right)\geq R_W^{-1}\varDelta f(t)
-% \label{eqn:11a}
-% \\
-% %          & \sum\nolimits_{e=0}^{NE} \left( p_{e}^{\text{max}} -p_{e, s, t}^{\text{dis}}\right)\geq {R_E^{-1}}\varDelta f(t) \label{eqn:11b}
-% \\
-% %          & \sum\nolimits_{g=0}^{NG} \left( p_{g}^{\text{max}} -p_{g, s, t}\right)\geq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)\!-\! {K_G(1-F_G)}\notag
-% \\
-% %          & { R_{G}^{-1} }\!e^{-\frac{1}{T_G} (t)}\!\!\left(\!\sum_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \!  \varDelta f^{\prime}(t_0 + i \delta t) \!\right)\!\!\delta t\label{eqn:11c} %
-% \end{align} % \end{newsubequations}
-
-% \vspace{-0.125in} \begin{newsubequations}\label{eqn:11} \begin{align} \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \varDelta p_{W}(t),
-% \forall t\in(t_{IR},t_{PFR}] \label{eqn:11a}                                     \\
-% \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \varDelta p_{E}(t), \forall t\in(t_{IR}, t_{PFR}] \label{eqn:11b}
-% \\
-% \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \varDelta p_{G}(t), \forall t\in(t_{IR}, t_{PFR}]\label{eqn:11c}
-% \\
-% \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & + \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) +
-% \notag \\
-% \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \varDelta p_{step},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:11d} \end{align}
-% \end{newsubequations}
-
-% \noindent where the \(t_{IR},t_{PFR}\), respectively, denotes the initial and final time of the PFR. Let \(\langle \overline{\varDelta p_{W}}, \overline{\varDelta p_{E}}, \overline{\varDelta
-% p_{G}}\rangle\) denotes, respectively, the maximum of \(\varDelta p_{W}(t), \varDelta p_{E}(t), \varDelta p_{G}(t)\), a conservative form of \cref{eqn:11a,eqn:11b,eqn:11c} can be calculated as
-% follows:
-
-% \vspace{-0.125in} \begin{newsubequations}\label{eqn:11} \begin{align} \sum\nolimits_{w\in\mathcal{W}} \left( \overline{p}_{w} - p_{w, t} \right)                     & \geq \overline{\varDelta
-% p_{W}}, \notag
-% \\
-% & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{W}} = (K_W R_W^{-1} + D_{W})\varDelta f_{nadir}, \forall t\in(t_{IR},t_{PFR}]
-% \label{eqn:12a} \\
-% \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} u_{e,t}^{dis} -p_{e, t}^{{dis}}\right) & \geq \overline{\varDelta p_{E}}, \notag  \\
-% & \!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{E}} = R_E^{-1}\varDelta f_{nadir}, \forall t\in(t_{IR}, t_{PFR}] \label{eqn:12b}   \\
-% \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right)                       & \geq \overline{\varDelta p_{G}}, \notag  \\
-% & \!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\!\! \overline{\varDelta p_{G}} = K_G R_G^{-1} \varDelta f_{nadir},\forall t\in(t_{IR}, t_{PFR}]\label{eqn:12c} \end{align} \end{newsubequations}
-
-% % where \(\overline{\varDelta p_{W}} = (K_W R_W^{-1} + D_{W})\varDelta f_{nadir}\), \(\overline{\varDelta p_{E}} = R_E^{-1}\varDelta f_{nadir}\), and \(\overline{\varDelta p_{G}} = K_G R_G^{-1}
-% \varDelta f_{nadir}\).
-
-% % Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated
-% by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
-
-% % \vspace{-0.125in} % \begin{newsubequations}\label{eqn:12} %     \begin{align} %          & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta
-% f_{\text{max}}}{R_W},\forall s,t                 \\
-% %          & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \!  \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t %     \end{align} %
-% \end{newsubequations}
-
-% %Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing the adjustable output of conventional generators, can
-% be rewritten as % In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
-
-% % \vspace{-0.125in} % % \begin{subequations}\label{eqn:13} % \begin{small} %     \begin{align}\label{eqn:13} % & {{K_{G} }{ R_{G}^{-1}} \varDelta f(t) - \left({K_G(1-F_G)}{ R_{G}^{-1}
-% }RoCoF_{\text{max}}\right )\left( n\delta t \right)} \notag                                   \\
-% %          & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}} \right)\notag
-% \\
-% %          & \qquad \left( e^{-\frac{1}{T_G} (t)}\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)}  \right) \delta t\notag
-% \\
-% %          & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)- {K_G(1-F_G)}{ R_{G}^{-1} }\times \notag
-% \\
-% %          & \quad \quad\, e^{-\frac{1}{T_G} (t)}\left(\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \varDelta f^{\prime}(t_0 + i \delta t) \right) \delta t \notag
-% \\
-% %          & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) \leq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}} % \end{align} % \end{small} % % \end{subequations}
-
-% % By substituting the maximum limit of changeable output in \eqref{eqn:13} into \eqref{eqn:14}, a relaxed constraint on the FCR for conventional generators is calculated,
-
-% % \vspace{-0.115in} % \begin{small} %     \begin{align}\label{eqn:14} %         \sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta
-% f_{\text{max}}}, \forall s,t % \end{align} % \end{small}
+% \vspace{-0.115in}
+% \begin{small}
+% 	\begin{align}\label{eqn:14}
+% 		\sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta  f_{\text{max}}}, \forall s,t
+% 	\end{align}
+% \end{small}
 
 % \vspace{-0.2in} \subsection{$(Chance-constrained)\,\, nadir \,\,constraint$}
 
