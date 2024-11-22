@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  22 NOV 2024 17:43
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.10.24)  22 NOV 2024 18:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1035,10 +1035,54 @@ Overfull \hbox (5.88416pt too wide) in paragraph at lines 215--220
 [2]
 
 
-LaTeX Warning: Reference `eqn:11a' on page 3 undefined on input line 320.
+
+[3]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 332.
 
 
-LaTeX Warning: Reference `eqn:11b' on page 3 undefined on input line 320.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\leavevmode@ifvmode' on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                \kern 1.66702pt
+(hyperref)                removed on input line 332.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 332.
+
+
+LaTeX Warning: Reference `eqn:14a' on page 4 undefined on input line 353.
 
 (manuscript.bbl
 
@@ -1046,7 +1090,11 @@ Package natbib Warning: Empty `thebibliography' environment on input line 24.
 
 )
 
-[3] (manuscript.aux)
+
+
+[4
+
+] (manuscript.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-09-10>
@@ -1056,20 +1104,20 @@ L3 programming layer <2024-09-10>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `manuscript.out' has not changed.
-(rerunfilecheck)             Checksum: 74F609F8805DF88EE169F211B6431017;980.
+(rerunfilecheck)             Checksum: 9D034E134076CD0C4D9B693895EE4F7E;1234.
  ) 
 Here is how much of TeX's memory you used:
- 31500 strings out of 473899
- 630001 string characters out of 5724142
- 1190347 words of memory out of 5000000
- 53730 multiletter control sequences out of 15000+600000
+ 31525 strings out of 473899
+ 630296 string characters out of 5724142
+ 1192347 words of memory out of 5000000
+ 53748 multiletter control sequences out of 15000+600000
  603858 words of font info for 117 fonts, out of 8000000 for 9000
  1148 hyphenation exceptions out of 8191
  110i,15n,107p,944b,582s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on manuscript.pdf (3 pages, 308174 bytes).
+<D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/stix/STIXGeneral-Regular.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy5.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy9.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><D:/CommonSoftwares/ProductiveCodingEditors/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on manuscript.pdf (4 pages, 327313 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 45 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 250 PDF objects out of 1000 (max. 8388607)
+ 52 named destinations out of 1000 (max. 500000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

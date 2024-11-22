@@ -309,70 +309,48 @@ The restriction of FCR constraint is used to ensure sufficient frequency reserve
 \begin{newsubequations}
 	\label{eqn:11}
 	\begin{align}
-		&\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) \geq{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!- \label{eqn:11a}\\
-		&\qquad \qquad \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\ \left[\varDelta f(t+\delta t) - \varDelta f(t)\right] dt,t \in (t_{IR}, t_{PFR}]\notag  \\
-		&\sum\nolimits_{w\in\mathcal{W}_{1}} \left( \overline{p}_{w} - p_{w, t} \right) \geq \alpha_3 \varDelta f(t+\delta t) - 2H_W \delta t \varDelta f(t) \notag \\
-		&\qquad\qquad\qquad\qquad\qquad t \in (t_{IR}, t_{PFR}] \label{eqn:11b}\\
-	    &\sum\nolimits_{w\in\mathcal{W}_{2}} \left( \overline{p}_{w} - p_{w, t} \right) \geq R_{W}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11c}\\
-		& \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} -p_{e, t}\right)  \geq R_{E}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11d}
+		 & \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) \geq{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!- \label{eqn:11a}            \\
+		 & \qquad \qquad \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\ \varDelta f^{'}(t)dt,t \in (t_{IR}, t_{PFR}]\notag                          \\
+		 & \sum\nolimits_{w\in\mathcal{W}_{1}} \left( \overline{p}_{w} - p_{w, t} \right) \geq [K_{W}R_{W}^{-1} + D_{W}]\varDelta f(t+\delta t) -  \notag   \\
+		 & \qquad\qquad 2H_W \delta t \varDelta f^{'}(t), t \in (t_{IR}, t_{PFR}] \label{eqn:11b}                                                           \\
+		 & \sum\nolimits_{w\in\mathcal{W}_{2}} \left( \overline{p}_{w} - p_{w, t} \right) \geq R_{W}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11c} \\
+		 & \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} -p_{e, t}\right)  \geq R_{E}^{-1} h_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11d}
 	\end{align}\end{newsubequations}
 
-Note that the upper bound of $\varDelta f(t)$ in \eqref{eqn:11} is predetermined as $\varDelta f_{\text{max}}$, therefore, a concise form of \eqref{eqn:11a} and \eqref{eqn:11b} can be calculated
-by replacing $\varDelta f(t)$ with $\varDelta f_{\text{max}}$,
+\noindent where \(h_{nadir}\) denotes the maximum frequency deviation from the nominal frequency. From \(t \!=\! t_{IR}\!\rightarrow\! t_{PFR}\), \(\varDelta f(t)\) should be kept within the range between \(h_{db}\) and \(h_{nadir}\), and the change of \(\varDelta f^{'}(t)\! \rightarrow\! 0\) at \(t=t_{PFR}\). Therefore, the upper bound of frequency containment reserves denoted by \eqref{eqn:11a} and \eqref{eqn:11b} can be approximated as,
 
 \vspace{-0.125in}
-\begin{newsubequations}\label{eqn:12}
+\begin{newsubequations}
+	\label{eqn:12}
 	\begin{align}
-		 & \sum\nolimits_{w=0}^{NG}\!\left( p_{w}^{\text{max}} - p_{w, s, t}\right)\!\geq \!\slfrac{\varDelta f_{\text{max}}}{R_W},\forall s,t                  \\
-		 & \sum\nolimits_{e=0}^{NE} \! \left( p_{e}^{\text{max}} - p_{e, s, t}^{\text{dis}}\right)\!\geq \!  \slfrac{\varDelta f_{\text{max}}}{R_E},\forall s,t
+		 & \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) \geq{K_{G} }{ R_{G}^{-1}} h_{nadir}, t \in (t_{IR}, t_{PFR}] \label {eqn:12a} \\
+		 & \sum\nolimits_{w\in\mathcal{W}_{1}} \left( \overline{p}_{w} - p_{w, t} \right) \geq [K_{W}R_{W}^{-1} + D_{W}] h_{nadir}, t \in (t_{IR}, t_{PFR}] \label{eqn:12b}
 	\end{align}
 \end{newsubequations}
 
-% Again, in the context of the $FCR$ constraint \eqref{eqn:11c} of conventional generators, the right-hand side of \eqref{eqn:11c}, representing the adjustable output of conventional generators, can
-% be rewritten as
-% % In the context of the FCR constraint \eqref{eqn:11c} pertaining to conventional generators, the right-hand side of \eqref{eqn:11c} can be rephrased as,
-
-% \vspace{-0.125in}
-% \begin{subequations}\label{eqn:13}
-% 	\begin{small}
-% 		\begin{align}\label{eqn:13}
-% 			 & {{K_{G} }{ R_{G}^{-1}} \varDelta f(t) - \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}}\right )\left( n\delta t \right)} \notag                                    \\
-% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) -  \left({K_G(1-F_G)}{ R_{G}^{-1} }RoCoF_{\text{max}} \right)\notag                                                   \\
-% 			 & \qquad \left( e^{-\frac{1}{T_G} (t)}\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)}  \right) \delta t\notag                                              \\
-% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t)- {K_G(1-F_G)}{ R_{G}^{-1} }\times \notag                                                                              \\
-% 			 & \quad \quad\, e^{-\frac{1}{T_G} (t)}\left(\sum\nolimits_{i = 0}^{n}e^{\frac{1}{T_G}(t_0 + i \delta t)} \varDelta f^{\prime}(t_0 + i \delta t) \right) \delta t \notag \\
-% 			 & \quad \leq {K_{G} }{ R_{G}^{-1}} \varDelta f(t) \leq {{K_{G} }{ R_{G}^{-1}} \varDelta f_{\text{max}}}
-% 		\end{align}
-% 	\end{small}
-% \end{subequations}
-
-% By substituting the maximum limit of changeable output in \eqref{eqn:13} into \eqref{eqn:14}, a relaxed constraint on the FCR for conventional generators is calculated,
-
-% \vspace{-0.115in}
-% \begin{small}
-% 	\begin{align}\label{eqn:14}
-% 		\sum\nolimits_{g=1}^{NG} \left( p_{g}^{\text{max}} - p_{g, s, t}\right)\geq {{K_{G} }{ R_{G}^{-1}} \varDelta  f_{\text{max}}}, \forall s,t
-% 	\end{align}
-% \end{small}
-
-% \vspace{-0.2in} \subsection{$(Chance-constrained)\,\, nadir \,\,constraint$}
+\vspace{-0.2in} 
+\subsection{$(Chance-constrained)\,\, nadir \,\,constraint$}
 
 % % To avoid the occurrence of $\varDelta f(t)$ beyond its predetermined threshold $\varDelta f_{\max}$, it is essential to impose nadir constraint on the potential fluctuation of $\varDelta
 % f_{\text{nadir}} = \max\{\varDelta f(t)\}$, ensuring that $\varDelta f_{\text{nadir}}$ does not exceed $\varDelta f_{\text{max}}$, \textit{i.e.,} $\varDelta f_{\text{nadir}}\leq \varDelta
 % f_{\text{max}}$. Note that the probabilistic density distribution of $\mathcal{P}(\varDelta f(t))$ may be effectively determined using the BF-SFR method. As a result, a chance-constrained nadir
 % constraint can be formulated as follows:
 
-% The frequency nadir constraint aims to avoid \(\varDelta f(t)\)  beyond its predefined threshold \(\varDelta f_{nadir}\) at the PFR process.  Since the posterior of frequency derivation considering
-% uncertain variability factors can be accurately solved through the Bayesian filter method, a chance-constrained frequency nadir constraint can be derived as follows,
+The frequency nadir constraint aims to avoid \(\varDelta f(t)\)  beyond its predefined threshold \(\varDelta f_{nadir}\) at the PFR process.  Since the posterior of frequency derivation considering
+uncertain variability factors can be accurately solved through the Bayesian filter method, a chance-constrained frequency nadir constraint can be derived as follows,
 
-% \vspace{-0.125in} \begin{small} \begin{align}\label{eqn:13} & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag \\
-% & \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \end{align} \end{small}
+\vspace{-0.125in} \begin{small} \begin{align}\label{eqn:13} & \textrm{Prob}\left(\varDelta f(t) \leq \varDelta f_{nadir}\right) \geq 1-\varepsilon_{SFR};\forall t\in(t_{IR}, t_{PFR}] \notag \\
+& \qquad\,\,\,\, \varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \end{align} \end{small}
 
-% % \vspace{-0.125in} % \begin{small} %     \begin{align}\label{eqn:15} %          & \mathcal{P}\left(\varDelta f_{\text{nadir}} \leq \varDelta f_{\text{max}}\right) \geq 1-\epsilon %     \end{align}
-% % \end{small}
+\vspace{-0.125in} 
+\begin{small} 
+	     \begin{align}\label{eqn:15} 
+			          & \mathcal{P}\left(\varDelta f_{\text{nadir}} \leq \varDelta f_{\text{max}}\right) \geq 1-\epsilon 
+		\end{align}
+\end{small}
 
-% \noindent where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{eqn:13}; \(\varDelta f(t)\) can be generated from its posterior distribution denoted by \eqref{eqn:13}. Using
-% sampled average approximate (SAA) method, \cref{eqn:13} can be equivalently reshaped as the deterministic form \eqref{eqn:14a}, which is listed below,
+\noindent where $\varepsilon_{SFR}$ is the confidence coefficient associated with \eqref{eqn:13}; \(\varDelta f(t)\) can be generated from its posterior distribution denoted by \eqref{eqn:13}. Using
+sampled average approximate (SAA) method, \cref{eqn:13} can be equivalently reshaped as the deterministic form \eqref{eqn:14a}, which is listed below,
 
 % \vspace{-0.125in} \begin{newsubequations} \begin{small} \begin{align} \left(\varDelta f(t)\right)^{(n)} - \varXi \tau_{n}\!              & \leq \!\varDelta f_{nadir}, \label{eqn:14a}
 % \\

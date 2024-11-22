@@ -43,5 +43,6 @@
         "comments": "#ff00ff"
     },
     "window.autoDetectColorScheme": true,
-    "editor.fontFamily": "SF PRO, Candara, Monoid, Menlo, Consolas, 'Courier New', monospace"
+    "editor.fontFamily": "SF PRO, Candara, Monoid, Menlo, Consolas, 'Courier New', monospace",
+    "terminal.integrated.fontFamily": "Geist Mono, monospace"
 }
