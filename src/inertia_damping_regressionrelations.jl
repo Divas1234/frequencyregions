@@ -22,7 +22,5 @@ function calculate_fittingparameters(inertia, damping)
 
 	model = lm(@formula(inertia~1 + damping + damping^2), data)
 
-	# println("回归函数的参数: ", coef(model))
-
 	return coef(model)
 end
