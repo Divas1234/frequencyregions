@@ -1,6 +1,6 @@
 # IR stsage
 function min_inertia_estimation(
-		ROCOF_threshold, delta_p, damping, factorial_coefficient, time_content)
+		ROCOF_threshold, delta_p, damping, factorial_coefficient, time_content, droop)
 
 	lower_bound = 0.5 * (delta_p * 100) / (ROCOF_threshold * 50) 
 	# lower_bound = 0.5 * (delta_p * 1) / (ROCOF_threshold * 1) 
