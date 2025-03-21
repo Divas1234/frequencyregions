@@ -14,7 +14,7 @@ include("src/inertia_damping_regressionrelations.jl")
 
 # Get parameters from boundary conditions
 initial_inertia, factorial_coefficient, time_content, droop, ROCOF_threshold, NADIR_threshold, delta_p = get_parmeters()
-damping = 0.5:0.25:10
+damping = 0.5:0.25:15
 
 # zeta smaller than 1
 inertia_updown_bindings = inertia_bindings(damping, factorial_coefficient, time_content, droop)
@@ -34,7 +34,7 @@ min_inertia, max_inertia = min_inertia_estimation(
 #TODO NOTE -  plot
 sp1 = Plots.plot(
 	damping, extreme_inertia, lw = 3, framestyle = :box, ylims = (0, maximum(extreme_inertia)),
-	xlabel = "damping / p.u.", ylabel = "max inertia / p.u.")
+	xlabel = "damping / p.u.", ylabel = "max inertia / p.u.");
 sp2 = heatmap(nadir_vector, framestyle = :box, xlabel = "Damping",
 	ylabel = "nadir distribution");
 sp3 = heatmap(inertia_vector, framestyle = :box,
