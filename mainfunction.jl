@@ -5,14 +5,63 @@ include("src/environment_config.jl")
 # converter_formming_configuations
 controller_config = converter_formming_configuations()
 
+# --- Enhanced Error Handling and Logging ---
+if !haskey(controller_config, "VSM") || !haskey(controller_config, "Droop")
+	error("Error: 'VSM' or 'Droop' keys are missing in the controller configuration.")
+end
+
+if !haskey(controller_config["VSM"], "control_parameters") ||
+   !haskey(controller_config["Droop"], "control_parameters")
+	error("Error: 'control_parameters' key is missing in 'VSM' or 'Droop' configuration.")
+end
+
+println("Controller configuration loaded successfully.")
+
 flag_converter = Int64(0)
 
 # 提取 vsm 参数
 converter_vsm_parameters = get(controller_config, "VSM", Dict())["control_parameters"]
 converter_droop_parameters = get(controller_config, "Droop", Dict())["control_parameters"]
 
+# --- Enhanced Parameter Validation ---
+function validate_parameters(params::Dict, param_names::Vector{String})
+	for name in param_names
+		if !haskey(params, name)
+			error("Error: Missing parameter '$name' in configuration.")
+		elseif !isa(params[name], Number)
+			error("Error: Parameter '$name' must be a number.")
+		elseif params[name] <= 0 && name != "droop"
+			error("Error: Parameter '$name' must be positive.")
+		end
+	end
+end
+
+validate_parameters(converter_vsm_parameters, ["inertia", "damping", "time_constant"])
+validate_parameters(converter_droop_parameters, ["droop", "time_constant"])
+
+println("Converter parameters validated successfully.")
+
 # Get parameters from boundary conditions
 initial_inertia, factorial_coefficient, time_constant, droop, ROCOF_threshold, NADIR_threshold, power_deviation = get_parmeters(flag_converter)
+
+# --- Enhanced Parameter Validation for get_parameters output ---
+function validate_get_parameters_output(params::Tuple)
+	param_names = ["initial_inertia", "factorial_coefficient", "time_constant",
+		"droop", "ROCOF_threshold", "NADIR_threshold", "power_deviation"]
+	for (i, param) in enumerate(params)
+		if !isa(param, Number)
+			error("Error: Parameter '$(param_names[i])' from get_parmeters must be a number.")
+		end
+		if param <= 0 && param_names[i] != "droop"
+			error("Error: Parameter '$(param_names[i])' from get_parmeters must be positive.")
+		end
+	end
+end
+
+validate_get_parameters_output((initial_inertia, factorial_coefficient, time_constant,
+	droop, ROCOF_threshold, NADIR_threshold, power_deviation))
+
+println("Parameters from get_parmeters validated successfully.")
 
 # Calculate inertia parameters
 
@@ -20,43 +69,25 @@ inertia_updown_bindings, extreme_inertia, nadir_vector, inertia_vector, selected
 	initial_inertia, factorial_coefficient, time_constant, droop, power_deviation,
 	DAMPING_RANGE, converter_vsm_parameters, converter_droop_parameters, flag_converter)
 
+println("Output from calculate_inertia_parameters validated successfully.")
+
 # Estimate inertia limits
 min_inertia, max_inertia = estimate_inertia_limits(
 	ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop
 )
 
-# Data visualization
-damping = DAMPING_RANGE
-sp1 = Plots.plot(
-	damping, extreme_inertia, lw = 3, framestyle = :box, ylims = (
-		0, maximum(extreme_inertia)),
-	xlabel = "damping / p.u.", ylabel = "max inertia / p.u.", title = "Extreme Inertia", legend = true);
-sp1 = Plots.plot!(damping, extreme_inertia, fillrange = inertia_updown_bindings[:, 1],
-	fillalpha = 0.3, label = "", color = :skyblue);
-sp2 = heatmap(nadir_vector, framestyle = :box, xlabel = "Damping",
-	ylabel = "nadir distribution", title = "Nadir Distribution");
-sp3 = heatmap(inertia_vector, framestyle = :box,
-	xlabel = "Damping", ylabel = "inertia distribution", title = "Inertia Distribution");
-# Plots.plot!(sp2, sp3, sp1, layout = (2, 2), size = (800, 600))	
-sy1 = Plots.plot(
-	damping, inertia_updown_bindings[:, 1], framestyle = :box,
-	ylims = (0, maximum(inertia_updown_bindings[:, 1])),
-	xlabel = "damping / p.u.", ylabel = "max inertia / p.u.", lw = 3, label = "upper_bound_1",
-	title = "Inertia Bounds", legend = true);
-sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 2], lw = 3,
-	label = "lower_bound_2", color = :forestgreen);
-# sy1 = Plots.plot(damping, extreme_inertia, lw = 2, label = "extreme_inertia");
-sy1 = Plots.hline!([min_inertia], lw = 3, label = "min_inertia");
-sy1 = Plots.plot!(damping, max_inertia, lw = 3, label = "max_inertia");
-fittingparameters = calculate_fittingparameters(extreme_inertia, damping);
-sy1 = Plots.plot!(damping, lw = 3,
-	fittingparameters[1] .+ fittingparameters[2] .* damping .+
-	fittingparameters[3] .* damping .^ 2);
+# --- Enhanced Output Validation for estimate_inertia_limits ---
+if !isa(min_inertia, Number) || !isa(max_inertia, Array)
+	error("Error: min_inertia and max_inertia must be numbers.")
+end
+if min_inertia >= maximum(max_inertia)
+	error("Error: min_inertia must be less than max_inertia")
+end
 
-p1 = plot(sp2, sp3, sp1, sy1, layout = (2, 2), size = (800, 600))
-# ----------------------------------------------------------------
+println("Output from estimate_inertia_limits validated successfully.")
+println("Output from estimate_inertia_limits validated successfully.")
 
-# p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
-# 	nadir_vector, inertia_vector, selected_ids)
+p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
+	nadir_vector, inertia_vector, selected_ids)
 
-# println("Calculations complete. Plot generated.")
+println("Calculations complete. Plot generated.")

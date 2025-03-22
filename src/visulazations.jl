@@ -3,7 +3,8 @@ function data_visualization(damping, inertia_updown_bindings, extreme_inertia,
 
 	#TODO NOTE -  plot
 	sp1 = Plots.plot(
-		damping, extreme_inertia, lw = 3, framestyle = :box, ylims = (0, maximum(extreme_inertia)),
+		damping, extreme_inertia, lw = 3, framestyle = :box, ylims = (
+			0, maximum(extreme_inertia)),
 		xlabel = "damping / p.u.", ylabel = "max inertia / p.u.", title = "Extreme Inertia", legend = true)
 	sp1 = Plots.plot!(damping, extreme_inertia, fillrange = inertia_updown_bindings[:, 1],
 		fillalpha = 0.3, label = "", color = :skyblue)
@@ -27,7 +28,7 @@ function data_visualization(damping, inertia_updown_bindings, extreme_inertia,
 	end
 
 	@show seq = fittingparameters[1] .+ fittingparameters[2] .* damping .+
-		  fittingparameters[3] .* damping .^ 2 .- max_inertia
+				fittingparameters[3] .* damping .^ 2 .- max_inertia
 	if seq[1] > 0
 		interaction_point = findfirst(x -> x < 0, seq)[1]
 	else
