@@ -41,7 +41,7 @@ function plot_irregular_polyhedron(vertices, faces)
         face_x = [v[1] for v in face_vertices]
         face_y = [v[2] for v in face_vertices]
         face_z = [v[3] for v in face_vertices]
-        GLMakie.poly!(ax, Point3f.(face_vertices), color = (:skyblue, 0.7), strokecolor = :black, strokewidth = 1)
+        GLMakie.poly!(ax, Polygon(Point3f.(face_vertices)), color = (:skyblue, 0.7), strokecolor = :black, strokewidth = 1)
     end
 
     # Add labels to the vertices
@@ -55,8 +55,8 @@ end
 
 # Example usage with an irregular polyhedron:
 vertices_irregular = [
-    [0,0,0], [1,0,0], [1,1,0], [0,1,0],  # Bottom square
-    [0,0,1], [1,0,1], [1,1,1], [0,1,1]   # Top square
+    [0.0,0.0,0.0], [1.0,0.0,0.0], [1.0,1.0,0.0], [0.0,1.0,0.0],  # Bottom square
+    [0.0,0.0,1.0], [1.0,0.0,1.0], [1.0,1.0,1.0], [0.0,1.0,1.0]   # Top square
 ]
 
 faces_irregular = [

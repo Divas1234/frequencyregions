@@ -72,8 +72,8 @@ function sub_data_visualization(
 	sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 2], lw = 3,
 		label = "lower_bound_2", color = :forestgreen)
 
-		# sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 1], fillrange = fillarea,
-		# fillalpha = 0.3, label = "", color = :skyblue)
+	# sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 1], fillrange = fillarea,
+	# fillalpha = 0.3, label = "", color = :skyblue)
 
 	# sy1 = Plots.plot!(
 	# 	damping[interaction_point:end], max_inertia[interaction_point:end],
@@ -86,6 +86,10 @@ function sub_data_visualization(
 		fittingparameters[3] .* damping .^ 2)
 	sy1 = Plots.hline!([min_inertia], lw = 3, label = "min_inertia")
 	sy1 = Plots.plot!(damping, max_inertia, lw = 3, label = "max_inertia")
+
+	# add additional information
+	sy1 = Plots.vline!([12.0], lw = 3, label = "damping_min_binding")
+	sy1 = Plots.vline!([2.5], lw = 3, label = "damping_max_binding")
 
 	return sy1
 end
