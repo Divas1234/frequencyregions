@@ -1,4 +1,4 @@
-include("src/environment_config.jl")
+include("environment_config.jl")
 
 # --- Main Script Execution ---
 
