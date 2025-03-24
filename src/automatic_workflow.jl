@@ -25,7 +25,7 @@ function get_inertiatodamping_functions(droop_parameters)
 
 	# Estimate inertia limits
 	min_inertia, max_inertia = estimate_inertia_limits(
-		ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop
+		ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop,
 	)
 
 	min_damping, max_damping = 2.5, 12
@@ -40,8 +40,8 @@ function get_inertiatodamping_functions(droop_parameters)
 end
 
 function sub_data_visualization(
-		damping, min_inertia, max_inertia, inertia_updown_bindings,
-		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop)
+	damping, min_inertia, max_inertia, inertia_updown_bindings,
+	extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop)
 
 	# NOTE type functions: c + b * damping a * damping^2
 
@@ -101,7 +101,7 @@ function sub_data_visualization(
 end
 
 function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
-		min_inertia, max_inertia, min_damping, max_damping, droop)
+	min_inertia, max_inertia, min_damping, max_damping, droop)
 
 	# --- Input Validation ---
 	if length(fittingparameters) < 3
@@ -242,7 +242,7 @@ function vertices_to_matrix(vertices::AbstractVector)
 
 	first_tuple_length = length(first(first_element))
 	if !all(all(length(v) == first_tuple_length for v in sub_vertices)
-	for sub_vertices in vertices)
+			for sub_vertices in vertices)
 		@error "Inconsistent tuple lengths in 'vertices'."
 		return nothing
 	end
@@ -261,7 +261,7 @@ function vertices_to_matrix(vertices::AbstractVector)
 	for sub_vertices in vertices
 		num_rows = length(sub_vertices)
 		for (i, vertex) in enumerate(sub_vertices)
-			matrix[current_row + i - 1, :] = collect(vertex)
+			matrix[current_row+i-1, :] = collect(vertex)
 		end
 		current_row += num_rows
 	end

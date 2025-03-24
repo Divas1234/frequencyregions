@@ -118,7 +118,7 @@
   "julia.execution.codeInREPL": true,
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)",
-  "workbench.preferredDarkColorTheme": "Visual Studio 2022 Theme",
+  "workbench.preferredDarkColorTheme": "GitHub Sharp Dark",
   "commentAnchors.tags.sortAlphabetically": true,
   "commentAnchors.showCursor": true,
   "commentAnchors.tags.anchors": {
