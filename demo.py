@@ -1,34 +1,45 @@
-import bpy
 
-try:
-    # 定义顶点坐标
-    verts = [(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0)]
+import numpy as np
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
 
-    # 定义面，使用顶点索引
-    faces = [(0, 1, 2, 3)]
+def create_irregular_shape():
+    # 定义不规则几何体的顶点坐标
+    vertices = np.array([
+        [0, 0, 0],    # 底部顶点
+        [1, 0, 0],
+        [1, 1, 0],
+        [0, 1, 0],
+        [0.5, 0.5, 2],  # 顶部顶点
+    ])
 
-    # 创建一个新的网格数据块
-    mesh = bpy.data.meshes.new("SimpleQuad")
+    # 定义面的顶点索引
+    faces = [
+        [0, 1, 4],    # 侧面
+        [1, 2, 4],
+        [2, 3, 4],
+        [3, 0, 4],
+        [0, 1, 2, 3]  # 底面
+    ]
 
-    # 从顶点和面创建网格
-    mesh.from_pydata(verts, [], faces)
+    # 创建3D图形
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
 
-    # 更新网格几何体
-    mesh.update()
+    # 绘制每个面
+    for face in faces:
+        x = vertices[face, 0]
+        y = vertices[face, 1]
+        z = vertices[face, 2]
+        ax.plot_trisurf(x, y, z)
 
-    # 创建一个新的对象
-    obj = bpy.data.objects.new("SimpleQuadObject", mesh)
+    # 设置坐标轴标签
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
 
-    # 将对象链接到场景
-    bpy.context.collection.objects.link(obj)
-    
-    # 选择新创建的对象
-    bpy.ops.object.select_all(action='DESELECT')
-    obj.select_set(True)
-    bpy.context.view_layer.objects.active = obj
-    
-    # 打印成功消息
-    print("成功创建了简单四边形对象：", obj.name)
-    
-except Exception as e:
-    print("创建四边形时出错：", str(e))
+    # 显示图形
+    plt.show()
+
+if __name__ == "__main__":
+    create_irregular_shape()

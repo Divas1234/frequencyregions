@@ -1,81 +1,97 @@
 include("src/automatic_workflow.jl")
 
-# Define droop parameters.  Consider moving this to a separate configuration section if needed.
-@show droop_parameters = collect(range(33, 40, length = 20))
+# Define droop parameters. Consider moving this to a separate configuration file or a dedicated section.
+const DROOP_PARAMETERS = collect(range(33, 40, length = 20))
 
-# Define a function to generate and plot the inertia-damping functions
+"""
+	plot_inertia_damping(droop_parameters::AbstractVector)
+
+Generates and plots the inertia-damping functions for a given set of droop parameters.
+
+# Arguments
+- `droop_parameters::AbstractVector`: A vector of droop parameters.
+
+# Returns
+- `Tuple{Plots.Plot, Vector{Vector{Tuple{Float64, Float64, Float64}}}}`: A tuple containing the plot and a vector of vertices.
+  Returns `(nothing, nothing)` if `droop_parameters` is empty or if no valid plots are generated.
+"""
 function plot_inertia_damping(droop_parameters::AbstractVector)
 	if isempty(droop_parameters)
-		println("Warning: droop_parameters is empty. No plot will be generated.")
-		return
+		@warn "droop_parameters is empty. No plot will be generated."
+		return nothing, nothing  # Return nothing for both plot and vertices
 	end
-	_plot_inertia_damping(droop_parameters)
+	return _plot_inertia_damping(droop_parameters) # Internal plotting function
 end
 
-function _plot_inertia_damping(droop_parameters)
+"""
+	_plot_inertia_damping(droop_parameters::AbstractVector)
+
+Internal function to generate and plot the inertia-damping functions.
+"""
+function _plot_inertia_damping(droop_parameters::AbstractVector)
 	plots = []
 	labels = []
-	vertexs = []
+	all_vertices = []
 
 	for param in droop_parameters
-		p, sub_vertexs = get_inertiatodamping_functions(param)
+		try
+			p, sub_vertices = get_inertiatodamping_functions(param)
+			if isnothing(p) || isnothing(sub_vertices) || isempty(sub_vertices)
+				@warn "get_inertiatodamping_functions returned invalid data for parameter $param. Skipping this parameter."
+				continue
+			end
+			push!(plots, p)
+			push!(labels, "Droop 1/$(round(1 / param, digits=3))") # More descriptive label
+			push!(all_vertices, sub_vertices)
 
-		# Basic error handling: Check if get_inertiatodamping_functions returned valid data
-		if p === nothing || sub_vertexs === nothing
-			println("Warning: get_inertiatodamping_functions returned nothing for parameter $param. Skipping this parameter.")
-			continue
+		catch e
+			@warn "Error processing parameter $param: $e"
+			# Handle the error as needed, e.g., log it, skip the parameter, or rethrow it.
+			continue # Skip to the next droop parameter
 		end
-
-		push!(plots, p)
-		push!(labels, "Droop 1/$(round(1 / param, digits = 3))") # Use string interpolation
-		push!(vertexs, sub_vertexs)
 	end
 
-	@show vertexs
+	if isempty(plots)
+		@warn "No valid plots were generated."
+		return nothing, nothing # Return nothing if no plots were created
+	end
 
-	# Use the splat operator (...) to pass all plots at once
 	p1 = Plots.plot(plots...,
 		legend = false, size = (1000, 1000),
 		xlabel = "Damping", ylabel = "Inertia",
-		label = permutedims(labels)) # Use permutedims for correct label orientation
+		label = permutedims(labels)) # Correct label orientation
 
-	return p1, vertexs
+	vertices_matrix = vertices_to_matrix(all_vertices::AbstractVector)
+
+	return p1, vertices_matrix
 end
 
-# Call plotting function
-p1, vertexs = plot_inertia_damping(droop_parameters)
+# Call plotting function.
+plot_result, all_vertices = plot_inertia_damping(DROOP_PARAMETERS)
 
-if !isnothing(p1)
-	display(p1) # or save to file using Plots.savefig
+if !isnothing(plot_result)
+	display(plot_result) # Or save to file: Plots.savefig(p1, "inertia_damping_plot.png")
 end
 
-using LinearAlgebra
+# Display the result.
+# if !isnothing(all_vertices)
+# 	@show all_vertices
+# 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
+# end
 
-# Assuming vertexs is a Vector of matrices, each of size (n, 4)
-# where n is the number of vertices for a given parameter
+# Display the result.
+# if !isnothing(all_vertices)
+# 	@show all_vertices
+# 	if !isdir("res")
+#         mkdir("res")
+#     end
+# 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
+#     draw_geometry(OUTPUT_REL_PATH) # Draw the mesh
+# end
 
-# Convert vertexs to a single matrix
-function vertexs_to_matrix(vertexs)
-	# Get the total number of points across all sub-vertex arrays
-	total_points = sum(size(v, 1) for v in vertexs)
-
-	# Create a matrix with enough rows to hold all points and 4 columns
-	matrix = zeros(total_points, 3)
-
-	# Populate the matrix
-	current_row = 1
-	lll = length(vertexs)
-	for sub_vertexs in 1:lll
-		num_rows = size(vertexs[sub_vertexs], 1)
-		res = [collect(v) for v in vertexs[sub_vertexs]]
-		matrix[current_row:(current_row + num_rows - 1), :] = permutedims(hcat(res...))
-		current_row += num_rows
-	end
-
-	return matrix
+@show all_vertices
+if !isdir("res")
+	mkdir("res")
 end
-
-vertexs_matrix = vertexs_to_matrix(vertexs)
-
-# Display the result
-@show vertexs_matrix
+write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
+draw_geometry(OUTPUT_REL_PATH) # Draw the mesh

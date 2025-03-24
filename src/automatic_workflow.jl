@@ -268,3 +268,34 @@ function vertices_to_matrix(vertices::AbstractVector)
 
 	return matrix
 end
+
+"""
+	write_vertices_to_file(all_vertices, base_path::String, rel_path::String)
+
+Writes the `all_vertices` data to a text file.
+
+# Arguments
+- `all_vertices`: The data to write (expected to be a matrix-like structure).
+- `base_path`: The base directory for the output file.
+- `rel_path`: The relative path to the output file from the base directory.
+"""
+function write_vertices_to_file(all_vertices, base_path::String, rel_path::String)
+	output_path = joinpath(base_path, rel_path)
+	output_dir = dirname(output_path)
+
+	# Create the output directory if it doesn't exist
+	if !isdir(output_dir)
+		mkpath(output_dir)
+	end
+
+	open(output_path, "w") do file
+		for row in eachrow(all_vertices)
+			# Ensure row has at least three elements
+			if length(row) >= 3
+				write(file, "$(row[1]) $(row[2]) $(row[3])\n")
+			else
+				@warn "Row does not contain at least three elements: $row"
+			end
+		end
+	end
+end

@@ -114,11 +114,7 @@
     },
     "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
     "files.autoSave": "onFocusChange",
-<<<<<<< HEAD
     "editor.fontSize": 16,
-=======
-    "editor.fontSize": 14,
->>>>>>> 090573947643688f2a3b08cfec8285fc6dbd1a04
     "prettier.bracketSameLine": true,
     "BracketHighlighter.differentSymbolHighlightingUsed": true,
     "terminal.integrated.fontSize": 14,
