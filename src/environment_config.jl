@@ -1,6 +1,8 @@
 using Pkg
 Pkg.activate(".Pkg/")
 using Plots, PlotThemes
+using LinearAlgebra
+
 gr()
 theme(:wong2)
 

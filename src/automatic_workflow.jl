@@ -28,9 +28,10 @@ function get_inertiatodamping_functions(droop_parameters)
 		ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop
 	)
 
+	min_damping, max_damping = 2.5, 12
 	p1, vertexs = sub_data_visualization(
 		DAMPING_RANGE, min_inertia, max_inertia, inertia_updown_bindings,
-		extreme_inertia, nadir_vector, inertia_vector, selected_ids)
+		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop)
 
 	# p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
 	# 	nadir_vector, inertia_vector, selected_ids)
@@ -39,8 +40,8 @@ function get_inertiatodamping_functions(droop_parameters)
 end
 
 function sub_data_visualization(
-		damping, min_inertia, max_inertia, inertia_updown_bindings, extreme_inertia,
-		nadir_vector, inertia_vector, selected_ids)
+		damping, min_inertia, max_inertia, inertia_updown_bindings,
+		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop)
 
 	# NOTE type functions: c + b * damping a * damping^2
 
@@ -94,114 +95,176 @@ function sub_data_visualization(
 	sy1 = Plots.vline!([2.5], lw = 3, label = "damping_max_binding")
 
 	vertexs = calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
-		min_inertia, max_inertia, min_damping, max_damping)
+		min_inertia, max_inertia, min_damping, max_damping, droop)
 
 	return sy1, vertexs
 end
 
 function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
-    min_inertia, max_inertia, min_damping, max_damping)
+		min_inertia, max_inertia, min_damping, max_damping, droop)
 
-    # --- Input Validation ---
-    if length(fittingparameters) < 3
-        error("fittingparameters must have at least 3 elements")
-    end
-    if isempty(DAMPING_RANGE)
-        error("DAMPING_RANGE cannot be empty")
-    end
+	# --- Input Validation ---
+	if length(fittingparameters) < 3
+		error("fittingparameters must have at least 3 elements")
+	end
+	if isempty(DAMPING_RANGE)
+		error("DAMPING_RANGE cannot be empty")
+	end
 
-    # --- Helper Functions ---
-    function find_damping_index(predicate, damping_range)
-        index = findfirst(predicate, damping_range)
-        if index === nothing
-            error("No damping value found satisfying the condition.")
-        end
-        return index
-    end
+	# --- Helper Functions ---
+	function find_damping_index(predicate, damping_range)
+		index = findfirst(predicate, damping_range)
+		if index === nothing
+			error("No damping value found satisfying the condition.")
+		end
+		return index
+	end
 
-    function calculate_tem_sequence(fitting_params, damping_range)
-        return fitting_params[1] .+ fitting_params[2] .* damping_range .+
-               fitting_params[3] .* damping_range .^ 2
-    end
+	function calculate_tem_sequence(fitting_params, damping_range)
+		return fitting_params[1] .+ fitting_params[2] .* damping_range .+
+			   fitting_params[3] .* damping_range .^ 2
+	end
 
-    function create_vertex(droop, damping, inertia)
-        return (droop, damping, inertia)  # Using a tuple for immutability
-    end
+	function create_vertex(droop, damping, inertia)
+		return (droop, damping, inertia)  # Using a tuple for immutability
+	end
 
-    # --- Main Logic ---
+	# --- Main Logic ---
 
-    # Find indices for max and min damping
-    max_damping_index = find_damping_index(x -> x > max_damping, DAMPING_RANGE)
-    min_damping_index = find_damping_index(x -> x > min_damping, DAMPING_RANGE)
+	# Find indices for max and min damping
+	max_damping_index = find_damping_index(x -> x > max_damping, DAMPING_RANGE)
+	min_damping_index = find_damping_index(x -> x > min_damping, DAMPING_RANGE)
 
-    # Pre-calculate damping values to avoid repetition
-    max_damping_value = DAMPING_RANGE[max_damping_index]
-    min_damping_value = DAMPING_RANGE[min_damping_index]
+	# Pre-calculate damping values to avoid repetition
+	max_damping_value = DAMPING_RANGE[max_damping_index]
+	min_damping_value = DAMPING_RANGE[min_damping_index]
 
-    # Calculate vertices related to max and min damping
-    vertex_max_damping_min_inertia = create_vertex(droop, max_damping_value, min_inertia)
-    vertex_max_damping_max_inertia = create_vertex(droop, max_damping_value, max_inertia[max_damping_index])
-    vertex_min_damping_max_inertia = create_vertex(droop, min_damping_value, max_inertia[min_damping_index])
-    vertex_min_damping_min_inertia = create_vertex(droop, min_damping_value, min_inertia)
+	# Calculate vertices related to max and min damping
+	vertex_max_damping_min_inertia = create_vertex(droop, max_damping_value, min_inertia)
+	vertex_max_damping_max_inertia = create_vertex(
+		droop, max_damping_value, max_inertia[max_damping_index])
+	vertex_min_damping_max_inertia = create_vertex(
+		droop, min_damping_value, max_inertia[min_damping_index])
+	vertex_min_damping_min_inertia = create_vertex(droop, min_damping_value, min_inertia)
 
-    # Calculate the temporary sequence
-    tem_sequence = calculate_tem_sequence(fittingparameters, DAMPING_RANGE)
-    vertex_min_damping_tem_sequence = create_vertex(droop, min_damping_value, tem_sequence[min_damping_index])
+	# Calculate the temporary sequence
+	tem_sequence = calculate_tem_sequence(fittingparameters, DAMPING_RANGE)
+	vertex_min_damping_tem_sequence = create_vertex(
+		droop, min_damping_value, tem_sequence[min_damping_index])
 
-    # Determine the result based on vertex comparisons
-    if vertex_min_damping_min_inertia > vertex_min_damping_tem_sequence
-        # Initialize with known type and size
-        res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 4)
-        res[1] = vertex_max_damping_max_inertia
-        res[2] = vertex_max_damping_min_inertia
-        res[3] = vertex_min_damping_min_inertia
-        res[4] = vertex_min_damping_max_inertia
-        return res
-    else
-        min_inertia_index = findfirst(x -> x < min_inertia, tem_sequence)
-        if min_inertia_index === nothing
-            # Handle the case where no value in tem_sequence is less than min_inertia
-            # Option 1: Throw an error
-            # error("No value in tem_sequence is less than min_inertia")
+	# Determine the result based on vertex comparisons
+	if vertex_min_damping_min_inertia > vertex_min_damping_tem_sequence
+		# Initialize with known type and size
+		res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 4)
+		res[1] = vertex_max_damping_max_inertia
+		res[2] = vertex_max_damping_min_inertia
+		res[3] = vertex_min_damping_min_inertia
+		res[4] = vertex_min_damping_max_inertia
+		return res
+	else
+		min_inertia_index = findfirst(x -> x < min_inertia, tem_sequence)
+		if min_inertia_index === nothing
+			# Handle the case where no value in tem_sequence is less than min_inertia
+			# Option 1: Throw an error
+			# error("No value in tem_sequence is less than min_inertia")
 
-            # Option 2: Use the last index as a fallback (adjust logic as needed)
-            min_inertia_index = lastindex(tem_sequence)
-        else
-            min_inertia_index -= 1
-        end
+			# Option 2: Use the last index as a fallback (adjust logic as needed)
+			min_inertia_index = lastindex(tem_sequence)
+		else
+			min_inertia_index -= 1
+		end
 
-        vertex_min_inertia = create_vertex(droop, DAMPING_RANGE[min_inertia_index], min_inertia)
+		vertex_min_inertia = create_vertex(
+			droop, DAMPING_RANGE[min_inertia_index], min_inertia)
 
-        if vertex_min_damping_max_inertia > vertex_min_damping_tem_sequence
-            # Initialize with known type and size
-            res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 5)
-            res[1] = vertex_max_damping_max_inertia
-            res[2] = vertex_max_damping_min_inertia
-            res[3] = vertex_min_inertia
-            res[4] = vertex_min_damping_tem_sequence
-            res[5] = vertex_min_damping_max_inertia
-            return res
-        else
-            max_inertia_diff_index = findfirst(x -> x < 0, tem_sequence - max_inertia)
-            if max_inertia_diff_index === nothing
-                # Handle case where no value is less than 0
-                # Option 1: Throw an error
-                # error("No value in tem_sequence - max_inertia is less than 0")
+		if vertex_min_damping_max_inertia > vertex_min_damping_tem_sequence
+			# Initialize with known type and size
+			res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 5)
+			res[1] = vertex_max_damping_max_inertia
+			res[2] = vertex_max_damping_min_inertia
+			res[3] = vertex_min_inertia
+			res[4] = vertex_min_damping_tem_sequence
+			res[5] = vertex_min_damping_max_inertia
+			return res
+		else
+			max_inertia_diff_index = findfirst(x -> x < 0, tem_sequence - max_inertia)
+			if max_inertia_diff_index === nothing
+				# Handle case where no value is less than 0
+				# Option 1: Throw an error
+				# error("No value in tem_sequence - max_inertia is less than 0")
 
-                # Option 2: Use the last index (adjust logic as needed)
-                max_inertia_diff_index = lastindex(tem_sequence)
-            else
-                max_inertia_diff_index = max_inertia_diff_index[1] - 1
-            end
+				# Option 2: Use the last index (adjust logic as needed)
+				max_inertia_diff_index = lastindex(tem_sequence)
+			else
+				max_inertia_diff_index = max_inertia_diff_index[1] - 1
+			end
 
-            vertex_tem_sequence = create_vertex(droop, DAMPING_RANGE[max_inertia_diff_index], tem_sequence[max_inertia_diff_index])
-            # Initialize with known type and size
-            res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 4)
-            res[1] = vertex_max_damping_max_inertia
-            res[2] = vertex_max_damping_min_inertia
-            res[3] = vertex_min_inertia
-            res[4] = vertex_tem_sequence
-            return res
-        end
-    end
+			vertex_tem_sequence = create_vertex(
+				droop, DAMPING_RANGE[max_inertia_diff_index],
+				tem_sequence[max_inertia_diff_index])
+			# Initialize with known type and size
+			res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 4)
+			res[1] = vertex_max_damping_max_inertia
+			res[2] = vertex_max_damping_min_inertia
+			res[3] = vertex_min_inertia
+			res[4] = vertex_tem_sequence
+			return res
+		end
+	end
+end
+
+"""
+	vertices_to_matrix(vertices::AbstractVector)
+
+Converts a vector of vertex matrices (or vectors of tuples) to a single matrix.
+
+# Arguments
+- `vertices::AbstractVector`: A vector where each element is a vector of tuples (or a matrix).
+
+# Returns
+- `Matrix{Float64}`: A matrix containing all the vertices.
+  Returns an empty matrix if the input is empty.
+  Returns `nothing` if the input has inconsistent data types or dimensions.
+"""
+function vertices_to_matrix(vertices::AbstractVector)
+	# Handle the edge case of an empty vertices array.
+	if isempty(vertices)
+		@warn "Input 'vertices' is empty. Returning an empty matrix."
+		return Matrix{Float64}(undef, 0, 3) # Return an empty matrix of the correct type
+	end
+
+	# Check if all elements are of the same type and have consistent dimensions
+	first_element = first(vertices)
+	if !(eltype(first_element) <: Tuple)
+		@error "Input 'vertices' must contain vectors of tuples."
+		return nothing
+	end
+
+	first_tuple_length = length(first(first_element))
+	if !all(all(length(v) == first_tuple_length for v in sub_vertices)
+	for sub_vertices in vertices)
+		@error "Inconsistent tuple lengths in 'vertices'."
+		return nothing
+	end
+
+	if first_tuple_length != 3
+		@error "Tuples in 'vertices' must have length 3."
+		return nothing
+	end
+
+	# Pre-allocate the matrix with the correct size and type.
+	total_points = sum(length(v) for v in vertices)
+	matrix = Matrix{Float64}(undef, total_points, 3)
+
+	# Populate the matrix efficiently.
+	current_row = 1
+	for sub_vertices in vertices
+		num_rows = length(sub_vertices)
+		for (i, vertex) in enumerate(sub_vertices)
+			matrix[current_row + i - 1, :] = collect(vertex)
+		end
+		current_row += num_rows
+	end
+
+	return matrix
 end
