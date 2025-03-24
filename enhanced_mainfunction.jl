@@ -83,8 +83,8 @@ end
 if !isnothing(all_vertices)
 	@show all_vertices
 	if !isdir("res")
-        mkdir("res")
-    end
+		mkdir("res")
+	end
 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
-    draw_geometry(OUTPUT_REL_PATH) # Draw the mesh
+	draw_geometry(OUTPUT_REL_PATH) # Draw the mesh
 end

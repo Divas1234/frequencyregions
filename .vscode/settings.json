@@ -123,7 +123,7 @@
     "julia.execution.codeInREPL": true,
     "window.autoDetectColorScheme": true,
     "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)",
-    "workbench.preferredDarkColorTheme": "GitHub Sharp",
+    "workbench.preferredDarkColorTheme": "GitHub Dark",
     "commentAnchors.tags.sortAlphabetically": true,
     "commentAnchors.showCursor": true,
     "commentAnchors.tags.anchors": {
