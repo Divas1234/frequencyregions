@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.3)  25 MAR 2025 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.2) (preloaded format=pdflatex 2025.3.3)  25 MAR 2025 17:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -309,155 +309,155 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 29.
  (C:\Program Files\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Underfull \hbox (badness 4108) in paragraph at lines 60--61
+Underfull \hbox (badness 4108) in paragraph at lines 59--60
 \OT1/ptm/m/n/10 avail-able at: $http : / / tug . ctan . org / info / lshort / english / lshort . pdf$
  []
 
 
 
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 63.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 62.
 (C:\Program Files\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 83.
- (C:\Program Files\MiKTeX\tex/latex/psnfss\ot1pcr.fd
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 83--84
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-
- []
-
-
-Overfull \hbox (31.00002pt too wide) in paragraph at lines 87--88
-[]$\OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 documentclass[10pt,journal,compsoc]IEEEtran 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
-
- []
-
-
 
 [1{C:/Users/YUAN/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Program Files/MiKTeX/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-Overfull \hbox (19.00002pt too wide) in paragraph at lines 89--90
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 82.
+ (C:\Program Files\MiKTeX\tex/latex/psnfss\ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 82--83
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--85
+
+ []
+
+
+Overfull \hbox (31.00002pt too wide) in paragraph at lines 86--87
+[]$\OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 documentclass[10pt,journal,compsoc]IEEEtran 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
+
+ []
+
+
+Overfull \hbox (19.00002pt too wide) in paragraph at lines 88--89
 []$\OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 documentclass[conference,compsoc]IEEEtran 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 89--90
+Underfull \hbox (badness 10000) in paragraph at lines 88--89
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 91--92
+Underfull \hbox (badness 10000) in paragraph at lines 90--91
 
  []
 
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 113--113
+Overfull \hbox (6.0pt too wide) in paragraph at lines 112--112
 []\OT1/pcr/m/n/10 \IEEEmembership{Fellow, IEEE}, Masaki Owari[] 
  []
 
 
-Overfull \hbox (12.86592pt too wide) in paragraph at lines 122--124
+Overfull \hbox (12.86592pt too wide) in paragraph at lines 121--123
 \OT1/ptm/m/n/10 IEEE mem-ber-ship sta-tus. Please see the ``IEEE-tran[]HOWTO.pdf''
  []
 
 
 
 
-Overfull \hbox (10.57698pt too wide) in paragraph at lines 139--140
+Overfull \hbox (10.57698pt too wide) in paragraph at lines 138--139
 \OT1/ptm/m/n/10 The ab-stract is the first el-e-ment of a pa-per af-ter the $\OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 maketitle
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 160--160
+Overfull \hbox (12.0pt too wide) in paragraph at lines 159--159
 []\OT1/pcr/m/n/10 \IEEEPARstart{T}{his} is the first paragraph[] 
  []
 
 
-Underfull \hbox (badness 4181) in paragraph at lines 165--166
+Underfull \hbox (badness 4181) in paragraph at lines 164--165
 \OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 subsection \OT1/ptm/m/n/10 and $\OMS/cmsy/m/n/10 n$\OT1/pcr/m/n/10 subsubsection\OT1/ptm/m/n/10 . Num-ber-ing is
  []
 
 
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 180--181
+Underfull \hbox (badness 10000) in paragraph at lines 179--180
 
  []
 
 <fig1.png, id=14, 188.20313pt x 173.89969pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 215.
+Package pdftex.def Info: fig1.png  used on input line 214.
 (pdftex.def)             Requested size: 180.67499pt x 166.95505pt.
 
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 276--277
+Underfull \hbox (badness 10000) in paragraph at lines 275--276
 
  []
 
 
 
 [3 <./fig1.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
 
-
-
-Overfull \hbox (6.0pt too wide) in paragraph at lines 392--392
+Overfull \hbox (6.0pt too wide) in paragraph at lines 391--391
 []\OT1/pcr/m/n/10 \textit{International Journal of Modelling,[] 
  []
 
 
-Overfull \hbox (6.0pt too wide) in paragraph at lines 404--404
+Overfull \hbox (6.0pt too wide) in paragraph at lines 403--403
 []\OT1/pcr/m/n/10 systems using a port-controlled Hamiltonian[] 
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 405--405
+Overfull \hbox (12.0pt too wide) in paragraph at lines 404--404
 []\OT1/pcr/m/n/10 description,'' in \textit{Proceedings of the[] 
  []
 
 
 
 [4]
-Underfull \hbox (badness 1527) in paragraph at lines 447--448
+Underfull \hbox (badness 1527) in paragraph at lines 446--447
 \OT1/ptm/m/n/10 been de-vel-oped to \OT1/ptm/b/n/10 pro-vide uni-for-mity and clar-ity of
  []
 
 
-Overfull \hbox (13.81674pt too wide) in paragraph at lines 461--462
+
+
+Overfull \hbox (13.81674pt too wide) in paragraph at lines 460--461
 []\OT1/ptm/m/n/10 Further ex-am-ples can be seen at $http : / / journals . ieeeauthorcenter .
  []
 
 
-Overfull \hbox (20.64684pt too wide) in paragraph at lines 461--462
+Overfull \hbox (20.64684pt too wide) in paragraph at lines 460--461
 \OT1/ptm/m/n/10 ieee . org / wp-[]content / uploads / sites / 7 / IEEE-[]Math-[]Typesetting-[]Guide .
  []
 
 
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 485--487
+Underfull \hbox (badness 10000) in paragraph at lines 484--486
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--490
+Underfull \hbox (badness 10000) in paragraph at lines 487--489
 
  []
 
@@ -466,7 +466,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 488--490
 [5]
 
 
-Underfull \hbox (badness 2042) in paragraph at lines 645--646
+Underfull \hbox (badness 2042) in paragraph at lines 644--645
 \OT1/ptm/m/n/10 The \OT1/pcr/m/n/10 array \OT1/ptm/m/n/10 en-vi-ron-ment al-lows you some op-tions for
  []
 
@@ -474,35 +474,39 @@ Underfull \hbox (badness 2042) in paragraph at lines 645--646
 
 [6]
 
-LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 742.
+LaTeX Font Info:    Trying to load font information for OMS+pcr on input line 741.
 (C:\Program Files\MiKTeX\tex/latex/psnfss\omspcr.fd
 File: omspcr.fd 
 )
 LaTeX Font Info:    Font shape `OMS/pcr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 742.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 741.
 
-Underfull \hbox (badness 10000) in paragraph at lines 758--759
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 763--764
+Underfull \hbox (badness 10000) in paragraph at lines 757--758
 
  []
 
 
 
 [7]
+Underfull \hbox (badness 10000) in paragraph at lines 762--763
+
+ []
+
+
 
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 872.
+Package pdftex.def Info: fig1.png  used on input line 871.
 (pdftex.def)             Requested size: 72.27031pt x 66.77777pt.
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 872.
+Package pdftex.def Info: fig1.png  used on input line 871.
 (pdftex.def)             Requested size: 72.27031pt x 66.77777pt.
 
+
+
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
 [8] (New_IEEEtran_how-to.aux)
  ***********
@@ -513,13 +517,13 @@ L3 programming layer <2025-01-18>
 Here is how much of TeX's memory you used:
  4628 strings out of 473523
  79594 string characters out of 5724701
- 487182 words of memory out of 5000000
+ 486182 words of memory out of 5000000
  27776 multiletter control sequences out of 15000+600000
  614701 words of font info for 141 fonts, out of 8000000 for 9000
  1145 hyphenation exceptions out of 8191
- 57i,12n,65p,973b,342s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,12n,65p,973b,340s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on New_IEEEtran_how-to.pdf (8 pages, 283501 bytes).
+Output written on New_IEEEtran_how-to.pdf (8 pages, 283739 bytes).
 PDF statistics:
  124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
