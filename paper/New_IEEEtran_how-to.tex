@@ -12,18 +12,26 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \usepackage{balance}
+
+\hyphenpenalty=100
+\hyphenpenalty=50
+\tolerance=50
+
+
 \begin{document}
 \title{How to Use the IEEEtran \LaTeX \ Templates}
 \author{IEEE Publication Technology Department
 \thanks{Manuscript created October, 2020; This work was developed by the IEEE Publication Technology Department. This work is distributed under the \LaTeX \ Project Public License (LPPL) ( http://www.latex-project.org/ ) version 1.3. A copy of the LPPL, version 1.3, is included in the base \LaTeX \ documentation of all distributions of \LaTeX \ released 2003/12/01 or later. The opinions expressed here are entirely that of the author. No warranty is expressed or implied. User assumes all risk.}}
 
 \markboth{Journal of \LaTeX\ Class Files,~Vol.~18, No.~9, September~2020}%
-{How to Use the IEEEtran \LaTeX \ Templates}
+{frequency dynamic identification through multi-dimensional frequency parameter bindings}
 
 \maketitle
 
 \begin{abstract}
-This document describes the most common article elements and how to use the IEEEtran class with \LaTeX \ to produce files that are suitable for submission to the Institute of Electrical and Electronics Engineers (IEEE).  IEEEtran can produce conference, journal and technical note (correspondence) papers with a suitable choice of class options.
+
+  Existing research on the system frequency response (SFR) and frequency-constrained scheduling studies primarily relies on commonly-used metrics consisting of rate-of-frequency-change, nadir, and quasi-steady-state (QSS). Nevertheless, the complex interdependencies among these parameters have not been fully explored. This letter introduces a new criterion to assess frequency stability by directly considering multidimensional relationships between these frequency parameters. An analytical solution is derived to quantify these interdependencies, and a convex polygon representation is constructed to visualize the feasible operating region defined by these parameters. Using this criterion, the impact of different frequency parameter settings on system stability can be clearly obtained and analyzed. The effectiveness of the proposed approach is demonstrated on a modified IEEE 30-bus test system.
+
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -32,7 +40,10 @@ Class, IEEEtran, \LaTeX, paper, style, template, typesetting.
 
 
 \section{Introduction}
-\IEEEPARstart{W}{elcome} to the updated and simplified documentation to using the IEEEtran \LaTeX \ class file. The IEEE has examined hundreds of author submissions using this package to help formulate this easy to follow guide. We will cover the most commonly used elements of a journal article. For less common elements we will refer back to the ``IEEEtran\_HOWTO.pdf''.
+\IEEEPARstart{T}{he} low inertia character of electrical power system significantly impact the system frequency security, which implicitly change the scheduling commitment results provided by different generators. In such circumstances, existing studies about power system dynamic response, storage device sizing and control parameter tunning, optimal scheduling operation, and even medium-term\&long-term generation planning studies trends to emphasis the consideration of frequency response and frequency stability.
+
+The essence of aforementioned frequency-oriented studies is 
+The essence is actually the process of delimiting the frequency parameters
 
 This document applies to version 1.8b of IEEEtran. 
 

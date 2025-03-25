@@ -128,7 +128,7 @@
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Night Owl Light",
-  "workbench.preferredDarkColorTheme": "GitHub Sharp Dark",
+  "workbench.preferredDarkColorTheme": "GitHub Sharp",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
