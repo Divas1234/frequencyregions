@@ -1,5 +1,15 @@
 {
+  // --- Julia Language Settings ---
   "julia.executablePath": "D:\\CommonSoftwares\\ProductiveCodingEditors\\Julia\\bin\\julia.exe",
+  "julia.execution.codeInREPL": true,
+
+  // --- Editor Settings ---
+  "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 16,
+  "editor.lineNumbers": "on",
+  "files.autoSave": "onFocusChange",
+
+    // --- Token Customizations ---
   "editor.tokenColorCustomizations": {
     "functions": {
       "fontStyle": "bold"
@@ -107,18 +117,20 @@
       }
     ]
   },
-  "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
-  "files.autoSave": "onFocusChange",
-  "editor.fontSize": 16,
-  "prettier.bracketSameLine": true,
-  "BracketHighlighter.differentSymbolHighlightingUsed": true,
+
+  // --- Terminal Settings ---
   "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontLigatures.enabled": true,
+
+  // --- Vim Settings ---
   "vim.textwidth": 120,
-  "julia.execution.codeInREPL": true,
+
+  // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "GitHub Light Colorblind (Beta)",
+  "workbench.preferredLightColorTheme": "Night Owl Light",
   "workbench.preferredDarkColorTheme": "GitHub Sharp Dark",
+
+  // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
   "commentAnchors.showCursor": true,
   "commentAnchors.tags.anchors": {
@@ -197,5 +209,21 @@
       "borderStyle": "1px solid #23b2ea",
       "borderRadius": 6
     }
-  }
+  },
+
+  // --- Prettier Settings ---
+  "prettier.bracketSameLine": true,
+
+  // --- Bracket Highlighter Settings ---
+  "BracketHighlighter.differentSymbolHighlightingUsed": true,
+
+    // --- Spell Right Settings ---
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext", "ini"],
+
+  // --- CodeGPT Settings ---
+  "CodeGPT.apiKey": "Ollama",
+
+  // --- BitoAI Settings ---
+  "bitoAI.codeCompletion.enableAutoCompletion": false
 }
