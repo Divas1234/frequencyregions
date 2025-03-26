@@ -1,10 +1,10 @@
 {
   // --- Julia Language Settings ---
-  "julia.executablePath": "D:\\CommonSoftwares\\ProductiveCodingEditors\\Julia\\bin\\julia.exe",
+  "julia.executablePath": "/Applications/Julia-1.11.app/Contents/Resources/julia/bin/julia",
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
-  "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "Helvetic, Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
   "editor.fontSize": 16,
   "editor.lineNumbers": "on",
   "files.autoSave": "onFocusChange",
@@ -128,7 +128,7 @@
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "Night Owl Light",
-  "workbench.preferredDarkColorTheme": "GitHub Sharp",
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
