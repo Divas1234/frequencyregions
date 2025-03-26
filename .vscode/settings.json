@@ -4,7 +4,11 @@
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
+<<<<<<< HEAD
   "editor.fontFamily": "Helvetic, Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+=======
+  "editor.fontFamily": "FZTanHeiS-B-GB, Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+>>>>>>> 98e46347587c5c26a437d0a9133018b0c35cfa8a
   "editor.fontSize": 16,
   "editor.lineNumbers": "on",
   "files.autoSave": "onFocusChange",
@@ -127,8 +131,13 @@
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
+<<<<<<< HEAD
   "workbench.preferredLightColorTheme": "Night Owl Light",
   "workbench.preferredDarkColorTheme": "GitHub Dark",
+=======
+  "workbench.preferredLightColorTheme": "GitHub Sharp",
+  "workbench.preferredDarkColorTheme": "GitHub Sharp",
+>>>>>>> 98e46347587c5c26a437d0a9133018b0c35cfa8a
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
