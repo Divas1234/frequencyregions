@@ -96,32 +96,32 @@ end
 write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
 draw_geometry(OUTPUT_REL_PATH) # Draw the mesh
 
-
 using Meshes
 
 grid = CartesianGrid(10, 10, 10)
 Meshes.viz(grid, showsegments = true, segmentcolor = :teal)
-Hexahedron((0,0,0),(1,0,0),(1,1,0),(0,1,0),(0,0,1),(1,0,1),(1,1,1),(0,1,1)) |> viz
+Hexahedron(
+	(0, 0, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0), (0, 0, 1), (1, 0, 1), (1, 1, 1), (0, 1, 1)) |> viz
 # 定义多边形的顶点坐标
 vertices = [
-    Point(0, 0, 0),
-    Point(1, 0, 0),
-    Point(1, 1, 0),
-    Point(0, 1, 0),
-    Point(0, 0, 1),
-    Point(1, 0, 1),
-    Point(1, 1, 1),
-    Point(0, 1, 1)
+	Point(0, 0, 0),
+	Point(1, 0, 0),
+	Point(1, 1, 0),
+	Point(0, 1, 0),
+	Point(0, 0, 1),
+	Point(1, 0, 1),
+	Point(1, 1, 1),
+	Point(0, 1, 1)
 ]
 
 # 定义多边形的面（每个面由顶点索引组成）
 faces = [
-    Face(1, 2, 3, 4),  # 底面
-    Face(5, 6, 7, 8),  # 顶面
-    Face(1, 2, 6, 5),  # 前面
-    Face(2, 3, 7, 6),  # 右面
-    Face(3, 4, 8, 7),  # 后面
-    Face(4, 1, 5, 8)   # 左面
+	Face(1, 2, 3, 4),  # 底面
+	Face(5, 6, 7, 8),  # 顶面
+	Face(1, 2, 6, 5),  # 前面
+	Face(2, 3, 7, 6),  # 右面
+	Face(3, 4, 8, 7),  # 后面
+	Face(4, 1, 5, 8)   # 左面
 ]
 
 # 创建网格
@@ -129,4 +129,4 @@ mesh = SimpleMesh(vertices, faces)
 
 # 绘制网格
 using Plots
-plot(mesh, color=:blue, opacity=0.5, legend=false)
+plot(mesh, color = :blue, opacity = 0.5, legend = false)
