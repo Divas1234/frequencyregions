@@ -4,7 +4,7 @@
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
-  "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "FZTanHeiS-B-GB, Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
   "editor.fontSize": 16,
   "editor.lineNumbers": "on",
   "files.autoSave": "onFocusChange",
@@ -127,7 +127,7 @@
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Night Owl Light",
+  "workbench.preferredLightColorTheme": "GitHub Sharp",
   "workbench.preferredDarkColorTheme": "GitHub Sharp",
 
   // --- Comment Anchors Extension Settings ---
