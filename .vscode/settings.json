@@ -7,7 +7,7 @@
   "editor.fontFamily": "Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
   "editor.fontSize": 16,
   "editor.lineNumbers": "on",
-  "files.autoSave": "onFocusChange",
+  "files.autoSave": "afterDelay",
 
   // --- Token Customizations ---
   "editor.tokenColorCustomizations": {
