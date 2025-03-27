@@ -225,5 +225,8 @@
   "CodeGPT.apiKey": "Ollama",
 
   // --- BitoAI Settings ---
-  "bitoAI.codeCompletion.enableAutoCompletion": false
+  "bitoAI.codeCompletion.enableAutoCompletion": false,
+  "projectManager.supportSymlinksOnBaseFolders": true,
+  "projectManager.groupList": true,
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true
 }

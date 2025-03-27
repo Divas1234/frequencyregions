@@ -79,6 +79,7 @@ end
 # 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
 # end
 
+
 # Display the result.
 if !isnothing(all_vertices)
 	@show all_vertices

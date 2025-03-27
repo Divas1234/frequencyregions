@@ -1,4 +1,5 @@
 function get_parmeters(flag_converter)
+
 	f_base = 50.0
 
 	if flag_converter == 0 # better performance for traditiaonal power grids
