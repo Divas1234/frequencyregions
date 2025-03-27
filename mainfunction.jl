@@ -96,4 +96,3 @@ p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
 show(p1)
 
 println("Calculations complete. Plot generated.")
-
