@@ -123,12 +123,12 @@
   "terminal.integrated.fontLigatures.enabled": true,
 
   // --- Vim Settings ---
-  "vim.textwidth": 120,
+  "vim.textwidth": 100,
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "GitHub Plus",
-  "workbench.preferredDarkColorTheme": "GitHub Light Colorblind (Beta)",
+  "workbench.preferredDarkColorTheme": "GitHub Dark",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
@@ -236,5 +236,9 @@
 "diffEditor.experimental.showMoves": true,
 "prettier.experimentalTernaries": true,
 "gitlens.views.repositories.showIncomingActivity": true,
-"workbench.editor.alwaysShowEditorActions": true
+"workbench.editor.alwaysShowEditorActions": true,
+"editor.wordWrapColumn": 100,
+"editor.wordWrap": "wordWrapColumn",
+"workbench.editor.wrapTabs": true,
+"notebook.output.wordWrap": true
 }

@@ -50,10 +50,10 @@ function validate_get_parameters_output(params::Tuple)
 		"droop", "ROCOF_threshold", "NADIR_threshold", "power_deviation"]
 	for (i, param) in enumerate(params)
 		if !isa(param, Number)
-			error("Error: Parameter '$(param_names[i])' from get_parmeters must be a number.")
+			error("Error: Parameter '$(param_names[i])' from get_parameters must be a number.")
 		end
 		if param <= 0 && param_names[i] != "droop"
-			error("Error: Parameter '$(param_names[i])' from get_parmeters must be positive.")
+			error("Error: Parameter '$(param_names[i])' from get_parameters must be positive.")
 		end
 	end
 end
@@ -96,3 +96,4 @@ p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
 show(p1)
 
 println("Calculations complete. Plot generated.")
+
