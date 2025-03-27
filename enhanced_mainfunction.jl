@@ -85,7 +85,10 @@ if !isnothing(all_vertices)
 	if !isdir("res")
 		mkdir("res")
 	end
+	current_file_path = joinpath(pwd(), "res")
+	input_file_address, output_file_address = current_file_path, current_file_path
 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
+	plot_polygon_figures(input_file_address, output_file_address) # Draw the mesh
 	# draw_geometry(OUTPUT_REL_PATH) # Draw the mesh
 end
 

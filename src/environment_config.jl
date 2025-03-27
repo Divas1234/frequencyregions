@@ -15,6 +15,7 @@ include("inertia_damping_regressionrelations.jl")
 include("visulazations.jl")
 include("converter_config.jl")
 include("generate_geometries.jl")
+include("tem_plot_polygonfigures.jl")
 
 # Constants (could also be in environment_config.jl)
 const DAMPING_RANGE = 2:0.25:15
