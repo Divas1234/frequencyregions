@@ -25,4 +25,5 @@ const MAX_DAMPING = maximum(DAMPING_RANGE)
 const PERCENTAGE_BASE = 100
 const FREQUENCY_BASE = 50
 current_filepath = pwd()
-const OUTPUT_REL_PATH = joinpath(current_filepath, "\\res\\all_vertices.txt")
+# const OUTPUT_REL_PATH = joinpath(current_filepath, "\\res\\all_vertices.txt")
+const OUTPUT_REL_PATH = "res/all_vertices.txt"
