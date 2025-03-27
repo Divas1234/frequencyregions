@@ -73,7 +73,7 @@ println("Output from calculate_inertia_parameters validated successfully.")
 
 # Estimate inertia limits
 min_inertia, max_inertia = estimate_inertia_limits(
-	ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop,
+	ROCOF_threshold, power_deviation, DAMPING_RANGE, factorial_coefficient, time_constant, droop
 )
 
 # --- Enhanced Output Validation for estimate_inertia_limits ---
@@ -96,4 +96,3 @@ p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
 show(p1)
 
 println("Calculations complete. Plot generated.")
-

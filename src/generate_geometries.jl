@@ -97,8 +97,8 @@ function draw_geometry(res_path)
 	# Update the scene to fit the geometry
 	if !isempty(meshes)
 		limits = GeometryBasics.boundingbox(meshes[1]) # fix boundingbox
-		for i in 2:length(meshes)
-			limits = union(limits, GeometryBasics.boundingbox(meshes[i]))# fix boundingbox
+		for i in eachindex(meshes)[2:end]
+			limits = union(limits, GeometryBasics.boundingbox(meshes[i]))
 		end
 		limits!(ax, limits)
 	end
