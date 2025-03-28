@@ -76,7 +76,7 @@ In correlation with (1), the maximum frequency deviation termed as $\max[ \varDe
 
 \begin{subequations}
 \begin{align}
-    \max[\Delta f(t)] &= \varDelta f(t)|_{t=t_{nadir}^k} = -\frac{\Delta P_{Step}}{D_{EQU} + R_G} \left( 1 + \right.\notag \\
+    \max[\Delta f(t)] &= \varDelta f(t)|_{t=t_{nadir}^k} = -\frac{\Delta P_{Step}}{D_{EQU} + R_G} \left ( 1 + \right.\notag \\
                       &\left. (-1)^k \sqrt{\frac{T_G(R_G - F_G)}{2H_{EQU}}} e^{-\zeta \omega_n t_{nadir}^k} \right) \label{eq:max_delta_f}\\
     t_{nadir}^k &= \frac{1}{\omega_d} \arctan \left( \frac{\omega_d}{\zeta \omega_n - T_G^{-1}} \right) + \frac{k\pi}{\omega_d}\notag  \\
     \omega_d &= \omega_n \sqrt{1 - \zeta^2}, \quad \phi = \sin^{-1} \left( \sqrt{1 - \zeta^2} \right) \notag\\
@@ -130,6 +130,7 @@ Substituting (1b) into (4a), the bounds of inertia and damping parameters can be
   \begin{align}
     H_{EQU} &\leq \frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2} \right) \\
     H_{EQU} &\geq \frac{1}{2}T_G \left(\text{term}_1 - \sqrt{\text{term}_2} \right) \\
+    H_{EQU} &\leq \frac{1}{2} (D_{EQU} + F_G) T_{G} \\
     \text{term}_1 &= (D_{EQU} - F_G + 2R_G) \\
     \text{term}_2 &= {(D_{EQU} - F_G + 2R_G)^2 - (D_{EQU} + F_G)^2}\\
     \text{term}_2 &\geq 0 \Longrightarrow (R_G - F_G)(R_G + D_{EQU}) \geq 0
@@ -140,8 +141,12 @@ Let $H_{EQU}=\mathcal{Q} (D_{EQU})$, the relationship between $H_{EQU}$ and $D_{
 
 \begin{subequations}
   \begin{align}
-    \overbrace{\frac{1}{2}T_G \left(\text{term}_1 - \sqrt{\text{term}_2} \right)}^{lower\,bound} \leq H_{EQU}=\mathcal{Q} (D_{EQU}) \leq \notag \\
-    \underbrace{\frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2} \right)}_{upper\, bound}, (R_G - F_G) \geq 0
+    \overbrace{\begin{array}{l}\frac{1}{2}T_G \left(\text{term}_1 - \sqrt{\text{term}_2} \right)\end{array}}^{lower\,bound} \leq H_{EQU}=\mathcal{Q} (D_{EQU}) \leq \notag \\
+    \underbrace{\min \left [
+    \begin{array}{l}
+      \frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2}\right), \frac{1}{2} (D_{EQU} + F_G) T_{G}\\
+    \end{array} \right ]
+    }_{upper\, bound}
     \end{align}
   \end{subequations}
 
@@ -149,7 +154,7 @@ Next, other relations between $H_{EQU}$ and $D_{EQU}$ concerning nadir, RoCoF, a
 
 \begin{subequations}
   \begin{align}
-\overbrace{\frac{1}{2} \gamma_{RoCoF}^{-1} \varDelta P_{Step}}^{lower\, bound} \leq H_{EQU} &\leq \underbrace{\mathcal{R}^{-1}(D_{EQU}) \gamma_{Nadir}}_{upper\, bound} \\
+H_{EQU} &\!\geq\! \underbrace{\max\!\!\! \begin{array}{l}[\frac{1}{2} \gamma_{RoCoF}^{-1} \varDelta P_{Step},\mathcal{R}^{-1}(D_{EQU}) \gamma_{Nadir}]\end{array}}_{lower\, bound} \\
 D_{EQU} & \geq \gamma_{QSS}^{-1} \varDelta P_{Step}
   \end{align}
 \end{subequations}
@@ -162,9 +167,10 @@ By further meticulously organizing the preceding derivations, a concise bounds f
     \!\!\!\begin{array}{rl}
     \text{Inertia}\,\, \ciao{1}\, lower\,bound:&\!\!\!\frac{1}{2} \gamma_{RoCoF}^{-1} \varDelta P_{Step}\\
     \ciao{2}\,lower\,bound:&\!\!\!\frac{1}{2}T_G \left(\text{term}_1 - \sqrt{\text{term}_2} \right)\\
-    \ciao{3}\,upper\,bound:&\!\!\!\mathcal{R}^{-1}(D_{EQU}) \gamma_{Nadir} \\
-    \ciao{4}\,upper\,bound:&\!\!\!\frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2} \right)\\    
-   \text{ Damping} \,\,\ciao{5}\,lower\,bound:&\!\!\! \gamma_{QSS}^{-1} \varDelta P_{Step}\\ 
+    \ciao{3}\,lower\,bound:&\!\!\!\mathcal{R}^{-1}(D_{EQU}) \gamma_{Nadir} \\
+    \ciao{4}\,upper\,bound:&\!\!\!\frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2} \right)\\
+    \ciao{5}\,upper\,bound:&\!\!\! \frac{1}{2}(D_{EQU} + F_G) T_G\\    
+   \text{ Damping} \,\,\ciao{6}\,lower\,bound:&\!\!\! \gamma_{QSS}^{-1} \varDelta P_{Step}\\ 
     \end{array}
   \end{align}
 \end{subequations}
@@ -188,7 +194,12 @@ A IEEE 30 bus test system is used to demonstrate the effectiveness of the propos
   \label{tab:generator_parameters}
 \end{table}
 
-
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.45\textwidth]{inertia_damping_supportset.pdf}
+  \caption{The frequency dynamic process of low-inertia process}\vspace{-0.125cm}
+  \label{fig:inertia_damping_supportset}
+\end{figure}
 
 
 \section{Conclusion}

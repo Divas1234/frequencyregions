@@ -1,6 +1,6 @@
 {
   // --- Julia Language Settings ---
-  "julia.executablePath": "/Applications/Julia-1.11.app/Contents/Resources/julia/bin/julia",
+  "julia.executablePath": "D:\\CommonSoftwares\\ProductiveCodingEditors\\Julia\\bin\\julia.exe",
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
@@ -12,207 +12,202 @@
   // --- Token Customizations ---
   "editor.tokenColorCustomizations": {
     "[GitHub Light Colorblind (Beta)]": {
-        "textMateRules": [
-            {
-                "scope": "keyword",
-                "settings": {
-                    "foreground": "#d73a49",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "comment",
-                "settings": {
-                    "foreground": "#b4c3d2",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "string",
-                "settings": {
-                    "foreground": "#144989"
-                }
-            },
-            {
-                "scope": "type",
-                "settings": {
-                    "foreground": "#618dbf",
-                    "fontStyle": "bold"
-                }
-            },
-            {
-                "scope": "function",
-                "settings": {
-                    "foreground": "#0a0ae5",
-                    "fontStyle": "bold underline"
-                }
-            },
-            {
-                "scope": "number",
-                "settings": {
-                    "foreground": "#c4570e",
-                    "fontStyle": "bold"
-                }
-            }
-        ]
+      "textMateRules": [
+        {
+          "scope": "keyword",
+          "settings": {
+            "foreground": "#d73a49",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "comment",
+          "settings": {
+            "foreground": "#b4c3d2",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "string",
+          "settings": {
+            "foreground": "#144989"
+          }
+        },
+        {
+          "scope": "type",
+          "settings": {
+            "foreground": "#618dbf",
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": "function",
+          "settings": {
+            "foreground": "#0a0ae5",
+            "fontStyle": "bold underline"
+          }
+        },
+        {
+          "scope": "number",
+          "settings": {
+            "foreground": "#c4570e",
+            "fontStyle": "bold"
+          }
+        }
+      ]
     },
     "[Dainty – City Lights]": {
-        "textMateRules": [
-            {
-                "scope": "keyword",
-                "settings": {
-                    "foreground": "#d73a49",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "comment",
-                "settings": {
-                    "foreground": "#213c56",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "string",
-                "settings": {
-                    "foreground": "#293e57"
-                }
-            },
-            {
-                "scope": "entity.name.type",
-                "settings": {
-                    "foreground": "#618dbf",
-                    "fontStyle": "bold"
-                }
-            },
-            {
-                "scope": "entity.name.function",
-                "settings": {
-                    "foreground": "#0a0ae5",
-                    "fontStyle": "bold underline"
-                }
-            },
-            {
-                "scope": "number",
-                "settings": {
-                    "foreground": "#c4570e",
-                    "fontStyle": "bold"
-                }
-            }
-        ]
+      "textMateRules": [
+        {
+          "scope": "keyword",
+          "settings": {
+            "foreground": "#d73a49",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "comment",
+          "settings": {
+            "foreground": "#213c56",
+            "fontStyle": "italic"
+          }
+        },
+        {
+          "scope": "string",
+          "settings": {
+            "foreground": "#293e57"
+          }
+        },
+        {
+          "scope": "entity.name.type",
+          "settings": {
+            "foreground": "#618dbf",
+            "fontStyle": "bold"
+          }
+        },
+        {
+          "scope": "entity.name.function",
+          "settings": {
+            "foreground": "#0a0ae5",
+            "fontStyle": "bold underline"
+          }
+        },
+        {
+          "scope": "number",
+          "settings": {
+            "foreground": "#c4570e",
+            "fontStyle": "bold"
+          }
+        }
+      ]
     },
     "functions": {
-        "fontStyle": "bold"
+      "fontStyle": "bold"
     },
     "textMateRules": [
-        {
-            "scope": "emphasis",
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": "strong",
-            "settings": {
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": "entity.other.attribute-name",
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": "markup.underline",
-            "settings": {
-                "fontStyle": "underline"
-            }
-        },
-        {
-            "scope": "markup.bold",
-            "settings": {
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": "markup.heading",
-            "settings": {
-                "fontStyle": "bold"
-            }
-        },
-        {
-            "scope": "markup.italic",
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "name": "String interpolation",
-            "scope": [
-                "punctuation.definition.template-expression.begin",
-                "punctuation.definition.template-expression.end",
-                "punctuation.section.embedded"
-            ],
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "name": "this.self",
-            "scope": "variable.language",
-            "settings": {
-                "fontStyle": "italic",
-                "foreground": "#ff5874"
-            }
-        },
-        {
-            "name": "@Decorator",
-            "scope": [
-                "meta.decorator punctuation.decorator"
-            ],
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": [
-                "punctuation.definition.comment",
-                "comment"
-            ],
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": [
-                "entity.name.type.class",
-                "keyword",
-                "constant",
-                "storage.modifier",
-                "storage.type",
-                "storage.type.class.js"
-            ],
-            "settings": {
-                "fontStyle": "italic"
-            }
-        },
-        {
-            "scope": [
-                "invalid",
-                "keyword.operator",
-                "constant.numeric.css",
-                "keyword.other.unit.px.css",
-                "constant.numeric.decimal.js",
-                "constant.numeric.json"
-            ],
-            "settings": {
-                "fontStyle": ""
-            }
+      {
+        "scope": "emphasis",
+        "settings": {
+          "fontStyle": "italic"
         }
+      },
+      {
+        "scope": "strong",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "entity.other.attribute-name",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": "markup.underline",
+        "settings": {
+          "fontStyle": "underline"
+        }
+      },
+      {
+        "scope": "markup.bold",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "markup.heading",
+        "settings": {
+          "fontStyle": "bold"
+        }
+      },
+      {
+        "scope": "markup.italic",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "String interpolation",
+        "scope": [
+          "punctuation.definition.template-expression.begin",
+          "punctuation.definition.template-expression.end",
+          "punctuation.section.embedded"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "name": "this.self",
+        "scope": "variable.language",
+        "settings": {
+          "fontStyle": "italic",
+          "foreground": "#ff5874"
+        }
+      },
+      {
+        "name": "@Decorator",
+        "scope": ["meta.decorator punctuation.decorator"],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": ["punctuation.definition.comment", "comment"],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          "entity.name.type.class",
+          "keyword",
+          "constant",
+          "storage.modifier",
+          "storage.type",
+          "storage.type.class.js"
+        ],
+        "settings": {
+          "fontStyle": "italic"
+        }
+      },
+      {
+        "scope": [
+          "invalid",
+          "keyword.operator",
+          "constant.numeric.css",
+          "keyword.other.unit.px.css",
+          "constant.numeric.decimal.js",
+          "constant.numeric.json"
+        ],
+        "settings": {
+          "fontStyle": ""
+        }
+      }
     ],
     "comments": ""
-},
+  },
 
   // --- Terminal Settings ---
   "terminal.integrated.fontSize": 14,
@@ -324,17 +319,20 @@
   "bitoAI.codeCompletion.enableAutoCompletion": false,
   "projectManager.supportSymlinksOnBaseFolders": true,
   "projectManager.groupList": true,
-"projectManager.openInNewWindowWhenClickingInStatusBar": true,
-"terminal.integrated.fontFamily": "Hack Nerd Font Fira Code, Hack,Geist Mono, Bahnschrift",
-"application.experimental.rendererProfiling": true,
-"notebook.multiCursor.enabled": true,
-"notebook.stickyScroll.enabled": false,
-"diffEditor.experimental.showMoves": true,
-"prettier.experimentalTernaries": true,
-"gitlens.views.repositories.showIncomingActivity": true,
-"workbench.editor.alwaysShowEditorActions": true,
-"editor.wordWrapColumn": 100,
-"editor.wordWrap": "wordWrapColumn",
-"workbench.editor.wrapTabs": true,
-"notebook.output.wordWrap": true
+  "projectManager.openInNewWindowWhenClickingInStatusBar": true,
+  "terminal.integrated.fontFamily": "Hack Nerd Font Fira Code, Hack,Geist Mono, Bahnschrift",
+  "application.experimental.rendererProfiling": true,
+  "notebook.multiCursor.enabled": true,
+  "notebook.stickyScroll.enabled": false,
+  "diffEditor.experimental.showMoves": true,
+  "prettier.experimentalTernaries": true,
+  "gitlens.views.repositories.showIncomingActivity": true,
+  "workbench.editor.alwaysShowEditorActions": true,
+  "editor.wordWrapColumn": 100,
+  "editor.wordWrap": "wordWrapColumn",
+  "workbench.editor.wrapTabs": true,
+  "notebook.output.wordWrap": true,
+  "bookmarks.saveBookmarksInProject": true,
+  "bookmarks.sideBar.expanded": true,
+  "bookmarks.useWorkaroundForFormatters": true
 }

@@ -1,0 +1,29 @@
+{
+	"files": [
+		{
+			"path": "src/primary_frequencyresponse.jl",
+			"bookmarks": [
+				{
+					"line": 122,
+					"column": 0,
+					"label": ""
+				},
+				{
+					"line": 162,
+					"column": 0,
+					"label": ""
+				}
+			]
+		},
+		{
+			"path": "mainfunction.jl",
+			"bookmarks": [
+				{
+					"line": 92,
+					"column": 0,
+					"label": ""
+				}
+			]
+		}
+	]
+}
