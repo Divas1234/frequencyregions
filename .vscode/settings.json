@@ -219,7 +219,7 @@
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "GitHub Plus",
-  "workbench.preferredDarkColorTheme": "GitHub Dark Colorblind (Beta)",
+  "workbench.preferredDarkColorTheme": "GitHub Sharp",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,

@@ -48,8 +48,8 @@ function inertia_damping_relations(damping::Float64, factorial_coefficient::Floa
 	converter_droop_parameters,
 	flag::Int64)
 	if flag == 0
-		tem1 = (damping - factorial_coefficient + 2 * droop)
-		tem2 = tem1^2 - (damping + factorial_coefficient)^2
+		@show tem1 = (damping - factorial_coefficient + 2 * droop)
+		@show tem2 = tem1^2 - (damping + factorial_coefficient)^2
 	else
 		tem1 = (damping + converter_vsm_parameters["damping"] +
 				1 / converter_droop_parameters["droop"] - factorial_coefficient + 2 * droop)
