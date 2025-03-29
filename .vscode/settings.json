@@ -4,8 +4,8 @@
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
-  "editor.fontFamily": "Fira Code, Maple Mono, Geist Mono, Droid Sans Mono, Hack Nerd Font Propo, JetBrains Mono, Consolas, 'Courier New', monospace",
-  "editor.fontSize": 14,
+  "editor.fontFamily": "FZTanHeiS-B-GB, Fira Code, Maple Mono, Geist Mono, Droid Sans Mono, Hack Nerd Font Propo, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 16,
   "editor.lineNumbers": "on",
   "files.autoSave": "afterDelay",
 
@@ -223,7 +223,7 @@
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Default Light+",
+  "workbench.preferredLightColorTheme": "GitHub Sharp",
   "workbench.preferredDarkColorTheme": "GitHub Light Colorblind (Beta)",
 
   // --- Comment Anchors Extension Settings ---
@@ -339,5 +339,6 @@
   "notebook.output.wordWrap": true,
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
-  "bookmarks.useWorkaroundForFormatters": true
+"bookmarks.useWorkaroundForFormatters": true,
+"latex-workshop.latex.autoBuild.run": "never"
 }

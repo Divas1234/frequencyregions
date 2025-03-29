@@ -96,7 +96,7 @@ ax.zaxis.pane.fill = False
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['Arial']
 plt.rcParams['axes.unicode_minus'] = False
-plt.rcParams['font.size'] = 14  # Increase default font size
+plt.rcParams['font.size'] = 18  # Increase default font size
 
 # Set axis label font size and position
 ax.set_xlabel('Droop (p.u.)', fontsize=16, labelpad=15)  # Increase labelpad value for more distance
