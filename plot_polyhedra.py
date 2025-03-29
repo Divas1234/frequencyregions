@@ -8,20 +8,20 @@ from scipy.spatial import ConvexHull
 vertices = np.loadtxt('d:/GithubClonefiles/frequencyregions/res/all_vertices.txt')
 
 # 创建3D图形
-fig = plt.figure(figsize=(12, 10))
+fig = plt.figure(figsize=(12, 8))
 ax = fig.add_subplot(111, projection='3d')
 
 # 获取唯一的下垂系数值
 unique_x = np.unique(vertices[:, 0])
 
 # 使用不同颜色绘制每个下垂系数对应的多面体
-colors = plt.cm.jet(np.linspace(0, 1, len(unique_x)))
+colors = plt.cm.viridis(np.linspace(0, 1, len(unique_x)))
 
-# 存储所有多面体的信息用于图例
+# Store all polyhedron information for the legend
 legend_elements = []
 
 for i, x_val in enumerate(unique_x):
-    # 获取当前下垂系数的所有点
+    # Get all points for the current droop coefficient
     current_vertices = vertices[vertices[:, 0] == x_val]
     
     # 绘制这些点
@@ -48,23 +48,22 @@ for i, x_val in enumerate(unique_x):
             poly = Poly3DCollection(faces, alpha=0.3, facecolors=colors[i], edgecolor='black')
             ax.add_collection3d(poly)
             
-            # 添加到图例
-            legend_elements.append((x_val, colors[i]))
+            # Add to legend
+            legend_elements.append(plt.Line2D([0], [0], color=colors[i], lw=4, label=f'{x_val:.2f}'))
         except Exception as e:
             print(f"无法为下垂系数 {x_val} 创建凸包: {e}")
 
-# 设置坐标轴标签
-ax.set_xlabel('Droop (p.u.)')
-ax.set_ylabel('Damping (p.u.)')
-ax.set_zlabel('Inertia (p.u.)')
+# Set axis labels
+ax.set_xlabel('Droop (p.u.)', fontsize=16)
+ax.set_ylabel('Damping (p.u.)', fontsize=16)
+ax.set_zlabel('Inertia (p.u.)', fontsize=16)
 
-# 设置标题
-# plt.title('按下垂系数分组的凸多面体三维图')
+# Remove title
 
-# 调整视角
+# Adjust view angle
 ax.view_init(elev=30, azim=45)
 
-# 设置坐标轴范围并反转下垂系数和阻尼系数轴
+# Set axis limits and invert Droop and Damping axes
 ax.set_xlim(max(vertices[:, 0])+1, min(vertices[:, 0])-1)  # 反转X轴
 ax.set_ylim(max(vertices[:, 1])+1, min(vertices[:, 1])-1)  # 反转Y轴
 ax.set_zlim(min(vertices[:, 2])-1, max(vertices[:, 2])+1)
@@ -79,37 +78,39 @@ xtick_labels = [f'{1/x:.3f}' for x in xticks]
 ax.set_xticks(xticks)
 ax.set_xticklabels(xtick_labels)
 
-# 关闭网格显示
+# Remove legend
+
+# Remove grid
 ax.grid(False)
 
-# 设置背景透明
+# Set background transparent
 ax.set_facecolor('none')
 fig.patch.set_facecolor('none')
 
-# 移除坐标轴平面
+# Remove axis panes
 ax.xaxis.pane.fill = False
 ax.yaxis.pane.fill = False
 ax.zaxis.pane.fill = False
 
-# 设置字体属性
+# Set font properties
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = ['Arial']
 plt.rcParams['axes.unicode_minus'] = False
-plt.rcParams['font.size'] = 14  # 增加默认字体大小
+plt.rcParams['font.size'] = 14  # Increase default font size
 
-# 设置坐标轴标签字体大小和位置
-ax.set_xlabel('Droop (p.u.)', fontsize=16, labelpad=15)  # 增加labelpad值使label距离更远
+# Set axis label font size and position
+ax.set_xlabel('Droop (p.u.)', fontsize=16, labelpad=15)  # Increase labelpad value for more distance
 ax.set_ylabel('Damping (p.u.)', fontsize=16, labelpad=15)
 ax.set_zlabel('Inertia (p.u.)', fontsize=16, rotation=180, labelpad=15)
 
-# 设置刻度字体大小
+# Set tick font size
 ax.tick_params(axis='both', which='major', labelsize=14)
 
-# 显示图形
+# Display the plot
 plt.tight_layout()
 
-# 保存图形到不同格式
-plt.savefig('d:/GithubClonefiles/frequencyregions/fig/polyhedra_3d.svg', 
+# Save the figure in different formats
+plt.savefig('d:/GithubClonefiles/frequencyregions/fig/polyhedra_3d.svg',
             dpi=300, bbox_inches='tight', transparent=True)
 plt.savefig('d:/GithubClonefiles/frequencyregions/fig/polyhedra_3d.pdf', 
             dpi=300, bbox_inches='tight', transparent=True)

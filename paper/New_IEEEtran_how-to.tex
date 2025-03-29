@@ -84,7 +84,7 @@ In correlation with (1), the maximum frequency deviation termed as $\max[ \varDe
   \varDelta f_{QSS}(t) &= \varDelta f(t)|_{t=t_{\infty}} = {D_{EQU}^{-1}\varDelta P_{Step}} \label{eq:qss}
 \end{align}
 \end{subequations}
-  
+
 \noindent
 where $\max [\varDelta f(t)]^k$ enforces the maximum frequency deviation at the $k$-th cycle, $\max [\varDelta f'(t)]$ defines the maximum rate of change of frequency derivation, $\varDelta f_{QSS} (t)$ denotes the (quasi) steady-state frequency deviation, $t_{nadir}^k$ denotes the time to the $k$-th nadir of the frequency deviation.
 
@@ -112,7 +112,7 @@ To ensure the security of frequency dynamics across the entire frequency respons
   \noindent
 where $\gamma_{Nadir}$, $\gamma_{RoCoF}$ and $\gamma_{QSS}$ are predefined frequency dynamic restrictions concerning frequency nadir, RoCoF, and QSS frequency derivation, respectively.
 
-\section{$H$-$D$ support set: A new criterion for frequency security identification}  
+\section{$H$-$D$ support set: A new criterion for frequency security identification}
 
 This section derives explicit bounds of multidimensional frequency parameters, including inertia, damping, and droop gains, these bindings result in a new criterion for frequency security identification that differs from (3a).
 
@@ -169,30 +169,34 @@ By further meticulously organizing the preceding derivations, a concise bounds f
     \ciao{2}\,lower\,bound:&\!\!\!\frac{1}{2}T_G \left(\text{term}_1 - \sqrt{\text{term}_2} \right)\\
     \ciao{3}\,lower\,bound:&\!\!\!\mathcal{R}^{-1}(D_{EQU}) \gamma_{Nadir} \\
     \ciao{4}\,upper\,bound:&\!\!\!\frac{1}{2}T_G \left(\text{term}_1 + \sqrt{\text{term}_2} \right)\\
-    \ciao{5}\,upper\,bound:&\!\!\! \frac{1}{2}(D_{EQU} + F_G) T_G\\    
-   \text{ Damping} \,\,\ciao{6}\,lower\,bound:&\!\!\! \gamma_{QSS}^{-1} \varDelta P_{Step}\\ 
+    \ciao{5}\,upper\,bound:&\!\!\! \frac{1}{2}(D_{EQU} + F_G) T_G\\
+   \text{ Damping} \,\,\ciao{6}\,lower\,bound:&\!\!\! \gamma_{QSS}^{-1} \varDelta P_{Step}\\
     \end{array}
   \end{align}
 \end{subequations}
 
 \section{Case Studies and analysis}
 
-A IEEE $30$ bus test system with two wind farms is applied to demonstrate the effectiveness of the proposed criterion. Both multidimensional frequency parameters provided by conventional generators and converters is sorted out as below. 
+A IEEE $30$ bus test system with two wind farms is applied to demonstrate the effectiveness of the proposed criterion. Both multidimensional frequency parameters provided by conventional generators and converters is sorted out as below.
 
 It can be found that the $H$-$D$ support set formed by (8a) is an approximate convex polyhedron. Within the aforementioned former five bounds in (8a) concerning inertia parameters, $\ciao{2}$ and $\ciao{4}$ represent redundant constraints, whereas $\ciao{1},\,\ciao{3},$ and $\ciao{5}$ are active constraints that restrict the actual feasible area of the $H$-$D$ support set.
-In frequency-oriented studies mentioned before, both RoCoF constraint termed as $\ciao{1}$, nadir constraint termed as $\ciao{3}$, and Qss constraint termed as $\ciao{6}$ are commonly-used frequency dynamic requirements, these constraints are also the main types of constraints that play a role in the constructions of the $H$-$D$ support set, demonstrating the feasibility of the proposed $H$-$D$ support set in this work. 
+In frequency-oriented studies mentioned before, both RoCoF constraint termed as $\ciao{1}$, nadir constraint termed as $\ciao{3}$, and Qss constraint termed as $\ciao{6}$ are commonly-used frequency dynamic requirements, these constraints are also the main types of constraints that play a role in the constructions of the $H$-$D$ support set, demonstrating the feasibility of the proposed $H$-$D$ support set in this work.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.425\textwidth,height=7.5cm]{inertia_damping_supportset.pdf}
+  \includegraphics[width=0.4\textwidth,height=6.50cm]{inertia_damping_supportset.pdf}
   \caption{The frequency dynamic process of low-inertia process}\vspace{-0.125cm}
   \label{fig:inertia_damping_supportset}
 \end{figure}
 
 The difference from previous studies lies in that this letter additionally identifies more bounding conditions, and these refined bounding conditions, along with the addition of RoCoF, nadir, and Qss constraints, form a relatively closed polyhedron region.  Specially, the scale of the $H$-$D$ region intuitively demonstrates the feasible range of multidimensional frequency  parameters. By specifically increasing the upper bound of inertia $H_{EQU}$, termed as $\ciao{5}$, the area of the $H$-$D$ set can be further expanded. Nevertheless, the upper bound of $H_{EQU}$ can be indirectly achieved by increasing the amount of equivalent damping parameter $D_{EQU}$.
 
-
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.425\textwidth,height=7.5cm]{inertia_damping_feasible_region.pdf}
+    \caption{The frequency dynamic process of low-inertia process}\vspace{-0.125cm}
+    \label{fig:inertia_damping_feasible_region}
+  \end{figure}
 
 % Thus, it can be seen that the H-D support set provides straightforward guidance for reasonably improving the frequency security and modeling methods of the system.
 

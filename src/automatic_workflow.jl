@@ -31,7 +31,7 @@ function get_inertiatodamping_functions(droop_parameters)
 	min_damping, max_damping = 2.5, 12
 
 	# NOTE type functions: c + b * damping a * damping^2
-	fittingparameters = calculate_fittingparameters(extreme_inertia, damping)
+	fittingparameters = calculate_fittingparameters(extreme_inertia, DAMPING_RANGE)
 
 	p1 = sub_data_visualization(
 		DAMPING_RANGE, min_inertia, max_inertia, inertia_updown_bindings,
@@ -138,8 +138,8 @@ function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparamet
 	# --- Main Logic ---
 
 	# Find indices for max and min damping
-	max_damping_index = find_damping_index(x -> x > max_damping, DAMPING_RANGE)
-	min_damping_index = find_damping_index(x -> x > min_damping, DAMPING_RANGE)
+	max_damping_index = find_damping_index(x -> x > max_damping, DAMPING_RANGE) - 1
+	min_damping_index = find_damping_index(x -> x > min_damping, DAMPING_RANGE) - 1
 
 	# Pre-calculate damping values to avoid repetition
 	max_damping_value = DAMPING_RANGE[max_damping_index]

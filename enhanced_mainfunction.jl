@@ -66,6 +66,7 @@ function _plot_inertia_damping(droop_parameters::AbstractVector)
 	return p1, vertices_matrix
 end
 
+
 # Call plotting function.
 plot_result, all_vertices = plot_inertia_damping(DROOP_PARAMETERS)
 
