@@ -1,10 +1,10 @@
 {
   // --- Julia Language Settings ---
-  "julia.executablePath": "/Applications/Julia-1.11.app/Contents/Resources/julia/bin/julia",
+  "julia.executablePath": "D:\\CommonSoftwares\\ProductiveCodingEditors\\Julia\\bin\\julia.exe",
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
-  "editor.fontFamily": "Maple Mono, Hack Nerd Font Propo, Droid Sans Mono, Geist Mono, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "Maple Mono, Geist Mono, Droid Sans Mono, Hack Nerd Font Propo, JetBrains Mono, Consolas, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.lineNumbers": "on",
   "files.autoSave": "afterDelay",
