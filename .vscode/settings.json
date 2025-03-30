@@ -223,7 +223,7 @@
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "GitHub Sharp",
+  "workbench.preferredLightColorTheme": "Default Dark Modern",
   "workbench.preferredDarkColorTheme": "Default Dark Modern",
 
   // --- Comment Anchors Extension Settings ---
