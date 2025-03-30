@@ -1,6 +1,6 @@
 {
   // --- Julia Language Settings ---
-  "julia.executablePath": "D:\\CommonSoftwares\\ProductiveCodingEditors\\Julia\\bin\\julia.exe",
+  "julia.executablePath": "/Applications/Julia-1.11.app/Contents/Resources/julia/bin/julia",
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
@@ -224,7 +224,7 @@
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
   "workbench.preferredLightColorTheme": "GitHub Sharp",
-  "workbench.preferredDarkColorTheme": "GitHub Light Colorblind (Beta)",
+  "workbench.preferredDarkColorTheme": "Default Dark Modern",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,

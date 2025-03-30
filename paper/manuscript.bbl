@@ -27,12 +27,10 @@ S.~A. Hosseini, M.~Toulabi, A.~S. Dobakhshari, A.~Ashouri-Zadeh, and A.~M.
   rejection applied to power system frequency control,'' \emph{IEEE
   Transactions on Power Systems}, vol.~35, no.~3, pp. 2037--2046, 2020.
 
-\bibitem{10160138}
-S.~A. Hosseini, M.~Fotuhi-Firuzabad, P.~Dehghanian, and M.~Lehtonen,
-  ``Coordinating demand response and wind turbine controls for alleviating the
-  first and second frequency dips in wind-integrated power grids,'' \emph{IEEE
-  Transactions on Industrial Informatics}, vol.~20, no.~2, pp. 2223--2233,
-  2024.
+\bibitem{10168982}
+G.~Tian and Q.~Z. Sun, ``A stochastic controller for primary frequency
+  regulation using on/off demand side resources,'' \emph{IEEE Transactions on
+  Smart Grid}, vol.~14, no.~5, pp. 4141--4144, 2023.
 
 \bibitem{markovic2019optimal}
 U.~Markovic, V.~H{\"a}berle, D.~Shchetinin, G.~Hug, D.~Callaway, and

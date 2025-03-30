@@ -32,7 +32,7 @@
 % \libertineGlyph{uni2460} \libertineGlyph{uni24F5} \libertineGlyph{uni2776}
 
 
-\title{\vspace{-0.5cm} 
+\title{\vspace{-0.5cm}
 %$H$-$D$ Support Set: Frequency Dynamic Security Analysis through Multidimensional Frequency Parameter Bindings
 $H$-$D$ Support Set:  Identifying Frequency Dynamics by Constraining Multidimensional Frequency Parameter Bounds
 }
@@ -56,25 +56,31 @@ $H$-$D$ Support Set:  Identifying Frequency Dynamics by Constraining Multidimens
 System frequency response, $H$-$D$ support set, multidimensional frequency parameters.
 \end{IEEEkeywords}
 
-\vspace{-0.5cm}
+\vspace{-0.25cm}
 
 \section{Introduction}
-\IEEEPARstart{T}{he} low inertia character of electrical power system significantly impact the system frequency security, which implicitly change the scheduling commitment results provided by different generators. In such circumstances, existing studies about power system dynamic response~\cite{8918440,10160138}, storage device sizing and control parameter tunning~\cite{markovic2019optimal}, optimal scheduling operation~\cite{9765359,10554988,10819485}, and even medium-term~\&~long-term generation planning studies~\cite{10820061,10938039}, trends to emphasis the consideration of frequency response and frequency stability.
+\IEEEPARstart{T}{he} low inertia character of electrical power system significantly impact the system frequency security, which implicitly change the scheduling commitment results provided by different generators. In such circumstances, existing studies about power system dynamic response~\cite{8918440,10168982}, storage device sizing and control parameter tunning~\cite{markovic2019optimal}, optimal scheduling operation~\cite{9765359,10554988,10819485}, and  medium-term~\&~long-term generation planning studies~\cite{10820061,10938039}, trends to emphasis the consideration of frequency dynamic processes.
 
 
 % The primary objective of frequency-oriented studies mentioned before is to determine the safety of frequency dynamic processes, as characterized by multidimensional frequency parameters such as inertia, damping and droop, reserves, etc. A conventional approach involves establishing dynamic frequency criteria, encompassing constraints on RoCoF, nadir, and QSS, typically expressed as mathematical relationships between these frequency parameters, to ensure frequency security. System stability is then assessed by evaluating whether the observed frequency dynamics remain within the feasible region defined by these criteria.  From this perspective, it is only possible to qualitatively assess whether the current configuration of frequency parameters is reasonable. However, it cannot refer the safety boundaries of multidimensional frequency parameters.
 
-The primary objective of frequency-oriented studies as previously discussed is to ascertain the security of frequency dynamic, while it can be described through the SFR function, typically expressed by multidimensional frequency parameters, including system-level/regional-level $inertia$, $damping$, $droop$, and $reserve$, etc. Conventional methodologies establish dynamic frequency criteria, typically expressed as mathematical constraints such as RoCoF, nadir and Qss~\cite{markovic2019optimal,8918440,10160138,9765359,10554988,10819485,10820061,10938039}. These criteria define a feasible operating region within which frequency dynamics are deemed secure. System stability is subsequently evaluated by determining if the observed frequency derivation derived from the SFR function remains within this defined region.
+The primary objective of frequency-oriented studies as previously discussed is to ascertain the security of frequency dynamic, while it can be described through the SFR function, typically expressed by multidimensional frequency parameters, including system-level/regional-level $inertia$, $damping$, $droop$, and $reserve$, etc. Conventional methodologies establish dynamic frequency criteria, typically represented as mathematical constraints such as RoCoF, nadir and Qss~\cite{markovic2019optimal,8918440,10168982,9765359,10554988,10819485,10820061,10938039}. These criteria define a feasible operating region within which frequency dynamics are deemed secure~(see fig.~\ref{fig:sfr}). System stability is subsequently evaluated by determining if the frequency derivation derived from the SFR function remains within this defined region.
 
-Nevertheless, these conventional approaches suffers from an implicitly limitation: it provides only a qualitative assessment of the current frequency parameter configuration's reasonableness. While it can determine if the system operates within predefined (frequency dynamic) limits, it fails to explicitly delineate the precise safety boundaries of these multidimensional frequency parameters. Consequently, it can neither directly quantify the margins of safety, nor provide actionable insights into how to adjust these parameters to enhance system frequency security.
+Nevertheless, these conventional approaches suffers from an implicitly limitation: it provides only a qualitative assessment of the current frequency parameter configuration's reasonableness. While it can determine if the system operates within predefined frequency dynamic thresholds, it fails to explicitly delineate the precise safety boundaries of these multidimensional frequency parameters. Consequently, it can neither directly quantify the margins of frequency safety, nor provide actionable insights into how to adjust these parameters to enhance system frequency security.
 
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.4\textwidth,height=4.5cm]{frequency_response.pdf}\vspace{-0.25cm}
+	\caption{The frequency dynamic process in the low inertia grid}\vspace{-0.25cm}
+	\label{fig:sfr}
+\end{figure}
 
-This letter introduces a new criterion, termed as $H$-$D$ Support Set, to access the feasible bounds of multidimensional frequency parameters. Furthermore, an open-source tool (repository address: \url{https://github.com/Divas1234/frequencyregions.git}) for $H$-$D$ Support Set simulation is made freely available. Leveraging the SFR theorem, the interaction between these parameters is analyzed, and both the upper and lower bounds of the frequency parameter bounds are explicitly calculated. In contrast to existing methodologies, the proposed approach provides a well-defined boundary interval for frequency parameters, thereby enabling more effective tuning optimization of frequency control parameters and facilitating comprehensive frequency dynamic analysis.
+This letter introduces a new criterion, termed as $H$-$D$ support set, to access the feasible bounds of multidimensional frequency parameters. Furthermore, an open-source tool (repository address: \url{https://github.com/Divas1234/frequencyregions.git}) for $H$-$D$ support set simulation is made freely available. Leveraging the SFR theorem, the interaction between multidimensional frequency parameters is analyzed, and both the upper and lower bounds of these parameters are explicitly estimated. In contrast to existing methodologies, the $H$-$D$ set provides a well-defined boundary interval for frequency parameters, thereby enabling more effective tuning optimization of frequency control parameters and facilitating comprehensive frequency security analysis.
 
 \vspace{-0.25cm}
-\section{SFR theorem in low inertia power systems}
+\section{SFR theorem in low inertia grid}
 
-Given such a low inertia power systems that considers high penetration of converters, the uniform analytical expression of frequency dynamic processes can be written as,
+Given such a low inertia power system that considers high penetration of converters, the uniform analytical expression of frequency dynamic processes can be written as,
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -87,9 +93,9 @@ Given such a low inertia power systems that considers high penetration of conver
 \noindent
 where $\varDelta f(s)$ represents the frequency derivation with a step-type power disturbance $\varDelta P_{Step}$, $H_{EQU},\! D_{DEQ}$, respectively, describes the equivalent inertia parameter and damping parameter. $T_G$ is the time constant of conventional generator, $R_G$ denotes the aggregated droop parameter generated by conventional generators, $F_G$ denote the fraction of total power generated by high pressure turbines of conventional generators. In these formulations, the time constants within the transfer function of $\varDelta f(s)$ are normalized to unity, and the response times of converters with diverse control schemes are approximated as negligible. A more detailed feasibility analysis is provided in \cite{markovic2019optimal}.
 
-In correlation with (1), the maximum frequency deviation termed as $\max[ \varDelta f(t)]$ as well as the maximization rate of frequency change termed as $\max[\varDelta f'(t)]$ can be derived as below,
+In correlation with (1), the maximum frequency deviation, termed as $\max[ \varDelta f(t)]$, as well as the maximization rate of frequency change, termed as $\max[\varDelta f'(t)]$, can be derived~\cite{markovic2019optimal},
 
-\vspace{-0.5cm}
+\vspace{-0.25cm}
 \begin{subequations}
 \begin{align}
     \max[\Delta f(t)] &= \varDelta f(t)|_{t=t_{nadir}^k} = -\frac{\Delta P_{Step}}{D_{EQU} + R_G} \bigg( 1 + \notag \\
@@ -104,14 +110,8 @@ In correlation with (1), the maximum frequency deviation termed as $\max[ \varDe
 \noindent
 where $\max [\varDelta f(t)]^k$ enforces the maximum frequency deviation at the $k$-th cycle, $\max [\varDelta f'(t)]$ defines the maximum rate of change of frequency derivation, $\varDelta f_{QSS} (t)$ denotes the (quasi) steady-state frequency deviation, $t_{nadir}^k$ denotes the time to the $k$-th nadir of the frequency deviation.
 
-\begin{figure}[!t]
-  \centering
-  \includegraphics[width=0.4\textwidth,height=4.5cm]{frequency_response.pdf}\vspace{-0.25cm}
-  \caption{The frequency dynamic process in the low inertia power system}\vspace{-0.25cm}
-  \label{fig:sfr}
-\end{figure}
 
-To ensure the security of frequency dynamics across the entire frequency response processes, the amounts of $\max[\varDelta f(t)]$, $\max[\varDelta f'(t)]$ and $\varDelta f_{QSS}(t)$ must be constrained within the predefined frequency dynamic restrictions, as discussed in existing frequency-oriented studies,
+To ensure the security of frequency dynamics across the entire frequency response processes, the amounts of $\max[\varDelta f(t)]$, $\max[\varDelta f'(t)]$ and $\varDelta f_{QSS}(t)$ must be constrained within the predefined frequency dynamic restrictions, as discussed in existing frequency-oriented studies~\cite{9765359,10554988,10819485,10820061,10938039},
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -127,7 +127,7 @@ To ensure the security of frequency dynamics across the entire frequency respons
   \end{subequations}
 
   \noindent
-where $\gamma_{Nadir}$, $\gamma_{RoCoF}$ and $\gamma_{QSS}$ are predefined frequency dynamic restrictions concerning frequency nadir, RoCoF, and QSS frequency derivation, respectively.
+where $\gamma_{Nadir}$, $\gamma_{RoCoF}$ and $\gamma_{QSS}$ are predefined frequency dynamic restrictions concerning frequency nadir, RoCoF, and Qss frequency derivation, respectively.
 
 \section{$H$-$D$ support set: A new criterion for frequency security identification}
 
@@ -138,11 +138,11 @@ The sufficient condition for the occurrence of maximum frequency derivation (nad
 \vspace{-0.25cm}
 \begin{subequations}
   \begin{align}
-    0 \leq \zeta \leq 1, \quad \zeta \omega_n \geq \frac{1}{T_G} \label{eq:zeta_wn}
+    0 \leq \zeta \leq 1, \quad \zeta \omega_n \geq {T_G^{-1}} \label{eq:zeta_wn}
     \end{align}
   \end{subequations}
 
-Substituting (1b) into (4a), the bounds of inertia and damping parameters can be derived as below,
+Substituting (1b) into (4a), the bounds of inertia and damping parameters can be further derived as below,
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -156,7 +156,7 @@ Substituting (1b) into (4a), the bounds of inertia and damping parameters can be
     \end{align}
   \end{subequations}
 
-Let $H_{EQU}=\mathcal{Q} (D_{EQU})$, the relationship between $H_{EQU}$ and $D_{EQU}$ can be derived as below,
+Let $H_{EQU}=\mathcal{Q} (D_{EQU})$, the relationship between $H_{EQU}$ and $D_{EQU}$ can be constructed,
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -170,7 +170,7 @@ Let $H_{EQU}=\mathcal{Q} (D_{EQU})$, the relationship between $H_{EQU}$ and $D_{
     \end{align}
   \end{subequations}
 
-Next, other relations between $H_{EQU}$ and $D_{EQU}$ concerning nadir, RoCoF, and Qss, can be extended from (3a). For simplification, let $\max [ \varDelta f(t)]=\mathcal{R} (H_{EQU}, D_{EQU})$ denotes the non-linear close form of (2a), then, more bindings between $H_{EQU}$ and $D_{EQU}$ can be derived as below,
+Next, other relations between $H_{EQU}$ and $D_{EQU}$ concerning nadir, RoCoF, and Qss, can be extended from (3a). For simplification, let $\max [ \varDelta f(t)]=\mathcal{R} (H_{EQU}, D_{EQU})$ denotes the non-linear close form of (2a), then, more bindings between $H_{EQU}$ and $D_{EQU}$ can be found,
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -181,7 +181,7 @@ D_{EQU} & \geq \gamma_{QSS}^{-1} \varDelta P_{Step}
 \end{subequations}
 
 % \textcircled{\small{2}}
-By further meticulously organizing the preceding derivations, a concise bounds for system inertia and damping parameters can be estimated from (6) and (7).
+By meticulously re-organizing the preceding derivations, a concise bounds for system inertia and damping parameters can be estimated from (6) and (7).
 
 \vspace{-0.25cm}
 \begin{subequations}
@@ -218,7 +218,7 @@ A IEEE $30$ bus test system with two wind farms is applied to demonstrate the ef
 \end{table}
 \vspace{-0.25cm}
 
-It can be found that the $H$-$D$ support set in fig.~\ref{fig:inertia_damping_supportset} formed by (8a) is an approximate convex polyhedron. In the aforementioned former five bounds in (8a) concerning inertia parameters, $\ciao{2}$ and $\ciao{4}$ represent redundant constraints, whereas $\ciao{1},\,\ciao{3},$ and $\ciao{5}$ are active constraint that restrict the actual feasible area of the $H$-$D$ support set.
+It can be observed that the $H$-$D$ support set in fig.~\ref{fig:inertia_damping_supportset} formed by (8a) is an approximate convex polyhedron. In the aforementioned former five bounds in (8a) concerning inertia parameters, $\ciao{2}$ and $\ciao{4}$ represent redundant constraints, whereas $\ciao{1},\,\ciao{3},$ and $\ciao{5}$ are active constraint that restrict the actual feasible area of the $H$-$D$ set.
 Remarkably, the RoCoF constraint termed as $\ciao{1}$, nadir constraint termed as $\ciao{3}$, and Qss constraint termed as $\ciao{6}$ are commonly-used frequency dynamic requirements, these constraints in frequency-oriented studies are also the main types of constraints that play a role in the constructions of $H$-$D$ support set, demonstrating the feasibility of $H$-$D$ support set in this work.
 
 \begin{figure}[!t]\vspace{-0.125cm}
@@ -239,7 +239,7 @@ The difference from previous studies lies in that this letter additionally ident
   \label{fig:inertia_damping_feasible_region}
 \end{figure}
 
-Furthermore, the scope of the $H$-$D$ support sets exhibits variation contingent upon droop parameter settings. However, once the droop parameter surpasses a threshold of $1/0.023$, the $H$-$D$ set becomes invariant (see Fig.~\ref{fig:inertia_damping_feasible_region}), and it is exclusively determined by the inertia bounds $\ciao{1}$ and $\ciao{3}$. Fig.~\ref{fig:diff_inertia_damping_supportset} records the geometric characteristic of these $H$-$D$ sets under different multidimensional frequency parameter configurations.
+Moreover, the scope of $H$-$D$ support sets exhibits variation contingent upon droop parameter settings. However, once the droop gain surpasses a threshold of $1/0.023$, the $H$-$D$ set becomes invariant (see Fig.~\ref{fig:inertia_damping_feasible_region}), and it is exclusively determined by the inertia bounds $\ciao{1}$ and $\ciao{3}$. Fig.~\ref{fig:diff_inertia_damping_supportset} records the geometric characteristic of these $H$-$D$ sets under different multidimensional frequency parameter configurations.
 
 \begin{figure}[!t]
 	\centering
