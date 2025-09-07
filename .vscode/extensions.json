@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "julialang.language-julia", // Julia 支持
+        "ms-toolsai.jupyter", // Jupyter 支持
+        "aaron-bond.better-comments"
+    ],
+    "unwantedRecommendations": [
+        "ms-vscode.cpptools", // 不需要的 C/C++ 扩展
+        "vscodevim.vim" // 不需要的 Vim 模式
+    ]
+}

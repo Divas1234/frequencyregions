@@ -4,106 +4,13 @@
   "julia.execution.codeInREPL": true,
 
   // --- Editor Settings ---
-  "editor.fontFamily": "FZTanHeiS-B-GB, Fira Code, Maple Mono, Geist Mono, Droid Sans Mono, Hack Nerd Font Propo, JetBrains Mono, Consolas, 'Courier New', monospace",
-  "editor.fontSize": 16,
+  "editor.fontFamily": "Google Sans Code, Fira Code, Maple Mono, Geist Mono, Droid Sans Mono, Hack Nerd Font Propo, JetBrains Mono, Consolas, 'Courier New', monospace",
+  "editor.fontSize": 14,
   "editor.lineNumbers": "on",
   "files.autoSave": "afterDelay",
 
   // --- Token Customizations ---
   "editor.tokenColorCustomizations": {
-    "[GitHub Light Colorblind (Beta)]": {
-        "textMateRules": [
-            {
-                "scope": "keyword",
-                "settings": {
-                    "foreground": "#d73a49",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "comment",
-                "settings": {
-                    "foreground": "#b4c3d2",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "string",
-                "settings": {
-                    "foreground": "#144989"
-                }
-            },
-            {
-                "scope": "type",
-                "settings": {
-                    "foreground": "#618dbf",
-                    "fontStyle": "bold"
-                }
-            },
-            {
-                "scope": "function",
-                "settings": {
-                    "foreground": "#0a0ae5",
-                    "fontStyle": "bold underline"
-                }
-            },
-            {
-                "scope": "number",
-                "settings": {
-                    "foreground": "#c4570e",
-                    "fontStyle": "bold"
-                }
-            }
-        ]
-    },
-    "[Dainty – City Lights]": {
-        "textMateRules": [
-            {
-                "scope": "keyword",
-                "settings": {
-                    "foreground": "#d73a49",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "comment",
-                "settings": {
-                    "foreground": "#213c56",
-                    "fontStyle": "italic"
-                }
-            },
-            {
-                "scope": "string",
-                "settings": {
-                    "foreground": "#293e57"
-                }
-            },
-            {
-                "scope": "entity.name.type",
-                "settings": {
-                    "foreground": "#618dbf",
-                    "fontStyle": "bold"
-                }
-            },
-            {
-                "scope": "entity.name.function",
-                "settings": {
-                    "foreground": "#0a0ae5",
-                    "fontStyle": "bold underline"
-                }
-            },
-            {
-                "scope": "number",
-                "settings": {
-                    "foreground": "#c4570e",
-                    "fontStyle": "bold"
-                }
-            }
-        ]
-    },
-    "functions": {
-        "fontStyle": "bold"
-    },
     "textMateRules": [
         {
             "scope": "emphasis",
@@ -211,6 +118,244 @@
             }
         }
     ],
+    "[GitHub Light Colorblind (Beta)]": {
+        "textMateRules": [
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d73a49",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#b4c3d2",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#144989"
+                }
+            },
+            {
+                "scope": "type",
+                "settings": {
+                    "foreground": "#618dbf",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "function",
+                "settings": {
+                    "foreground": "#0a0ae5",
+                    "fontStyle": "bold underline"
+                }
+            },
+            {
+                "scope": "number",
+                "settings": {
+                    "foreground": "#c4570e",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "[GitHub Sharp]": {
+        "textMateRules": [
+            {
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d73a49",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#b4c3d2",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#144989"
+                }
+            },
+            {
+                "scope": "type",
+                "settings": {
+                    "foreground": "#618dbf",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "function",
+                "settings": {
+                    "foreground": "#0a0ae5",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "number",
+                "settings": {
+                    "foreground": "#c4570e",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "[GitHub Light]": {
+        "textMateRules": [
+            {
+                "settings": {
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d73a49",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#b4c3d2",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#144989"
+                }
+            },
+            {
+                "scope": "type",
+                "settings": {
+                    "foreground": "#618dbf",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "function",
+                "settings": {
+                    "foreground": "#0a0ae5",
+                    "fontStyle": "bold underline"
+                }
+            },
+            {
+                "scope": "number",
+                "settings": {
+                    "foreground": "#c4570e",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "[Best Themes - Github Dark Dimmed]": {
+        "textMateRules": [
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d73a49",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#213c56",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#59708a"
+                }
+            },
+            {
+                "scope": "entity.name.type",
+                "settings": {
+                    "foreground": "#618dbf",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "entity.name.function",
+                "settings": {
+                    "foreground": "#a59223",
+                    "fontStyle": "bold underline"
+                }
+            },
+            {
+                "scope": "number",
+                "settings": {
+                    "foreground": "#c4570e",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "[Dainty – City Lights]": {
+        "textMateRules": [
+            {
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#d73a49",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#213c56",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": "string",
+                "settings": {
+                    "foreground": "#293e57"
+                }
+            },
+            {
+                "scope": "entity.name.type",
+                "settings": {
+                    "foreground": "#618dbf",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "scope": "entity.name.function",
+                "settings": {
+                    "foreground": "#0a0ae5",
+                    "fontStyle": "bold underline"
+                }
+            },
+            {
+                "scope": "number",
+                "settings": {
+                    "foreground": "#c4570e",
+                    "fontStyle": "bold"
+                }
+            }
+        ]
+    },
+    "functions": {
+        "fontStyle": "bold"
+    },
     "comments": ""
 },
 
@@ -223,8 +368,8 @@
 
   // --- Workbench Settings ---
   "window.autoDetectColorScheme": true,
-  "workbench.preferredLightColorTheme": "Default Dark Modern",
-  "workbench.preferredDarkColorTheme": "Default Dark Modern",
+  "workbench.preferredLightColorTheme": "GitHub Plus",
+  "workbench.preferredDarkColorTheme": "dark-plus-syntax",
 
   // --- Comment Anchors Extension Settings ---
   "commentAnchors.tags.sortAlphabetically": true,
@@ -340,5 +485,5 @@
   "bookmarks.saveBookmarksInProject": true,
   "bookmarks.sideBar.expanded": true,
 "bookmarks.useWorkaroundForFormatters": true,
-"latex-workshop.latex.autoBuild.run": "never"
+"latex-workshop.latex.autoBuild.run": "never",
 }
