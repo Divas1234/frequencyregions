@@ -1,7 +1,7 @@
 include("src/automatic_workflow.jl")
 
 # Define droop parameters. Consider moving this to a separate configuration file or a dedicated section.
-const DROOP_PARAMETERS = collect(range(33, 40, length = 20))
+const DROOP_PARAMETERS = collect(range(33, 40; length = 20))
 
 """
 	plot_inertia_damping(droop_parameters::AbstractVector)
@@ -9,11 +9,13 @@ const DROOP_PARAMETERS = collect(range(33, 40, length = 20))
 Generates and plots the inertia-damping functions for a given set of droop parameters.
 
 # Arguments
-- `droop_parameters::AbstractVector`: A vector of droop parameters.
+
+  - `droop_parameters::AbstractVector`: A vector of droop parameters.
 
 # Returns
-- `Tuple{Plots.Plot, Vector{Vector{Tuple{Float64, Float64, Float64}}}}`: A tuple containing the plot and a vector of vertices.
-  Returns `(nothing, nothing)` if `droop_parameters` is empty or if no valid plots are generated.
+
+  - `Tuple{Plots.Plot, Vector{Vector{Tuple{Float64, Float64, Float64}}}}`: A tuple containing the plot and a vector of vertices.
+	Returns `(nothing, nothing)` if `droop_parameters` is empty or if no valid plots are generated.
 """
 function plot_inertia_damping(droop_parameters::AbstractVector)
 	if isempty(droop_parameters)
@@ -56,16 +58,12 @@ function _plot_inertia_damping(droop_parameters::AbstractVector)
 		return nothing, nothing # Return nothing if no plots were created
 	end
 
-	p1 = Plots.plot(plots...,
-		legend = false, size = (1000, 1000),
-		xlabel = "Damping", ylabel = "Inertia",
-		label = permutedims(labels)) # Correct label orientation
+	p1 = Plots.plot(plots...; legend = false, size = (1000, 1000), xlabel = "Damping", ylabel = "Inertia", label = permutedims(labels)) # Correct label orientation
 
 	vertices_matrix = vertices_to_matrix(all_vertices::AbstractVector)
 
 	return p1, vertices_matrix
 end
-
 
 # Call plotting function.
 plot_result, all_vertices = plot_inertia_damping(DROOP_PARAMETERS)
@@ -80,7 +78,6 @@ end
 # 	@show all_vertices
 # 	write_vertices_to_file(all_vertices, pwd(), OUTPUT_REL_PATH)
 # end
-
 
 # Display the result.
 if !isnothing(all_vertices)

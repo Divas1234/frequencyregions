@@ -7,33 +7,35 @@ include("inertia_damping_regressionrelations.jl")
 Visualizes the relationship between damping, inertia, and nadir distribution.
 
 # Arguments
-- `damping`: A vector of damping values (p.u.).
-- `inertia_updown_bindings`: A matrix where each row represents a damping value, and the two columns represent the upper and lower inertia bounds (p.u.).
-- `extreme_inertia`: A vector of extreme inertia values (p.u.) corresponding to each damping value.
-- `nadir_vector`: A matrix representing the nadir distribution.
-- `inertia_vector`: A matrix representing the inertia distribution.
-- `selected_ids`: (Not used in the current implementation, but kept for potential future use).
-- `min_inertia`: The minimum inertia value (default: 0.0).
-- `max_inertia`: The maximum inertia value (default: 1.0).
+
+  - `damping`: A vector of damping values (p.u.).
+  - `inertia_updown_bindings`: A matrix where each row represents a damping value, and the two columns represent the upper and lower inertia bounds (p.u.).
+  - `extreme_inertia`: A vector of extreme inertia values (p.u.) corresponding to each damping value.
+  - `nadir_vector`: A matrix representing the nadir distribution.
+  - `inertia_vector`: A matrix representing the inertia distribution.
+  - `selected_ids`: (Not used in the current implementation, but kept for potential future use).
+  - `min_inertia`: The minimum inertia value (default: 0.0).
+  - `max_inertia`: The maximum inertia value (default: 1.0).
 
 # Returns
-- A Plots.Plot object containing the visualizations.
+
+  - A Plots.Plot object containing the visualizations.
 """
 function data_visualization(
-	damping,
-	inertia_updown_bindings,
-	extreme_inertia,
-	nadir_vector,
-	inertia_vector,
-	selected_ids,
-	max_inertia,
-	min_inertia = 0.0,
+		damping,
+		inertia_updown_bindings,
+		extreme_inertia,
+		nadir_vector,
+		inertia_vector,
+		selected_ids,
+		max_inertia,
+		min_inertia = 0.0,
 )
 
 	# --- Plot 1: Extreme Inertia ---
 	sp1 = plot(
 		damping,
-		extreme_inertia,
+		extreme_inertia;
 		lw = 3,
 		framestyle = :box,
 		ylims = (0, maximum(extreme_inertia)),
@@ -47,7 +49,7 @@ function data_visualization(
 	plot!(
 		sp1,
 		damping,
-		extreme_inertia,
+		extreme_inertia;
 		fillrange = inertia_updown_bindings[:, 1],
 		fillalpha = 0.3,
 		label = "Inertia Range",
@@ -56,7 +58,7 @@ function data_visualization(
 
 	# --- Plot 2: Nadir Distribution ---
 	sp2 = heatmap(
-		nadir_vector,
+		nadir_vector;
 		framestyle = :box,
 		xlabel = "Damping",
 		ylabel = "nadir distribution",
@@ -67,7 +69,7 @@ function data_visualization(
 
 	# --- Plot 3: Inertia Distribution ---
 	sp3 = heatmap(
-		inertia_vector,
+		inertia_vector;
 		framestyle = :box,
 		xlabel = "Damping",
 		ylabel = "inertia distribution",
@@ -81,16 +83,14 @@ function data_visualization(
 
 	fillarea = zeros(length(damping))
 	for i in eachindex(damping)
-		fitted_value =
-			fittingparameters[1] +
-			fittingparameters[2] * damping[i] +
-			fittingparameters[3] * damping[i]^2
+		fitted_value = fittingparameters[1] +
+					   fittingparameters[2] * damping[i] +
+					   fittingparameters[3] * damping[i]^2
 		fillarea[i] = max(fitted_value, min_inertia)
 	end
 
-	fitted_curve =
-		fittingparameters[1] .+ fittingparameters[2] .* damping .+
-		fittingparameters[3] .* damping .^ 2
+	fitted_curve = fittingparameters[1] .+ fittingparameters[2] .* damping .+
+				   fittingparameters[3] .* damping .^ 2
 	seq = fitted_curve .- max_inertia
 
 	interaction_point = if seq[1] > 0
@@ -248,22 +248,20 @@ function data_visualization(
 	# )
 
 	# --- Combine Plots ---
-	p1 = plot(sp2, sp3, sp1, sy1, layout = (2, 2), size = (1000, 800))
+	p1 = plot(sp2, sp3, sp1, sy1; layout = (2, 2), size = (1000, 800))
 
 	return p1, sy1
 end
 
-
-
 # Improved function for plotting inertia distribution with bounds
 function plot_inertia_distribution_with_bounds_improved(
-	interaction_point,
-	damping,
-	inertia_updown_bindings,
-	max_inertia,
-	min_inertia,
-	fillarea,
-	fitted_curve,
+		interaction_point,
+		damping,
+		inertia_updown_bindings,
+		max_inertia,
+		min_inertia,
+		fillarea,
+		fitted_curve,
 )
 
 	# --- Data Preparation ---
@@ -308,18 +306,16 @@ function plot_inertia_distribution_with_bounds_improved(
 
 	# Define the layout for the broken axis effect
 	# Adjust heights if needed based on data range visualization
-	l = @layout [
-		top_ax{0.2h}
-		mid_ax{0.6h}
-		bot_ax{0.2h}
-	]
+	l = @layout [top_ax{0.2h}
+				 mid_ax{0.6h}
+				 bot_ax{0.2h}]
 
 	# --- Create Subplots ---
 
 	# Top Subplot (Upper part of the range)
 	plot_top = plot(
 		damping,
-		upper_bound,
+		upper_bound;
 		ylims = ylims_top,
 		yticks = yticks_top,
 		label = "Upper Bound",
@@ -337,7 +333,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	# Middle Subplot (Main area of interest)
 	plot_middle = plot(
 		damping,
-		upper_bound, # Plotting upper bound as base for fill
+		upper_bound; # Plotting upper bound as base for fill
 		fillrange = fillarea,
 		fillalpha = fill_alpha_base,
 		fillcolor = :skyblue, # Use fillcolor for clarity
@@ -357,11 +353,11 @@ function plot_inertia_distribution_with_bounds_improved(
 	)
 
 	# Add layers to the middle plot
-	plot!(plot_middle, damping, upper_bound, lw = common_line_width, color = :blue, label = "Upper Bound") # Draw upper bound line
+	plot!(plot_middle, damping, upper_bound; lw = common_line_width, color = :blue, label = "Upper Bound") # Draw upper bound line
 	plot!(
 		plot_middle,
 		interaction_damping,
-		interaction_max_inertia,
+		interaction_max_inertia;
 		fillrange = interaction_fillarea,
 		fillalpha = fill_alpha_interaction,
 		fillcolor = :red,
@@ -372,7 +368,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	plot!(
 		plot_middle,
 		damping,
-		fitted_curve,
+		fitted_curve;
 		lw = common_line_width,
 		linestyle = :dot, # Different style for fitted curve
 		label = "Fitted Curve",
@@ -380,7 +376,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	)
 	hline!(
 		plot_middle,
-		[min_inertia],
+		[min_inertia];
 		lw = common_line_width,
 		label = "Min Inertia",
 		linestyle = :dash,
@@ -389,7 +385,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	plot!(
 		plot_middle,
 		damping,
-		max_inertia,
+		max_inertia;
 		lw = common_line_width,
 		label = "Max Inertia",
 		color = :orange,
@@ -399,7 +395,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	# Bottom Subplot (Lower part of the range)
 	plot_bottom = plot(
 		damping,
-		lower_bound,
+		lower_bound;
 		ylims = ylims_bot,
 		yticks = yticks_bot,
 		label = "Lower Bound",
@@ -418,7 +414,7 @@ function plot_inertia_distribution_with_bounds_improved(
 	combined_plot = plot(
 		plot_top,
 		plot_middle,
-		plot_bottom,
+		plot_bottom;
 		layout = l,
 		size = plot_size,
 		# borderwidth = 10,
@@ -428,11 +424,10 @@ function plot_inertia_distribution_with_bounds_improved(
 		link = :x, # Link x-axes for zooming/panning
 		# Add global Y label manually via annotation or use PlotAnnotations
 		# Simple annotation example:
-		annotate = [(-0.12, 0.5, text(global_ylabel, :black, :center, 10, rotation = 90))],
+		annotate = [(-0.12, 0.5, text(global_ylabel, :black, :center, 10; rotation = 90))],
 		# Configure the main legend (collects labels from all subplots unless :none)
 		# legend = :outertopright, # Place legend outside plot area
-		legendfontsize = legend_font_size,
-		# legend_column = 2, # May not be needed with :outertopright
+		legendfontsize = legend_font_size,        # legend_column = 2, # May not be needed with :outertopright
 	)
 
 	return combined_plot

@@ -95,7 +95,7 @@ function plot_convex_hull_slice!(plt::Plots.Plot, points_at_x::Matrix{Float64})
 				color = :red,
 				linewidth = 0.5,
 				alpha = 0.8,
-				label = "", # Avoid adding legend entries for each segment
+				label = "" # Avoid adding legend entries for each segment
 			)
 		end
 		return true # Indicate hull was plotted
@@ -104,7 +104,6 @@ function plot_convex_hull_slice!(plt::Plots.Plot, points_at_x::Matrix{Float64})
 		return false # Indicate hull was not plotted
 	end
 end
-
 
 """
 	plot_polygon_figures(data_dir::String, output_dir::String; filename_base::String="polygon_figure")
@@ -121,7 +120,6 @@ Saves the resulting plot to PDF and PNG formats.
 - `Plots.Plot`: The generated plot object.
 """
 function plot_polygon_figures(data_dir::String, output_dir::String; filename_base::String = "polygon_figure")
-
 	vertex_file = joinpath(data_dir, "all_vertices.txt")
 	println("Loading vertices from: $vertex_file")
 	vertices = load_vertices(vertex_file)
@@ -135,7 +133,7 @@ function plot_polygon_figures(data_dir::String, output_dir::String; filename_bas
 		background = :white,
 		legend = false, # No legend needed for hull segments
 		grid = true,    # Enable grid for better spatial understanding
-		framestyle = :box, # Box frame for 3D
+		framestyle = :box # Box frame for 3D
 	)
 
 	# --- Plot All Vertices ---
@@ -146,7 +144,7 @@ function plot_polygon_figures(data_dir::String, output_dir::String; filename_bas
 		markercolor = :darkgray,
 		markerstrokewidth = 0.5,
 		alpha = 0.7,      # Slightly more transparent
-		label = "", # No label needed for scatter points if legend is off
+		label = "" # No label needed for scatter points if legend is off
 	)
 
 	# --- Group Points and Plot Hulls ---
@@ -170,7 +168,6 @@ function plot_polygon_figures(data_dir::String, output_dir::String; filename_bas
 	end
 	println("Completed plotting $num_hulls_plotted hulls.")
 
-
 	# --- Final Plot Styling ---
 	println("Applying final plot styling...")
 	plot!(plt,
@@ -182,7 +179,7 @@ function plot_polygon_figures(data_dir::String, output_dir::String; filename_bas
 		tickfontsize = 8,  # Slightly larger fonts
 		guidefontsize = 10,
 		# title = "Convex Hulls of Vertex Slices",
-		titlefontsize = 12,
+		titlefontsize = 12
 	)
 
 	# --- Save and Display ---

@@ -4,16 +4,18 @@
 Estimate the minimum inertia based on given parameters.
 
 # Arguments
-- `ROCOF_threshold`: Rate of change of frequency threshold.
-- `delta_p`: Change in power.
-- `damping`: Damping coefficient array.
-- `factorial_coefficient`: Factorial coefficient.
-- `time_content`: Time content.
-- `droop`: Droop characteristic.
+
+  - `ROCOF_threshold`: Rate of change of frequency threshold.
+  - `delta_p`: Change in power.
+  - `damping`: Damping coefficient array.
+  - `factorial_coefficient`: Factorial coefficient.
+  - `time_content`: Time content.
+  - `droop`: Droop characteristic.
 
 # Returns
-- `lower_bound`: Lower bound of inertia estimation.
-- `upper_bound`: Upper bound of inertia estimation.
+
+  - `lower_bound`: Lower bound of inertia estimation.
+  - `upper_bound`: Upper bound of inertia estimation.
 """
 function min_inertia_estimation(
 		ROCOF_threshold,
@@ -21,7 +23,7 @@ function min_inertia_estimation(
 		damping,
 		factorial_coefficient,
 		time_content,
-		droop
+		droop,
 )
 
 	# Input validation

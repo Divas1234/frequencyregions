@@ -19,9 +19,10 @@ function get_inertiatodamping_functions(droop_parameters)
 
 	# Calculate inertia parameters
 
-	inertia_updown_bindings, extreme_inertia, nadir_vector, inertia_vector, selected_ids = calculate_inertia_parameters(
+	inertia_updown_bindings, extreme_inertia, nadir_vector,
+	inertia_vector, selected_ids = calculate_inertia_parameters(
 		initial_inertia, factorial_coefficient, time_constant, droop, power_deviation,
-		DAMPING_RANGE, converter_vsm_parameters, converter_droop_parameters, flag_converter)
+		DAMPING_RANGE, converter_vsm_parameters, converter_droop_parameters, flag_converter,)
 
 	# Estimate inertia limits
 	min_inertia, max_inertia = estimate_inertia_limits(
@@ -35,21 +36,20 @@ function get_inertiatodamping_functions(droop_parameters)
 
 	p1 = sub_data_visualization(
 		DAMPING_RANGE, min_inertia, max_inertia, inertia_updown_bindings,
-		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters)
+		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters,)
 
 	# p1 = data_visualization(DAMPING_RANGE, inertia_updown_bindings, extreme_inertia,
 	# 	nadir_vector, inertia_vector, selected_ids)
 
 	vertexs = calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
-		min_inertia, max_inertia, min_damping, max_damping, droop)
-
+		min_inertia, max_inertia, min_damping, max_damping, droop,)
 
 	return p1, vertexs
 end
 
 function sub_data_visualization(
-	damping, min_inertia, max_inertia, inertia_updown_bindings,
-	extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters)
+		damping, min_inertia, max_inertia, inertia_updown_bindings,
+		extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters,)
 
 	# fittingparameters = calculate_fittingparameters(extreme_inertia, damping)
 
@@ -74,12 +74,12 @@ function sub_data_visualization(
 	# end
 
 	sy1 = Plots.plot(
-		damping, inertia_updown_bindings[:, 1], framestyle = :box,
+		damping, inertia_updown_bindings[:, 1]; framestyle = :box,
 		ylims = (0, maximum(inertia_updown_bindings[:, 1])),
 		xlabel = "damping / p.u.", ylabel = "max inertia / p.u.", lw = 3, label = "upper_bound_1",        # title = "Inertia Bounds", legend = true
 	)
-	sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 2], lw = 3,
-		label = "lower_bound_2", color = :forestgreen)
+	sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 2]; lw = 3,
+		label = "lower_bound_2", color = :forestgreen,)
 
 	# sy1 = Plots.plot!(damping, inertia_updown_bindings[:, 1], fillrange = fillarea,
 	# fillalpha = 0.3, label = "", color = :skyblue)
@@ -90,15 +90,15 @@ function sub_data_visualization(
 	# 	fillalpha = 0.5, label = "Interaction", color = :red)
 	# sy1 = Plots.plot(damping, extreme_inertia, lw = 2, label = "extreme_inertia");
 
-	sy1 = Plots.plot!(damping, lw = 3,
+	sy1 = Plots.plot!(damping; lw = 3,
 		fittingparameters[1] .+ fittingparameters[2] .* damping .+
-		fittingparameters[3] .* damping .^ 2)
-	sy1 = Plots.hline!([min_inertia], lw = 3, label = "min_inertia")
-	sy1 = Plots.plot!(damping, max_inertia, lw = 3, label = "max_inertia")
+		fittingparameters[3] .* damping .^ 2,)
+	sy1 = Plots.hline!([min_inertia]; lw = 3, label = "min_inertia")
+	sy1 = Plots.plot!(damping, max_inertia; lw = 3, label = "max_inertia")
 
 	# add additional information
-	sy1 = Plots.vline!([12.0], lw = 3, label = "damping_min_binding")
-	sy1 = Plots.vline!([2.5], lw = 3, label = "damping_max_binding")
+	sy1 = Plots.vline!([12.0]; lw = 3, label = "damping_min_binding")
+	sy1 = Plots.vline!([2.5]; lw = 3, label = "damping_max_binding")
 
 	# vertexs = calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
 	# 	min_inertia, max_inertia, min_damping, max_damping, droop)
@@ -107,7 +107,7 @@ function sub_data_visualization(
 end
 
 function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparameters,
-	min_inertia, max_inertia, min_damping, max_damping, droop)
+		min_inertia, max_inertia, min_damping, max_damping, droop,)
 
 	# --- Input Validation ---
 	if length(fittingparameters) < 3
@@ -148,15 +148,15 @@ function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparamet
 	# Calculate vertices related to max and min damping
 	vertex_max_damping_min_inertia = create_vertex(droop, max_damping_value, min_inertia)
 	vertex_max_damping_max_inertia = create_vertex(
-		droop, max_damping_value, max_inertia[max_damping_index])
+		droop, max_damping_value, max_inertia[max_damping_index],)
 	vertex_min_damping_max_inertia = create_vertex(
-		droop, min_damping_value, max_inertia[min_damping_index])
+		droop, min_damping_value, max_inertia[min_damping_index],)
 	vertex_min_damping_min_inertia = create_vertex(droop, min_damping_value, min_inertia)
 
 	# Calculate the temporary sequence
 	tem_sequence = calculate_tem_sequence(fittingparameters, DAMPING_RANGE)
 	vertex_min_damping_tem_sequence = create_vertex(
-		droop, min_damping_value, tem_sequence[min_damping_index])
+		droop, min_damping_value, tem_sequence[min_damping_index],)
 
 	# Determine the result based on vertex comparisons
 	if vertex_min_damping_min_inertia > vertex_min_damping_tem_sequence
@@ -181,7 +181,7 @@ function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparamet
 		end
 
 		vertex_min_inertia = create_vertex(
-			droop, DAMPING_RANGE[min_inertia_index], min_inertia)
+			droop, DAMPING_RANGE[min_inertia_index], min_inertia,)
 
 		if vertex_min_damping_max_inertia > vertex_min_damping_tem_sequence
 			# Initialize with known type and size
@@ -207,7 +207,7 @@ function calculate_vertex(DAMPING_RANGE, inertia_updown_bindings, fittingparamet
 
 			vertex_tem_sequence = create_vertex(
 				droop, DAMPING_RANGE[max_inertia_diff_index],
-				tem_sequence[max_inertia_diff_index])
+				tem_sequence[max_inertia_diff_index],)
 			# Initialize with known type and size
 			res = Vector{typeof(vertex_min_damping_min_inertia)}(undef, 4)
 			res[1] = vertex_max_damping_max_inertia
@@ -225,12 +225,14 @@ end
 Converts a vector of vertex matrices (or vectors of tuples) to a single matrix.
 
 # Arguments
-- `vertices::AbstractVector`: A vector where each element is a vector of tuples (or a matrix).
+
+  - `vertices::AbstractVector`: A vector where each element is a vector of tuples (or a matrix).
 
 # Returns
-- `Matrix{Float64}`: A matrix containing all the vertices.
-  Returns an empty matrix if the input is empty.
-  Returns `nothing` if the input has inconsistent data types or dimensions.
+
+  - `Matrix{Float64}`: A matrix containing all the vertices.
+	Returns an empty matrix if the input is empty.
+	Returns `nothing` if the input has inconsistent data types or dimensions.
 """
 function vertices_to_matrix(vertices::AbstractVector)
 	# Handle the edge case of an empty vertices array.
@@ -248,7 +250,7 @@ function vertices_to_matrix(vertices::AbstractVector)
 
 	first_tuple_length = length(first(first_element))
 	if !all(all(length(v) == first_tuple_length for v in sub_vertices)
-			for sub_vertices in vertices)
+	for sub_vertices in vertices)
 		@error "Inconsistent tuple lengths in 'vertices'."
 		return nothing
 	end
@@ -267,7 +269,7 @@ function vertices_to_matrix(vertices::AbstractVector)
 	for sub_vertices in vertices
 		num_rows = length(sub_vertices)
 		for (i, vertex) in enumerate(sub_vertices)
-			matrix[current_row+i-1, :] = collect(vertex)
+			matrix[current_row + i - 1, :] = collect(vertex)
 		end
 		current_row += num_rows
 	end
@@ -281,9 +283,10 @@ end
 Writes the `all_vertices` data to a text file.
 
 # Arguments
-- `all_vertices`: The data to write (expected to be a matrix-like structure).
-- `base_path`: The base directory for the output file.
-- `rel_path`: The relative path to the output file from the base directory.
+
+  - `all_vertices`: The data to write (expected to be a matrix-like structure).
+  - `base_path`: The base directory for the output file.
+  - `rel_path`: The relative path to the output file from the base directory.
 """
 function write_vertices_to_file(all_vertices, base_path::String, rel_path::String)
 	output_path = joinpath(base_path, rel_path)

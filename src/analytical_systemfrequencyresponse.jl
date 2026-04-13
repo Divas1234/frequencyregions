@@ -14,12 +14,11 @@ function generate_extreme_inertia(
 		delta_p, damping, inertia_updown_bindings,
 		converter_vsm_parameters,
 		converter_droop_parameters,
-		flag_converter::Int64)
+		flag_converter::Int64,)
 	ll = 25
 
 	nadir_vector, inertia_vector, extreme_inertia, selected_ids = zeros(
-		length(damping), ll),
-	zeros(length(damping), ll), zeros(length(damping), 1), zeros(length(damping), 1)
+		length(damping), ll,), zeros(length(damping), ll), zeros(length(damping), 1), zeros(length(damping), 1)
 
 	if flag_converter == 0
 		frequency_nadir_threshold = 0.25 # for traditiaonal power grids
@@ -30,8 +29,8 @@ function generate_extreme_inertia(
 	@show (damping[1] + factorial_coefficient) * time_content / 2
 
 	for i in eachindex(damping)
-		candidate_inertia = collect(range(start = inertia_updown_bindings[i, 2],
-			stop = inertia_updown_bindings[i, 1], length = ll + 10))
+		candidate_inertia = collect(range(; start = inertia_updown_bindings[i, 2],
+			stop = inertia_updown_bindings[i, 1], length = ll + 10,))
 
 		candidate_inertia = candidate_inertia[5:(end - 6)]
 		inertia_vector[i, :] = candidate_inertia
@@ -42,7 +41,7 @@ function generate_extreme_inertia(
 			tem_nadir = calculate_frequencynadir(
 				candidate_inertia[tem_inertia], factorial_coefficient, time_content,
 				droop, delta_p, damping[i],
-				converter_vsm_parameters, converter_droop_parameters, flag_converter::Int64)
+				converter_vsm_parameters, converter_droop_parameters, flag_converter::Int64,)
 			nadir_vector[i, tem_inertia] = tem_nadir
 			# if tem_nadir > frequency_nadir_threshold
 			# 	extreme_inertia[i] = candidate_inertia[tem_inertia]
@@ -69,7 +68,7 @@ end
 # Function to calculate the frequency nadir
 function calculate_frequencynadir(
 		inertia, factorial_coefficient, time_content, droop, delta_p, damping,
-		converter_vsm_parameters, converter_droop_parameters, flag_converter::Int64)
+		converter_vsm_parameters, converter_droop_parameters, flag_converter::Int64,)
 
 	# Define the parameters
 	# inertia = 0.1:0.1:5
