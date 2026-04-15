@@ -364,7 +364,7 @@
     // --- Workbench Settings ---
     "window.autoDetectColorScheme": true,
     "workbench.preferredLightColorTheme": "Islands Light",
-    "workbench.preferredDarkColorTheme": "Atom One Dark",
+    "workbench.preferredDarkColorTheme": "Tokyo Night",
     // --- Comment Anchors Extension Settings ---
     "commentAnchors.tags.sortAlphabetically": true,
     "commentAnchors.showCursor": true,

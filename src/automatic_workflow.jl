@@ -1,6 +1,7 @@
-include("environment_config.jl")
 
-# --- sudmodule Script Execution ---
+# --- Workflow Functions ---
+# Note: environment_config.jl is now included in src/environment_config.jl
+# These functions provide visualization and vertex calculation
 
 function get_inertiatodamping_functions(droop_parameters)
 
