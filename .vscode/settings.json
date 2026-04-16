@@ -363,7 +363,7 @@
     "vim.textwidth": 100,
     // --- Workbench Settings ---
     "window.autoDetectColorScheme": true,
-    "workbench.preferredLightColorTheme": "Islands Light",
+    "workbench.preferredLightColorTheme": "Tokyo Night Light",
     "workbench.preferredDarkColorTheme": "Tokyo Night",
     // --- Comment Anchors Extension Settings ---
     "commentAnchors.tags.sortAlphabetically": true,
