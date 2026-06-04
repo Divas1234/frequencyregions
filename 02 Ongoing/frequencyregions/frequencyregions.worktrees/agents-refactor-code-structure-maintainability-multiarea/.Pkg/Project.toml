@@ -1,0 +1,8 @@
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+GLM = "38e38edf-8417-5370-95a0-9cbb8c7f171a"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+PlotThemes = "ccf2f8ad-2431-5c83-bf29-c5338b663b6a"
+Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
+QHull = "a8468747-bd6f-53ef-9e5c-744dbc5c59e7"

@@ -1,0 +1,87 @@
+{
+  "editor.wordWrap": "bounded",
+  "editor.fontFamily": "FZTanHeiS-B-GB, Noto Sans SC, Fira Code, SF PRO, Consolas, 'Courier New', monospace",
+  "commentAnchors.tags.anchors": {
+    "ANCHOR": {
+      "iconColor": "default",
+      "highlightColor": "#A8C023",
+      "scope": "file",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "TODO": {
+      "iconColor": "blue",
+      "highlightColor": "#3ea8ff",
+      "scope": "workspace",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "FIXME": {
+      "iconColor": "red",
+      "highlightColor": "#F44336",
+      "scope": "workspace",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "STUB": {
+      "iconColor": "purple",
+      "highlightColor": "#BA68C8",
+      "scope": "file",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "NOTE": {
+      "iconColor": "orange",
+      "highlightColor": "#FFB300",
+      "scope": "file",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "REVIEW": {
+      "iconColor": "green",
+      "highlightColor": "#64DD17",
+      "scope": "workspace",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "SECTION": {
+      "iconColor": "blurple",
+      "highlightColor": "#896afc",
+      "scope": "workspace",
+      "behavior": "region",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    },
+    "LINK": {
+      "iconColor": "#2ecc71",
+      "highlightColor": "#2ecc71",
+      "scope": "workspace",
+      "behavior": "link",
+      "styleMode": "comment",
+      "backgroundColor": "rgba(168, 192, 35, 0.2) ",
+      "styleComment": true,
+      "borderRadius": 6,
+      "borderStyle": "1px solid #23b2ea"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+f73dcc9d1889f346787d35624042a7e7e7a043d7	refs/heads/agents/refactor-code-for-maintainability
+2fc2df340e630c8bdbf041fd5e8b15a59fbb5ff5	refs/heads/agents/refactor-code-structure-maintainability
+baa966cfacf91543536051a707919d2bf6d0247d	refs/heads/feature/new-branch
+baa966cfacf91543536051a707919d2bf6d0247d	refs/heads/main
+baa966cfacf91543536051a707919d2bf6d0247d	refs/remotes/origin/HEAD
+baa966cfacf91543536051a707919d2bf6d0247d	refs/remotes/origin/feature/new-branch
+baa966cfacf91543536051a707919d2bf6d0247d	refs/remotes/origin/main
+952387ba1bcc0d315500b5db66cd575d8da1ff37	refs/sessions/afc73c24-5862-4647-b7e0-51e6b2f0a3d1/checkpoints/turn/0
+d0672012366212f60b18c206d3c7d9c44915841f	refs/sessions/afc73c24-5862-4647-b7e0-51e6b2f0a3d1/checkpoints/turn/1
+0c05f09170de189d770c8d1d22497e5f433e489e	refs/sessions/c3b63605-a1a8-4855-9698-2132bda05357/checkpoints/turn/0
+7192da01a99c44ce932231172a8cc3963ef0f5fd	refs/sessions/c3b63605-a1a8-4855-9698-2132bda05357/checkpoints/turn/1
+142460eb335b4abf6287075b6f8b7fcf6dc5960c	refs/sessions/c3b63605-a1a8-4855-9698-2132bda05357/checkpoints/turn/2
