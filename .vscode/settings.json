@@ -40,6 +40,495 @@
                 }
             }
         ],
+        "[GitHub Light Colorblind (Beta)]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#b4c3d2",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#144989"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#0a0ae5",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[Cursor Light]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#b4c3d2",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#144989"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#0a0ae5",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[GitHub Sharp]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#b4c3d2",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#144989"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#c56ec1",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[GitHub Light]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#8758a6",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#ccd2da",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#3A7A74"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#85A7C8",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#5563bf",
+                        "fontStyle": "bold italic underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#C8895F",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[GitHub Dark Colorblind (Beta)]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#213c56",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#59708a"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#a59223",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[Min Light]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "bold italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#bcc5cd",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#59708a"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#8b7c25",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#ca6725",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[One Dark Pro Darker]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#262d35",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#59708a"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#a59223",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[Min Dark]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d7707a",
+                        "fontStyle": "bold italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#2c3a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#59708a"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#a59223",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
+        "[Atom One Dark]": {
+            "textMateRules": [
+                {
+                    "scope": "keyword",
+                    "settings": {
+                        "foreground": "#d73a49",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "comment",
+                    "settings": {
+                        "foreground": "#374959",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "string",
+                    "settings": {
+                        "foreground": "#59708a"
+                    }
+                },
+                {
+                    "scope": "entity.name.type",
+                    "settings": {
+                        "foreground": "#618dbf",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "entity.name.function",
+                    "settings": {
+                        "foreground": "#a59223",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#7C8FC2",
+                        "fontStyle": "bold"
+                    }
+                },
+                {
+                    "scope": "variable.function",
+                    "settings": {
+                        "foreground": "#5F70B8",
+                        "fontStyle": "bold underline"
+                    }
+                },
+                {
+                    "scope": "constant.numeric",
+                    "settings": {
+                        "foreground": "#c4570e",
+                        "fontStyle": "bold"
+                    }
+                }
+            ]
+        },
         "comments": "#ff00ff"
     },
     "window.autoDetectColorScheme": true,

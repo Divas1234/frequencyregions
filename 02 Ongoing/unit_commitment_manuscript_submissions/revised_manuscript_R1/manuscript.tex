@@ -1,0 +1,690 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\usepackage{balance}
+\usepackage{lipsum}
+\usepackage{cuted}
+\usepackage{units}
+\usepackage{nicefrac, xfrac}
+\usepackage[ngerman,english]{babel}
+\usepackage{breqn}
+\usepackage{autobreak}
+\usepackage{tabularx}
+\usepackage{indentfirst}
+\usepackage{cases}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{annotate-equations}
+% \usepackage{import}
+% \usepackage{mathtools, nccmath}
+\usepackage{anyfontsize}
+\setlength{\textfloatsep}{2.25pt}
+\setlength{\abovecaptionskip}{-0.15cm}
+\setlength{\belowcaptionskip}{-2cm}
+
+\usepackage{nomencl}
+\makenomenclature
+
+\usepackage{etoolbox}
+\renewcommand\nomgroup[1]{%
+\item[\bfseries \ifstrequal{#1}{I}{Index and set}{%
+\ifstrequal{#1}{P}{Parameters}{%
+\ifstrequal{#1}{V}{Variables}{}}}%
+]}
+
+\newcommand{\Rmnum}[1]{\uppercase\expandafter{\romannumeral #1}}
+\newcommand{\slfrac}[2]{\left.#1\middle/#2\right.}
+% \usepackage[nodisplayskipstretch]{setspace}
+\allowdisplaybreaks
+\tolerance=1000 \emergencystretch=5pt \hyphenpenalty=5000 \exhyphenpenalty=100
+\hyphenation{hy-phen-a-tion}
+\def\code#1{\texttt{#1}}
+
+\renewcommand{\tabularxcolumn}[1]{m{#1}} \newcolumntype{L}{>{\RaggedRight\arraybackslash}X} \newcolumntype{C}[1]{>{\Centering\arraybackslash%
+\hsize=#1\hsize\linewidth=\hsize}X}
+
+\newenvironment{newsequation}{\small\begin{equation}}{\end{equation}}
+\newenvironment{newsubequations}{\small\begin{subequations}}{\end{subequations}}
+
+% \AtBeginDocument{% \addtolength\abovedisplayskip{-0.5\baselineskip}% \addtolength\belowdisplayskip{-0.5\baselineskip}% %  \addtolength\abovedisplayshortskip{-0.5\baselineskip}% %
+% \addtolength\belowdisplayshortskip{-0.5\baselineskip}%
+% }
+
+%\hyphenation{ve-ry-lon-g-w-ord ev-en-long-er-com-pound-Ïword-with-no-spaces}
+%\hyphenation{Duisauteiruredolorinre-prehenderitinvoluptatevelitesse-cillum doloreeufugiatnullapariatur}
+
+\usepackage{microtype}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\tolerance=2000
+\emergencystretch=3em
+\hyphenpenalty=20
+\hbadness=2000
+
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+
+% \addbibresource{reference.bib}
+
+\begin{document}
+
+% \import{.figures/}
+
+\input{nomenclatures_list.tex}
+% makeindex manuscript.nlo -s nomencl.ist -o manuscript.nls
+\vspace{-2.5in}
+
+\title{ \vspace{-0.5em}
+
+	% {\fontfamily{stix}\selectfont \fontsize{20}{20}\selectfont Harnessing Bayesian-Filter-Derived SFR Method Considering Uncertain-variability Features in Refined FCUC} }
+	{\fontfamily{stix}\selectfont \fontsize{20}{20}\selectfont Handling Uncertain-Variability Feature in Frequency-Constrained Unit Commitment through Bayesian Filter Method }}
+
+\vspace{-2.5in}
+
+% \author{\fontsize{11}{8} \selectfont Yiping Yuan, \textit{Member, IEEE}, Yihang Cao, \textit{Student Member, IEEE}, Zhenyuan Zhang, \textit{Senior Member, IEEE}, Weihao Hu, \textit{Senior Member, IEEE}, Zhe Chen, \textit{Fellow, IEEE}\vspace{-2.0em}}
+% \author{IEEE Publication Technology,~\IEEEmembership{Staff,~IEEE,}
+\author{\fontsize{10}{6} \selectfont
+\IEEEauthorblockN{
+		Yiping Yuan\IEEEauthorrefmark{1},~\IEEEmembership{Member, IEEE},
+		Yihang Cao\IEEEauthorrefmark{1},~\IEEEmembership{Student Member, IEEE},
+		Zhenyuan Zhang\IEEEauthorrefmark{1},~\IEEEmembership{Senior Member, IEEE},
+		Weihao Hu\IEEEauthorrefmark{1},~\IEEEmembership{Senior Member, IEEE}, and 
+		Zhe Chen\IEEEauthorrefmark{2},~\IEEEmembership{Fellow, IEEE}
+	}
+
+	\IEEEauthorblockA
+	{
+		\IEEEauthorrefmark{1}School of Mechanical and Electrical Engineering,
+		University of Electronic Science and Technology of China,
+		Chengdu, China
+	}
+	\\
+	\IEEEauthorblockA
+	{
+		\IEEEauthorrefmark{2}Department of Energy Technology,
+		Aalborg University,
+		Aalborg, Denmark
+	}
+}
+
+\vspace{-2.5cm}
+
+% \thanks{Manuscript created October, 2020; This work was developed by the IEEE Publication Technology Department. This work is distributed under the \LaTeX \ Project Public License (LPPL) (
+% http://www.latex-project.org/ ) version 1.3. A copy of the LPPL, version 1.3, is included in the base \LaTeX \ documentation of all distributions of \LaTeX \
+% released 2003/12/01 or later. The opinions expressed here are entirely that of the author. No warranty is expressed or implied. User assumes all risk.}}
+
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~18, No.~9, September~2020}%
+{How to Use the IEEEtran \LaTeX \ Templates}
+
+\maketitle
+\vspace{-2.5em}
+\begin{abstract}
+
+	Frequency dynamic fills with uncertain-variability features due to the increasing penetration of converter-interfaced generators, where this feature trends to be bottlenecks in selecting scheduled commitments solved by Frequency-Constrained Unit Commitment~(FCUC). To address this, a Bayesian-filter-derived System-Frequency-Response~(BF-SFR) model is proposed and a refined FCUC (r-FCUC) is then extended. Significantly, the uncertain-variability feature due to the intermittent output of converter-interfaced generators, measured residuals, etc., is retreated as a chronological stochastic process. As such, the frequency dynamic can be extracted as a sequential deterministic process within a Bayesian-filter framework. In contrast to existing methodologies such as analytical SFR or time-discrete SFR methods, the proposed BF-SFR method can capture the trajectory of frequency dynamics in the presence of uncertain-variability features and estimate its posterior distribution. Furthermore, the frequency dynamic through BF-SFR is reshaped as a group of chance-constrained frequency dynamic constraints and subsequently integrated into r-FCUC. Because the reformulated frequency constraints in r-FCUC account for potential uncertain-variability features, the resulting scheduled commitment are well suited to meet actual frequency requirements. Several results on a modified IEEE 6 bus test system and IEEE 118 bus test system are implemented to check the validity of the proposed methods.
+
+\end{abstract}
+
+% \vspace{-0.175in}
+\begin{IEEEkeywords}
+	Uncertain-variability feature, Bayesian filter, system frequency response, frequency-constrained unit commitment.
+\end{IEEEkeywords}
+
+%\printnomenclature
+
+% makeindex manuscript.nlo -s nomencl.ist -o manuscript.nls
+\vspace{-0.1in}
+{\fontfamily{stix}\selectfont \fontsize{9}{11}\selectfont \printnomenclature}
+\vspace{-0.10in}
+
+\section{Introduction}
+
+\IEEEPARstart{I}{ncreasing} penetration of renewable energy challenges the security of power systems under complex disturbance cases. In such situations, independent system operators (ISO) must set aside sufficient resources to guarantee the security of scheduled commitments, \cite{9613814}. Nevertheless, since frequency dynamic processes has significant uncertain-variability features along with non-fluctuating controllable generators replaced by converter-interfaced resources (wind farms and solar stations), it is hard to maintain the security of scheduled commitments without considering uncertain-variability features. Therefore, developing a reliable SFR-constructed method and associated FCUC model is paramount to capture the uncertain-variability feature of frequency dynamics.
+
+Existing literature reported an amount number of analytical models and time-discretized models to model frequency dynamics. The analytical models reflect the average system frequency changing among all synchronize generators. It posits that those generators with similar control characteristics will maintain common frequency dynamics. Consequently, the generators participating into SFR can be aggregated into a limited number of aggregated units, which simplifies the swing function as an ordinary differential equation (ODE) and prevents non-analytical solutions. Ref.~\cite{anderson1990low} proposed a second-order ODE to represent frequency dynamics in the systems dominated by conventional generators. Ref.~\cite{shi2018analytical,huang2025wind} introduced a refined SFR method for identifying frequency parameters in low-inertia grids and extended the analytical SFR model. Ref.~\cite{shen2020frequency} integrated the linearized control schemes of converter-interfaced reources into frequency dynamics. Ref.~\cite{paturet2020stochastic,9712362,zhang2020modeling,markovic2018lqr,ding2021two} extended a corrected SFR model, where the benefit of wind farms with VI control and droop control is incorporated. Furthermore, Ref.~\cite{9765359} constructed an advanced SFR model that considers the impact of variable-droop control characteristic of wind farms. These analytical models yield similar results, with the impact of heterogeneous generators on frequency dynamics primarily dependent on the selection of several frequency parameters. Another analytical model, known as average system frequency (ASF),~\cite{garcia2021requirements,9449643}, assumes that different generators have specific control characteristics while maintaining consistent frequency dynamics, as discussed in Ref.~\cite{garcia2021requirements,9449643}. While potentially more accurate in representing system behavior, these methods often sacrifice analytical tractability, requiring numerical solutions.
+
+Conversely, the discretized type of frequency dynamic model offers greater flexibility regarding multi-machine frequency dynamic modeling and various control characteristics analysis. These models utilize interpolation methods, such as Euler method and Runge-Kutta method, to solve the differential equations of frequency dynamics. Ref.~\cite{10219063} assumed that reheated generators share similar time-delay characteristics and derived a discretized solution for frequency dynamics. Ref.~\cite{vatani2015relay} considered different time-relay characteristics of converters and developed a corrected discretized method. Ref.~\cite{oskouee2021primary,mahmoudnia2024enhancing} incorporated the droop control characteristic from flywheel storage into frequency dynamics, and constructed a revised discretized solution. Ref.~\cite{ye2015analytical} comprehensively accounted for the effects of converter-interfaced generators alongside conventional generators and rebuilt a discretized frequency dynamic model. These discretized model highlight the evolution of frequency dynamics while considering various control schemes. Nevertheless, discretized models require more computing resource in comparison with SFR and ASF. While analytical models excel at analyzing the dynamic evolution of frequency, discretized methods are more effective for investigating the influence of specific control parameters on frequency dynamic processes. In addition, the uncertain-variability feature of converter-interfaced generators participating in frequency support has not yet been thoroughly examined.
+
+Uncertain-variability feature, caused by converter-interfaced generators and measured residuals, is becoming a significant factor affecting frequency dynamic securities, and this issue is pronounced in the low-inertia grid. As conventional generators become less capable of providing sufficient frequency reserves, the system becomes increasingly reliant on converter-interfaced resources, making it more susceptible to the adverse effects of their inherent uncertain variability features on frequency dynamics. Ref.~\cite{8478399,8122022} analyzed frequency dynamics by considering uncertain-variability features as a \(\textit{It}\widehat{o}\) process, where uncertain-variability features are retreated to be a prior sequential random sequence following Gaussian distribution. Due to excellent conjugate properties of Gaussian distribution families, the frequency dynamics derived from the \(\textit{It}\widehat{o}\) process result in an analytical solution. However, these uncertain-variability factors are inherently dependent on real-time frequency variations in actual engineering processes, making their posterior distribution conditional and unpredictable. Consequently, existing frequency dynamic models that address uncertain-variability, in \cite{8478399,8122022}, may not accurately capture the true posterior of frequency dynamics.
+
+By constructing adaptive frequency constraints and embedding them into UC, FCUC have successfully demonstrated their effectiveness, \cite{10098683,6269098,9765359,restrepo2005unit,zhang2020modeling,brito2018unit,6269098,7822944,9964327,liu2019model,10384867,wei2025data,10820061}, in ensuring frequency security by incorporating constraints related to RoCoF, frequency nadir, quasi-steady-state frequency deviation (Qss), frequency containment reserve (FCR), and frequency replacement reserve (FRR), etc. These constraints are typically formulated as linear or nonlinear functions. For instance, Ref.\cite{oskouee2021primary,mahmoudnia2024enhancing} constructed a set of nonlinear RoCoF, nadir, and Qss constraints derived from analytical SFR model and developed a FCUC model. Ref.~\cite{paturet2020stochastic,9765359} constructed a max-affine-derived linearized frequency nadir constraint and extended a refined FCUC. Ref.~\cite{10098683,7822944,9964327,liu2019model,10384867,wei2025data,10820061} applied various neural networks to learn mapping relations between frequency nadir and dynamic parameters. However, a limitation of these approaches is that the resulting frequency constraints within previous FCUC models mentioned before are deterministic, thus implicitly neglecting the inherent uncertain-variability features present in frequency dynamic processes.
+
+Motivated by these limitations mentioned before, this study proposes a novel SFR method, termed BF-SFR, designed to explicitly incorporate uncertain-variability features. These features can be forecasted as stochastic waveform signals captured by measurement devices, enabling their posterior distributions to be observed and integrated into the calculation of frequency dynamics. Consequently, the trajectory of frequency dynamics is represented as a sequential stochastic process, solved within a Bayesian filter framework. Additionally, the frequency dynamics with uncertain-variability features are reformulated into a set of equivalent chance-constrained constraints, and sequentially integrated into FCUC problems. This approach allows for an efficient examination of the probabilistic characteristics of frequency dynamics induced by uncertain-variability features through the integrated modeling of BF-SFR and r-FCUC. Compared to the authors' previous FCUC work on analytical modeling of frequency dynamics incorporating variable-droop control of converter-based generators, \cite{9765359}, this work presents a novel and fundamentally different modeling framework. This framework treats the frequency dynamic process as a posterior calculation of frequency deviation under complex uncertain-variability environments. By leveraging measurement data to refine and approximate this posterior distribution, BF-SFR ensures that the frequency dynamic trajectory accurately reflects the impact of uncertain-variability feature, even in low-inertia systems.
+
+To summarize, two significant contributions in this work are described below, $i$) A novel BF-SFR model considering uncertain-variability features is constructed, and a associated solution within Bayesian filter theorem is carried out. Through this proposed BF-SFR, both the trajectory and posterior distribution of frequency dynamics can be estimated. $ii$) A new chance-constrained formulation for frequency dynamic constraints is introduced and integrated with the proposed BF-SFR model, leading to the development of a corresponding refined FCUC (r-FCUC).
+	
+The remainder of this paper is organized as follows: Section II introduces the Bayesian-filter-derived SFR model. Section III constructs the chance-constrained frequency dynamic constraints. Section IV extends the formulation of the r-FCUC. Section V verifies the effectiveness of the proposed model using the modified IEEE 6 bus test system and 118 bus test system. Finally, Section VI summarizes the primary findings and conclusions of this work.
+
+\vspace{-0.025in} 
+
+\section{frequency dynamic model considering uncertain-variability features}
+
+% This section examines the impact of uncertain-variability features on frequency dynamics and then develops a Bayesian filter-based SFR model. Specifically, it derives the posterior distribution of frequency dynamics using a Bayesian filter and outlines the calculation process using a sequential importance sampling (SIS) algorithm, \cite{yardim2011overview}.
+
+This section examines the impact of uncertain-variability features on frequency dynamics and subsequently develops a BF-SFR model. Specifically, the posterior distribution of frequency dynamics is derived within a Bayesian filter framework, and solved by utlizing a sequential importance sampling (SIS) algorithm. \cite{yardim2011overview}.
+
+Mathematically, the transfer function of SFR concerning a occurred step-type power disturbance $\varDelta p_{{step }}(s)=\varDelta p_{{step }} / s$ can be rewritten as, \cite{9964327,paturet2020stochastic,10098683,9613814},
+
+\vspace{-0.125in}
+\begin{small}
+	\begin{align}\label{eqn:1}
+		 & \left(2 H_{G} s+D_{G}\right) \varDelta f(s)=\left({1/s} \varDelta p_{ {step}}\right)-                                                                          \\
+		 & \qquad {\left({K_{G}}{ R_{G}^{-1}}\right)\left[ {\left(1+F_{G} T_{G} s\right)}/{\left(1+T_{G} s\right)}\right] \varDelta f(s)}- \notag                            \\
+		 & \qquad {\left({K_W R_{W}^{-1}}\right)\left[{(H_W + D_W)}/{(1+T_{W} s)}\right] \varDelta f(s)} - \notag                                                            \\
+		 & \qquad {\left({R_{W}^{-1}}\right)\left[{1}/({1+T_{W} s})\right] \varDelta f(s)} - {\left({R_{E}^{-1}}\right)\left[{1}/({1+T_{E} s})\right] \varDelta f(s)} \notag
+	\end{align}
+\end{small}
+
+The time-domain expression of \eqref{eqn:1} can be transferred by applying the inverse-Laplace-transformation (ILT),
+
+\vspace{-0.125in}
+\begin{newsubequations}\label{eqn:2}
+	\begin{align}
+		 & 2H_{\varSigma } \varDelta f^{\prime}(t)  +D_{\varSigma} \varDelta f(t)=\varDelta p(t)  \label{eqn:2a}                                                                  \\
+		 & \varDelta p(t) \! =\!\varDelta p_{step}\!-\!\left(\varDelta p_{G}(t)\!+\!\varDelta p_{W,1}(t)\!+\!\varDelta p_{W,2}(t)\!+\! \varDelta p_{E}(t)\right) \!\label{eqn:2b} \\
+		 & H_{\varSigma}  =H_{G}+H_{W}, D_{\varSigma}  =D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}}   \label{eqn:2c}                                                               \\
+		 & \varDelta p_{G}(t)   ={K_{G} F_{G}}{ R_{G}^{-1}} \varDelta f(t)- \notag                                                                                                \\
+		 & \qquad\quad\quad\,\, {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{t}{T_G}} \!\!\!\int_{0}^{t}\!\!\! e^{\frac{\kappa}{T_G}} \varDelta f^{\prime}(\kappa) d \kappa \label{eqn:2d} \\
+		 & \varDelta p_{W_1}(t) =\left(K_{W} {R_{W}^{-1}}\right) \varDelta f(t) \!+\! \left(2H_{W}\! \varDelta f^{\prime}(t) \!+\! D_{W}\varDelta f(t)\right)\label{eqn:2e}       \\
+		 & \varDelta p_{W_2}(t)  =\left( { R_{W}^{-1}}\right) \varDelta f(t), \varDelta p_{E}(t)  =\left( { R_{E}^{-1}}\right) \varDelta f(t) \label{eqn:2f}
+	\end{align}
+\end{newsubequations}
+
+% \begin{figure}[!t] \centering \includegraphics[width=0.9\linewidth, height = 3.in]{.figures/fig1} \caption{The unified frequency dynamic response of electrical power systems against occurred power
+% disturbance}\label{fig1} \end{figure}
+
+\noindent where \eqref{eqn:2a} and \eqref{eqn:2b} define the swing function, \eqref{eqn:2c} denotes aggregated frequency parameters, \eqref{eqn:2d} and \eqref{eqn:2f} define additional rescheduled output of different generators. By substituting $\varDelta f^{\prime}(t) = \nicefrac{[\varDelta f(t)-\varDelta f(t-\delta t)]}{ \delta t}$ into \eqref{eqn:2a}-\eqref{eqn:2d}, the relationships between $\varDelta f(t)$ and $\varDelta p_{G}(t), \varDelta p_{W,1}(t)$ in adjacent time steps can be estimated,
+
+\vspace{-0.125in}
+\begin{newsubequations}\label{eqn:3}
+	\begin{align}
+		 & \varDelta f(t+\delta t) = \Bigl [ 0.5{H_{\varSigma}^{-1}}\varDelta p(t)  - \alpha_1\varDelta f(t) \Bigr ] \delta t   \label{eqn:3a}                                                                  \\
+		 & \varDelta p_{G}(t)\!=\!{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!-\! \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\left[\varDelta f(t+\delta t) \!-\! \varDelta f(t) \right] dt  \label{eqn:3b} \\
+		 & \varDelta p_{W_1}(t) = \alpha_3 \varDelta f(t + \delta t) - 2H_{W} \delta t \varDelta f(t)  \label{eqn:3c}                                                                                           \\
+		 & \alpha_1 = 0.5{D_{\varSigma}}{H_{\varSigma}^{-1}}-1 \label{eqn:3d}                                                                                                                                   \\
+		 & \alpha_2 = {K_G(1-F_G)}{ R_{G}^{-1} }e^{-\frac{1}{T_G} t} \label{eqn:3e}                                                                                                                             \\
+		 & \alpha_3 = {K_{W} } R_{W}^{-1} \!+\! D_{W} \!+\! 2H_{W} \delta t \label{eqn:3f}
+	\end{align} \end{newsubequations}
+
+In \eqref{eqn:2a}-\eqref{eqn:2f}, \(\varDelta f(t\!+\!\delta t)\) is significantly dependent on \(\varDelta p(t)\) while all generators automatically adjust their additional outputs so as to eliminate the imbalanced power disturbance.
+Despite that \( \varDelta p_{G}, \varDelta p_{W,1}(t) \) in \eqref{eqn:3b} and \eqref{eqn:3c} can be recursively solved after observing \(\varDelta f(t\!+\! \delta t)\) and \(\varDelta f(t)\), the uncertain-variability feature has not yet introduced, \cite{liu2019model}. To address this, a corrected solution regarding $\varDelta f (t\!+\!\delta t)$ that considers uncertain-variability features is categorized. The uncertain-variability feature contains two parts: $i$) The first component is attributable to constraints imposed on \(\varDelta p_{G}(t),\varDelta p_{W_1},\text{and}\, \varDelta p_{W_2}\), These constraints imply that the additional output produced by generators participating in frequency support may be unattainable due to maximum generation capacity limits. $ii$) The second component is caused by the inherent uncertainty in the output characteristics of converter-interfaced generators, compounded by possible measureable residuals, \cite{9964327,8478399,8122022}.
+Let \(\varDelta \omega_{1}(t)\!=\!\!\{\min \) \([\varDelta p_{G}(t), \overline{p}_{G} ] \!+\! \min[ \varDelta p_{W_1}\!(t), {p}_{W_1}(t)] \!+\! \min [\varDelta p_{W_2}\!(t), {p}_{W_2}(t)]\}\) enforces the corrected term for preventing generators from exceeding their maximize outputs, \(\varDelta \omega_{2}(t)=\textrm{Normal}(t; \mu, \sigma)\) denotes the uncertain fluctuations of converter-interfaced generators, where \(\mu\) and \(\sigma\) represents the expected value and variance of uncertain-variability features, respectively. Consequently, the amount of uncertain-variability features can be estimated by summing \(\varDelta \omega_{1}\) and \(\varDelta \omega_{2}\), that is, \(\varDelta \omega\!=\!\varDelta \omega_{1}\!+\!\varDelta \omega_{2}\),
+
+\vspace{-0.125in}
+
+\begin{newsubequations}\label{eqn:4}
+	\begin{align}
+		\varDelta f(t\!+\!\delta t) \!=\!  \left\{ 0.5 {H_{\varSigma}^{-1}}[\varDelta p(t) \!+\! \varDelta \omega] \!-\! \alpha_1 \varDelta f(t)\right\} \delta t
+		\label{eqn:4a}\end{align}
+\end{newsubequations}
+
+In \eqref{eqn:4a}, the analytical solution for $\varDelta f(t\!\!+\!\!\delta t)$ may not exist because \(\varDelta \omega\) is governed by a unknown prior distribution. Therefore, the Bayesian filter is applied to address that. Let \(\mathcal{P} (\varDelta f(t))\!,\! \mathcal{P}(\varDelta p(t))\) enforces the posterior of \(\varDelta f(t)\),\(\varDelta p(t)\), respectively, and then, \(\varDelta f(t) \!\!\Rightarrow\!\! \varDelta f(t \!+\! \delta t)\) can be retreated as a hidden decision process, while \(\varDelta p(t)\!\!\Rightarrow\!\! \varDelta p(t\!+\!\delta t)\) be an observable measured process. Consequently, \(\varDelta f(t \!+\! \delta t)\) can be further derived,
+
+\vspace{-0.10in}
+\begin{newsubequations}
+	\begin{align}
+		 & \overbrace{\mathcal{P}(\varDelta f(t+ \delta t)|\varDelta p(t_0\!:\! t \!+\! \delta t); \varDelta \omega)}^{{{predicted\,\, (posterior)}}\,\,function}\!=\!\overbrace{\mathcal{P}(\varDelta p(t\!+\!\delta t) | \varDelta f(t\!+\!\delta t); \!\varDelta\omega)}^{{{{{likelihood}}\,\, function}}} \notag          \\
+		 & \underbrace{\mathcal{P}(\varDelta f(t\!+\! \delta t) | \varDelta p(t_0\!:\! t);\! \varDelta \omega)}_{{{{{prior}}\,\, function}}} { {\mathcal{P}^{-1}\!(\varDelta p(t\!+\!\delta t) | \varDelta p(t_0\!:\! t);\varDelta \omega)}}\label{eqn:5}
+	\end{align}
+\end{newsubequations}
+\vspace{-0.125in}
+
+\noindent where the {likelihood} in \eqref{eqn:5} describes the relationship between \(\varDelta p(t\!+\!\delta t)\) and \(\varDelta f(t\!+\!\delta t)\), the prior function describes the sequential recursive process from \(\varDelta f(t_0\!:\! t)\) to \(\varDelta f(t \!+\! \delta t)\). By leveraging the prior and predicted processes within the Bayesian inference framework, the influence of uncertain-variability feature, denoted as \(\varDelta \omega\), can be accurately incorporated. To clearly illustrate the difference between BF-SFR and actual frequency dynamics, the estimation process of frequency dynamics with uncertain-variability features is depicted in Fig.~\ref{fig1}. In particular, the prior function defined in \eqref{eqn:5} can be recursively estimated as follows,
+
+\vspace{-0.125in}
+\begin{newsubequations}
+	\begin{align}
+		 & \quad \mathcal{P}\left(\varDelta f(t) \!\mid\!  \varDelta p\left(t_{0}: t+\delta t \right), \varDelta \omega\right) = \label{eqn:6}                                                                                                                     \\
+		 & \int\! \bigl[ \mathcal{P}(\varDelta f(t\!+\! \delta t) \!\mid\! \varDelta f(t_0\!:\! t), \varDelta \omega) \mathcal{P}\!\left(\varDelta \!f(t) \!\mid\!  \varDelta p\!\left(t_{0}\!: \! t\right), \varDelta \omega\right) \bigr] d\varDelta f(t) \notag
+	\end{align}
+\end{newsubequations}
+
+
+\begin{figure}\vspace{-0.125in}
+\centering \includegraphics[width=1.0\linewidth, height = 4.cm]{./.figures/power_system_frequency.pdf}
+\caption{The calculation process of frequency dynamics considering uncertain variability-features within a Bayesian filter framework.}
+\label{fig1} \end{figure}
+
+Note that both (prior and posterior) functions in \eqref{eqn:5} and \eqref{eqn:6} cannot be directly solved because their distributions are unknown. Therefore, the SIS algorithm is applied to address this. Let \(\mathcal{Q} (\varDelta f(t\!+\!\delta t) | \varDelta p(t_0\!:\!t\!+\!\delta t);\!\varDelta \omega)\) denotes the importance distribution, which serves as a replaceable proposal distribution for generating samples (also called {particles} or {filters}), \(\lambda (\varDelta f(t_0\!\!:\!\!t\!+\!\delta t))\) describes importance weights, which approximate the posterior distribution of the samples according to \eqref{eqn:7a}. Then, the posterior function \eqref{eqn:6} can be indirectly approximated as the product of the importance distribution \eqref{eqn:7b} and the importance weight \eqref{eqn:7b},
+\vspace{-0.125in}
+
+\begin{newsubequations}\label{eqn:7}
+	\begin{align}
+		 & \mathcal{P}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)=\label{eqn:7a}                                                                                                                                                     \\
+		 & \quad \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t+\delta t);\varDelta \omega) \cdot \lambda (\varDelta f(t_0:t+\delta t))\notag                                                                                                            \\
+		 & \lambda (\varDelta f(t_0:t+\delta t)) = \frac{\mathcal{P} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}{\mathcal{Q} (\varDelta f(t+\delta t) | \varDelta p(t_0\!:\!t+\delta t);\varDelta \omega)}\label{eqn:7b} \\
+		 & \mathcal{Q} (\varDelta f(t\!+\!\delta t) | \varDelta p(t_0\!:\!t\!+\!\delta t);\varDelta \omega) = \mathcal{Q}(\varDelta f(t\!+\!\delta t)|\varDelta f(t_0\!:\!t); \varDelta \omega)\cdot \notag                                                \\
+		 & \mathcal{Q}(\varDelta f(t)|\varDelta p(t_0\!:\!t);\varDelta \omega)  \label{eqn:7c}
+	\end{align}
+\end{newsubequations}
+
+% By supposing the recursive type of the importance density and transferring \eqref{eqn:7c} into it, the recursive form of importance weight can be derived as,
+With a recursive importance density and the substitution of \eqref{eqn:7c}, the recursive form of the importance weights \eqref{eqn:7b} can be further derived as,
+
+\vspace{-0.125in}
+
+\begin{newsubequations}
+	\begin{align}
+		 & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \label{eqn:8a}                                                                                                                                                                        \\
+		 & \qquad\,\,\,\,\, \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\left(\frac{\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}{\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t-\delta t);\varDelta \omega)}\right) \notag
+	\end{align} \end{newsubequations}
+
+Let \(\mathcal{Q}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t);\varDelta \omega)\) equals to the value of transfer function \(\mathcal{P}(\varDelta f(t)|\varDelta f(t_0\!:\!t\!-\!\delta t);\varDelta \omega)\), then \eqref{eqn:8a} can be rewritten as,
+\vspace{-0.125in}
+
+\begin{newsubequations}
+	\begin{align}
+		 & \lambda(\varDelta f(t_0\!:\!t)) = \lambda(\varDelta f(t_0\!:\!t\!-\!\delta t))\cdot \mathcal{P}(\varDelta p(t)|\varDelta f(t_0\!:\!t);\varDelta \omega)\label{eqn:9a}
+	\end{align}
+\end{newsubequations}
+
+By combining \eqref{eqn:9a} and \eqref{eqn:7a}, the posterior of the importance density is directly derived. Furthermore, by updating the importance weights in \eqref{eqn:7b} and subsequently substituting \eqref{eqn:7b} and \eqref{eqn:7c} into \eqref{eqn:7a}, the posterior distribution of \(\varDelta f(t)\), as expressed in \eqref{eqn:5}, can be computed recursively.
+
+\vspace{-0.0250in} 
+
+\section{Frequency constraint reformulation} \vspace{-0.0050in}
+
+This section examines frequency requirements in FCUC studies. On this basis, a revised formulation of frequency nadir restriction based on the BF-SFR considering uncertain-variability features is extended, remaining frequency constraints including RoCoF and FCR can be found in \cite{9765359}.
+
+\vspace{-0.125in}
+
+\subsection{RoCoF constraint}
+
+% \vspace{-0.125in}
+
+The RoCoF constraint aims to mitigate possible rapid changing of \(\varDelta f(t)\) at the IR stage. Mathematically, the differentiation of $\varDelta f^{\prime}(t)$ must not exceed the threshold of change of frequency, denoted as $\gamma_{rocof}$, \textit{i.e.,} $\varDelta f^{\prime}(t)\!\leq \! \gamma_{rocof}$. Since the maximum of $\varDelta f^{\prime}(t)$ equals to ${\varDelta p_{{step} }}/{2 H_{\varSigma}}$, thus, RoCoF constraint can be expressed,
+
+\vspace{-0.125in}
+
+\begin{small}
+	\begin{align}\label{eqn:10}
+		0.5{H_{\varSigma}^{-1}}{\varDelta p_{{step}}} & \!\leq\! \gamma_{rocof}\Rightarrow H_{G} \!\!+\!\! H_{W}\!\geq\! 0.5 {\varDelta p_{{step} }} \gamma_{rocof}^{-1}
+	\end{align}
+\end{small}
+
+\vspace{-0.125in}
+
+\subsection{FCR constraint}
+
+The FCR constraint is used to ensure sufficient reserves provided by generators during the PFR stage. the mathematical formulation of the FCR constraint is derived by re-evaluating \eqref{eqn:3a} and \eqref{eqn:3b},
+
+\vspace{-0.125in}
+\begin{newsubequations}
+	\label{eqn:11}
+	\begin{align}
+		 & \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g, t}\right) \geq{K_{G} }{ R_{G}^{-1}} \varDelta f(t) \!- \label{eqn:11a}            \\
+		 & \qquad \qquad \alpha_2 \!\int_{0}^{t} \!\!\! e^{\frac{t}{T_G}} \!\!\ \varDelta f^{'}(t)dt,t \in (t_{IR}, t_{PFR}]\notag                          \\
+		 & \sum\nolimits_{w\in\mathcal{W}_{1}} \left( \overline{p}_{w} - p_{w, t} \right) \geq [K_{W}R_{W_1}^{-1} + D_{W}]\varDelta f(t+\delta t) -  \notag   \\
+		 & \qquad\qquad 2H_W \delta t \varDelta f^{'}(t), t \in (t_{IR}, t_{PFR}] \label{eqn:11b}                                                           \\
+		 & \sum\nolimits_{w\in\mathcal{W}_{2}} \left( \overline{p}_{w} - p_{w, t} \right) \geq R_{W_2}^{-1} \gamma_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11c} \\
+		 & \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e} -p_{e, t}\right)  \geq R_{E}^{-1} \gamma_{nadir},t \in (t_{IR}, t_{PFR}] \label{eqn:11d}
+	\end{align}\end{newsubequations}
+
+% \noindent where \(h_{nadir}\) denotes the maximum frequency deviation. From \(t \!=\! t_{IR}\!\!\rightarrow\!\! t_{PFR}\), \(\varDelta f(t)\) should be kept within the range between \(h_{db}\) and \(h_{nadir}\), and the change of \(\varDelta f^{'}(t)\! \rightarrow\! 0\) at \(t\!=\!t_{PFR}\). Therefore, the binding of the FCR denoted by \eqref{eqn:11a} and \eqref{eqn:11b} can be approximated as,
+
+% In \eqref{eqn:11a} and \eqref{eqn:11b}, \(\varDelta f(t)\) increase while \(\varDelta f^{'}(t)\) decrease during \(t \!\in\! (t_{IR},t_{PFR}]\), and the change of \(\varDelta f^{'}(t)\! \rightarrow\! 0\) at \(t\!=\!t_{PFR}\), therefore, a Conservative but simple of the FCR denoted by \eqref{eqn:11a} and \eqref{eqn:11b} can be approximated as,
+
+As shown in \eqref{eqn:11a} and \eqref{eqn:11b}, the absolute value of \(\varDelta f(t)\) increases while its derivative, \(\varDelta f^{'}\!(t)\), decreases during the time interval \(t \!\in\! (t_{IR},t_{PFR}]\). The derivative approaches zero at \(t\!=\!t_{PFR}\). As such, a conservative albeit simplified approximation of FCR, as represented by \eqref{eqn:12a} and \eqref{eqn:12b}, can be expressed as below,
+
+
+\vspace{-0.125in}
+\begin{newsubequations}
+	\label{eqn:12}
+	\begin{align}
+		 &\!\!\!\!\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} \!-\! p_{g, t}\right) \!\!\geq \!\! {K_{G} }{ R_{G}^{-1}} \gamma_{nadir}, t \in (t_{IR}, t_{PFR}] \label {eqn:12a} \\
+		 &\!\!\!\!\sum\nolimits_{w\in\mathcal{W}_{1}} \!\!\!\!\!\left( \overline{p}_{w} \!-\! p_{w, t} \right) \!\!\geq\!\! (K_{W}R_{W_1}^{-1} \!\!+\!\! D_{W}) \gamma_{nadir}, t \in (t_{IR}, t_{PFR}] \label{eqn:12b}
+	\end{align}
+\end{newsubequations}
+
+\vspace{-0.2in}
+\subsection{Chance-constrained frequency nadir constraint}
+
+The purpose of the frequency nadir constraint is to ensure that \(\varDelta f(t)\) remains within its predefined limit \(\gamma_{nadir}\) at the PFR stage. Given that the posterior distribution of \(\varDelta f(t)\), accounting for uncertain-variability factors, can be accurately determined using \eqref{eqn:5}, \eqref{eqn:6}, \eqref{eqn:7a}, \eqref{eqn:7c}, \eqref{eqn:9a}, and then, a chance-constrained formulation of the frequency nadir constraint can be derived as follows:
+
+\vspace{-0.125in}
+\begin{small}
+	\begin{align}
+	& \mathcal{P}\left(\varDelta f(t) \leq \gamma_{nadir}\right) \geq 1-\varepsilon_{SFR},\forall t\in(t_{IR}, t_{PFR}] \label{eqn:13} \\
+	& \Rightarrow \,\,\mathcal{P}\left(\vartheta \leq \gamma_{nadir}\right) \geq 1-\varepsilon_{SFR},\notag\\
+	& \qquad \vartheta = \max ( |\varDelta f(t)| ),\varDelta f(t) \propto \mathcal{P}(\varDelta f(t)|\varDelta p(t_0:t); \varDelta \omega) \notag
+\end{align} \end{small}
+
+% \vspace{-0.125in}
+% \begin{small}
+% 	\begin{align}\label{eqn:15}
+% 	& \mathcal{P}\left(\varDelta f_{\text{nadir}} \leq \varDelta f_{\text{max}}\right) \geq 1-\epsilon
+% 	\end{align}
+% \end{small}
+
+\noindent where $\varepsilon_{SFR}$ is the confidence coefficient. Using the sampled average approximate (SAA) method that provides a tractable way to handle chance constraints that are otherwise difficult or impossible to solve directly, \cite{yan2021chance}, \eqref{eqn:13} can be reshaped as its deterministic form \eqref{eqn:14}, which is listed below,
+
+\vspace{-0.125in}
+	\begin{small} \begin{align}
+		\vartheta_{n} - M\tau_{n}\! \leq \!\gamma_{nadir}, (1/{N})\sum\nolimits_{n\in\mathcal{N}}  \tau_{n} \leq \varepsilon_{SFR},\forall n \in \mathcal{N} \label{eqn:14}
+	\end{align}
+\end{small}
+
+\vspace{-0.025in}
+\noindent where \(\vartheta_{n}\) represents the realization of \(\max ( |\varDelta f(t)| )\), as derived from its posterior \eqref{eqn:7a}. The terms $n$ and $\mathcal{N}$ denote the index and union set of \(\vartheta_{n}\), while $N$ specifies the total number of sampled instances of \(\vartheta_{n}\). \(\tau_{n}\) denotes a binary variable indicating whether \((\varDelta f(t))_{n}\) satisfying frequency security requirement, $e.g.$, if \(\vartheta_{n}\!\leq\! \gamma_{nadir}\), then \(\tau_{n}\!=\!0\), and vice versa.
+
+% For a preselected mismatch disturbance, \(\varDelta f(t)\) is primarily influenced by aggregated frequency parameters, including inertia, damping, droop, and the fraction of power generated by high-pressure turbines, denoted by \(\langle H_{\varSigma}, D_{\varSigma}, 1/R_{G},F_{G}/R_{G}\rangle\), \cite{paturet2020stochastic,zhang2020modeling,9765359}. As a result, the frequency nadir, which represents the maximum value of \(\varDelta f(t)\) within the interval \(t\in(t_{IR},t_{PFR}]\), can be expressed as a nonlinear combination of these aggregated frequency parameters,
+
+
+As previously discussed in \eqref{eqn:3a}-\eqref{eqn:3f}, \(\varDelta f(t)\) is inextricably linked to the power imbalance, and this imbalance is influenced by various frequency parameters, including inertia, damping, droop, and the fraction of power generated by high-pressure turbines, denoted by \(H_{\varSigma}, D_{\varSigma}, 1/R_{G}, F_{G}/R_{G} \), \cite{paturet2020stochastic,zhang2020modeling,9765359}. As a result, the value of $\vartheta$ can be represented approximately as a nonlinear function of these aggregated parameters.
+
+
+\vspace{-0.125in}
+\begin{small} \begin{align}
+	\vartheta =& \max[\phi_{\iota}({\alpha}_{\iota}; \varTheta)],i\in\{1,2,...,5\},\forall \iota\in\mathcal{U} \label{eqn:15} \\
+			=&\max\left[\alpha_{\iota,1} H_{\varSigma} \!+\!\alpha_{\iota,2}
+D_{\varSigma} \!+\! \alpha_{\iota,3} \left({1}/{R_{G}}\right)\!+\!\alpha_{\iota,4} \left({F_{G}}/{R_{G}}\right)\right.\notag \\
+& \left. \alpha_{\iota,5}\right]:H_{\varSigma} \!=\! H_{G} + H_{W}, D_{\varSigma} \!=\! D_{G}+D_{W}+{ R_{W}^{-1} } + { R_{E}^{-1}} \notag
+\end{align} \end{small}
+
+\noindent where \(\iota\) and \(\mathcal{U}\) describes the index and set of hyperplanes, defined by function \(\phi_{\iota}(\alpha_{\iota};\varTheta)\). \(\alpha_{\iota}=\cup\{\alpha_{\iota, i}|i\in\{1,2,...,5\}\}\) is the set of fitting parameters, \(\varTheta\) is the set of aggregated frequency parameters, $i.e.$, \(\varTheta=\cup \{H_{\varSigma},D_{\varSigma},F_{G}/R_{G},1/R_{G}\}\). By automatically selecting the closet hyperplane to the \(\vartheta=\max ( |\varDelta f(t)| )\), the value of frequency nadir can be determined. Detailed calculation related to fitting parameters are provided below, \cite{9765359},
+
+\vspace{-0.125in}
+\begin{small} \begin{align}
+	\min & \sum\nolimits_{j\in\mathcal{J}} \Bigl\{\max[\phi_{\iota}(\alpha_{\iota}; \varTheta_{j})]- \vartheta _{j}\Bigr\} ^{2}, \forall \iota\in\mathcal{U}, j\in\mathcal{J} \label{eqn:16}
+\end{align} \end{small}
+
+\noindent where $j$ and $\mathcal{J}$ denote, respectively, the index and union set of all evaluation points sampled from \eqref{eqn:7a}.
+
+% In \eqref{eqn:16}, the inner \(`\max'\) operator identifies the hyperplane closest to each evaluation point, while the outer \(`\min'\) operator ensures global robustness by minimizing the maximum discrepancy between the selected hyperplane and all evaluation points, this hierarchical structure of the problem \eqref{eqn:16} balances the accuracy with global consistency. Mathematically, \eqref{eqn:16} can be solved either by directly employing nonlinear programming solvers such as \code{Ipopt}, \code{Mosek}, etc., or by reformulating it into a recursive problem suitable for Mixed Integer Programming (MIP) solvers, including \code{Gurobi}, \code{IBM CPLEX}, etc. A comprehensive discussion on the derivation and computational strategies for solving \eqref{eqn:16} is provided in \cite{9765359}.
+
+In \eqref{eqn:16}, the inner \(`\max'\) operator identifies the hyperplane closest to each evaluation point, while the outer \(`\min'\) operator ensures global robustness by minimizing the maximum discrepancy between the selected hyperplane and all evaluation points. This hierarchical structure of \eqref{eqn:16} balances accuracy with global consistency. \eqref{eqn:16} can be solved either directly using nonlinear programming solvers such as Ipopt, Mosek, etc., or by reformulated it into a recursive problem suitable for mixed-integer programming (MIP) solvers, including Gurobi, IBM CPLEX, etc. A comprehensive discussion on the derivation and computational strategies for solving \eqref{eqn:16} is provided in \cite{9765359}.
+
+Substituting \eqref{eqn:15} into \eqref{eqn:14}, a convex representation of the frequency nadir constraint can be obtained as follows,
+
+\vspace{-0.125in}
+	\begin{small} \begin{align}
+		\!\!\!\!\!\!\phi_{\iota}(\alpha_{\iota}; \varTheta) \!\!-\!\! M\tau_{n}\!\! \leq \!\!\gamma_{nadir},({1}/{{N}})\!\!\sum\nolimits_{n\in\mathcal{N}}\!\!\! \tau_{n} \!\!\leq\!\! \varepsilon_{SFR},
+		  \forall n \!\!\in\!\! \mathcal{N},\iota\!\in\!\mathcal{U}\label{eqn:17}
+	\end{align}
+\end{small}
+
+\vspace{-0.125in} \section{The proposed Frequency-constrained unit commitment model: r-FCUC}
+
+% This section provides a comprehensive form of r-FCUC. The suggested UC model (that is, r-FCUC) is constructed by incorporating frequency constraints discussed in Section III into the baseline UC studies.
+
+This section provides a complete formulation of the proposed model. The proposed FCUC version, termed r-FCUC, is constructed by integrating the frequency constraints detailed in Section III into UC problems.
+
+\vspace{-0.125in}
+\begin{newsubequations}\label{eqn:18}
+\begin{align}
+		& \min\sum\nolimits_{t\in\mathcal{T}} \!\!\Big[ \!  \sum\nolimits_{g\in\mathcal{G}}\bigl( C_{g}^{{up}}
+u_{g,t} \!+\!  C_{g}^{{dw}} v_{g,t} +C_{g}^{nl} x_{g,t}\bigr) + \label{18-a}\\
+&\qquad\qquad\quad\,\sum\nolimits_{s\in\mathcal{S}} \!\!\!\pi_{s} \!\bigl(\sum\nolimits_{g\in\mathcal{G}}\!\!\! \mathcal{H}  (p_{g,s,t}) + \sum\nolimits_{d \in\mathcal{D}} \!\!\! C_{{VoLL}}\varDelta p_{d,s,t}\bigr)\Bigr]\notag\\
+& s.t., \sum\nolimits_{m\in \mathcal{M}\{t + 1 - T_{g}^{{su}}, t\}} u_{g,m} \leq x_{g,t}, \forall g\in\mathcal{G}, t\in\mathcal{T} \label{18-b}\\
+& \sum\nolimits_{m \in \mathcal{M} \{ t +1 -T_{g}^{{sd}}, t\}} v_{g,m} \leq 1 - x_{g,t}, \forall g\in\mathcal{G}, t\in\mathcal{T} \label{18-c}\\
+& u_{g,t} - v_{g,t} = x_{g,t} - x_{g,t-1}, \forall g\in\mathcal{G}, t\in\mathcal{T} \label{18-d}\\
+& u_{g,t} + v_{g,t} \leq 1, \forall g\in\mathcal{G}, t\in\mathcal{T} \label{18-e}\\
+& \sum\nolimits_{g \in \mathcal{G}} p_{g,s,t} + \sum\nolimits_{w\in\mathcal{W}} {p^{fore}_{w,s,t}} +\sum\nolimits_{e\in\mathcal{E}}p_{e,s,t}^{{dis}} - \label{18-f} \\
+& \sum\nolimits_{e\in\mathcal{E}}p_{e,s,t}^{{ch}} - \sum\nolimits_{d\in\mathcal{D}}\left(p_{d,t} - \varDelta p_{d,s,t}\right) = 0, \forall s\in\mathcal{S}, t\in\mathcal{T} \notag\\
+\Bigl \vert & \sum\nolimits_{b \in \mathcal{B}} \kappa_{l,b}\big( p_{b,s,t}^{inj} - p_{b,s,t}^{net} \big ) \Bigr \vert \leq \bar{p_{l}}, \forall l\in\mathcal{L}, t\in\mathcal{T}, s\in\mathcal{S} \label{18-g} \\
+& p_{b,s,t}^{inj} = \sum\nolimits_{g \in\mathcal{G}_b } p_{g,s,t} + \sum\nolimits_{w \in\mathcal{W}_b} p_{w,s,t}  + \label{18-h} \\
+& \qquad\quad\, \sum\nolimits_{e \in\mathcal{E}_b} p_{e,s,t}^{{dis}} - \sum\nolimits_{e \in\mathcal{E}_b} \varDelta p_{e,s,t}^{{ch}},\forall t\in\mathcal{T}, s\in\mathcal{S} \notag\\
+& p_{b,s,t}^{net}  = \sum\nolimits_{d\in\mathcal{D}_{b}}\!\!\!\left(p_{d,t} - \varDelta p_{d,s,t}\right),\forall t\in\mathcal{T}, s\in\mathcal{S} \label{18-i} \\
+& p_{g,s,t} - p_{g,s,t -1} \leq r_{g}^{{ru}} x_{g,t} + \overline{p_{g}}\left(1 - x_{g,t}\right) + \notag\\
+& r_{g}^{{su}}\left(x_{g,t} - x_{g, t-1}\right), \forall g\in\mathcal{G}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-j} \\
+& p_{g,s,t-1} - p_{g,s,t} \leq r_{g}^{{rd}} x_{g,t} + \overline{p_{g}} \left(1 - x_{g,t-1}\right) + \notag\\
+& r_{g}^{{sd}}\left(x_{g,t-1} - x_{g, t}\right), \forall g\in\mathcal{G}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-k}\\
+& \sum\nolimits_{g\in\mathcal{G}} \left( x_{g,t} \overline{p_{g}} - p_{g,s,t}\right) + \sum\nolimits_{e\in\mathcal{E}}\left(\overline{p}_{e}^{dis} - p_{e,s,t}^{dis}\right) \geq \label{18-l}\\
+& (1 + \lambda_{load}^{up}) \sum\nolimits_{d\in\mathcal{D}} p_{d,t} + \lambda_{re}^{up} \sum\nolimits_{e\in\mathcal{E}} {p_{w,s,t}^{fore}}, \forall s\in\mathcal{S}, t\in\mathcal{T} \notag\\
+& \sum\nolimits_{g\in\mathcal{G}}\left( p_{g,s,t} - x_{g,t} \overline{p_{g}}\right) + \sum\nolimits_{e\in\mathcal{E}}\left(p_{e,s,t}^{{ch}} \right) \geq \label{18-m}\\
+& \lambda_{load}^{dw} \sum\nolimits_{d\in\mathcal{D}} p_{d,t} + \lambda_{re}^{dw}\sum\nolimits_{e\in\mathcal{E}} {p_{w,s,t}^{fore}},\forall s\in\mathcal{S}, t\in\mathcal{T} \notag\\
+& x_{g,t} \underline{p_{g}} \leq p_{g,s,t} \leq x_{g,t} \overline{p_{g}}, \forall g\in\mathcal{G}, s\in\mathcal{G}, t\in\mathcal{T} \label{18-n}\\
+& 0\leq p_{w,s,t} \leq {p_{w,s,t}^{fore}}, \forall g\in\mathcal{W}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-o} \\
+& 0\leq \varDelta p_{d,s,t} \leq  p_{d,t}, \forall d\in\mathcal{D}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-p} \\
+& 0 \leq p_{e,s,t}^{{dis}} \leq \overline{p}_{e}^{{dis}} \upsilon_{e,s,t}^{{dis}} , \forall e\in\mathcal{E}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-q} \\
+& 0 \leq p_{e,s,t}^{{ch}} \leq \overline{p}_{e}^{{ch}} \upsilon_{e,s,t}^{{ch}} , \forall e\in\mathcal{E}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-r}\\
+& q_{e,s,t\!+\!1} \!=\! q_{e,s,t} \!+\! \left(\!\eta_{e}^{{ch}}p_{e,s,t}^{{ch}} \!-\! \eta_{e}^{{dis}} p_{e,s,t}^{{dis}}\! \right),\! \forall e\!\in\!\mathcal{E}, s\!\in\!\mathcal{S}, t\!\in\!\mathcal{T} \label{18-s}\\
+& \sum\nolimits_{t\in\mathcal{T}} q_{e,s,t} \leq \overline{q_{e}},\forall e\in\mathcal{E}, s\in\mathcal{S} \label{18-t}\\
+& \upsilon_{e,s,t}^{{dis}}  + \upsilon_{e,s,t}^{{ch}} \leq 1, \forall e\in\mathcal{E}, s\in\mathcal{S}, t\in\mathcal{T} \label{18-u}\\
+& p_{g,s,t} = \sum\nolimits_{z\in\mathcal{Z}} p_{g,s,t}^{z},\forall z\in\mathcal{Z}, g\in\mathcal{G}, s\in\mathcal{S}, t\in\mathcal{T}\label{18-v}\\
+& 0 \leq p_{g,s,t}^{z} \leq n_{nz}^{-1} x_{g,t}\overline{p_{g}},  \forall z\in\mathcal{Z}, g\in\mathcal{G}, s\in\mathcal{S}, t\in\mathcal{T}\label{18-w}\\
+& \mathcal{H}(p_{g,s,t})\geq \sum\nolimits_{z\in\mathcal{Z}}\!\!(a_{g}^{z} p_{g,s,t}^{z} + b_{g}^{z}), \forall g\in\mathcal{G}, s\in\mathcal{S}, t\in\mathcal{T}\label{18-x}
+\end{align}
+\end{newsubequations}
+\vspace{-0.6250cm}
+\begin{newsubequations}\label{eqn:19}
+\begin{align}
+& H_{\Sigma,t} \geq 0.5{\varDelta p_{{step} }}{{\gamma}_{rocof}^{-1}},\forall  t\in\mathcal{T}\,\,\label{19-a}\\
+&\sum\nolimits_{w\in\mathcal{W}} \left({p^{fore}_{w,s,t}} - p_{w,s, t} \right) + \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e}^{dis} \upsilon_{e,s, t}^{dis} -p_{e,s, t}^{{dis}}\right) +\notag \\
+&\sum\nolimits_{g\in\mathcal{G}} \left( \overline{p}_{g} -p_{g,s, t}\right) \geq \varDelta p_{step}, \forall s\in\mathcal{S}, t\in\mathcal{T} \label{19-b}\\
+& \sum\nolimits_{g\in\mathcal{G}} \left( \overline{p_{g}} - p_{g,s, t} \right) \geq K_{G,t} R_{G,t}^{-1} \gamma_{nadir}, \forall s\in\mathcal{S},t\in\mathcal{T}\label{19-c}\\
+& \sum\nolimits_{w\in\mathcal{W}_1} \!\! \left({p^{fore}_{w,s,t}} \!-\! p_{w,s, t} \right) \!\geq\! (K_{W,t} R_{W_1,t}^{-1} \!+\! D_{W,t})\gamma_{nadir}, \label{19-d}\\
+& \qquad \qquad \qquad \qquad \qquad \qquad\, \forall s\in\mathcal{S},t\in\mathcal{T} \notag \\
+& \sum\nolimits_{w\in\mathcal{W}_2} \left({p^{fore}_{w,s,t}} - p_{w, s, t} \right) \geq R_{W_2,t}^{-1} \gamma_{nadir}, \forall s\in\mathcal{S},t\in\mathcal{T} \label{19-e}\\
+& \sum\nolimits_{e\in\mathcal{E}} \left( \overline{p}_{e}^{dis} - p_{e,s, t} \right) \geq R_{E,t}^{-1} \gamma_{nadir}, \forall s\in\mathcal{S},t\in\mathcal{T} \label{19-f}\\
+& \phi_{\iota}(\alpha_{\iota,t}; \varTheta_{t}) - M\tau_{n,t}\! \leq \!\gamma_{nadir},\forall \iota\in\mathcal{U},s\in\mathcal{S},t\in\mathcal{T}\label{19-g}\\
+& ({1}/{{N}})\sum\nolimits_{n\in\mathcal{N}}\tau_{n,t} \leq \varepsilon_{SFR},\forall n\in\mathcal{N},s\in\mathcal{S},t\in\mathcal{T}\label{19-h}\\
+& H_{\varSigma,t} =  H_{G,t} + H_{W,t},\forall t\in\mathcal{T} \label{19-i} \\
+& D_{\varSigma,t} =  D_{G,t} + D_{W,t} + R_{W,t}^{-1} + R_{E,t}^{-1}, \forall t \in\mathcal{T} \label{19-j}       \\
+& H_{G,t} =  S_{total}^{-1} \sum\nolimits_{g \in\mathcal{G}}H_{g}\overline{p_{g}} x_{g,t},\forall t\in\mathcal{T} \label{19-k} \\
+& H_{W,t} =  S_{total}^{-1} \sum\nolimits_{w \in\mathcal{W}_1} \!\! H_{w} p_{w,s,t}^{fore},\forall t\in\mathcal{T} \label{19-l} \\
+& D_{G,t} =  S_{total}^{-1} \sum\nolimits_{g \in\mathcal{G}}D_{g}\overline{p_{g}} x_{g,t},\forall t\in\mathcal{T} \label{19-m} \\
+& D_{W,t} =  S_{total}^{-1} \sum\nolimits_{w \in\mathcal{W}_1} \!\! D_{w} p_{w,s,t}^{fore} , \forall t\in\mathcal{T} \label{19-n}\\
+& R_{G,t}^{-1} =  S_{total}^{-1} \sum\nolimits_{g\in\mathcal{G}} {K_{g}}{R_{g}^{-1}}\overline{p_{g}} x_{g,t}, \forall t\in\mathcal{T}  \label{19-o}\\
+& R_{W,t}^{-1} =  S_{total}^{-1} \sum\nolimits_{w\in\mathcal{W}_{2}} {K_{w}}{R_{w}^{-1}} p_{w,s,t}^{fore},  \forall t\in\mathcal{T}, s\in\mathcal{S}  \label{19-p}\\
+& R_{E,t}^{-1} =  S_{total}^{-1} \sum\nolimits_{e\in\mathcal{E}} {R_{e}^{-1}} \overline{p}_{e}^{dis}, \forall t\in\mathcal{T} \label{19-q}\\
+& F_{G,t} = S_{total}^{-1} \sum\nolimits_{g \in\mathcal{G}} {K_{g}F_{g}}{R_{g}^{-1}} \overline{p_{g}} x_{g,t}, \forall t\in\mathcal{T} \label{19-r}
+\\
+&x_{g,t},u_{g,t},v_{g,t},\tau_{n,t},\upsilon_{e,s,t}^{{dis}},\upsilon_{e,s,t}^{{ch}}\in \{0,1\}\label{19-s}\\
+&p_{g,s,t}, p_{w,s,t},p_{g,s,t}^{z}, \varDelta p_{d,s,t}, p_{e,s,t}^{{dis}}, p_{e,s,t}^{{ch}},H_{\varSigma,t},D_{\varSigma,t},H_{G,t},H_{W,t},\notag\\
+&D_{G,t},D_{W,t},R_{G,t},R_{W_1,t},R_{W_2,t},R_{E,t},F_{G,t} \in\mathbb{R}^{+}  \label{19-t}
+\end{align} \end{newsubequations}
+\vspace{-0.125in}
+
+In the preceding formulation, the objective function \labelcref{18-a} minimizes the total operational cost.
+Constraints \labelcref{18-b,18-c} impose the minimum shut-up/shut-down durations of conventional generators.
+Constraints \labelcref{18-d,18-e} ensure consistency between the startup/shutdown decisions of individual conventional generator.
+Constraint \labelcref{18-f} enforces the power balance restriction.
+Constraints \eqref{18-g}\,-\,\eqref{18-i} represent the capacity limits of each transmission line.
+Constraints \labelcref{18-j,18-k} ensure the upward/downward ramping capabilities of each conventional generator throughout consecutive dispatching periods.
+Constraints \labelcref{18-l,18-m} define the upward/downward spinning reserve capacities provided by conventional generators.
+Constraint \eqref{18-n} establishes the minimum/maximum output of conventional generators.
+Constraints \labelcref{18-o,18-p} introduce restrictions on the wind power output and forced-load-curtailment.
+Constraints \labelcref{18-q,18-r} specify the charging/discharging capacity of individual BESS.
+Constraints \labelcref{18-s,18-t} couple cumulative energy of BESS with corresponding charging/discharging decisions.Constraint \labelcref{18-u} sets cumulative charging/discharging limits of individual BESS.
+Constraint \labelcref{18-v} ensures the exclusivity of charging/discharging operations for each BESS.
+Constraint \labelcref{18-w} denotes that the output of each conventional generator equals the total of the segmented outputs corresponding to its linearized fuel cost curve.
+Constraint \labelcref{18-x} enforces the binding of operation cost of each conventional generator.
+Constraints \labelcref{19-a} defines the RoCoF restriction.
+Constraint \labelcref{19-b} describes additional output contributions of multiple generators participating in frequency support.
+Constraints \eqref{19-c}\,-\,\eqref{19-f} denote the FCR requirement of multiple resources.
+Constraints \labelcref{19-g,19-h} describe the equivalent form of chance-constrained frequency nadir constraints.
+Constraints \eqref{19-i}\,-\,\eqref{19-r} list aggregated frequency parameters.
+Constraints \labelcref{19-s,19-t} define feasible regions for the related binary and continuous decision variables, respectively.
+
+
+\vspace{-0.025in}
+
+\section{Case studies and analysis} 
+
+\vspace{-0.025in}
+
+This section uses a modified IEEE $6$ bus test system, \cite{mahmoudnia2024enhancing,zhang2020modeling}, and IEEE $118$ bus test system, \cite{demetriou2015dynamic,9765359}, to check the validity of the proposed r-FCUC model. Both experiments are carried out in a Julia~(version $1.11.2$)~/~JuMP~(version $1.23.6$) environment, \cite{Lubin2023}, on a Dell Precision workstation with Intel(R) Xeon(R)W-$2133$ CPU@$3.60$ GHz \& RAM $12.0$ GB.
+
+\vspace{-1.25em} \subsection{Modified IEEE 6 bus test system} \vspace{-0.25em}
+
+The studied system consists of $6$ buses, $7$ transmission lines, and $3$ conventional generators. The installed capacity generated by conventional generators is $240$MW. Besides, It consists of four wind farms located on bus $1$ and two BESSs at bus $2$, and the installed capacity of each wind farm and BESS is assumed to be $2$ MW and $10$ MW, respectively. Further details regarding other boundary parameters can be found in \cite{10098683}. The chronological load curve and stochastic scenarios of wind farms are shown in Fig. \ref{fig5}, and the corresponding frequency parameters associated with the generators are summarized in Table. \ref{table 1}.
+
+\begin{table}\vspace{-0.125in}
+	\caption{Frequency dynamic parameters of different generators.} \label{table 1} 
+	\begin{tabular}{p{0.25cm}|p{2.75cm}|p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}p{0.6cm}} \hline 
+	NO. & $Type$ & $H/p.u.$   & $K/p.u.$    & $F/p.u.$    & $R/p.u.$    & $D/p.u.$\\
+\hline 
+$1$       & $Thermal\,\, generator$   & $7.0$   & $0.90$  & $0.04$ & $0.04$ & $0.06$     \\
+$2$       & $Thermal\,\, generator$  & $5.5$ & $0.95$ & $0.03$ & $0.03$ & $0.10$      \\
+$3$       & $Thermal\,\, generator$  & $3.5$ & $0.98$ & $0.25$ & $0.05$ & $0.18$    \\
+$4$       & $Wind\,\, farms (Droop)$ & —   & $1.00$    & —    & $0.04$ & —     \\
+$5$       & $Wind\,\, farms (VI)$ & $6.0$   & $1.00$    & —    & —    & $0.60$   \\
+$6$       & $BESS$       & —   & $0.5$  & —    & $0.04$ & —     \\
+\hline \end{tabular} \end{table}
+
+
+\begin{figure}
+	\vspace{-0.125in}
+	\centering
+	\includegraphics[width=1.0\linewidth, height = 4.5cm]{./.figures/LOADandWINDscurves.pdf}
+	\caption{System load curve in (a) and stochastic wind power scenarios in (b) in the modified IEEE 6 bus test system.} \label{fig5}
+	\vspace{-0.1cm}
+\end{figure}
+
+To compare the performance of BF-SFR and investigate the impact of different levels of uncertain-variability features on frequency dynamics, a step-type mismatch power (approximately equal to the $20\%$ of the peak load) is introduced as a disturbance to evaluate the effectiveness of BF-SFR against the simulator (benchmark). Two residual settings representing different levels of uncertain-variability features are considered:
+i) {Minor\,\,residual} condition: The difference between the actual and measured additional power is assumed to follow a normal distribution, $i.e.$, $\text{Normal}(0, 1e{-2})$. Under this condition, the impact of uncertain-variability feature is considered negligible.
+ii) {Obvious\,\,residual} condition: The difference is assumed to follow a normal distribution, $i.e.$, $\text{Normal}(0, 1e{-1})$, reflecting significant power output fluctuations caused by wind farm operations.
+Fig. \ref{fig6} shows frequency dynamic curves obtained using the BF-SFR and simulator under these two residual conditions, in which, the impact of wind farms participating in frequency support is also discussed. Specifically, {Case 1} illustrates the response without (`{w/o}') considering frequency support from wind farms, while {Case 2} represents the response with (`{w/}') wind farm frequency regulation.
+
+In Fig.~\ref{fig6}, the close agreement between frequency dynamic trajectories obtained from BF-SFR and the simulator validates the accuracy of the suggested model (BF-SFR). Notably, the frequency nadir in Case 2 is significantly smaller than that in Case 1, resulting in a smoother frequency response. It indicates that incorporating frequency support from wind farms enhances frequency stability. Furthermore, the frequency deviation, $\varDelta f (t)$, is more pronounced under the larger residual setting. This highlights the importance of considering uncertain-variability feature in SFR modeling and justifies the inclusion of such features in SFR processes.
+
+
+% Another feature of the BF-SFR in companion with existing methods is that it can not only capture the trajectory of $\varDelta f(t)$ but also provide its posterior, as shown in Fig.~\ref{fig7}. Note that $\varDelta f(t)$ in Fig.~\ref{fig6} converges to a certain distribution at [20s, 60s], it reflects that SFR follow a stationary probabilistic distribution, which also verified by Fig.~\ref{fig7}. Especially, the distribution of $\varDelta f(t)$ at the minor residual condition, representing low uncertain-variability features, is sharper than its counterpart (at the relatively large residual condition), leading to reduced risks of \(\varDelta f(t)\) exceeding the safety threshold. From this viewpoint, the security of frequency dynamic can be guaranteed if limited uncertain-variability feature is incorporated. On the contrary, if there are a great number of uncertain-variability derivation from converters introducing into the grid, the posterior of  $\varDelta f(t)$ becomes broader, it leads to a difficult prediction and re-dispatching issue. Therefore, the frequency dynamic process with a significant uncertain-variability feature is essential by defining the $\nicefrac{1}{2}$ quartile and $\nicefrac{1}{4}$ quartiles (see Fig.~\ref{fig7}(b)) or considering the conservatism of \(\varDelta f(t)\), defined by BF-SFR (see Fig.~\ref{fig7}(a)), in the frequency estimation process.
+
+A key advantage of BF-SFR compared to existing models is that it can not only capture the trajectory of $\varDelta f(t)$ but also provide its posterior distribution, as shown in Fig.~\ref{fig7}. As observed in Fig.~\ref{fig6}, $\varDelta f(t)$ converges to a stationary distribution within the interval [$20$s, $60$s], this characteristic has been also confirmed by Fig.~\ref{fig8} that reveals the joint distribution of frequency dynamics over the entire time $t\in (0s, 60s]$ under different residual conditions. Notably, the posterior distribution of $\varDelta f(t)$ under the minor residual condition (representing low uncertain-variability feature ) is narrower than under the larger residual condition, thus reducing the risk of $\varDelta f(t)$ exceeding the safety threshold. This suggests that limiting uncertain-variability feature in SFR enhances frequency stability. Conversely, significant uncertain-variability feature introduced by converter-interfaced generators broadens the posterior distribution of $\varDelta f(t)$, making prediction and rescheduling process more challenging. Therefore, it is essential to account for significant uncertain-variability features in the frequency estimation process for low inertia systems by considering the median and interquartile range (see Fig.~\ref{fig7}(b)) or by incorporating a conservative estimate of $\varDelta f(t)$ from the BF-SFR model (see Fig.~\ref{fig7}(a)).
+
+\begin{figure}
+	\vspace{-0.25cm}
+	\centering \includegraphics[width=1.0\linewidth, height = 4.5cm]{./.figures/new_SFRcurves.pdf}
+	 \caption{Frequency dynamic curves of BF-SFR and the simulator under a small residual setting in (a) and a large residual condition in (b).} \label{fig6}
+	\end{figure}
+
+\begin{figure}
+	\vspace{-0.25cm}
+	\centering
+	\includegraphics[width=1.0\linewidth, height = 4.5cm]{./.figures/SFRPDFinformations.pdf}
+	\caption{A comparison of statistical $\nicefrac{1}{2}$ and $\nicefrac{1}{4}$ quantile levels (a) and the posterior probability density distribution (b) of $\varDelta f(t)$ at time-to-nadir under different residual conditions.} \label{fig7}
+\end{figure}
+
+\begin{figure}
+	\vspace{-0.25cm}
+	\centering
+	\includegraphics[width=0.98\linewidth, height = 4.75cm]{./.figures/surfaces.pdf}
+	\caption{Posterior of $\varDelta f(t)$ over the interval [$0$s, $60$s] under a small residual disturbance with distribution $\text{Normal}(0, 1e{-2})$ (a) and a larger residual condition with distribution $\text{Normal}(0, 1e{-1})$ (b).} \label{fig8}
+\end{figure}
+
+\begin{table}\vspace{-0.05cm}
+	\caption{Scheduled results determined by TUC, FCUC, and r-FCUC in the modified IEEE 6 bus test system.}\label{table 2}
+\resizebox{0.49\textwidth}{0.3in}
+{\begin{tabular}{lp{1.65cm}p{2.cm}p{1.5cm}p{1.5cm}}
+	\hline 
+Models & shut-up cost$/\$$ \!\!\!          & shut-down cost$/\$ $     \!\!\!   & fuel cost$/\$ $  \!\!\!           & total cost$/\$ $   \\
+\hline 
+TUC    & $9.10\times 10^3  $ & $3.50\times 10^3 $ & $4.04\times 10^5 $  & $ 4.10\times 10^5 $  \\
+FCUC   & $9.10 \times 10^3 $ & —                     & $4.81\times 10^5 $ & $ 4.90\times 10^5 $  \\
+r-FCUC & $9.10 \times 10^3 $ & —                     & $4.82\times 10^4 $ & $ 4.91 \times 10^5 $ \\
+\hline \end{tabular}}
+\end{table}
+
+% To demonstrate the significance of incorporating frequency dynamic requirements via BF-SFR into FCUC, two benchmarks are selected: $i$) a traditional UC (TUC) model,\cite{7822944}, and $ii$) frequency-constrained UC model (FCUC) and further compare the of BF-SFR into FCUC studies, TUC, \cite{7822944}, and recent previous frequency-dynamic UC (FCUC) model,\cite{zhang2020modeling}, The differences between FCUC and r-FCUC (the proposed method) lie in the construction of frequency nadir constraints, where the binding of frequency nadir is a determined type whilst the same constraint in r-FCUC is a chance-constrained one. In the context of boundary conditions representing frequency dynamic requirements, the preselected binding of RoCoF and frequency nadir are $1.0$ Hz/s and $0.5$ Hz, respectively. Fig.10 compares calculated scheduled costs and commitment results produced by TUC, FCUC and r-FCUC.
+
+To demonstrate the significance of incorporating frequency dynamic requirements via BF-SFR into FCUC, two benchmarks are used: $i$) a traditional UC (TUC) model, \cite{7822944}, and $ii$) a FCUC model, \cite{zhang2020modeling}. The key difference between FCUC and r-FCUC lies in the formulation of the frequency nadir constraint: FCUC uses a deterministic constraint, whereas r-FCUC employs a chance constraint. The preselected limits for the RoCoF and the nadir are $1.0$ Hz/s and $0.5$ Hz, respectively. Fig.~\ref{fig9} compares the resulting scheduled costs and scheduled commitments generated by TUC, FCUC, and r-FCUC.
+
+
+% The residual condition describing uncertain-variability feature under frequency dynamic processes is $\langle\varpi,\sigma\rangle\!\!\in\!\! \text{Normal}(0,1e\!\!-\!\!3)$.
+
+ \begin{figure}[!t]\vspace{-0.025cm} 
+ \centering \includegraphics[width=0.8\linewidth,height=2.0cm]{./.figures/OnlineUnitRes.pdf}
+ \caption{Cumulative number of activated conventional generators determined using TUC, FCUC, and r-FCUC in the modified IEEE 6 bus test system.} \label{fig9} \end{figure}
+
+% In Table~\ref{table 4}, the total scheduled costs obtained through FCUC and r-FCUC are similar, demonstrating the feasibility of integrating SFR via BF-SFR into UC. Moreover, the operational costs of scheduled commitments under TUC are lower than those computed by FCUC and r-FCUC, while the shut-on/shut-down costs, representing the start-up and shut-down decisions, are higher in TUC. This indicates that several conventional generators operate at slightly less economical levels in FCUC and r-FCUC, whereas only a limited number of generators are activated in TUC to maintain the power balance between generation and demand. It is important to note that the scheduled commitments computed by FCUC and r-FCUC account for the frequency-supporting benefits provided by wind farms and BESS. These converter-controlled resources must reserve a certain amount of FCR to ensure adequate frequency regulation capacity. From this perspective, the generators activated under FCUC and r-FCUC operate at a less economical level compared to those in TUC. Consequently, the conventional generators scheduled by FCUC and r-FCUC must produce higher outputs to maintain active power balance. This observation is further corroborated by comparing the sequential number of activated generators produced by scheduled commitments across the three models, as illustrated in Fig.~\ref{fig9}.
+
+In Table~\ref{table 2}, the similar total scheduled costs obtained by the latter two models (FCUC and r-FCUC) demonstrate the feasibility of the proposed model. Moreover, the operational costs in TUC are lower than those in FCUC and r-FCUC, while the start-up and shut-down costs in TUC are higher than its counterpart. This suggests that some conventional generators operate at slightly less economical levels in FCUC and r-FCUC, whereas TUC activates only a limited number of conventional generators to maintain power balance. Importantly, note that the scheduling processes computed by FCUC and r-FCUC account for the frequency support provided by wind farms and BESS, these converter-based resources must maintain a certain amount of FCR to ensure sufficient frequency regulation capacity. Therefore, conveter-based resources dispatched by FCUC and r-FCUC operate less economically compared to those in TUC. Consequently, the conventional generators scheduled by FCUC and r-FCUC must produce higher outputs to maintain power balance. This observation is further supported by the comparison of the number of activated generators in the schedules of these three models, as shown in Fig.~\ref{fig9}.
+
+\vspace{-0.025in}
+ \begin{figure}
+ \centering \includegraphics[width=1.0\linewidth, height = 4.5cm]{./.figures/little_RoCOFandnadirdistributionINFO.pdf} \caption{The distributions of RoCoF (a) and frequency nadir (b) resulting from scheduled commitments using TUC, FCUC, and r-FCUC in the modified IEEE 6 bus test system.} \label{fig11} \end{figure}
+
+\begin{figure}\vspace{-0.25in}
+\centering \includegraphics[width=1\linewidth, height = 4.5cm]{./.figures/little_SFRcurveandadditionaPower}
+\caption{Frequency dynamic responses (a) and corresponding additional power output (b) resulting from TUC, FCUC, and r-FCUC in the modified IEEE 6 bus test system.}
+\label{fig13} \end{figure}
+
+
+% TODO figures 2 needs to be corrected.
+
+% Nevertheless, the RoCoF and frequency nadir corresponding to similar scheduled results as solved by TUC, FCUC and r-FCUC exhibit slight differences. This phenomenon is particularly evident during the 11h-16h in Fig.\ref{fig11}. During these periods, the commitment results derived from TUC, FCUC, and r-FCUC are identical, with G1/G2 online and G3 offline. Despite this similarity, improvements in RoCoF and frequency nadir are observed in the scheduled commitments produced by FCUC and r-FCUC. These improvements arise because FCUC and r-FCUC incorporate wind farms and BESS into frequency support, whereas TUC does not. According to \eqref{eqn:10}, RoCoF is inversely proportional to the system inertia, therefore, the integration of wind farms with virtual inertia control schemes increases the system inertia, reducing RoCoF. Additionally, droop-controlled wind farms and BESS enhance available frequency regulation capacity, resulting in a smoother frequency response and sufficient FCR, as indicated by \cref{eqn:11,eqn:14,eqn:19}. This explanation is further verified by the specific frequency curves of the scheduled commitments at time $10$h in Fig.\ref{fig13}. As shown in Fig.\ref{fig13}, the frequency nadir achieved using FCUC and r-FCUC is lower than that of TUC, resulting in a smoother frequency response curve and adequate frequency reserves.
+
+Nevertheless, the RoCoF and frequency nadir corresponding to the similar scheduled commitments obtained from TUC, FCUC, and r-FCUC exhibit slight differences. This is particularly evident during [$11$h, $16$h] in Fig.~\ref{fig11}. During these periods, the scheduled commitments from TUC, FCUC, and r-FCUC are identical, with G1/G2 online and G3 offline. Despite this identical commitment, improvements in the RoCoF and frequency nadir are observed in scheduled commitments produced by FCUC and r-FCUC. These improvements arise because the latter two models incorporate converter-based resources into frequency support, whereas TUC does not. According to \eqref{eqn:10}, RoCoF is inversely proportional to system inertia, therefore, integrating wind farms with VI control increases system inertia and reduces RoCoF. Additionally, droop-controlled wind farms and BESS enhance the available frequency regulation capacity, leading to a smoother frequency response and sufficient FCR, as indicated by \eqref{eqn:11}, \eqref{eqn:14}, and \eqref{eqn:19}. This explanation is further verified by the specific frequency curves of the schedules at $10$ h shown in Fig.~\ref{fig13}. As demonstrated in Fig.~\ref{fig13}, the frequency nadir achieved by FCUC and r-FCUC is lower than that of TUC, resulting in a smoother frequency response and adequate frequency reserves.
+
+ % In combination with the above discussion, the significance of wind farms and BESS participating in SFR in UC problems can be observed.
+
+% \begin{figure}[!t]\vspace{-0.125in} \centering \includegraphics[width=\linewidth]{fig12_cost_and_wastepower} \caption{Change of scheduled cost and abandoned power through CCFDUC with different
+% residual settings.} \label{fig12} \end{figure}
+
+% Next, Fig.~\ref{fig12} explores the evolution of scheduling results via CCFDUC with various residual settings. The scheduling cost will rise with the increase of external residual influences; in the
+% meantime, the risk of abandoned wind output and forced-load-curtailment for preventing power-balance violation would also increase. As the residual changes within a relatively low internal between
+% $1\times 10^{-3}$ and $2\times 10^{-3}$, the scheduling cost through CCFDUC increases slowly, it indicates that the minor residual has a negligible effect on the final scheduling result.  However,
+% when the residual changes from $2\times 10^{-3}$ to $3\times 10^{-3}$, the scheduling results have a relatively obvious increase. This is mainly because some inactivated units in previous minor
+% residual settings are required to be shut up in such condition. And, when the residual continuously increases from $3\times 10^{-3}$ to $10\times 10^{-3}$, due to the fact that more units keep
+% active and the system inertia has maintained at a relatively high degree, hence, the scheduling cost and power abandonment growth are maintained at a relatively flat curve. From this perspective,
+% the necessity and significance of introducing UV  into UC studies is well clarified.
+
+% \begin{figure}[!t] %\centering %\includegraphics[width=0.9\linewidth]{fig13_CloudRainVis} %\caption{The unified
+% frequency dynamic response of electrical power systems against occurred power disturbance} %\label{fig12} %\end{figure}
+
+\vspace{-0.1in} \subsection{Modified IEEE 118 bus test system} \vspace{-0.025in}
+
+The system consists of $54$ conventional units, $186$ transmission lines, and $91$ loads. The sum of installed capacity produced by conventional generators is $7,220$~MW, while the peak load reaches $5,516.08$~MW. Additionally, the system includes $3$ wind farms, located at buses $24,25, \text{and} \,26$, respectively. Each wind farm has an installed capacity of $500$MW. The thresholds of RoCoF and frequency nadir criteria are $2.0$ Hz/s and $0.5$ Hz, respectively. Further details regarding operating parameters and frequency parameters of all units can be found in Ref.~\cite{demetriou2015dynamic}. A load increase of approximately $10$\% of the peak load is used to define a representative power disturbance. Table~\ref{table 3} compares scheduled costs using TUC, FCUC, and r-FCUC. Fig.~\ref{fig15} illustrates the variation in RoCoF and frequency nadir corresponding to the different scheduling commitments derived from different models.
+
+ \begin{table}[!t]\vspace{-0.025cm} 
+ \caption{Scheduled costs  produced by TUC, FCUC, and r-FCUC in the modified IEEE 118 bus test system.}\label{table 3}
+ \resizebox{0.49\textwidth}{0.3in}
+{\begin{tabular}{lp{1.65cm}p{2.cm}p{1.5cm}p{1.5cm}}
+	\hline 
+Models & shut-up cost$/\$$ \!\!\!          & shut-down cost$/\$ $     \!\!\!   & fuel cost$/\$ $  \!\!\!           & total cost$/\$ $   \\
+\hline 
+ TUC    & $1.54\times 10^4 $ & $0.31\times 10^4 $ & $1.62\times 10^6 $ & $1.64 \times 10^6 $ \\
+ FCUC   & $4.18\times 10^4 $ & $2.71\times 10^4 $ & $1.73\times 10^6 $ & $1.81 \times 10^6 $ \\
+ r-FCUC & $3.49\times 10^4 $ & $1.67\times 10^4 $ & $1.81\times 10^6 $ & $1.86 \times 10^6 $ \\
+ \hline \end{tabular}} \end{table}
+
+% %Therefore, the percentage of wind farms for the peak-load is $20.79\%$.  \begin{figure}[!t]\vspace{-0.2in} \centering \includegraphics[width=1.0\linewidth]{fig14_bigcase_LOADandWINDscurves}
+% \caption{Load curve in (a) and stochastic wind power scenarios in (b) in the modified IEEE 118 bus test system.} \label{fig12} \end{figure}
+
+ \begin{figure}[!t]\vspace{-0.25cm} \centering \includegraphics[width=1.0\linewidth, height = 4.5cm]{./.figures/RoCOFandnadirdistributionINFO.pdf} \caption{The distribution of RoCoF in (a) and nadir in (b)
+ corresponding to  scheduled commitments through TUC, FCUC, and r-FCUC in the modified IEEE 118 bus test system.} \label{fig15} \end{figure}
+
+% \begin{figure}[!t]\vspace{-0.125in} \centering \includegraphics[width=0.8\linewidth, height=0.85in]{fig16_bigcase_OnlineUnitRes} \caption{Cumulative numbers of activated conventional generators
+% through TUC/FDUC/CCFDUC in the modified IEEE 118 bus test system.} \label{fig12} \end{figure}
+
+\begin{figure}[!t]\vspace{-0.125in} \centering \includegraphics[width=0.98\linewidth, height=4.5cm]{./.figures/SFRcurveandadditionaPower.pdf} \caption{Frequency dynamic responses (a) and corresponding additional power output (b) resulting from TUC, FCUC, and r-FCUC in the modified IEEE 118 bus test system.} \label{fig16} \end{figure}
+
+In Table~\ref{table 3}, the total scheduled costs determined by three UC models are $1.642  \!\times\!  10^6\$$, $1.652  \!\times\!  10^6\$$, and $1.655 \!\times\! 10^6\$ $, respectively, where such models that explicitly consider frequency dynamics (that are, FCUC and r-FCUC) result in slightly higher costs than TUC. This cost difference stems primarily from the explicit consideration of frequency dynamic requirements. Such conventional generators with sufficient frequency regulation capabilities are prioritized in FCUC and r-FCUC, and this characteristic is particularly noticeable during low-load periods, $e.g.$, $3$~h-$6$~h. During these periods, TUC schedules only a limited number of conventional generators to maintain power balance, these generators activated may not provide adequate system inertia or FCR, thus compromising frequency security. As such, additional generators must remain online under FCUC and r-FCUC to maintain the necessary inertia and ensure frequency stability.
+
+In Fig.~\ref{fig15}, the RoCoF and frequency nadir achieved by FCUC and r-FCUC demonstrates significant similarity, further validating the proposed model. Nevertheless, minor differences in the scheduling results and frequency dynamics between FCUC and r-FCUC are observed at certain dispatch intervals. For instance, the frequency nadir under r-FCUC is more conservative than that obtained by FCUC. Specifically, the nadir is slightly lower at time $21$ h (see Fig.~\ref{fig16}). This difference is primarily due to the number of activated generators (FCUC activates $36$ conventional generators, while r-FCUC activates $40$ ones). These differences arise from the distinct formulations of the frequency constraints. The frequency constraints in FCUC are derived from an analytical SFR, which implicitly assumes idealized, free uncertain-variability features. In contrast, r-FCUC uses frequency constraints based on the BF-SFR model, which explicitly incorporates uncertain-variability features. By considering the effects of frequency support implemented by converters and the associated fluctuations induced by uncertain-variability features themselves, r-FCUC seeks to balance maximizing converter integration for improved frequency security with mitigating the adverse effects of uncertain-variability residuals.
+
+
+\vspace{-0.05in} 
+
+\section{Conclusion} 
+
+\vspace{-0.025in}
+
+This paper presents a novel well-designed BF-SFR model for encoding frequency dynamic requirements within r-FCUC. The proposed model offers a flexible framework for incorporating advanced frequency control schemes and stochastic residuals, which effectively capture uncertain-variability features. Furthermore, a convex reformulation of the chance-constrained frequency nadir constraints derived from the BF-SFR is presented. Two case studies are conducted to validate the effectiveness and scalability of the proposed BF-SFR and r-FCUC methodologies.
+
+The key findings are as follows:
+$i)$ The frequency trajectory derived using BF-SFR aligns closely with simulated curves, and the posterior of frequency deviations with considering various levels of uncertain-variability features can be effectively visualized through BF-SFR.
+$ii)$ Incorporating frequency requirements into UC can increase scheduling costs and the number of online generators. However, the scheduling results from FCUC and r-FCUC significantly enhance system frequency security.
+$iii)$ r-FCUC demonstrates superior performance in balancing the participation of converters in frequency support while mitigating the internal effects of excessive uncertain-variability features.
+
+
+\bibliographystyle{ieeetran}
+\vspace{-0.1in}
+\noindent{\fontfamily{stix}\selectfont \fontsize{9}{9.5}\selectfont \bibliography{reference}}
+
+% \printbibliography
+
+\end{document}

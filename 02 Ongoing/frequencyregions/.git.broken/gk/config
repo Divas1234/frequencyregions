@@ -1,9 +1,0 @@
-[branch "main"]
-	gk-merge-base = origin/main
-	gk-last-accessed = 2026-04-16T02:12:39.739Z
-	gk-last-modified = 2026-04-15T15:56:16.488Z
-[branch "agents/refactor-code-structure-maintainability"]
-	gk-last-accessed = 2026-04-20T12:59:33.487Z
-	gk-last-modified = 2026-04-17T00:33:16.115Z
-[branch "feature/new-branch"]
-	gk-last-accessed = 2026-06-04T14:34:02.499Z

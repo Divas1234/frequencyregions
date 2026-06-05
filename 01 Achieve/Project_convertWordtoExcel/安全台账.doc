@@ -1,0 +1,81 @@
+<html>
+                    <head>
+                        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                    </head>
+                    <style type="text/css">
+                        tr{
+                        height: 40px;
+                                       }
+                                        td{
+                        padding-left: 4px;
+                                        }
+                    </style>
+                    <body>
+                        <h2 align="center"><u></u> 实验室安全隐患自查台账</h2>
+                        <p align="center"><b>学校名称：</b>______ <b>联系人：</b>______ <b>手机：</b>______ <b>报送日期：</b><u>2026-05-19 10:42:11</u></p>
+                        <table border="1" cellspacing="0" cellpadding="8" align="center" width="100%">
+                            <tr>
+                                <th width="5%">序号</th>
+                                <th>学院/单位</th>
+                                <th>实验室名称</th>
+                                <th>负责人</th>
+                                <th>检查活动</th>
+                                <th colspan="2">存在隐患</th>
+                                <th>隐患照片</th>
+                                <th>检查人</th>
+                                <th>检查时间</th>
+                                <th>整改依据</th>
+                                <th>整改期限</th>
+                                <th>整改落实及措施</th>
+                                <th>整改完成时间</th>
+                                <th>整改状态</th>
+                                <th>备注</th>
+                            </tr><tr> <td rowspan="2">1</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">IMD集成多学科发现中心@六号科研实验楼（B区）B504</td>
+                                        <td rowspan="2">LEYDECKER TIM,OLIVIER</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>烘箱画警戒线</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/54fa1952691b49f4b0ad6e562e1cba15"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>特殊设备应配备相应的安全防护措施</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>三氯甲烷不能长期放在手套箱中</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/dbf2df3974274a90bc55e77b8e7a3304"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>化学品有专用存放空间并科学有序存放</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="2">2</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">碳中和与环境能源新技术研究中心@六号科研实验楼（B区）B408</td>
+                                        <td rowspan="2">董帆</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>甲醇应该存放在危险化学品柜</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/ec9bc43a668f4db0be9e533c17820248"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>学校建有危险化学品储存区并规范管理</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>通风橱不能放清薄物品</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/cf671cbaaf234d87bae5105c4347027a"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>通风柜配置合理、使用正常、操作合规</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">3</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">柔性供能与集成电子器件@六号科研实验楼（B区）B503</td>
+                                        <td rowspan="1">王斌</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>气瓶与配电箱最好不要挨着存放</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/60fb4905912e4b31a2f76b5efcf9c0e4"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>实验室用电安全应符合国家标准（导则）和行业标准</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">4</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">碳中和与环境能源新技术研究中心@六号科研实验楼（B区）B407</td>
+                                        <td rowspan="1">董帆</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>信息牌信息不全</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/2ec5c85ef67c418eb5e3e7314052c9b6"><br><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/5953ab2ff04b434094205c7ce2ea4a5e"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>气体（气瓶）的存放和使用符合相关要求</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="2">5</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">智慧能源化学实验室@六号科研实验楼（B区）B509</td>
+                                        <td rowspan="2">彭翃杰</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>高温设备应该加警戒线</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/dfb5ebb84eae4e0fbc243b01026950c2"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>特殊设备应配备相应的安全防护措施</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>废电池没有正确放置</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/1828fb85a56044afbf5828a615f20402"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>学校应建设化学废弃物贮存站并规范管理</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">6</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">分子电化学@六号科研实验楼（B区）B416</td>
+                                        <td rowspan="1">崔春华</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>废液下没有托盘，废液没有黄色标签</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/6044303af2fc4b33b36e5c531ff6a68c"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>实验室内须规范收集化学废弃物</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="2">7</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">动态软物质实验室@六号科研实验楼（B区）B413</td>
+                                        <td rowspan="2">崔家喜</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>烘箱要加警戒线</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/1cdc66d009904b1ebe644b130170adaf"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>烘箱、电阻炉等加热设备须制定安全操作规程</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>配电箱前面被遮挡</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/5794499ed91b4f5baad9695339848bad"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>实验室用电安全应符合国家标准（导则）和行业标准</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="2">8</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">晶态功能分子材料@六号科研实验楼（B区）B511</td>
+                                        <td rowspan="2">郭富盛</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>液氮罐防冻伤标志</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/acf1a978d4844264be96255c5e6467f7"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>特殊设备应配备相应的安全防护措施</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>气瓶未固定</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/3b53542f65464f2592685c4694c5c92b"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>气体（气瓶）的存放和使用符合相关要求</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">9</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">多维碳材料与光电器件实验室@六号科研实验楼（B区）B506</td>
+                                        <td rowspan="1">黄明</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>清薄的东西不能放在通风橱</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/066ebedc511942b68b97362cda596ddd"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>通风柜配置合理、使用正常、操作合规</td><td>2026-04-30 00:00:00</td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="3">10</td>
+                                        <td rowspan="3">基础与前沿研究院</td>
+                                        <td rowspan="3">IMD集成多学科发现中心@六号科研实验楼（B区）B502</td>
+                                        <td rowspan="3">潘亮</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>无水乙醇需要存放到危化品柜中</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/d661417c91484799bdb0dcbef2c2550a"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>学校建有危险化学品储存区并规范管理</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>烘箱画警戒线</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/54fa1952691b49f4b0ad6e562e1cba15"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>特殊设备应配备相应的安全防护措施</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">3</td><td>三氯甲烷不能长期放在手套箱中</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/dbf2df3974274a90bc55e77b8e7a3304"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>化学品有专用存放空间并科学有序存放</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">11</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">新型发光材料与应用@六号科研实验楼（B区）B519</td>
+                                        <td rowspan="1">林克斌</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>无水乙醇应该放在危化品柜</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/0e177b58bfe34d59a1e7725f1bc9ab5a"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>学校建有危险化学品储存区并规范管理</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">12</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">分子电化学@六号科研实验楼（B区）B418</td>
+                                        <td rowspan="1">崔春华</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>配电箱位置遮挡</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/a23896792e664359bfbd57d132cb3b22"><br></td><td>胥汶渲</td><td>2026-04-28 15:50:31</td><td>实验室用电安全应符合国家标准（导则）和行业标准</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="2">13</td>
+                                        <td rowspan="2">基础与前沿研究院</td>
+                                        <td rowspan="2">纳米化学与自组装实验室@六号科研实验楼（B区）B415</td>
+                                        <td rowspan="2">THUMU UDAYABHASKARARAO</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>废液加托盘，贴黄色废液标签</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/f25bdb30a0f44a28861ec235a3aa5d19"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>实验室内须规范收集化学废弃物</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">2</td><td>危化品不能集中放在危化品柜中</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/9c7d46e03e984691964a043be06b80ef"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>学校建有危险化学品储存区并规范管理</td><td></td><td></td><td></td><td>待整改</td><td></td></tr><tr> <td rowspan="1">14</td>
+                                        <td rowspan="1">基础与前沿研究院</td>
+                                        <td rowspan="1">碳中和与环境能源新技术研究中心@六号科研实验楼（B区）B406</td>
+                                        <td rowspan="1">董帆</td><td>2026年五一节前校级实验室安全专项隐患排查</td><td width="20px">1</td><td>不清楚什么液体，没有贴专门的化学（废）品标签</td><td><img width="100" height="100" align="center" src="https://labcheck.uestc.edu.cn/lab-platform-server/getFile/43b448d91fe3410a993305d00bdaa8ab"><br></td><td>孙昊一</td><td>2026-04-28 15:49:16</td><td>实验室内须规范收集化学废弃物</td><td></td><td></td><td></td><td>待整改</td><td></td></tr> <tr>
+                        <td colspan="2"><b>合计</b></td>
+                        <td colspan="14"><b>发现隐患数：22</b> <b>已整改数：0</b> <b>已制定方案准备整改数：0</b></td>
+                    </tr>
+                </table>
+            </body>
+       </html>

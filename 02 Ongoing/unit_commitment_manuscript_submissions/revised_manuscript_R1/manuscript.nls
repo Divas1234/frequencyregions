@@ -1,0 +1,107 @@
+
+\begin{thenomenclature} 
+\nomgroup{I}
+  \item [{$\mathcal{B}$}]\begingroup Set of buses\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{D}$}]\begingroup Set of load demands\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{E}$}]\begingroup Set of BESSs\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{G}$}]\begingroup Set of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{L}$}]\begingroup Set of transmission lines\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{S}$}]\begingroup Set of stochastic scenarios\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{T}$}]\begingroup Set of scheduled periods\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{W}$}]\begingroup Set of wind farms\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{W}_{1}$}]\begingroup Set of wind farms through virtual inertia (VI) control schemes\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{W}_{2}$}]\begingroup Set of wind farms through droop control schemes\nomeqref {0}\nompageref{1}
+  \item [{$\mathcal{Z}$}]\begingroup Set of unit's production cost blocks\nomeqref {0}\nompageref{1}
+  \item [{$b$}]\begingroup Index of bus\nomeqref {0}\nompageref{1}
+  \item [{$d$}]\begingroup Index of load demand\nomeqref {0}\nompageref{1}
+  \item [{$e$}]\begingroup Index of battery energy storage systems (BESS)\nomeqref {0}\nompageref{1}
+  \item [{$g$}]\begingroup Index of conventional generator\nomeqref {0}\nompageref{1}
+  \item [{$l$}]\begingroup Index of transmission line\nomeqref {0}\nompageref{1}
+  \item [{$s$}]\begingroup Index of stochastic scenario\nomeqref {0}\nompageref{1}
+  \item [{$t$}]\begingroup Index of scheduled period\nomeqref {0}\nompageref{1}
+  \item [{$w$}]\begingroup Index of wind farm\nomeqref {0}\nompageref{1}
+  \item [{$z$}]\begingroup Index of unit's production cost blocks\nomeqref {0}\nompageref{1}
+\nomgroup{P}
+  \item [{$\bar{p_{l}}$}]\begingroup Capacity of transmission line $l$\nomeqref {0}\nompageref{1}
+  \item [{$\bar{p}_{e}^{dis/ch}$}]\begingroup Discharging/charging capacity of BESS $e$\nomeqref {0}\nompageref{1}
+  \item [{$\bar{q_{{e}}}$}]\begingroup Capacity of BESS $e$\nomeqref {0}\nompageref{1}
+  \item [{$\delta t$}]\begingroup discretized time step ($0.05$s, by default)\nomeqref {0}\nompageref{1}
+  \item [{$\eta_e^{{dis/ch}}$}]\begingroup Discharging/charging efficiency of BESS $e$\nomeqref {0}\nompageref{1}
+  \item [{$\gamma_g^{{ru/sd}}$}]\begingroup Upward/downward Ramping Capacity of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$\gamma_g^{{su/sd}}$}]\begingroup Start-up/shut-down Ramping capacity of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$\gamma_{rocof}$}]\begingroup Threshold of Rate-of-Change-of-Frequency~(RoCoF)\nomeqref {0}\nompageref{1}
+  \item [{$\gamma_{{nadir}}$}]\begingroup Threshod of frequency nadir\nomeqref {0}\nompageref{1}
+  \item [{$\kappa_{l,b}$}]\begingroup Generator shift distribution factor~(GSDF) between line $l$ and injected power located at bus $b$\nomeqref {0}\nompageref{1}
+  \item [{$\lambda_{load}^{up/dw}$}]\begingroup Upforeward/downforeward load reserve coefficient\nomeqref {0}\nompageref{1}
+  \item [{$\pi_s$}]\begingroup Possibility of stochastic scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$\underline{p_{g}}, \overline{p_g}$}]\begingroup Min/max output of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta f(t)$}]\begingroup Frequency derivation at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{E}$}]\begingroup Additional power of BESS\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{G}$}]\begingroup Additional power of conventional units\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{W_{1}}$}]\begingroup Additional power of wind farms with VI control\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{W_{2}}$}]\begingroup Additional power of wind farms with droop control\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{{step}}$}]\begingroup Mismatch power disturbance\nomeqref {0}\nompageref{1}
+  \item [{$a_{g}^{z},b_{g}^{z}$}]\begingroup Slope/intercept of operation cost block $z$ of unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$C_{g}^{{up/dw/nl}}$}]\begingroup Shut-up/shut-down/no-load cost of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$C_{{VoLL}}$}]\begingroup Risk cost of Value-of-Lost-Load (VoLL)\nomeqref {0}\nompageref{1}
+  \item [{$D_{\varSigma,t}$}]\begingroup Aggregated equivalent damping of the system at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$D_{\varSigma}$}]\begingroup Aggregated equivalent damping of the system\nomeqref {0}\nompageref{1}
+  \item [{$D_{G}$}]\begingroup Aggregated damping of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$D_{g}$}]\begingroup Damping of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$F_g^{z}$}]\begingroup Slope of cost block $z$ of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$F_{G}$}]\begingroup Aggregated fraction representing total power generated by turbine of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$F_{g}$}]\begingroup Fraction representing total power generated by turbine of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$H_{\varSigma,t}$}]\begingroup Aggregated equivalent inertia of the system at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$H_{\varSigma}$}]\begingroup Aggregated equivalent inertia\nomeqref {0}\nompageref{1}
+  \item [{$H_{G}$}]\begingroup Aggregated inertia of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$H_{g}$}]\begingroup Inertia of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$H_{W}$}]\begingroup Aggregated inertia of wind farms with virtual inertia control\nomeqref {0}\nompageref{1}
+  \item [{$H_{w}$}]\begingroup Inertia of wind farm $w$ with virtual inertia control\nomeqref {0}\nompageref{1}
+  \item [{$K_{G}$}]\begingroup Aggregated gain of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$K_{g}$}]\begingroup Gain of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$K_{W}$}]\begingroup Aggregated gain of wind farms with droop control\nomeqref {0}\nompageref{1}
+  \item [{$K_{w}$}]\begingroup Gain of wind farm $w$ with droop control\nomeqref {0}\nompageref{1}
+  \item [{$M$}]\begingroup Big number for linearized constraint reformulation\nomeqref {0}\nompageref{1}
+  \item [{$p_{b,s,t}^{inj}$}]\begingroup Injected output located at bus $b$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$p_{b,s,t}^{net}$}]\begingroup Real load demand located at bus $b$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$p_{w,s,t}^{{fore}}$}]\begingroup Forecasted output of wind farm $w$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$p_{{d,t}}$}]\begingroup Demand consumpution of load $d$\nomeqref {0}\nompageref{1}
+  \item [{$q_{{e,s,t}}$}]\begingroup Accumulated energy of BESS $e$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$R_{E}$}]\begingroup Aggregated droop of BESSs\nomeqref {0}\nompageref{1}
+  \item [{$R_{e}$}]\begingroup Droop of BESS $e$\nomeqref {0}\nompageref{1}
+  \item [{$R_{G}$}]\begingroup Aggregated droop of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$R_{g}$}]\begingroup Droop of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$R_{W}$}]\begingroup Aggregated droop of wind farms with droop control\nomeqref {0}\nompageref{1}
+  \item [{$R_{w}$}]\begingroup Droop of wind farm $w$ with droop control\nomeqref {0}\nompageref{1}
+  \item [{$S_{total}$}]\begingroup Total value of available generation capacities\nomeqref {0}\nompageref{1}
+  \item [{$t_0$}]\begingroup Initial time of power disturbance\nomeqref {0}\nompageref{1}
+  \item [{$T_{E}$}]\begingroup Aggregated time constant of BESSs\nomeqref {0}\nompageref{1}
+  \item [{$T_{e}$}]\begingroup Time constant of BESS $e$\nomeqref {0}\nompageref{1}
+  \item [{$T_{G}$}]\begingroup Aggregated time constant of conventional generators\nomeqref {0}\nompageref{1}
+  \item [{$T_{g}$}]\begingroup Time constant of conventional generator $g$\nomeqref {0}\nompageref{1}
+  \item [{$T_{g}^{su/sd}$}]\begingroup Shut-on/shut-down duration of conventional unit $g$\nomeqref {0}\nompageref{1}
+  \item [{$t_{IR}$}]\begingroup Duration of inertia response (IR) process\nomeqref {0}\nompageref{1}
+  \item [{$t_{PFR}$}]\begingroup Duration of primary frequency response (PFR) process\nomeqref {0}\nompageref{1}
+  \item [{$T_{W}$}]\begingroup Aggregated time constant of wind farms\nomeqref {0}\nompageref{1}
+  \item [{$T_{w}$}]\begingroup Time constant of wind farm $w$\nomeqref {0}\nompageref{1}
+\nomgroup{V}
+  \item [{$\varDelta p_{d,s,t}$}]\begingroup Forced-load-curtailment at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$\varDelta p_{w,s,t}$}]\begingroup Abandoned output of wind farm $w$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$D_{G,t}$}]\begingroup Aggregated damping of conventional units at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$D_{W,t}$}]\begingroup Aggregated damping of wind farms at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$F_{G,t}$}]\begingroup Aggregated fraction of mechanical power generated by conventional units at time$t$\nomeqref {0}\nompageref{1}
+  \item [{$H_{G,t}$}]\begingroup Aggregated inertia of conventional units at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$H_{W,t}$}]\begingroup Aggregated inertia of wind farms at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$K_{G,t}$}]\begingroup Aggregated gain of conventional units at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$p_{e,s,t}^{{dis/ch}}$}]\begingroup Discharge/charge power of BESS $e$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$p_{g,s,t}$}]\begingroup Output of unit $g$ at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$p_{g,s,t}^{z}$}]\begingroup Output of conventional unit $g$ at time $t$ under scenario $s$ corresponding to related cost block $z$\nomeqref {0}\nompageref{1}
+  \item [{$R_{E,t}$}]\begingroup Aggregated droop of BESS at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$R_{G,t}$}]\begingroup Aggregated droop of conventional units at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$R_{W,t}$}]\begingroup Aggregated droop of wind farms at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$u_{e,s,t}^{{dis/ch}}$}]\begingroup Discharge/charge status of BESS at time $t$ under scenario $s$\nomeqref {0}\nompageref{1}
+  \item [{$u_{g,t}$}]\begingroup Shut-up decision of conventional unit $g$ at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$v_{g,t}$}]\begingroup Shut-down decision of conventional unit $g$ at time $t$\nomeqref {0}\nompageref{1}
+  \item [{$x_{g,t}$}]\begingroup Operation status of conventional unit $g$ at time $t$\nomeqref {0}\nompageref{1}
+
+\end{thenomenclature}
