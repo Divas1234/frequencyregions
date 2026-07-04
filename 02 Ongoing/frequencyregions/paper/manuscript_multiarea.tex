@@ -1,0 +1,221 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{balance}
+\usepackage{cite}
+\usepackage{tabularx}
+\hyphenpenalty=25
+\tolerance=10000
+\allowdisplaybreaks[4]
+\usepackage{tcolorbox}
+\newcommand{\ciao}[1]{{\setlength\fboxrule{0pt}\fbox{\tcbox[colframe=black,colback=white,shrink tight,boxrule=0.5pt,extrude by=1mm]{\small #1}}}}
+
+\setlength{\abovedisplayskip}{1ex}
+\setlength{\belowdisplayskip}{1ex}
+\setlength{\textfloatsep}{0.75\baselineskip plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{0.75\baselineskip plus 2pt minus 2pt}
+
+\usepackage[colorlinks=true,linkcolor=black,citecolor=blue,urlcolor=blue,]{hyperref}
+
+\begin{document}
+
+\title{\vspace{-0.5cm}
+Multi-Area Frequency Security Region with Dynamic Tie-Line Mutual Assistance
+}
+\author{Yiping Yuan, Member, \textit{IEEE}, Liqian Zhu, Student Member, \textit{IEEE}, Zhenyuan Zhang, Senior Member, \textit{IEEE}, Weihao Hu, Senior Member, \textit{IEEE}, Zhe Chen, Fellow, \textit{IEEE}
+}
+\IEEEaftertitletext{\vspace{-2.5\baselineskip}}
+
+\markboth{Journal of \LaTeX\ Class Files,~Vol.~18, No.~9, September~2020}%
+{Multi-area frequency security region with dynamic tie-line mutual assistance}
+
+\maketitle
+
+\begin{abstract}
+As power systems move toward low-inertia operation, frequency security increasingly depends on where inertia and damping resources are located. Existing single-area $H$-$D$ support sets identify feasible inertia-damping bounds, but they do not capture dynamic assistance through inter-area tie-lines. This letter proposes a multi-area frequency security region (MA-FSR) framework for quantifying regional operating bounds under coupled frequency dynamics. The framework combines a decoupled analytical approximation with a state-space dynamic search that accounts for tie-line capacity and synchronizing stiffness limits. Case studies on the IEEE two-area Kundur system show that dynamic mutual assistance can substantially expand feasible $H$-$D$ regions, especially in the disturbed area. The MA-FSR therefore provides a compact way to evaluate how interconnection strength changes regional frequency-security margins.
+\end{abstract}
+
+\begin{IEEEkeywords}
+System frequency response, multi-area power systems, tie-line mutual assistance, frequency security region.
+\end{IEEEkeywords}
+
+\vspace{-0.25cm}
+
+\section{Introduction}
+\IEEEPARstart{T}{he} rapid integration of converter-interfaced generation (CIG) is reducing the rotational inertia available in modern power grids. Frequency-security constraints, including rate of change of frequency (RoCoF) and frequency nadir, have therefore become binding limits in unit commitment, dispatch, and planning studies~\cite{8918440,10168982,markovic2019optimal,9765359}. The single-area $H$-$D$ support set~\cite{manuscript} provides a compact representation of feasible equivalent inertia ($H$) and damping ($D$) parameters. However, practical power systems are organized as interconnected control areas. Their regional frequency responses are reshaped by tie-line power exchange, which cannot be represented by an isolated single-area model.
+
+This letter extends the frequency security region concept to multi-area power systems. During a contingency, the disturbed area can import power from healthy areas, thereby reducing its local frequency excursion. We study this effect using two complementary evaluation methods. Option A is a decoupled analytical approximation that treats tie-line exchange as an equivalent reduction in step disturbance. Option B is a dynamic simulation-based bisection search that preserves the coupled multi-state interaction and the nonlinear tie-line capacity limit. The resulting multi-area frequency security region (MA-FSR) is visualized in the $H$-$D$ plane, and the effects of tie-line capacity ($C_{12}$) and synchronizing stiffness ($T_{12}$) are quantified. The simulation repository is open-sourced at \url{https://github.com/Divas1234/frequencyregions.git}.
+
+\vspace{-0.25cm}
+\section{Multi-Area Frequency Dynamics \& Modeling}
+
+Consider a two-area interconnected power system in which Area 1 is disturbed by a step power imbalance $\Delta P_1$, while Area 2 provides dynamic mutual assistance through the tie-line.
+
+\subsection{Option A: Decoupled Approximation}
+In the decoupled approach, tie-line exchange is approximated as a static contribution to the area power imbalance. For Area $i$ connected to neighboring areas, the effective disturbance $\Delta P_{eff,i}$ is defined as
+\vspace{-0.15cm}
+\begin{equation}
+\Delta P_{eff,i} = \Delta P_i + \sum_{j \in \Omega_i} \kappa_{ij} C_{ij}
+\vspace{-0.15cm}
+\end{equation}
+where $C_{ij}$ is the tie-line transmission capacity, and $\kappa_{ij} \in [-1, 1]$ represents the direction and magnitude of the assisting power flow. The single-area analytical bounds in~\cite{manuscript} are then evaluated with $\Delta P_{eff,i}$ to construct decoupled $H$-$D$ regions.
+
+\subsection{Option B: Dynamic State-Space Modeling}
+To capture the transient interaction, the interconnected system is represented by a five-state model. For each area $i \in \{1, 2\}$, the coupled swing equation is
+\vspace{-0.15cm}
+\begin{equation}
+2 H_i \dot{\Delta f_i} = \Delta P_{m,i} - D_i \Delta f_i - \Delta P_{dist,i} + \Delta P_{tie,i}
+\vspace{-0.15cm}
+\end{equation}
+where $\Delta P_{tie,1} = \Delta P_{tie}$ and $\Delta P_{tie,2} = -\Delta P_{tie}$. The governor-turbine systems are modeled as:
+\vspace{-0.15cm}
+\begin{subequations}
+\begin{align}
+\Delta P_{m,i} &= - K_{m,i} \Delta f_i + x_{g,i} \\
+\dot{x}_{g,i} &= \frac{1}{T_{g,i}} \left[ - (1/R_i - K_{m,i}) \Delta f_i - x_{g,i} \right]
+\end{align}
+\end{subequations}
+where $T_{g,i}$ is the turbine-governor time constant, $R_i$ is the droop gain, and $K_{m,i}$ is the high-pressure fraction. The tie-line power flow is governed by
+\vspace{-0.15cm}
+\begin{equation}
+\dot{\Delta P}_{tie} = 2 \pi f_0 T_{12} (\Delta f_2 - \Delta f_1)
+\vspace{-0.15cm}
+\end{equation}
+subject to the capacity saturation constraint $|\Delta P_{tie}| \leq C_{12}$, where $T_{12}$ is the synchronizing coefficient and $f_0 = 50$ Hz is the nominal frequency.
+
+Defining the state vector $x = [\Delta f_1, x_{g,1}, \Delta f_2, x_{g,2}, \Delta P_{tie}]^T$ and input vector $u = [\Delta P_{dist,1}, \Delta P_{dist,2}]^T$, the unsaturated dynamics can be written in state-space form as
+\begin{equation}
+\dot{x} = A x + B u
+\end{equation}
+where the state matrix $A$ and input matrix $B$ are
+{\small
+\begin{equation*}
+A = \begin{bmatrix}
+-\frac{D_1 + K_{m,1}}{2H_1} & \frac{1}{2H_1} & 0 & 0 & \frac{1}{2H_1} \\
+-\frac{1/R_1 - K_{m,1}}{T_{g,1}} & -\frac{1}{T_{g,1}} & 0 & 0 & 0 \\
+0 & 0 & -\frac{D_2 + K_{m,2}}{2H_2} & \frac{1}{2H_2} & -\frac{1}{2H_2} \\
+0 & 0 & -\frac{1/R_2 - K_{m,2}}{T_{g,2}} & -\frac{1}{T_{g,2}} & 0 \\
+-2\pi f_0 T_{12} & 0 & 2\pi f_0 T_{12} & 0 & 0
+\end{bmatrix}
+\end{equation*}
+}
+{\small
+\begin{equation*}
+B = \begin{bmatrix}
+-\frac{1}{2H_1} & 0 \\
+0 & 0 \\
+0 & -\frac{1}{2H_2} \\
+0 & 0 \\
+0 & 0
+\end{bmatrix}^T
+\end{equation*}
+}
+When the tie-line power flow reaches the transmission limit, $\Delta P_{tie}$ is clamped to $\pm C_{12}$ and the corresponding state derivative $\dot{\Delta P}_{tie}$ is set to zero.
+
+\vspace{-0.25cm}
+\section{Multi-Area Frequency Security Region}
+The MA-FSR is defined as the set of regional inertia ($H_i$) and damping ($D_i$) parameters that satisfy both local and system-wide frequency-security constraints:
+\vspace{-0.15cm}
+\begin{subequations}
+\begin{align}
+\max |\Delta f_i(t)| &\leq \gamma_{Nadir,i}, \quad \forall i \\
+\max |\dot{\Delta f}_i(t)| &\leq \gamma_{RoCoF,i}, \quad \forall i \\
+\zeta_i &\leq 1.0, \quad \forall i
+\end{align}
+\end{subequations}
+Because the initial RoCoF occurs at $t = 0^+$, before the tie-line flow deviates, the local RoCoF boundary remains independent of tie-line parameters:
+\vspace{-0.15cm}
+\begin{equation}
+H_{i,RoCoF} = \frac{\Delta P_{dist,i}}{2 \gamma_{RoCoF,i}}
+\vspace{-0.15cm}
+\end{equation}
+
+Following the single-area $H$-$D$ support-set derivation in~\cite{manuscript}, the dynamic feasibility of Area $i$ can be separated into local stability bounds and frequency-performance bounds. Let $D_i$ be fixed during boundary tracing. The damping-dependent stability interval is written as
+\vspace{-0.15cm}
+\begin{subequations}
+\begin{align}
+H_{i,stab}^{-}(D_i) &=
+\frac{T_{g,i}}{2}\left(\eta_i-\sqrt{\eta_i^2-(D_i+K_{m,i})^2}\right),\\
+H_{i,a}^{+}(D_i) &=
+\frac{T_{g,i}}{2}\left(\eta_i+\sqrt{\eta_i^2-(D_i+K_{m,i})^2}\right),\\
+H_{i,b}^{+}(D_i) &= \frac{T_{g,i}}{2}(D_i+K_{m,i}),\\
+H_{i,stab}^{+}(D_i) &= \min\!\left[H_{i,a}^{+}(D_i),\,H_{i,b}^{+}(D_i)\right],
+\end{align}
+\vspace{-0.15cm}
+\label{eq:stab_bounds}
+\end{subequations}
+where $\eta_i = D_i-K_{m,i}+2/R_i$. These bounds are inherited from the damping-ratio condition $0 \leq \zeta_i \leq 1$ and prevent the search from accepting frequency trajectories that satisfy nadir limits but violate local modal damping requirements.
+
+The nadir boundary is denoted by $H_{i,Nadir}(D_i)$. Under Option A, it is obtained by evaluating the closed-form single-area nadir expression with $\Delta P_{eff,i}$. Under Option B, it is obtained from the coupled time-domain trajectory. The lower and upper MA-FSR envelopes are therefore
+\vspace{-0.15cm}
+\begin{subequations}
+\begin{align}
+H_i^{-}(D_i) &= \max\!\left[
+H_{i,RoCoF},\, H_{i,stab}^{-}(D_i),\, H_{i,Nadir}(D_i)
+\right],\\
+H_i^{+}(D_i) &= H_{i,stab}^{+}(D_i).
+\end{align}
+\vspace{-0.15cm}
+\label{eq:mafsr_envelope}
+\end{subequations}
+The area is feasible at damping $D_i$ only if $H_i^{-}(D_i) \leq H_i^{+}(D_i)$. This construction turns each regional frequency-security requirement into an explicit geometric boundary in the $H$-$D$ plane.
+
+To compute the MA-FSR boundary under Option B, a bisection search is performed:
+\begin{enumerate}
+    \item For a given damping value $D_i$ in Area $i$, initialize the regional inertia interval $[H_{min}, H_{max}]$.
+    \item At $H_{mid} = \frac{1}{2}(H_{min} + H_{max})$, simulate the five-state model using fourth-order Runge-Kutta integration.
+    \item Track $\Delta f_j(t)$ for all areas $j \in \{1, 2\}$ and test the nadir condition $\max |\Delta f_j(t)| \leq \gamma_{Nadir,j}$.
+    \item If both areas satisfy the nadir constraints, set $H_{max} = H_{mid}$; otherwise, set $H_{min} = H_{mid}$.
+    \item The search terminates when $|H_{max} - H_{min}| < \epsilon$ (where $\epsilon = 10^{-3}$), yielding the critical inertia limit $H_{i,crit}(D_i)$.
+\end{enumerate}
+A quadratic regression is then fitted:
+\vspace{-0.15cm}
+\begin{equation}
+H_{i,crit}(D_i) = c_0 + c_1 D_i + c_2 D_i^2
+\vspace{-0.15cm}
+\end{equation}
+The fitted $H_{i,crit}(D_i)$ is used as $H_{i,Nadir}(D_i)$ in~\eqref{eq:mafsr_envelope}. The feasible operating region is then obtained by sweeping $D_i$ and retaining the interval between $H_i^{-}(D_i)$ and $H_i^{+}(D_i)$.
+
+\vspace{-0.25cm}
+\section{Case Studies and Analysis}
+The IEEE two-area Kundur test system is used for verification. Both areas have nominal droop gains $1/R_i = 33.33$ p.u. and turbine parameters $T_{g,i} = 0.25$ s and $K_{m,i} = 0.35$. The nadir and RoCoF thresholds are $\gamma_{Nadir,i} = 0.5$ Hz and $\gamma_{RoCoF,i} = 0.5$ Hz/s. Area 1 is subjected to a local step contingency of $\Delta P_1 = 3.5$ p.u., while Area 2 has $\Delta P_2 = 2.0$ p.u. The nominal tie-line parameters are $T_{12} = 4.0$ p.u. and $C_{12} = 1.0$ p.u.
+
+\begin{figure*}[!t]
+  \centering
+  \includegraphics[width=\textwidth]{multiarea_comparison_dynamic.pdf}\vspace{-0.1cm}
+  \caption{MA-FSR comparison between isolated and interconnected states under Option B.}\vspace{-0.25cm}
+  \label{fig:comparison}
+\end{figure*}
+
+\subsection{MA-FSR Expansion under Interconnection}
+Fig.~\ref{fig:comparison} compares the feasible operating regions of Area 1 and Area 2 in the $H$-$D$ plane. The isolated case uses $C_{12} = 0$, whereas the interconnected case uses $C_{12} = 1.0$ p.u. In Area 1, which experiences the heavier disturbance, interconnection shifts the nadir boundary downward. At nominal damping, the required inertia decreases from approximately $99.6$ s to $59.5$ s, which substantially enlarges the feasible region. In Area 2, the interconnected nadir boundary reaches the search floor of $0.05$ s because Area 2 is supported by Area 1's nominal inertia ($H_1 = 8.0$ s). Its feasible region is therefore governed mainly by the local RoCoF requirement, $H_2 \geq 4.0$ s.
+
+\subsection{Impact of Tie-Line Capacity and Stiffness}
+Fig.~\ref{fig:capacity} shows how Area 1's security region changes with tie-line capacity $C_{12}$ and synchronizing stiffness $T_{12}$. As $C_{12}$ increases from 0 to 4.0 p.u. (Fig.~\ref{fig:capacity}a), the critical inertia boundary decreases progressively. Once $C_{12}$ exceeds the peak tie-line power flow of approximately 2.5 p.u., additional capacity no longer expands the feasible region. Increasing $T_{12}$ (Fig.~\ref{fig:capacity}b) accelerates inter-area power transfer, reduces the transient frequency drop in Area 1, and further enlarges the feasible $H$-$D$ region.
+
+\begin{figure*}[!t]
+  \centering
+  \subfloat[Tie-line capacity sweep]{\includegraphics[width=0.495\textwidth]{multiarea_capacity_impact.pdf}}\hfill
+  \subfloat[Stiffness sweep]{\includegraphics[width=0.495\textwidth]{multiarea_stiffness_impact.pdf}}\vspace{-0.1cm}
+  \caption{Impact of tie-line capacity $C_{12}$ and stiffness $T_{12}$ on Area 1's feasible boundary.}\vspace{-0.25cm}
+  \label{fig:capacity}
+\end{figure*}
+
+\vspace{-0.25cm}
+\section{Conclusion}
+This letter extends the frequency security region framework to multi-area power systems. By combining a decoupled approximation with a nonlinear dynamic simulator, the proposed MA-FSR characterizes regional $H$-$D$ operating bounds under tie-line mutual assistance. The IEEE two-area Kundur case shows that interconnection can substantially relax the disturbed area's inertia requirement, while the benefit saturates when tie-line capacity exceeds the peak assisting power flow. The MA-FSR provides a compact tool for coordinating regional frequency-control parameters and assessing multi-area scheduling security under explicit tie-line limits.
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,reference}
+
+\end{document}

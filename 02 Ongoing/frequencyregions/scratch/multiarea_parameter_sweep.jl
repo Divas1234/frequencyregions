@@ -3,7 +3,7 @@
 
 using Pkg
 Pkg.activate(".Pkg/")
-
+using Printf
 include("../src/environment_config.jl")
 
 println("\n=== Multi-Area Frequency Security Region Parametric Sweep ===")
@@ -23,12 +23,12 @@ for factor in factors
     res = run_multiarea_analysis(;
         system = system,
         decoupling_factor = factor,
-        output_path = "res/sweep_vertices_factor_$(factor).txt"
+        output_path = "res/multi_area/sweep_vertices_factor_$(factor).txt"
     )
     
     # Save the academic plots
-    comparison_pdf = "fig/sweep_factor_$(factor)_comparison.pdf"
-    overlay_pdf = "fig/sweep_factor_$(factor)_overlay.pdf"
+    comparison_pdf = "fig/multi_area/sweep_factor_$(factor)_comparison.pdf"
+    overlay_pdf = "fig/multi_area/sweep_factor_$(factor)_overlay.pdf"
     
     try
         Plots.savefig(res.comparison_plot, comparison_pdf)
@@ -41,7 +41,7 @@ for factor in factors
     
     # Extract numerical results for the report
     area_summaries = []
-    for ar in res.results
+    for ar in res.decoupled_results
         nv = length(ar.result.vertices)
         min_h = nv > 0 ? minimum([v[3] for v in ar.result.vertices]) : NaN
         max_h = nv > 0 ? maximum([v[3] for v in ar.result.vertices]) : NaN
