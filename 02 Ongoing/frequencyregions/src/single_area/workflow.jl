@@ -36,8 +36,9 @@ result = execute_workflow(33.0, comp_cfg, controller_cfg)
 ```
 """
 function execute_workflow(droop::Float64, config::ComputationConfig, 
-                         controller_config::ControllerConfig)::ComputationResult
+                          controller_config::ControllerConfig)::ComputationResult
     
+    println("  -> Step 2.1: Initializing workflow state for droop = $droop...")
     # Initialize state
     system_params = create_system_parameters(config.flag_converter)
     state = WorkflowState(controller_config, system_params, config)
@@ -53,12 +54,15 @@ function execute_workflow(droop::Float64, config::ComputationConfig,
         system_params.power_deviation
     )
     
+    println("  -> Step 2.2: Validating controller and system parameter constraints...")
     # Validate all configurations
     validate_all_configurations(state)
     
+    println("  -> Step 2.3: Computing inertia stability boundaries by sweeping damping...")
     # Compute inertia bounds and parameters
     compute_inertia_bounds(state)
     
+    println("  -> Step 2.4: Estimating dynamic inertia limits...")
     # Estimate inertia limits
     min_inertia, max_inertia = estimate_inertia_limits(
         state.system_params.rocof_threshold,
@@ -71,13 +75,16 @@ function execute_workflow(droop::Float64, config::ComputationConfig,
     
     validate_inertia_limits(min_inertia, max_inertia)
     
+    println("  -> Step 2.5: Performing quadratic regression fitting on inertia boundaries...")
     # Compute fitting parameters
     state.fitting_parameters = calculate_fittingparameters(state.extreme_inertia, 
                                                            state.computation_config.damping_range)
     
+    println("  -> Step 2.6: Generating safety region visualization plot...")
     # Generate visualization
     plot = generate_visualization(state, min_inertia, max_inertia)
     
+    println("  -> Step 2.7: Extracting feasible region boundary vertices...")
     # Calculate vertices (feasible region corners)
     vertices = calculate_vertex(
         state.computation_config.damping_range,
@@ -90,6 +97,7 @@ function execute_workflow(droop::Float64, config::ComputationConfig,
         droop
     )
     
+    println("  -> Step 2.8: Single-area workflow calculation complete.")
     # Return structured result
     return ComputationResult(
         droop,

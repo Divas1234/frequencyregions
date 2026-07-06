@@ -1,62 +1,73 @@
 """
     multi_area/topology.jl
 
-Defines built-in multi-area test systems and provides MATPOWER/PSS-E import.
+English: Defines built-in multi-area test systems and provides stubs for MATPOWER/PSS-E network import.
+Chinese: 定义内置的多区域测试系统，并提供 MATPOWER/PSS-E 网络导入的存根。
+
 Uses AreaParameters, TieLine, and MultiAreaSystem from common/types.jl.
+使用 common/types.jl 中的 AreaParameters、TieLine 和 MultiAreaSystem。
 """
 
 """
     build_ieee_2area_kundur() -> MultiAreaSystem
 
-Builds the classic IEEE 2-area Kundur system (4 generators, 2 areas).
+English: Builds the classic IEEE 2-area Kundur test system (4 generators, 2 areas).
+Chinese: 构建经典 IEEE 双区 Kundur 测试系统（4 台发电机，2 个区域）。
 
-# Parameters (per-unit, base 100 MVA)
+# Parameters (per-unit, base 100 MVA) / 参数标么值 (100 MVA 基准容量)
 
-## Area 1 ("North")
-- Equivalent inertia: H_eq ≈ 6.5 s  (2 generators × 6.5s each aggregated)
-- Frequency regulation: R = 0.05  → droop = 1/0.05 = 20
-- Factorial coefficient (turbine fraction): K_m = 0.35 (OCGT)
-- Governor time constant: T_g = 0.25 s
-- Largest credible contingency: 3.5 p.u. (nuclear unit trip)
+## Area 1 ("North" / 北区)
+- Equivalent inertia (等效惯性): H_eq ≈ 8.0 s
+- Turbine fraction (汽轮机原动机比例): K_m = 0.35 (OCGT)
+- Governor time constant (调速器时间常数): T_g = 0.25 s
+- Regulation droop (调速器下垂系数): R = 0.03  → droop = 1/R ≈ 33.33
+- ROCOF threshold (频率变化率阈值): 0.5 Hz/s
+- NADIR threshold (最低点频率偏差阈值): 0.5 Hz
+- Largest credible contingency (最大故障扰动量): 3.5 p.u. (e.g., nuclear unit trip)
 
-## Area 2 ("South")  
-- Equivalent inertia: H_eq ≈ 6.5 s  (2 generators × 6.5s each aggregated)
-- Frequency regulation: R = 0.04  → droop = 1/0.04 = 25
-- Factorial coefficient: K_m = 0.35
-- Governor time constant: T_g = 0.25 s
-- Largest contingency: 2.5 p.u.
+## Area 2 ("South" / 南区)  
+- Equivalent inertia (等效惯性): H_eq ≈ 8.0 s
+- Turbine fraction (汽轮机原动机比例): K_m = 0.35
+- Governor time constant (调速器时间常数): T_g = 0.25 s
+- Regulation droop (调速器下垂系数): R = 0.03  → droop = 1/R ≈ 33.33
+- ROCOF threshold (频率变化率阈值): 0.5 Hz/s
+- NADIR threshold (最低点频率偏差阈值): 0.5 Hz
+- Largest contingency (最大故障扰动量): 2.0 p.u. (smaller contingency, distinguishing factor)
 
-## Tie line
-- Synchronizing coefficient T_12 ≈ 4.0 p.u.  (2 parallel AC lines)
-- Capacity: 400 MW ≈ 4.0 p.u.
+## Tie line (联络线)
+- Synchronizing coefficient (整步功率系数): T_12 = 4.0 p.u.
+- Capacity (传输容量极限): C_12 = 1.0 p.u.
 
-# References
+# References (参考文献)
 - P. Kundur, "Power System Stability and Control", Ch.12
 - M. Klein, G. J. Rogers, P. Kundur, "A fundamental study of inter-area oscillations", IEEE Trans. Power Syst., 1991.
 """
 function build_ieee_2area_kundur()
+    # Area 1: High contingency area (区1：大扰动区域)
     area1 = AreaParameters(
         1,
-        8.0,       # H_eq (matching baseline single-area)
-        0.35,      # K_m (OCGT turbine fraction)
-        0.25,      # T_g (governor time constant)
+        8.0,       # H_eq (matching baseline single-area / 匹配单区域基线值)
+        0.35,      # K_m (OCGT turbine fraction / 原动机比例系数)
+        0.25,      # T_g (governor time constant / 调速器时间常数)
         1 / 0.03,  # droop = 1/R ≈ 33.33
         0.5,       # ROCOF threshold (Hz/s)
         0.5,       # NADIR threshold (Hz)
-        3.5,       # largest contingency (p.u.)
+        3.5,       # largest contingency (p.u. / 最大扰动量)
     )
 
+    # Area 2: Moderate contingency area (区2：中度扰动区域)
     area2 = AreaParameters(
         2,
-        8.0,       # H_eq (same inertia as Area 1)
+        8.0,       # H_eq (same inertia as Area 1 / 区域2等效初始惯性)
         0.35,      # K_m
         0.25,      # T_g
-        1 / 0.03,  # droop = 1/R ≈ 33.33 (same, for fair comparison)
+        1 / 0.03,  # droop = 1/R ≈ 33.33
         0.5,
         0.5,
-        2.0,       # smaller contingency (p.u.) — distinguishing factor
+        2.0,       # smaller contingency (p.u.) — distinguishing factor (较小的扰动量，即区1与区2的特征差异点)
     )
 
+    # AC Tie-line configuration (AC 联络线配置)
     tie = TieLine(1, 2, 4.0, 1.0)  # T_sync=4.0 p.u., capacity=1.0 p.u.
 
     return MultiAreaSystem([area1, area2], [tie])
@@ -66,17 +77,22 @@ end
 """
     compute_tie_line_contribution(area_id::Int, system::MultiAreaSystem; factor::Float64=1.0) -> Float64
 
-Calculates the worst-case tie-line power contribution for the given area.
+English: Calculates the worst-case tie-line power contribution for the given area under decoupled assumption.
+Chinese: 计算解耦近似下给定区域的最坏情况联络线功率分配贡献。
+
 For the decoupled approximation, this is the sum of all tie-line capacities
 connected to the area, multiplied by a configurable decoupling factor.
+对于解耦近似法，这是连接到该区域的所有联络线容量之和乘以可配置的解耦系数。
 
-# Arguments
-- `area_id::Int`: Area identifier
-- `system::MultiAreaSystem`: The multi-area system
-- `factor::Float64`: Decoupling factor (0=none, 1=full worst-case, default 0.5 recommended)
+# Arguments (参数)
+- `area_id::Int`: Area identifier (区域 ID)
+- `system::MultiAreaSystem`: The multi-area system (多区域系统)
+- `factor::Float64`: Decoupling factor (0=none, 1=full worst-case capacity, default 0.5 recommended)
+                      解耦乘积系数 (0=无额外扰动即孤立运行，1=全额联络线传输容量，推荐默认 0.5)
 
-# Returns
+# Returns (返回)
 - The maximum possible tie-line power flow into/out of the area (p.u.)
+  该区域可能的联络线最大跨区支援/输出电功率标么值 (p.u.)
 """
 function compute_tie_line_contribution(area_id::Int, system::MultiAreaSystem; factor::Float64 = 0.5)
     total = 0.0
@@ -90,17 +106,13 @@ end
 
 
 """
-    import_mypower_case(filename::String) -> MultiAreaSystem
+    import_matpower_case(filename::String) -> MultiAreaSystem
 
-Placeholder for MATPOWER (.m) case file import.
-Reads bus, generator, and branch data to construct a MultiAreaSystem.
-
-The implementation skeleton parses the MATPOWER case structure:
-- mpc.area → groups generators into areas
-- mpc.gen → generator inertia and controller parameters
-- mpc.branch → inter-area tie lines
+English: Placeholder stub for MATPOWER (.m) case file import.
+Chinese: 导入 MATPOWER (.m) 电网数据文件的占位存根。
 
 # Currently implemented: only returns a stub with the built-in 2-area system.
+# 目前实现：仅返回内置双区系统的占位存根。
 """
 function import_matpower_case(filename::String)
     println("[MATPOWER import] File: $filename")
@@ -113,9 +125,11 @@ end
 """
     import_psse_raw(filename::String) -> MultiAreaSystem
 
-Placeholder for PSS-E (.raw) raw data file import.
+English: Placeholder stub for PSS-E (.raw) network data file import.
+Chinese: 导入 PSS-E (.raw) 电网数据文件的占位存根。
 
 # Currently: stub that returns the built-in 2-area system.
+# 目前实现：仅返回内置双区系统的占位存根。
 """
 function import_psse_raw(filename::String)
     println("[PSS-E import] File: $filename")

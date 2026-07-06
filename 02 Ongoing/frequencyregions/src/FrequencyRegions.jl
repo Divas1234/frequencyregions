@@ -23,13 +23,13 @@ include("single_area/regression.jl")
 include("single_area/interaction_plots.jl")
 include("single_area/visualization.jl")
 include("single_area/workflow.jl")
-include("single_area/entrypoint.jl")
+include("single_area/mainfun.jl")
 
 include("multi_area/topology.jl")
 include("multi_area/dynamic_analysis.jl")
 include("multi_area/decoupled_workflow.jl")
 include("multi_area/visualization.jl")
-include("multi_area/entrypoint.jl")
+include("multi_area/mainfun.jl")
 
 const LOAD_OPTIONAL_GEOMETRY = get(ENV, "FREQUENCYREGIONS_LOAD_OPTIONAL_GEOMETRY", "0") == "1"
 if LOAD_OPTIONAL_GEOMETRY

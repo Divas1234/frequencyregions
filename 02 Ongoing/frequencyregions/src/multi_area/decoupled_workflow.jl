@@ -1,37 +1,42 @@
 """
     decoupled_workflow.jl
 
-Implements Option A: Decoupled Multi-Area Frequency Security Region Analysis.
+English: Implements Option A (Decoupled Multi-Area Frequency Security Region Analysis) 
+and orchestrates workflows for Option B (Dynamic Mutual Assistance Model).
+Chinese: 实现方案 A（解耦多区域频率安全区域分析）并协调方案 B（动态相互支援模型）的工作流。
 
-# Core idea
-
+# Core idea of Option A (方案 A 的核心思想)
 Each area is treated as an independent single-area system. The inter-area
 tie-line influence is approximated as an additional worst-case power disturbance
 added to the area's internal contingency.
+每个区域都被视为独立的单区域系统。区域间联络线的影响被近似为增加到该区域内部故障扰动之上的最坏情况联络线功率偏差。
 
 For area i:
-    ΔP_eff(i) = ΔP_disturb(i) + Σ_{j tied to i} TieLine.capacity(j)
+    ΔP_eff(i) = ΔP_disturb(i) + Σ_{j tied to i} TieLine.capacity(j) * factor
 
 The single-area SFR model is then solved for each area independently.
+然后在每个区域上独立求解单区域系统频率响应 (SFR) 模型。
 
-# Conservative guarantee
-
+# Conservative guarantee (保守性保证)
 Since tie-line capacity is an upper bound on actual power exchange during a
 disturbance, the resulting feasible regions are **conservative** (inner
 approximation). If (H, D, R) satisfy the constraints under the worst-case
 ΔP_eff, they will also satisfy them under any milder tie-line condition.
+由于联络线传输极限是故障期间实际功率交换的上限，因此算出的可行域是**保守的**（内近似）。
+如果 (H, D, R) 在最坏有功扰动功率 ΔP_eff 下满足约束，它们在任何较温和的联络线工况下也必然安全。
 """
 
 """
     AreaResult
 
-Container for a single area's computation results.
+English: Container for a single area's computation results.
+Chinese: 单个控制区域计算结果的容器。
 
-# Fields
-- `area_id::Int`: Area identifier
-- `result::ComputationResult`: Single-area workflow result
-- `tie_contribution::Float64`: Worst-case tie-line power added (p.u.)
-- `effective_disturbance::Float64`: ΔP_disturb + tie_contribution (p.u.)
+# Fields (字段)
+- `area_id::Int`: Area identifier (区域 ID)
+- `result::ComputationResult`: Single-area workflow result (单区域计算结果，包含顶点、拟合公式、画图等)
+- `tie_contribution::Float64`: Worst-case tie-line power added (p.u.) (最坏情况下联络线功率分配贡献)
+- `effective_disturbance::Float64`: ΔP_disturb + tie_contribution (p.u.) (等效总扰动量 ΔP_eff)
 """
 struct AreaResult
     area_id::Int
@@ -45,22 +50,26 @@ end
     execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
                          config::ComputationConfig, controller_config::ControllerConfig) -> AreaResult
 
-Runs the single-area frequency security analysis for one area, incorporating
+English: Runs the single-area frequency security analysis for one area, incorporating
 the decoupled tie-line effect as an additional power disturbance.
+Chinese: 运行单区域频率安全分析，将解耦联络线作用合并为额外的有功功率扰动。
 
-# Arguments
+# Arguments (参数)
 - `area::AreaParameters`: Area parameters (inertia, droop, thresholds, etc.)
-- `tie_contribution::Float64`: Sum of tie-line capacities connected to this area
-- `config::ComputationConfig`: Shared computation configuration
-- `controller_config::ControllerConfig`: VSM/Droop controller parameters
+                          控制区域参数（惯性、下垂、安全阈值等）
+- `tie_contribution::Float64`: Sum of tie-line capacities connected to this area (本区域连接的联络线容量之和)
+- `config::ComputationConfig`: Shared computation configuration (计算设置配置)
+- `controller_config::ControllerConfig`: VSM/Droop controller parameters (控制器参数)
 
-# Returns
+# Returns (返回)
 - `AreaResult`: Area-level results (plot, vertices, bounds)
+                区域级别的最终计算结果 (包括绘图、顶点、边界)
 """
 function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
     config::ComputationConfig, controller_config::ControllerConfig)
     effective_disturbance = area.power_deviation + tie_contribution
 
+    # Instantiate single-area system parameters (实例化单区域系统参数)
     system_params = SystemParameters(
         area.initial_inertia,
         area.factorial_coefficient,
@@ -74,6 +83,7 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
     state = WorkflowState(controller_config, system_params, config)
     validate_all_configurations(state)
 
+    # 1. Compute stability/security boundaries (计算稳定与安全运行边界)
     try
         compute_inertia_bounds(state)
     catch e
@@ -84,6 +94,7 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
         return AreaResult(area.id, empty_result, tie_contribution, effective_disturbance)
     end
 
+    # Estimate search ranges for inertia (评估惯性范围搜索上下限)
     min_inertia, max_inertia = estimate_inertia_limits(
         state.system_params.rocof_threshold,
         state.system_params.power_deviation,
@@ -94,11 +105,14 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
     )
 
     validate_inertia_limits(min_inertia, max_inertia)
+
+    # 2. Fit boundary relations (二次拟合曲线公式)
     state.fitting_parameters = calculate_fittingparameters(
         state.extreme_inertia, state.computation_config.damping_range)
 
     max_inertia_scalar = isa(max_inertia, AbstractArray) ? maximum(vec(max_inertia)) : max_inertia
 
+    # 3. Generate Plot (生成单区域 H-D 曲线图)
     plot = sub_data_visualization(
         state.computation_config.damping_range,
         min_inertia,
@@ -114,6 +128,7 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
         state.fitting_parameters,
     )
 
+    # 4. Extract Polygon Vertices (提取可行域多边形顶点)
     vertices = calculate_vertex(
         state.computation_config.damping_range,
         state.inertia_bounds,
@@ -134,23 +149,26 @@ end
 
 """
     execute_multiarea_workflow(system::MultiAreaSystem, config::ComputationConfig,
-                              controller_config::ControllerConfig) -> Vector{AreaResult}
+                               controller_config::ControllerConfig; factor::Float64=0.5) -> Vector{AreaResult}
 
-Runs the decoupled multi-area frequency security analysis for all areas.
+English: Runs the decoupled multi-area frequency security analysis (Option A) for all areas.
+Chinese: 运行所有区域的解耦多区域频率安全分析（方案 A）。
 
-# Arguments
-- `system::MultiAreaSystem`: Multi-area system definition
-- `config::ComputationConfig`: Shared computation configuration
-- `controller_config::ControllerConfig`: Shared VSM/Droop controller parameters
+# Arguments (参数)
+- `system::MultiAreaSystem`: Multi-area system definition (多区域互联系统定义)
+- `config::ComputationConfig`: Shared computation configuration (计算设置配置)
+- `controller_config::ControllerConfig`: Shared VSM/Droop controller parameters (控制器参数)
+- `factor::Float64`: Decoupling margin scaling factor (解耦安全裕度比例因子)
 
-# Returns
-- `Vector{AreaResult}`: One result per area
+# Returns (返回)
+- `Vector{AreaResult}`: Vector of results for each area (每个区域的计算结果向量)
 """
 function execute_multiarea_workflow(system::MultiAreaSystem, config::ComputationConfig,
     controller_config::ControllerConfig; factor::Float64=0.5)
     results = AreaResult[]
 
     for area in system.areas
+        # Calculate pessimistic tie-line contribution (计算最坏有功流动方向贡献)
         tie_contrib = compute_tie_line_contribution(area.id, system; factor=factor)
         println("--- Area $(area.id) ---")
         println("  Internal disturbance: $(area.power_deviation) p.u.")
@@ -171,17 +189,22 @@ end
 """
     collect_all_vertices(results::Vector{AreaResult}) -> Matrix{Float64}
 
-Collects all polygon vertices from all areas into a single matrix for export.
-Each row: (area_id, droop, damping, inertia)
+English: Collects all polygon vertices from all areas into a single matrix for file export.
+Chinese: 将所有区域的可行域多边形顶点收集到单个矩阵中，以便导出到文件。
 
-# Returns
+Each row: (area_id, droop, damping, inertia)
+每行格式: (area_id, 下垂系数, 阻尼系数, 惯性常数)
+
+# Returns (返回)
 - `Matrix{Float64}`: Vertices matrix with area_id as the first column
+                     以区域 ID 作为第一列的顶点参数矩阵
 """
 function collect_all_vertices(results::Vector{AreaResult})
     all_verts = Matrix{Float64}[]
     for ar in results
         area_verts = [collect(v) for v in ar.result.vertices]
         if !isempty(area_verts)
+            # Prepend area_id column to the vertices matrix (在前部拼接 area_id 列)
             mat = hcat(fill(Float64(ar.area_id), length(area_verts)),
                 reduce(hcat, area_verts)')
             push!(all_verts, mat)
@@ -194,7 +217,8 @@ end
 """
     print_multiarea_summary(results::Vector{AreaResult})
 
-Prints a human-readable summary of multi-area computation results.
+English: Prints a human-readable summary of decoupled multi-area computation results.
+Chinese: 打印解耦多区域计算结果的易读文本摘要。
 """
 function print_multiarea_summary(results::Vector{AreaResult})
     println("\n" * "="^60)
@@ -211,7 +235,7 @@ function print_multiarea_summary(results::Vector{AreaResult})
         println("    Fit: H = $(round(r.fitting_parameters[1], digits=3)) + $(round(r.fitting_parameters[2], digits=3))·D + $(round(r.fitting_parameters[3], digits=3))·D²")
     end
 
-    # Cross-area comparison
+    # Cross-area comparison (跨区域特性对比分析)
     if length(results) >= 2
         println("\n  Cross-area comparison:")
         v1 = length(results[1].result.vertices)
@@ -226,8 +250,12 @@ end
     execute_dynamic_area_workflow(area::AreaParameters, system::MultiAreaSystem,
                                  config::ComputationConfig, controller_config::ControllerConfig) -> AreaResult
 
-Runs the multi-area frequency security analysis for one area using the physics-based
-Dynamic Mutual Assistance Model.
+English: Runs the multi-area frequency security region analysis for one area using the physics-based
+Dynamic Mutual Assistance Model (Option B) by simulating transient coupling.
+Chinese: 基于物理的动态相互支援模型（方案 B），运行单个区域的动态频率安全区域分析（模拟瞬态耦合）。
+
+This evaluates the real assistance the healthy area provides to the disturbed area through tie-line dynamics.
+这评估了健全区域通过联络线动态为扰动发生区域提供的实际物理功率支援。
 """
 function execute_dynamic_area_workflow(
     area::AreaParameters,
@@ -235,14 +263,14 @@ function execute_dynamic_area_workflow(
     config::ComputationConfig,
     controller_config::ControllerConfig
 )
-    # Find the other areas in the system
+    # Find the other areas in the system (寻找系统中的其它协作区域)
     other_areas = [a for a in system.areas if a.id != area.id]
     if isempty(other_areas)
         error("Multi-area system must have at least two areas.")
     end
-    area2 = other_areas[1] # For Kundur 2-area system
+    area2 = other_areas[1] # For Kundur 2-area system (针对双区域 Kundur 系统取另一区)
 
-    # Retrieve tie-line parameters between area and area2
+    # Retrieve tie-line parameters between area and area2 (提取两区之间的联络线物理参数)
     T12 = 0.0
     C12 = 0.0
     for tl in system.tie_lines
@@ -257,6 +285,7 @@ function execute_dynamic_area_workflow(
     damping_range = config.damping_range
 
     # Calculate single-area zeta=1 bounds as stability reference bounds
+    # 计算单区阻尼比为 1 时的惯性下限边界作为稳定运行基准参考线
     single_area_bounds = inertia_bindings(
         collect(damping_range),
         area.factorial_coefficient,
@@ -267,10 +296,13 @@ function execute_dynamic_area_workflow(
         config.flag_converter
     )
 
-    # Contingency settings: disturbance occurs in area, area2 is healthy
+    # Contingency settings: disturbance occurs in local area, area2 is healthy (ΔP2 = 0.0)
+    # 故障发生在本区域，邻近协助区域处于稳定健康运行状态
     DP1 = area.power_deviation
     DP2 = 0.0
 
+    # Bisection sweep over damping range to locate critical inertia
+    # 对阻尼常数进行扫描，利用二分法在动态积分模拟中寻找临界安全惯性
     critical_nadir_inertias = Float64[]
     for D1 in damping_range
         # Baseline/nominal values for the other area (Area 2)
@@ -291,12 +323,14 @@ function execute_dynamic_area_workflow(
     extreme_inertia = reshape(critical_nadir_inertias, :, 1)
 
     # Fit quadratic relation: H = c + b*D + a*D^2
+    # 拟合安全边界关系二次曲线方程
     fitting_parameters = calculate_fittingparameters(extreme_inertia, damping_range)
 
-    # Local ROCOF limit (tie-line doesn't help with initial ROCOF at t=0+)
+    # Local ROCOF limit (tie-line doesn't help with initial ROCOF at t=0+ due to inertia response latency)
+    # 局部 ROCOF 变化率限制（由于联络线功率滞后，在故障瞬间 t=0+ 联络线无法支援，ROCOF 纯由本地惯性决定）
     min_inertia = 0.5 * (area.power_deviation * PERCENTAGE_BASE) / (area.rocof_threshold * FREQUENCY_BASE)
 
-    # Calculate feasible region vertices
+    # Calculate feasible region vertices (计算动态可行域边界顶点)
     max_inertia_scalar = maximum(single_area_bounds[:, 1])
 
     vertices = calculate_vertex(
@@ -310,16 +344,16 @@ function execute_dynamic_area_workflow(
         area.droop
     )
 
-    # Generate dynamic visualizer plot
+    # Generate dynamic visualizer plot (生成动态相互支援模式下的安全区域可视化图形)
     plot = sub_data_visualization(
         damping_range,
         min_inertia,
         max_inertia_scalar,
         single_area_bounds,
         extreme_inertia,
-        zeros(length(damping_range), 25), # dummy
-        zeros(length(damping_range), 25), # dummy
-        zeros(length(damping_range)),      # dummy
+        zeros(length(damping_range), 25), # dummy/占位
+        zeros(length(damping_range), 25), # dummy/占位
+        zeros(length(damping_range)),      # dummy/占位
         config.min_damping,
         config.max_damping,
         area.droop,
@@ -334,7 +368,8 @@ end
     execute_dynamic_multiarea_workflow(system::MultiAreaSystem, config::ComputationConfig,
                                       controller_config::ControllerConfig) -> Vector{AreaResult}
 
-Runs the dynamic multi-area frequency security analysis for all areas.
+English: Runs the dynamic multi-area frequency security analysis (Option B) for all areas.
+Chinese: 运行所有区域的动态耦合互联频率安全分析（方案 B）。
 """
 function execute_dynamic_multiarea_workflow(system::MultiAreaSystem, config::ComputationConfig,
     controller_config::ControllerConfig)
@@ -357,7 +392,8 @@ end
 """
     print_dynamic_multiarea_summary(results::Vector{AreaResult})
 
-Prints a summary of the dynamic multi-area frequency security regions.
+English: Prints a summary of the dynamic multi-area frequency security regions (Option B).
+Chinese: 打印动态耦合互联模式（方案 B）下多区域频率安全区域的计算摘要。
 """
 function print_dynamic_multiarea_summary(results::Vector{AreaResult})
     println("\n" * "="^60)

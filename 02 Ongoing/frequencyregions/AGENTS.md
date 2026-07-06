@@ -51,14 +51,14 @@ This file provides guidance when working with this repository.
 
 - `src/single_area/`
   - Single-area frequency-security analysis.
-  - Entry point: `src/single_area/entrypoint.jl`.
+  - Entry point: `src/single_area/mainfun.jl`.
   - Workflow orchestration: `src/single_area/workflow.jl`.
   - Core computation files: `frequency_response.jl`, `inertia_limits.jl`, `analytical_response.jl`, `regression.jl`.
   - Plotting files: `visualization.jl`, `interaction_plots.jl`.
 
 - `src/multi_area/`
   - Multi-area frequency-security analysis.
-  - Entry point: `src/multi_area/entrypoint.jl`.
+  - Entry point: `src/multi_area/mainfun.jl`.
   - Core files: `topology.jl`, `decoupled_workflow.jl`, `dynamic_analysis.jl`, `visualization.jl`.
 
 ## Public Entry Points

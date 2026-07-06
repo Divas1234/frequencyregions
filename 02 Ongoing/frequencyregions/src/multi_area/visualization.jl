@@ -1,16 +1,25 @@
 """
     multi_area/visualization.jl
 
-Visualization utilities for multi-area frequency security region analysis.
-Generates side-by-side comparison plots and combined views.
+English: Visualization utilities for multi-area frequency security region analysis.
+Generates side-by-side comparison plots, overlays, and parameter impact curves.
+Chinese: 多区域频率安全区域分析的可视化工具。
+生成并排对比图、重叠图以及参数影响特性曲线。
 """
 
 """
     plot_multiarea_comparison(results_isolated::Vector{AreaResult}, results_connected::Vector{AreaResult},
                               system::MultiAreaSystem, config::ComputationConfig) -> Any
 
-Creates a multi-panel figure comparing the H-D feasible regions of all areas under
+English: Creates a multi-panel figure comparing the H-D feasible regions of all areas under
 isolated vs interconnected (tie-line sharing) states, showing the exact expansion.
+Chinese: 创建一个多子图对比分析图，展示各控制区域在孤立与互联（联络线支援共享）状态下的 H-D 可行域范围，说明其安全区域拓宽效果。
+
+# Arguments (参数)
+- `results_isolated`: Simulation results in isolated state (孤立状态计算结果)
+- `results_connected`: Simulation results in interconnected state (互联状态计算结果)
+- `system`: Multi-area system structure (多区域电网拓扑结构)
+- `config`: Computation configuration (计算设置)
 """
 function plot_multiarea_comparison(
     results_isolated::Vector{AreaResult},
@@ -31,6 +40,7 @@ function plot_multiarea_comparison(
         damp = collect(config.damping_range)
         bounds = collect(r_con.inertia_bounds)
 
+        # Handle infeasible boundary cases (若无可行边界限制，绘制空警示子图)
         if isempty(bounds) || size(bounds, 2) < 2
             p = Plots.plot(; framestyle = :box,
                            title = "Area $(ar_con.area_id) (Contingency = $(area.power_deviation) p.u., INFEASIBLE)",
@@ -50,11 +60,12 @@ function plot_multiarea_comparison(
                        legend = :topright)
 
         # 1. Local ROCOF limit (independent of tie-line since tieline power P_tie=0 at t=0+)
+        # 本地 ROCOF 变化率限制（故障瞬时联络线交换有功为0，ROCOF只与本地惯性负荷有功额定偏差相关）
         min_inertia = 0.5 * (area.power_deviation * PERCENTAGE_BASE) / (area.rocof_threshold * FREQUENCY_BASE)
         p = Plots.hline!(p, [min_inertia];
             lw = 1.8, label = "ROCOF limit", color = :darkred, linestyle = :dash, alpha = 0.8)
 
-        # 2. Upper and Lower Bounds (ζ = 1 stability limits)
+        # 2. Upper and Lower Bounds (ζ = 1 stability limits / 阻尼比限制稳定上下边界)
         max_inertia_vals = bounds[:, 1]
         p = Plots.plot!(p, damp, max_inertia_vals;
             lw = 2.0, label = "Upper bound (ζ = 1)", color = :blue, alpha = 0.8)
@@ -64,7 +75,7 @@ function plot_multiarea_comparison(
         # Index range for damping bounds
         idx_range = findall(d -> config.min_damping <= d <= config.max_damping, damp)
 
-        # 3. Isolated Feasible Region (C12 = 0)
+        # 3. Isolated Feasible Region (C12 = 0 / 孤立运行可行域)
         if !isempty(r_iso.vertices)
             fit_curve_iso = r_iso.fitting_parameters[1] .+ r_iso.fitting_parameters[2] .* damp .+
                             r_iso.fitting_parameters[3] .* damp .^ 2
@@ -79,12 +90,12 @@ function plot_multiarea_comparison(
                     lw = 0, label = "Feasible Region (Isolated)")
             end
 
-            # Plot isolated nadir fit curve
+            # Plot isolated nadir fit curve (绘制孤立状态下的 Nadir 二次拟合边界曲线)
             p = Plots.plot!(p, damp, fit_curve_iso;
                 lw = 1.5, label = "Isolated Nadir Fit", color = :darkorange, linestyle = :dot)
         end
 
-        # 4. Interconnected Feasible Region (with tie-line power sharing)
+        # 4. Interconnected Feasible Region (with tie-line power sharing / 互联模式可行域)
         if !isempty(r_con.vertices)
             fit_curve_con = r_con.fitting_parameters[1] .+ r_con.fitting_parameters[2] .* damp .+
                             r_con.fitting_parameters[3] .* damp .^ 2
@@ -99,11 +110,12 @@ function plot_multiarea_comparison(
                     lw = 0, label = "Feasible Region (Interconnected)")
             end
 
-            # Plot interconnected nadir fit curve
+            # Plot interconnected nadir fit curve (绘制互联状态下的 Nadir 二次拟合边界曲线)
             p = Plots.plot!(p, damp, fit_curve_con;
                 lw = 2.0, label = "Interconnected Nadir Fit", color = :royalblue, linestyle = :dashdot)
         end
 
+        # Damping search limits (阻尼搜索上下限指示虚线)
         p = Plots.vline!(p, [config.min_damping]; lw = 1.2, label = "Damping bounds",
                          color = :gray, linestyle = :dot, alpha = 0.8)
         p = Plots.vline!(p, [config.max_damping]; lw = 1.2, label = "",
@@ -129,11 +141,12 @@ end
 """
     plot_feasible_region_overlay(results::Vector{AreaResult}, config::ComputationConfig) -> Any
 
-Overlays the feasible region polygons of all areas on a single plot for
+English: Overlays the feasible region polygons of all areas on a single plot for
 direct comparison. Polygon boundaries show the intersection of all constraints.
+Chinese: 将所有控制区域的可行域多边形重叠绘制在同一张图表上进行直观比较。多边形边界为各项安全约束的交集。
 
-# Returns
-- Plots.jl plot object
+# Returns (返回)
+- Plots.jl plot object (Plots 绘图对象)
 """
 function plot_feasible_region_overlay(results::Vector{AreaResult}, config::ComputationConfig)
     area_colors = [:royalblue, :crimson, :forestgreen, :darkorchid]
@@ -156,6 +169,8 @@ function plot_feasible_region_overlay(results::Vector{AreaResult}, config::Compu
         damp_vals = [v[2] for v in verts]
         inert_vals = [v[3] for v in verts]
 
+        # Draw filled polygons representing the dynamic security boundaries
+        # 绘制填充的多边形，代表各区的安全可行区域
         p = Plots.plot!(p, Plots.Shape(damp_vals, inert_vals);
             fillalpha = area_alpha, label = "Area $(ar.area_id) (ΔP = $(round(ar.effective_disturbance, digits=2)) p.u.)",
             color = area_colors[idx], lw = 2.0, linecolor = area_colors[idx])
@@ -174,14 +189,19 @@ end
     plot_combined_summary(results_isolated::Vector{AreaResult}, results_connected::Vector{AreaResult},
                           system::MultiAreaSystem, config::ComputationConfig) -> Any
 
-Creates a comprehensive 2x2 summary figure:
+English: Creates a comprehensive 2x2 summary figure:
 1. Top-left:  Area 1 isolated vs connected comparison
 2. Top-right: Area 2 isolated vs connected comparison
 3. Bottom-left:  Overlay of connected feasible polygons
-4. Bottom-right: Parameter comparison table (text)
+4. Bottom-right: Parameter comparison table (text annotation)
+Chinese: 创建一个综合的 2x2 汇总分析图：
+1. 左上： 区域 1 孤立与互联安全区域对比
+2. 右上： 区域 2 孤立与互联安全区域对比
+3. 左下： 互联状态下两个区域的可行多边形重叠图
+4. 右下： 拟合参数数学公式汇总表格说明
 
-# Returns
-- Plots.jl plot object
+# Returns (返回)
+- Plots.jl plot object (Plots 绘图对象)
 """
 function plot_combined_summary(
     results_isolated::Vector{AreaResult},
@@ -213,9 +233,10 @@ end
     plot_sharing_capacity_impact(area_id::Int, system::MultiAreaSystem,
                                  config::ComputationConfig, controller_config::ControllerConfig) -> Any
 
-Plots the impact of tie-line capacity on the security region of the specified area.
-Runs the dynamic simulation for different capacities (e.g., 0.0, 0.5, 1.0, 4.0)
-and overlays the resulting feasible region polygons.
+English: Plots the impact of tie-line transmission capacity limit (C12) on the security region of the specified area.
+Runs the dynamic simulation for different capacities (e.g., 0.0, 0.5, 1.0, 4.0) and overlays the resulting polygons.
+Chinese: 绘制联络线传输容量极限 (C12) 对指定区域频率安全区域范围的影响。
+针对不同的通道极限（如 0.0, 0.5, 1.0, 4.0 p.u.）运行动态仿真并重叠对比可行多边形。
 """
 function plot_sharing_capacity_impact(
     area_id::Int,
@@ -223,7 +244,7 @@ function plot_sharing_capacity_impact(
     config::ComputationConfig,
     controller_config::ControllerConfig
 )
-    # Define capacities to evaluate
+    # Define capacities to evaluate (定义需要评估的联络线容量梯度)
     capacities = [0.0, 0.5, 1.0, 4.0]
     colors = [:darkorange, :limegreen, :royalblue, :purple]
     alphas = [0.1, 0.15, 0.2, 0.25]
@@ -236,20 +257,21 @@ function plot_sharing_capacity_impact(
                    grid = true, gridalpha = 0.2, gridstyle = :dash,
                    legend = :topright, size = (750, 500))
 
-    # Retrieve local area parameters
+    # Retrieve local area parameters (提取本地控制区域固有参数)
     area = first([a for a in system.areas if a.id == area_id])
 
     for (idx, C12) in enumerate(capacities)
-        # Create a modified system with the specific tie-line capacity
+        # Create a modified system with the specific tie-line capacity (修改系统参数中的联络线容量)
         modified_tie_lines = [TieLine(tl.from_area, tl.to_area, tl.synchronizing_coeff, C12) for tl in system.tie_lines]
         modified_sys = MultiAreaSystem(system.areas, modified_tie_lines)
 
-        # Run dynamic workflow for this modified system
+        # Run dynamic simulation workflow for this modified system
+        # 运行修改后系统的动态支援工作流
         ar_result = execute_dynamic_area_workflow(area, modified_sys, config, controller_config)
         verts = ar_result.result.vertices
 
         if length(verts) < 3
-            # Infeasible or not enough vertices
+            # Infeasible or not enough vertices (如果不可行，则跳过)
             continue
         end
 
@@ -262,7 +284,8 @@ function plot_sharing_capacity_impact(
             color = colors[idx], lw = 2.0, linecolor = colors[idx])
     end
 
-    # Also plot the ROCOF threshold as a horizontal line
+    # Plot local ROCOF limit (which is capacity independent)
+    # 绘制本地 ROCOF 极限水平切线
     min_inertia = 0.5 * (area.power_deviation * PERCENTAGE_BASE) / (area.rocof_threshold * FREQUENCY_BASE)
     p = Plots.hline!(p, [min_inertia];
         lw = 1.5, label = "ROCOF limit", color = :darkred, linestyle = :dash, alpha = 0.8)
@@ -279,9 +302,10 @@ end
     plot_sharing_stiffness_impact(area_id::Int, system::MultiAreaSystem,
                                   config::ComputationConfig, controller_config::ControllerConfig) -> Any
 
-Plots the impact of tie-line synchronizing coefficient (stiffness) on the security region of the specified area.
-Runs the dynamic simulation for different stiffnesses (e.g., 0.1, 1.0, 4.0, 10.0)
-with nominal capacity and overlays the resulting feasible regions.
+English: Plots the impact of tie-line synchronizing coefficient (stiffness T12) on the security region of the specified area.
+Runs the dynamic simulation for different stiffnesses (e.g., 0.2, 1.0, 4.0, 10.0) with nominal capacity.
+Chinese: 绘制联络线同步功率系数（即电网耦合刚度 T12）对指定区域频率安全区域范围的影响。
+针对不同的刚度系数（如 0.2, 1.0, 4.0, 10.0 p.u.）进行仿真计算并显示对比。
 """
 function plot_sharing_stiffness_impact(
     area_id::Int,
