@@ -120,6 +120,7 @@ function calculate_inertia_parameters(initial_inertia::Float64,
 			flag_converter,), :, 1:2,)
 	@assert all(inertia_updown_bindings[:, 1] .> inertia_updown_bindings[:, 2]) "Inertia up-bindings must be greater than down-bindings."
 
+	#LINK - calculate extreme inertia, nadir, and inertia vectors
 	extreme_inertia, nadir_vector,
 	inertia_vector, selected_ids = generate_extreme_inertia(initial_inertia, factorial_coefficient, time_constant, droop,
 		power_deviation, damping_range, inertia_updown_bindings,

@@ -23,13 +23,13 @@ Main entry point for multi-area frequency security analysis.
   :results (Vector{AreaResult}), :all_vertices (Matrix{Float64})
 """
 function run_multiarea_analysis(;
-    system::Union{MultiAreaSystem, Nothing} = nothing,
-    damping_range::AbstractRange = 2:0.25:15,
-    min_damping::Float64 = 2.5,
-    max_damping::Float64 = 12.0,
-    flag_converter::Int64 = 0,
-    output_path::String = "res/all_vertices_multiarea.txt",
-    decoupling_factor::Float64 = 0.1,
+    system::Union{MultiAreaSystem,Nothing}=nothing,
+    damping_range::AbstractRange=2:0.25:15,
+    min_damping::Float64=2.5,
+    max_damping::Float64=12.0,
+    flag_converter::Int64=0,
+    output_path::String="res/all_vertices_multiarea.txt",
+    decoupling_factor::Float64=0.1,
 )
     sys = isnothing(system) ? build_ieee_2area_kundur() : system
 
@@ -56,7 +56,7 @@ function run_multiarea_analysis(;
     comp_cfg = create_computation_config(damping_range, min_damping, max_damping, flag_converter)
 
     println("\n  [Decoupling factor: $decoupling_factor]")
-    results = execute_multiarea_workflow(sys, comp_cfg, controller_cfg, factor = decoupling_factor)
+    results = execute_multiarea_workflow(sys, comp_cfg, controller_cfg, factor=decoupling_factor)
     print_multiarea_summary(results)
 
     all_vertices = collect_all_vertices(results)
@@ -70,11 +70,11 @@ function run_multiarea_analysis(;
     end
 
     return (
-        comparison_plot = p_comp,
-        overlay_plot = p_overlay,
-        summary_plot = p_summary,
-        results = results,
-        all_vertices = all_vertices,
+        comparison_plot=p_comp,
+        overlay_plot=p_overlay,
+        summary_plot=p_summary,
+        results=results,
+        all_vertices=all_vertices,
     )
 end
 

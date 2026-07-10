@@ -29,7 +29,7 @@ p4, sub_vertices = main_module(DROOP_PARAMETERS[10])
 Plots.plot(p1, p2, p3, p4,
 	layout = (2, 2), size = (400, 400),
 	dpi = 400,
-	legend = false
+	legend = false,
 )
 
 Plots.savefig(joinpath(pwd(), "fig/inertia_damping_feasible_region.png"))

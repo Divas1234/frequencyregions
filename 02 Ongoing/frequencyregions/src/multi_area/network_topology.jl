@@ -78,7 +78,7 @@ connected to the area, multiplied by a configurable decoupling factor.
 # Returns
 - The maximum possible tie-line power flow into/out of the area (p.u.)
 """
-function compute_tie_line_contribution(area_id::Int, system::MultiAreaSystem; factor::Float64 = 0.5)
+function compute_tie_line_contribution(area_id::Int, system::MultiAreaSystem; factor::Float64=0.5)
     total = 0.0
     for tl in system.tie_lines
         if tl.from_area == area_id || tl.to_area == area_id

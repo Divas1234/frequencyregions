@@ -17,7 +17,7 @@ Container for controller parameters (VSM and Droop).
 struct ControllerConfig
     vsm_params::Dict
     droop_params::Dict
-    
+
     function ControllerConfig(vsm_params::Dict, droop_params::Dict)
         # Validation will happen in dedicated validation module
         new(vsm_params, droop_params)
@@ -87,8 +87,8 @@ struct ComputationConfig
     min_damping::Float64
     max_damping::Float64
     flag_converter::Int64
-    
-    function ComputationConfig(damping_range::AbstractRange, min_damping::Float64, 
+
+    function ComputationConfig(damping_range::AbstractRange, min_damping::Float64,
                               max_damping::Float64, flag_converter::Int64)
         if min_damping >= max_damping
             throw(ArgumentError("min_damping must be less than max_damping"))
@@ -143,8 +143,8 @@ mutable struct WorkflowState
     inertia_vector::Any
     selected_ids::Any
     fitting_parameters::Any
-    
-    function WorkflowState(controller_config::ControllerConfig, 
+
+    function WorkflowState(controller_config::ControllerConfig,
                           system_params::SystemParameters,
                           computation_config::ComputationConfig)
         new(controller_config, system_params, computation_config,
@@ -165,10 +165,10 @@ Create system parameters from boundary conditions.
 # Returns
 - `SystemParameters`: System parameters struct
 """
-function create_system_parameters(flag_converter::Int64)::SystemParameters
-    initial_inertia, factorial_coefficient, time_constant, droop, 
+function (flag_converter::Int64)::SystemParameters
+    initial_inertia, factorial_coefficient, time_constant, droop,
     rocof_threshold, nadir_threshold, power_deviation = get_parmeters(flag_converter)
-    
+
     return SystemParameters(
         initial_inertia, factorial_coefficient, time_constant, droop,
         rocof_threshold, nadir_threshold, power_deviation
@@ -187,14 +187,10 @@ Create computation configuration with default values.
 # Returns
 - `ComputationConfig`: Computation configuration struct
 """
-function create_computation_config(damping_range::AbstractRange, flag_converter::Int64)::ComputationConfig
-    min_damping = minimum(damping_range)
-    max_damping = maximum(damping_range)
-    return ComputationConfig(damping_range, min_damping, max_damping, flag_converter)
-end
+
 
 """
-    create_computation_config(damping_range::AbstractRange, min_damping::Float64, 
+    create_computation_config(damping_range::AbstractRange, min_damping::Float64,
                              max_damping::Float64, flag_converter::Int64) -> ComputationConfig
 
 Create computation configuration with custom min/max damping.
@@ -208,7 +204,7 @@ Create computation configuration with custom min/max damping.
 # Returns
 - `ComputationConfig`: Computation configuration struct
 """
-function create_computation_config(damping_range::AbstractRange, min_damping::Float64, 
+function create_computation_config(damping_range::AbstractRange, min_damping::Float64,
                                   max_damping::Float64, flag_converter::Int64)::ComputationConfig
     return ComputationConfig(damping_range, min_damping, max_damping, flag_converter)
 end

@@ -9,18 +9,18 @@ println("=== Method: Decoupled Approximation (Option A) ===")
 system = build_ieee_2area_kundur()
 
 println("\n--- Uncoupled Baseline (factor=0.0) ---")
-baseline = run_multiarea_analysis(; system = system, decoupling_factor = 0.0)
+baseline = run_multiarea_analysis(; system=system, decoupling_factor=0.0)
 for r in baseline.results
     nv = length(r.result.vertices)
-    fp = round.(r.result.fitting_parameters, digits = 3)
+    fp = round.(r.result.fitting_parameters, digits=3)
     println("  Area $(r.area_id): ΔP=$(r.effective_disturbance), $(nv) vertices, fit=[$(fp[1]), $(fp[2]), $(fp[3])]")
 end
 
 println("\n--- With Tie-Line Coupling (factor=0.1) ---")
-coupled = run_multiarea_analysis(; system = system, decoupling_factor = 0.1)
+coupled = run_multiarea_analysis(; system=system, decoupling_factor=0.1)
 for r in coupled.results
     nv = length(r.result.vertices)
-    fp = round.(r.result.fitting_parameters, digits = 3)
+    fp = round.(r.result.fitting_parameters, digits=3)
     status = nv > 0 ? "FEASIBLE" : "INFEASIBLE"
     println("  Area $(r.area_id): ΔP_eff=$(round(r.effective_disturbance,digits=2)), $(nv) vertices, $status, fit=[$(fp[1]), $(fp[2]), $(fp[3])]")
 end

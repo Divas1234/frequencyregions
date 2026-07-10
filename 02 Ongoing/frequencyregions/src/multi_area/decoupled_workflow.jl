@@ -58,7 +58,7 @@ the decoupled tie-line effect as an additional power disturbance.
 - `AreaResult`: Area-level results (plot, vertices, bounds)
 """
 function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
-                              config::ComputationConfig, controller_config::ControllerConfig)
+    config::ComputationConfig, controller_config::ControllerConfig)
     effective_disturbance = area.power_deviation + tie_contribution
 
     system_params = SystemParameters(
@@ -80,7 +80,7 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
         @warn "Area $(area.id): inertia bounds computation failed: $e"
         empty_verts = Vector{NamedTuple{(:droop, :damping, :inertia),Tuple{Float64,Float64,Float64}}}()
         empty_result = ComputationResult(area.droop, nothing, empty_verts,
-                                         zeros(0, 2), zeros(3))
+            zeros(0, 2), zeros(3))
         return AreaResult(area.id, empty_result, tie_contribution, effective_disturbance)
     end
 
@@ -126,7 +126,7 @@ function execute_area_workflow(area::AreaParameters, tie_contribution::Float64,
     )
 
     result = ComputationResult(area.droop, plot, vertices,
-                               state.inertia_bounds, state.fitting_parameters)
+        state.inertia_bounds, state.fitting_parameters)
 
     return AreaResult(area.id, result, tie_contribution, effective_disturbance)
 end
@@ -146,17 +146,18 @@ Runs the decoupled multi-area frequency security analysis for all areas.
 # Returns
 - `Vector{AreaResult}`: One result per area
 """
+##
 function execute_multiarea_workflow(system::MultiAreaSystem, config::ComputationConfig,
-                                   controller_config::ControllerConfig; factor::Float64 = 0.5)
+    controller_config::ControllerConfig; factor::Float64=0.5)
     results = AreaResult[]
 
     for area in system.areas
-        tie_contrib = compute_tie_line_contribution(area.id, system; factor = factor)
+        tie_contrib = compute_tie_line_contribution(area.id, system; factor=factor)
         println("--- Area $(area.id) ---")
         println("  Internal disturbance: $(area.power_deviation) p.u.")
         println("  Tie-line contribution: $(tie_contrib) p.u.")
         println("  Effective disturbance: $(area.power_deviation + tie_contrib) p.u.")
-
+        #NOTE - multiarea workflow: decoupled computation for each area
         area_result = execute_area_workflow(area, tie_contrib, config, controller_config)
         push!(results, area_result)
 
@@ -166,7 +167,7 @@ function execute_multiarea_workflow(system::MultiAreaSystem, config::Computation
 
     return results
 end
-
+##
 
 """
     collect_all_vertices(results::Vector{AreaResult}) -> Matrix{Float64}
@@ -183,7 +184,7 @@ function collect_all_vertices(results::Vector{AreaResult})
         area_verts = [collect(v) for v in ar.result.vertices]
         if !isempty(area_verts)
             mat = hcat(fill(Float64(ar.area_id), length(area_verts)),
-                       reduce(hcat, area_verts)')
+                reduce(hcat, area_verts)')
             push!(all_verts, mat)
         end
     end
