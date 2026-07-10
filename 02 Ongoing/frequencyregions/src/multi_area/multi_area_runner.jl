@@ -78,7 +78,6 @@ function run_multiarea_analysis(;
     )
 end
 
-
 """
     write_multiarea_vertices_to_file(all_vertices::Matrix, base_path::String, rel_path::String)
 
