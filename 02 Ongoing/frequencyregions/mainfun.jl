@@ -1,8 +1,12 @@
 if (@__MODULE__) == Main
     using Pkg
     Pkg.activate(@__DIR__)
-    using FrequencyRegions
+    include("src/FrequencyRegions.jl")
     using Plots
+    using .FrequencyRegions
+    using .FrequencyRegions: DAMPING_RANGE, MIN_DAMPING, MAX_DAMPING, OUTPUT_REL_PATH,
+        execute_workflow, create_computation_config, default_controller_config,
+        vertices_to_matrix, write_vertices_to_file, get_workflow_summary
 end
 
 """
@@ -20,8 +24,8 @@ Chinese: 单区域频率安全区域分析的顶层入口函数。
 - `verbose`: Set true to print workflow summary to the console (设置为 true 将打印工作流摘要结果)
 - `show_plot`: Set true to display the plot interactively (设置为 true 将在交互环境下显示曲线图)
 - `save_plot`: Set true to save the plot to a file (设置为 true 将图表保存为文件)
-- `plot_path`: Destination path for the saved plot (保存图表的目标文件路径)
 """
+
 function mainfun(
     droop::Real=33.0;
     save_vertices::Bool=false,

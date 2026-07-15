@@ -1,12 +1,19 @@
 module FrequencyRegions
 
+
+
 using DataFrames
 using DelimitedFiles
 using GLM
 using LinearAlgebra
 using Plots
 using Random
-using Statistics
+# using Statistics
+
+# Pkg.instantiate()
+# if Pkg.status("DataFrames") == nothing
+#     Pkg.add("DataFrames")
+# end
 
 include("common/constants.jl")
 include("common/system_parameters.jl")
@@ -46,50 +53,50 @@ if LOAD_OPTIONAL_GEOMETRY
 end
 
 export DAMPING_RANGE,
-       MIN_DAMPING,
-       MAX_DAMPING,
-       PERCENTAGE_BASE,
-       FREQUENCY_BASE,
-       OUTPUT_REL_PATH,
-       ControllerConfig,
-       SystemParameters,
-       ComputationConfig,
-       ComputationResult,
-       WorkflowState,
-       AreaParameters,
-       TieLine,
-       MultiAreaSystem,
-       AreaResult,
-       ValidationError,
-       converter_forming_configurations,
-       converter_formming_configuations,
-       get_parameters,
-       default_controller_config,
-       create_system_parameters,
-       create_computation_config,
-       validate_controller_config,
-       validate_system_parameters,
-       validate_computation_config,
-       validate_inertia_limits,
-       validate_computation_results,
-       execute_workflow,
-       execute_batch_workflow,
-       execute_multiarea_workflow,
-       run_multiarea_analysis,
-       execute_dynamic_multiarea_workflow,
-       build_ieee_2area_kundur,
-       compute_tie_line_contribution,
-       collect_all_vertices,
-       print_multiarea_summary,
-       write_multiarea_vertices_to_file,
-       calculate_fittingparameters,
-       calculate_vertex,
-       vertices_to_matrix,
-       write_vertices_to_file,
-       generate_inertia_damping_figure,
-       mainfun,
-       mainfun_multiarea,
-       get_inertiatodamping_functions,
-       get_workflow_summary
+    MIN_DAMPING,
+    MAX_DAMPING,
+    PERCENTAGE_BASE,
+    FREQUENCY_BASE,
+    OUTPUT_REL_PATH,
+    ControllerConfig,
+    SystemParameters,
+    ComputationConfig,
+    ComputationResult,
+    WorkflowState,
+    AreaParameters,
+    TieLine,
+    MultiAreaSystem,
+    AreaResult,
+    ValidationError,
+    converter_forming_configurations,
+    converter_formming_configuations,
+    get_parameters,
+    default_controller_config,
+    create_system_parameters,
+    create_computation_config,
+    validate_controller_config,
+    validate_system_parameters,
+    validate_computation_config,
+    validate_inertia_limits,
+    validate_computation_results,
+    execute_workflow,
+    execute_batch_workflow,
+    execute_multiarea_workflow,
+    run_multiarea_analysis,
+    execute_dynamic_multiarea_workflow,
+    build_ieee_2area_kundur,
+    compute_tie_line_contribution,
+    collect_all_vertices,
+    print_multiarea_summary,
+    write_multiarea_vertices_to_file,
+    calculate_fittingparameters,
+    calculate_vertex,
+    vertices_to_matrix,
+    write_vertices_to_file,
+    generate_inertia_damping_figure,
+    mainfun,
+    mainfun_multiarea,
+    get_inertiatodamping_functions,
+    get_workflow_summary
 
 end
