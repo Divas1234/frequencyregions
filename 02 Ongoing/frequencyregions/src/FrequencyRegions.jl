@@ -97,6 +97,10 @@ export DAMPING_RANGE,
     mainfun,
     mainfun_multiarea,
     get_inertiatodamping_functions,
-    get_workflow_summary
+    get_workflow_summary,
+    simulate_single_area_response,
+    plot_single_area_verification_trajectories,
+    simulate_multiarea_frequency_history,
+    plot_multiarea_mutual_support_trajectories
 
 end

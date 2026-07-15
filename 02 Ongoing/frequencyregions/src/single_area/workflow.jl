@@ -149,12 +149,104 @@ function execute_batch_workflow(droop_parameters::AbstractVector, config::Comput
         throw(ValidationError("No successful computations. Check droop_parameters and configuration."))
     end
     
-    # Combine plots
-    plots = [r.plot for r in results]
-    labels = [round_droop_label(r.droop) for r in results]
-    combined_plot = Plots.plot(plots...; legend=false, size=(1000, 1000), 
-                              xlabel="Damping", ylabel="Inertia", 
-                              label=permutedims(labels))
+    # Generate publication-grade combined plot
+    p_overlay = Plots.plot(;
+        framestyle=:box,
+        fontfamily=PLOT_FONT_FAMILY,
+        tickdirection=:out,
+        grid=true,
+        gridalpha=0.12,
+        gridcolor=:grey80,
+        xlabel="Damping, D (p.u.)",
+        ylabel="Inertia, H (s)",
+        title="",
+        titlefontsize=10,
+        guidefontsize=9,
+        tickfontsize=8,
+        legendfontsize=8,
+        fg_legend=:transparent,
+        bg_legend=:transparent,
+        left_margin=15Plots.px,
+        bottom_margin=12Plots.px,
+        top_margin=5Plots.px,
+        right_margin=10Plots.px
+    )
+
+    damp_vals = collect(config.damping_range)
+    n_results = length(results)
+    color_palette = Plots.palette(:viridis, n_results)
+    
+    for (i, r) in enumerate(results)
+        # Reconstruct the fit curve
+        fit_curve = r.fitting_parameters[1] .+ r.fitting_parameters[2] .* damp_vals .+
+                    r.fitting_parameters[3] .* damp_vals .^ 2
+        
+        # In single_area/workflow.jl, min_inertia is a scalar calculated inside execute_workflow.
+        # To be safe, we can find the minimum inertia from the vertices, or recalculate it.
+        # Since r.vertices is populated, the first half of r.vertices is the bottom boundary:
+        # v = (droop, damp, H_bot)
+        # Let's extract H_bot for the damping range.
+        len = div(length(r.vertices), 2)
+        if len > 0
+            damp_sub = [r.vertices[k][2] for k in 1:len]
+            h_bot_sub = [r.vertices[k][3] for k in 1:len]
+            
+            label = ""
+            if i == 1
+                label = "Min R = $(round(results[1].droop, digits=1))"
+            elseif i == n_results
+                label = "Max R = $(round(results[end].droop, digits=1))"
+            end
+            
+            Plots.plot!(p_overlay, damp_sub, h_bot_sub;
+                lw=1.5,
+                color=color_palette[i],
+                label=label
+            )
+        end
+    end
+    
+    # Right panel: Intercept trend
+    p_trend = Plots.plot(;
+        framestyle=:box,
+        fontfamily=PLOT_FONT_FAMILY,
+        tickdirection=:out,
+        grid=true,
+        gridalpha=0.12,
+        gridcolor=:grey80,
+        xlabel="Governor Droop, R (p.u.)",
+        ylabel="Intercept Coefficient, c",
+        title="",
+        titlefontsize=10,
+        guidefontsize=9,
+        tickfontsize=8,
+        legend=false,
+        left_margin=15Plots.px,
+        bottom_margin=12Plots.px,
+        top_margin=5Plots.px,
+        right_margin=10Plots.px
+    )
+    
+    droops = [r.droop for r in results]
+    c_coefficients = [r.fitting_parameters[1] for r in results]
+    
+    Plots.plot!(p_trend, droops, c_coefficients;
+        lw=1.5,
+        color=COLOR_UPPER_BOUND,
+        marker=:circle,
+        markersize=3.5,
+        markercolor=COLOR_ROCOF_LIMIT,
+        markerstrokewidth=0
+    )
+    
+    # Combined plot with panel labels
+    p_overlay_labeled = Plots.plot(p_overlay, title="a", titlelocation=:left, titlefont=Plots.font(10, PLOT_FONT_FAMILY, :bold))
+    p_trend_labeled = Plots.plot(p_trend, title="b", titlelocation=:left, titlefont=Plots.font(10, PLOT_FONT_FAMILY, :bold))
+    
+    combined_plot = Plots.plot(p_overlay_labeled, p_trend_labeled;
+        layout=(1, 2),
+        size=(700, 300)
+    )
     
     # Combine vertices
     all_vertices = [r.vertices for r in results]
@@ -341,3 +433,158 @@ function get_workflow_summary(result::ComputationResult)::String
     """
     return summary
 end
+
+"""
+    simulate_single_area_response(H, D, system_params, controller_config, flag_converter; t_max=6.0, dt=0.005)
+
+Simulates the frequency response of a single-area power system using RK4.
+Returns a tuple (time_steps, frequency_trajectory).
+"""
+function simulate_single_area_response(H, D, system_params, controller_config, flag_converter; t_max=6.0, dt=0.005)
+    Tg = system_params.time_constant
+    Kg = system_params.droop # governor gain (1/droop)
+    DP = system_params.power_deviation
+    F = system_params.factorial_coefficient
+    
+    # Adjust for converter VSM and droop
+    H_tot = H
+    D_tot = D
+    if flag_converter == 1
+        H_vsm = controller_config.vsm_params["inertia"]
+        D_vsm = controller_config.vsm_params["damping"]
+        R_vsm_droop = controller_config.droop_params["droop"]
+        H_tot = H + H_vsm
+        D_tot = D + D_vsm + 1.0 / R_vsm_droop
+    end
+    
+    t_steps = 0:dt:t_max
+    n_steps = length(t_steps)
+    dw_hist = zeros(n_steps)
+    
+    # State variables: dw (frequency deviation in Hz), xg (governor state)
+    dw = 0.0
+    xg = 0.0
+    
+    for i in 1:n_steps
+        dw_hist[i] = dw
+        
+        Pm = xg - F * dw
+        ddw = (Pm - D_tot * dw - DP) / (2 * H_tot)
+        dxg = (-xg - (Kg - F) * dw) / Tg
+        
+        # RK4
+        k1_dw = ddw
+        k1_xg = dxg
+        
+        dw2 = dw + 0.5 * dt * k1_dw
+        xg2 = xg + 0.5 * dt * k1_xg
+        ddw2 = ((xg2 - F * dw2) - D_tot * dw2 - DP) / (2 * H_tot)
+        dxg2 = (-xg2 - (Kg - F) * dw2) / Tg
+        k2_dw = ddw2
+        k2_xg = dxg2
+        
+        dw3 = dw + 0.5 * dt * k2_dw
+        xg3 = xg + 0.5 * dt * k2_xg
+        ddw3 = ((xg3 - F * dw3) - D_tot * dw3 - DP) / (2 * H_tot)
+        dxg3 = (-xg3 - (Kg - F) * dw3) / Tg
+        k3_dw = ddw3
+        k3_xg = dxg3
+        
+        dw4 = dw + dt * k3_dw
+        xg4 = xg + dt * k3_xg
+        ddw4 = ((xg4 - F * dw4) - D_tot * dw4 - DP) / (2 * H_tot)
+        dxg4 = (-xg4 - (Kg - F) * dw4) / Tg
+        k4_dw = ddw4
+        k4_xg = dxg4
+        
+        dw += (dt / 6.0) * (k1_dw + 2.0 * k2_dw + 2.0 * k3_dw + k4_dw)
+        xg += (dt / 6.0) * (k1_xg + 2.0 * k2_xg + 2.0 * k3_xg + k4_xg)
+    end
+    
+    return collect(t_steps), 50.0 .+ dw_hist
+end
+
+"""
+    plot_single_area_verification_trajectories(state::WorkflowState, min_inertia::Number, max_inertia_scalar::Number)
+
+Plots a 2-panel verification figure showing both the safety region in the H-D plane (with selected points)
+and their corresponding time-domain frequency trajectories.
+"""
+function plot_single_area_verification_trajectories(state::WorkflowState, min_inertia::Number, max_inertia_scalar::Number)
+    damping = state.computation_config.damping_range
+    extreme_inertia = state.extreme_inertia
+    bounds_mat = collect(state.inertia_bounds)
+    min_damping = state.computation_config.min_damping
+    max_damping = state.computation_config.max_damping
+    
+    # 1. Select midpoint damping
+    d_mid = (min_damping + max_damping) / 2
+    idx = argmin(abs.(damping .- d_mid))
+    D_val = damping[idx]
+    
+    # 2. Get boundary H
+    H_boundary = max(bounds_mat[idx, 2], min_inertia, state.fitting_parameters[1] + state.fitting_parameters[2] * D_val + state.fitting_parameters[3] * D_val^2)
+    
+    # Define Points A, B, C
+    H_secure = H_boundary + 3.0
+    H_insecure = max(0.5, H_boundary - 2.0)
+    
+    # 3. Simulate
+    t_A, f_A = simulate_single_area_response(H_secure, D_val, state.system_params, state.controller_config, state.computation_config.flag_converter)
+    t_B, f_B = simulate_single_area_response(H_boundary, D_val, state.system_params, state.controller_config, state.computation_config.flag_converter)
+    t_C, f_C = simulate_single_area_response(H_insecure, D_val, state.system_params, state.controller_config, state.computation_config.flag_converter)
+    
+    # 4. Plot left panel (H-D region with points A, B, C marked)
+    p_region = sub_data_visualization(
+        damping, min_inertia, max_inertia_scalar, state.inertia_bounds,
+        extreme_inertia, state.nadir_vector, state.inertia_vector, state.selected_ids,
+        min_damping, max_damping, state.system_params.droop, state.fitting_parameters
+    )
+    
+    # Overlay points A, B, C on p_region
+    Plots.scatter!(p_region, [D_val], [H_secure]; marker=:circle, markersize=5, color=COLOR_VERIFY_A, label="A (Secure)")
+    Plots.scatter!(p_region, [D_val], [H_boundary]; marker=:rect, markersize=5, color=COLOR_VERIFY_B, label="B (Boundary)")
+    Plots.scatter!(p_region, [D_val], [H_insecure]; marker=:utriangle, markersize=5, color=COLOR_VERIFY_C, label="C (Insecure)")
+    
+    # 5. Plot right panel (Time-domain trajectories)
+    p_traj = Plots.plot(;
+        framestyle=:box,
+        fontfamily=PLOT_FONT_FAMILY,
+        tickdirection=:out,
+        grid=true,
+        gridalpha=0.12,
+        gridcolor=:grey80,
+        xlabel="Time, t (s)",
+        ylabel="Frequency, f (Hz)",
+        title="",
+        titlefontsize=10,
+        guidefontsize=9,
+        tickfontsize=8,
+        legendfontsize=8,
+        fg_legend=:transparent,
+        bg_legend=:transparent,
+        left_margin=15Plots.px,
+        bottom_margin=12Plots.px,
+        top_margin=5Plots.px,
+        right_margin=10Plots.px,
+        size=(350, 300)
+    )
+    
+    Plots.plot!(p_traj, t_A, f_A; lw=1.5, color=COLOR_VERIFY_A, label="A (H=$(round(H_secure, digits=1)))")
+    Plots.plot!(p_traj, t_B, f_B; lw=1.5, color=COLOR_VERIFY_B, label="B (H=$(round(H_boundary, digits=1)))")
+    Plots.plot!(p_traj, t_C, f_C; lw=1.5, color=COLOR_VERIFY_C, label="C (H=$(round(H_insecure, digits=1)))")
+    
+    f_limit = 50.0 - (state.computation_config.flag_converter == 0 ? 0.25 : 0.1750)
+    Plots.hline!(p_traj, [f_limit]; lw=1.2, color=COLOR_ROCOF_LIMIT, linestyle=:dash, label="Nadir limit")
+    
+    p_region_labeled = Plots.plot(p_region, title="a", titlelocation=:left, titlefont=Plots.font(10, PLOT_FONT_FAMILY, :bold))
+    p_traj_labeled = Plots.plot(p_traj, title="b", titlelocation=:left, titlefont=Plots.font(10, PLOT_FONT_FAMILY, :bold))
+    
+    combined_plot = Plots.plot(p_region_labeled, p_traj_labeled;
+        layout=(1, 2),
+        size=(700, 300)
+    )
+    
+    return combined_plot
+end
+

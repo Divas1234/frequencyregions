@@ -13,7 +13,7 @@ function calculate_fittingparameters(inertia, damping)
 
     # n_samples = 100
 
-    # regression_params = 2 .* damping .+ 1 .+ 0.1 * randn(n_samples)
+   # regression_params = 2 .* damping .+ 1 .+ 0.1 * randn(n_samples)
 
     X = hcat(ones(data_size), damping, damping .^ 2)
 
