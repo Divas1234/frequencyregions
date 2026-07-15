@@ -74,7 +74,7 @@ function run_multiarea_analysis(;
 )
 	println("\n=== [Stage 1/6] Loading network topology and configuration parameters ===")
 	# Load system: default to classic IEEE 2-area Kundur (加载电网拓扑，默认双区系统)
-	sys = isnothing(system) ? build_ieee_2area_kundur() : system
+	sys = isnothing(system) ? build_regional_frequency_control_system() : system
 
 	println("="^60)
 	println("  Multi-Area Frequency Security Region Analysis")

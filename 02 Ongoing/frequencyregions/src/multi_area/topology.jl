@@ -51,7 +51,7 @@ function build_ieee_2area_kundur()
         0.3,       # T_g (governor time constant / 调速器时间常数)
         22.0,      # droop = 1/R = 22.0
         2.0,       # ROCOF threshold (Hz/s)
-        0.8,       # NADIR threshold (Hz)
+        0.55,      # NADIR threshold (Hz): active without dominating the domain
         0.3,       # largest contingency (p.u. / 最大扰动量)
     )
 
@@ -63,14 +63,36 @@ function build_ieee_2area_kundur()
         0.3,       # T_g
         22.0,      # droop = 1/R = 22.0
         2.0,
-        0.8,
+        0.55,
         0.2,       # smaller contingency (p.u.) — distinguishing factor
     )
 
     # AC Tie-line configuration (AC 联络线配置)
-    tie = TieLine(1, 2, 2.0, 0.15)  # T_sync=2.0 p.u., capacity=0.15 p.u.
+    tie = TieLine(1, 2, 2.0, 0.155)  # moderate capacity: locally active, not domain-dominating
 
     return MultiAreaSystem([area1, area2], [tie])
+end
+
+
+"""
+    build_regional_frequency_control_system() -> MultiAreaSystem
+
+Builds the recommended two-area configuration used for regional frequency-domain
+studies. Area 1 is synchronous-generation dominated; Area 2 has lower physical
+inertia but grid-forming renewable/BESS fast-frequency response. The deliberately
+finite tie-line capacity makes both the Nadir and tie-line curves relevant.
+"""
+function build_regional_frequency_control_system()
+    synchronous_area = AreaParameters(
+        1, 8.0, 0.30, 0.35, 24.0, 2.0, 0.8, 0.30,
+    )
+    renewable_area = AreaParameters(
+        2, 5.0, 0.75, 0.08, 55.0, 2.0, 0.8, 0.20,
+    )
+
+    # Finite transfer capacity exposes the Nadir/tie-line trade-off.
+    tie = TieLine(1, 2, 2.0, 0.2033)
+    return MultiAreaSystem([synchronous_area, renewable_area], [tie])
 end
 
 

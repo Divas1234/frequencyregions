@@ -58,7 +58,8 @@ function plot_multiarea_comparison(
 		end
 
 		p = Plots.plot(; framestyle = :box,
-			title = "", # No title inside plot
+			title = "Area $(ar_con.area_id) frequency-security region",
+			titlefont = Plots.font(9, PLOT_FONT_FAMILY, :bold),
 			xlabel = "Damping, D (p.u.)", ylabel = "Inertia, H (s)",
 			guidefontsize = 9, tickfontsize = 8,
 			legendfontsize = 8, fontfamily = PLOT_FONT_FAMILY,
@@ -90,8 +91,11 @@ function plot_multiarea_comparison(
 
 		# 3. Isolated Feasible Region
 		if !isempty(r_iso.vertices)
-			fit_curve_iso = r_iso.fitting_parameters[1] .+ r_iso.fitting_parameters[2] .* damp .+
-							r_iso.fitting_parameters[3] .* damp .^ 2
+			fit_curve_iso = length(ar_iso.nadir_inertia_limits) == length(damp) ?
+				ar_iso.nadir_inertia_limits :
+				(r_iso.fitting_parameters[1] .+ r_iso.fitting_parameters[2] .* damp .+
+				 r_iso.fitting_parameters[3] .* damp .^ 2)
+			fit_curve_iso_plot = [fit_curve_iso[i] <= bounds[i, 1] ? fit_curve_iso[i] : NaN for i in eachindex(damp)]
 
 			if !isempty(idx_range)
 				damp_sub = damp[idx_range]
@@ -104,14 +108,18 @@ function plot_multiarea_comparison(
 			end
 
 			# Plot isolated nadir fit curve
-			p = Plots.plot!(p, damp, fit_curve_iso;
-				lw = 1.5, label = "Isolated Nadir Fit", color = COLOR_FEASIBLE_ISO, linestyle = :dashdot)
+			p = Plots.plot!(p, damp, fit_curve_iso_plot;
+				lw = 1.5, label = "Isolated Nadir boundary", color = COLOR_FEASIBLE_ISO, linestyle = :dashdot)
 		end
 
 		# 4. Interconnected Feasible Region
 		if !isempty(r_con.vertices)
-			fit_curve_con = r_con.fitting_parameters[1] .+ r_con.fitting_parameters[2] .* damp .+
-							r_con.fitting_parameters[3] .* damp .^ 2
+			fit_curve_con = length(ar_con.nadir_inertia_limits) == length(damp) ?
+				ar_con.nadir_inertia_limits :
+				(r_con.fitting_parameters[1] .+ r_con.fitting_parameters[2] .* damp .+
+				 r_con.fitting_parameters[3] .* damp .^ 2)
+			active_lower_curve = max.(bounds[:, 2], min_inertia, fit_curve_con)
+			active_lower_curve_plot = [active_lower_curve[i] <= bounds[i, 1] ? active_lower_curve[i] : NaN for i in eachindex(damp)]
 
 			if !isempty(idx_range)
 				damp_sub = damp[idx_range]
@@ -123,22 +131,35 @@ function plot_multiarea_comparison(
 					lw = 0, label = "Feasible (Interconnected)")
 			end
 
-			# Plot interconnected nadir fit curve
-			p = Plots.plot!(p, damp, fit_curve_con;
-				lw = 1.5, label = "Interconnected Combined Fit", color = COLOR_FEASIBLE_CON, linestyle = :dashdot)
+			# Nadir is the active lower boundary. Tie-line capacity is plotted below
+			# as an upper boundary, so the safe domain is visibly between them.
+			p = Plots.plot!(p, damp, active_lower_curve_plot;
+				lw = 2.2, label = "Active lower boundary", color = :black, linestyle = :solid)
 
 			# Plot separate Nadir and Tieline limit curves if available
 			if !isempty(ar_con.nadir_fitting_parameters)
-				fit_curve_nadir = ar_con.nadir_fitting_parameters[1] .+ ar_con.nadir_fitting_parameters[2] .* damp .+
-								  ar_con.nadir_fitting_parameters[3] .* damp .^ 2
+				fit_curve_nadir = length(ar_con.nadir_inertia_limits) == length(damp) ?
+					ar_con.nadir_inertia_limits :
+					(ar_con.nadir_fitting_parameters[1] .+ ar_con.nadir_fitting_parameters[2] .* damp .+
+					 ar_con.nadir_fitting_parameters[3] .* damp .^ 2)
 				p = Plots.plot!(p, damp, fit_curve_nadir;
-					lw = 1.5, label = "Nadir constraint limit", color = :green, linestyle = :dash)
+					lw = 1.8, label = "Nadir required inertia", color = :green, linestyle = :dash)
 			end
 			if !isempty(ar_con.tieline_fitting_parameters)
-				fit_curve_tieline = ar_con.tieline_fitting_parameters[1] .+ ar_con.tieline_fitting_parameters[2] .* damp .+
-									ar_con.tieline_fitting_parameters[3] .* damp .^ 2
-				p = Plots.plot!(p, damp, fit_curve_tieline;
-					lw = 1.5, label = "Tieline capacity limit", color = :red, linestyle = :dot)
+				# Tie-line transfer can switch sharply from feasible to infeasible;
+				# plot the simulated boundary rather than a misleading quadratic fit.
+				tieline_curve = length(ar_con.tieline_inertia_limits) == length(damp) ?
+					ar_con.tieline_inertia_limits :
+					(ar_con.tieline_fitting_parameters[1] .+ ar_con.tieline_fitting_parameters[2] .* damp .+
+					 ar_con.tieline_fitting_parameters[3] .* damp .^ 2)
+				# H=100 s is the search sentinel for a non-binding tie-line, not a
+				# physical boundary. Suppress it so it cannot flatten the Nadir curve.
+				tieline_curve = [
+					(h >= 99.9 || h > bounds[i, 1] + 1e-6) ? NaN : h
+					for (i, h) in enumerate(tieline_curve)
+				]
+				p = Plots.plot!(p, damp, tieline_curve;
+					lw = 1.8, label = "Tie-line capacity upper boundary", color = :red, linestyle = :dot)
 			end
 		end
 

@@ -45,10 +45,13 @@ struct AreaResult
     effective_disturbance::Float64
     nadir_fitting_parameters::Vector{Float64}
     tieline_fitting_parameters::Vector{Float64}
+    nadir_inertia_limits::Vector{Float64}
+    tieline_inertia_limits::Vector{Float64}
 end
 
 function AreaResult(area_id::Int, result::ComputationResult, tie_contribution::Float64, effective_disturbance::Float64)
-    return AreaResult(area_id, result, tie_contribution, effective_disturbance, Float64[], Float64[])
+    return AreaResult(area_id, result, tie_contribution, effective_disturbance,
+        Float64[], Float64[], Float64[], Float64[])
 end
 
 
@@ -289,7 +292,9 @@ function execute_dynamic_area_workflow(
         end
     end
 
-    damping_range = config.damping_range
+    # Dynamic boundary routines are typed for Float64. Normalize here so an
+    # integer user sweep (for example `2:12`) remains a valid public input.
+    damping_range = Float64.(collect(config.damping_range))
 
     # Calculate single-area zeta=1 bounds as stability reference bounds
     # 计算单区阻尼比为 1 时的惯性下限边界作为稳定运行基准参考线
@@ -338,11 +343,14 @@ function execute_dynamic_area_workflow(
         push!(critical_tieline_inertias, H1_tieline)
     end
 
-    # The actual extreme inertia is the upper envelope of both constraints
-    critical_combined_inertias = max.(critical_nadir_inertias, critical_tieline_inertias)
-    extreme_inertia = reshape(critical_combined_inertias, :, 1)
+    # Nadir is a minimum-inertia requirement. Tie-line capacity instead limits
+    # the maximum permitted inertia because slower excursions can sustain a
+    # larger inter-area transfer. Keep these constraints on their correct sides
+    # of the feasible domain.
+    extreme_inertia = reshape(critical_nadir_inertias, :, 1)
+    single_area_bounds[:, 1] = min.(single_area_bounds[:, 1], critical_tieline_inertias)
 
-    # Fit quadratic relation for both and the combined boundary
+    # Fit the lower Nadir boundary and the upper tie-line-capacity boundary.
     fitting_parameters = calculate_fittingparameters(extreme_inertia, damping_range)
     nadir_fitting_parameters = calculate_fittingparameters(reshape(critical_nadir_inertias, :, 1), damping_range)
     tieline_fitting_parameters = calculate_fittingparameters(reshape(critical_tieline_inertias, :, 1), damping_range)
@@ -382,7 +390,9 @@ function execute_dynamic_area_workflow(
     )
 
     result = ComputationResult(area.droop, plot, vertices, single_area_bounds, fitting_parameters)
-    return AreaResult(area.id, result, 0.0, area.power_deviation, nadir_fitting_parameters, tieline_fitting_parameters)
+    return AreaResult(area.id, result, 0.0, area.power_deviation,
+        nadir_fitting_parameters, tieline_fitting_parameters,
+        critical_nadir_inertias, critical_tieline_inertias)
 end
 
 """

@@ -7,8 +7,14 @@
     @test system.areas[2].id == 2
 
     @test compute_tie_line_contribution(1, system; factor = 0.0) == 0.0
-    @test compute_tie_line_contribution(1, system; factor = 0.5) == 0.075
-    @test compute_tie_line_contribution(2, system; factor = 1.0) == 0.15
+    @test compute_tie_line_contribution(1, system; factor = 0.5) == 0.0775
+    @test compute_tie_line_contribution(2, system; factor = 1.0) == 0.155
+    @test all(a -> a.nadir_threshold == 0.55, system.areas)
+
+    recommended = build_regional_frequency_control_system()
+    @test recommended.areas[1].initial_inertia > recommended.areas[2].initial_inertia
+    @test recommended.areas[1].time_constant > recommended.areas[2].time_constant
+    @test recommended.areas[1].droop < recommended.areas[2].droop
 
     # Test asymmetric resources system
     sys_asym = build_asymmetric_resources_system()

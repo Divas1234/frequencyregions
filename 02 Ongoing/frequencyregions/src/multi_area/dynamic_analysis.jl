@@ -282,7 +282,7 @@ end
 """
     find_critical_inertia_tieline(...) -> Float64
 
-English: Performs a bisection search to find the minimum required inertia H1 that satisfies the tie-line capacity limit C12 in unclamped dynamic simulation.
+English: Performs a bisection search to find the maximum permitted inertia H1 that satisfies the tie-line capacity limit C12 in unclamped dynamic simulation.
 Chinese: 采用二分搜索算法寻找在无钳位动态模拟下，满足联络线传输极限 C12 约束的区域 1 最小临界惯性 H1。
 """
 function find_critical_inertia_tieline(
@@ -291,23 +291,26 @@ function find_critical_inertia_tieline(
 	T12::Float64, C12::Float64;
 	H_min_search::Float64 = 0.05, H_max_search::Float64 = 100.0, tol::Float64 = 1e-3,
 )
-	p_max_H = simulate_multiarea_frequency_unclamped(
-		H_max_search, D1, R1, Tg1, Km1, DP1,
-		H2, D2, R2, Tg2, Km2, DP2,
-		T12,
-	)
-	if p_max_H > C12
-		return H_max_search
-	end
+    p_min_H = simulate_multiarea_frequency_unclamped(
+        H_min_search, D1, R1, Tg1, Km1, DP1,
+        H2, D2, R2, Tg2, Km2, DP2,
+        T12,
+    )
+    # In this model the peak tie-line transfer can increase with local inertia:
+    # a slower frequency excursion gives the interconnection longer to exchange
+    # power. Therefore this is an *upper* inertia constraint, not a lower one.
+    if p_min_H > C12
+        return H_min_search
+    end
 
-	p_min_H = simulate_multiarea_frequency_unclamped(
-		H_min_search, D1, R1, Tg1, Km1, DP1,
-		H2, D2, R2, Tg2, Km2, DP2,
-		T12,
-	)
-	if p_min_H <= C12
-		return H_min_search
-	end
+    p_max_H = simulate_multiarea_frequency_unclamped(
+        H_max_search, D1, R1, Tg1, Km1, DP1,
+        H2, D2, R2, Tg2, Km2, DP2,
+        T12,
+    )
+    if p_max_H <= C12
+        return H_max_search
+    end
 
 	low = H_min_search
 	high = H_max_search
@@ -320,10 +323,10 @@ function find_critical_inertia_tieline(
 			H2, D2, R2, Tg2, Km2, DP2,
 			T12,
 		)
-		if p_val > C12
-			low = mid
-		else
-			high = mid
+        if p_val <= C12
+            low = mid
+        else
+            high = mid
 		end
 	end
 
