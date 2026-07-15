@@ -43,7 +43,14 @@ struct AreaResult
     result::ComputationResult
     tie_contribution::Float64
     effective_disturbance::Float64
+    nadir_fitting_parameters::Vector{Float64}
+    tieline_fitting_parameters::Vector{Float64}
 end
+
+function AreaResult(area_id::Int, result::ComputationResult, tie_contribution::Float64, effective_disturbance::Float64)
+    return AreaResult(area_id, result, tie_contribution, effective_disturbance, Float64[], Float64[])
+end
+
 
 
 """
@@ -304,6 +311,7 @@ function execute_dynamic_area_workflow(
     # Bisection sweep over damping range to locate critical inertia
     # 对阻尼常数进行扫描，利用二分法在动态积分模拟中寻找临界安全惯性
     critical_nadir_inertias = Float64[]
+    critical_tieline_inertias = Float64[]
     for D1 in damping_range
         # Baseline/nominal values for the other area (Area 2)
         H2 = area2.initial_inertia
@@ -312,19 +320,32 @@ function execute_dynamic_area_workflow(
         Tg2 = area2.time_constant
         Km2 = area2.factorial_coefficient
 
-        H1_crit = find_critical_inertia_nadir(
+        H1_nadir = find_critical_inertia_nadir(
             D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
             H2, D2, R2, Tg2, Km2, DP2,
             T12, C12, area.nadir_threshold, area2.nadir_threshold
         )
-        push!(critical_nadir_inertias, H1_crit)
+        push!(critical_nadir_inertias, H1_nadir)
+
+        H1_tieline = 0.05
+        if T12 > 0.0 && C12 > 0.0
+            H1_tieline = find_critical_inertia_tieline(
+                D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
+                H2, D2, R2, Tg2, Km2, DP2,
+                T12, C12
+            )
+        end
+        push!(critical_tieline_inertias, H1_tieline)
     end
 
-    extreme_inertia = reshape(critical_nadir_inertias, :, 1)
+    # The actual extreme inertia is the upper envelope of both constraints
+    critical_combined_inertias = max.(critical_nadir_inertias, critical_tieline_inertias)
+    extreme_inertia = reshape(critical_combined_inertias, :, 1)
 
-    # Fit quadratic relation: H = c + b*D + a*D^2
-    # 拟合安全边界关系二次曲线方程
+    # Fit quadratic relation for both and the combined boundary
     fitting_parameters = calculate_fittingparameters(extreme_inertia, damping_range)
+    nadir_fitting_parameters = calculate_fittingparameters(reshape(critical_nadir_inertias, :, 1), damping_range)
+    tieline_fitting_parameters = calculate_fittingparameters(reshape(critical_tieline_inertias, :, 1), damping_range)
 
     # Local ROCOF limit (tie-line doesn't help with initial ROCOF at t=0+ due to inertia response latency)
     # 局部 ROCOF 变化率限制（由于联络线功率滞后，在故障瞬间 t=0+ 联络线无法支援，ROCOF 纯由本地惯性决定）
@@ -361,7 +382,7 @@ function execute_dynamic_area_workflow(
     )
 
     result = ComputationResult(area.droop, plot, vertices, single_area_bounds, fitting_parameters)
-    return AreaResult(area.id, result, 0.0, area.power_deviation)
+    return AreaResult(area.id, result, 0.0, area.power_deviation, nadir_fitting_parameters, tieline_fitting_parameters)
 end
 
 """

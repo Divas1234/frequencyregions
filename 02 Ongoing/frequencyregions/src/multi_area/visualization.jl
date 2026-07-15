@@ -125,7 +125,21 @@ function plot_multiarea_comparison(
 
 			# Plot interconnected nadir fit curve
 			p = Plots.plot!(p, damp, fit_curve_con;
-				lw = 1.5, label = "Interconnected Nadir Fit", color = COLOR_FEASIBLE_CON, linestyle = :dashdot)
+				lw = 1.5, label = "Interconnected Combined Fit", color = COLOR_FEASIBLE_CON, linestyle = :dashdot)
+
+			# Plot separate Nadir and Tieline limit curves if available
+			if !isempty(ar_con.nadir_fitting_parameters)
+				fit_curve_nadir = ar_con.nadir_fitting_parameters[1] .+ ar_con.nadir_fitting_parameters[2] .* damp .+
+								  ar_con.nadir_fitting_parameters[3] .* damp .^ 2
+				p = Plots.plot!(p, damp, fit_curve_nadir;
+					lw = 1.5, label = "Nadir constraint limit", color = :green, linestyle = :dash)
+			end
+			if !isempty(ar_con.tieline_fitting_parameters)
+				fit_curve_tieline = ar_con.tieline_fitting_parameters[1] .+ ar_con.tieline_fitting_parameters[2] .* damp .+
+									ar_con.tieline_fitting_parameters[3] .* damp .^ 2
+				p = Plots.plot!(p, damp, fit_curve_tieline;
+					lw = 1.5, label = "Tieline capacity limit", color = :red, linestyle = :dot)
+			end
 		end
 
 		# Damping search limits

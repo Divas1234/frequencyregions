@@ -207,6 +207,129 @@ function find_critical_inertia_nadir(
 	return mid
 end
 
+
+"""
+    simulate_multiarea_frequency_unclamped(...) -> Float64
+
+English: Simulates the dynamic frequency response of a 2-area system without tie-line capacity clamping, and returns the peak tie-line power flow.
+Chinese: 在没有联络线容量上限钳位的情况下，模拟双区域互联系统的动态频率响应过程，并返回联络线功率的最大峰值。
+"""
+function simulate_multiarea_frequency_unclamped(
+	H1::Float64, D1::Float64, R1::Float64, Tg1::Float64, Km1::Float64, DP1::Float64,
+	H2::Float64, D2::Float64, R2::Float64, Tg2::Float64, Km2::Float64, DP2::Float64,
+	T12::Float64;
+	t_max::Float64 = 10.0, dt::Float64 = 0.005,
+)
+	df1 = 0.0
+	xg1 = 0.0
+	df2 = 0.0
+	xg2 = 0.0
+	P_tie = 0.0
+
+	n_steps = round(Int, t_max / dt)
+	max_Ptie = 0.0
+
+	for step in 1:n_steps
+		function get_derivatives(df1_val, xg1_val, df2_val, xg2_val, P_tie_val)
+			Pm1 = - Km1 * R1 * df1_val + (1.0 - Km1) * xg1_val
+			Pm2 = - Km2 * R2 * df2_val + (1.0 - Km2) * xg2_val
+
+			ddf1 = (Pm1 - D1 * df1_val - DP1 + P_tie_val) / H1
+			dxg1 = - (df1_val * R1 / Tg1) - (xg1_val / Tg1)
+
+			ddf2 = (Pm2 - D2 * df2_val - DP2 - P_tie_val) / H2
+			dxg2 = - (df2_val * R2 / Tg2) - (xg2_val / Tg2)
+
+			dP_tie = 2.0 * pi * T12 * (df2_val - df1_val)
+
+			return ddf1, dxg1, ddf2, dxg2, dP_tie
+		end
+
+		# RK4 integration
+		k1_df1, k1_xg1, k1_df2, k1_xg2, k1_Ptie = get_derivatives(df1, xg1, df2, xg2, P_tie)
+
+		k2_df1, k2_xg1, k2_df2, k2_xg2, k2_Ptie = get_derivatives(
+			df1 + 0.5*dt*k1_df1, xg1 + 0.5*dt*k1_xg1,
+			df2 + 0.5*dt*k1_df2, xg2 + 0.5*dt*k1_xg2,
+			P_tie + 0.5*dt*k1_Ptie,
+		)
+
+		k3_df1, k3_xg1, k3_df2, k3_xg2, k3_Ptie = get_derivatives(
+			df1 + 0.5*dt*k2_df1, xg1 + 0.5*dt*k2_xg1,
+			df2 + 0.5*dt*k2_df2, xg2 + 0.5*dt*k2_xg2,
+			P_tie + 0.5*dt*k2_Ptie,
+		)
+
+		k4_df1, k4_xg1, k4_df2, k4_xg2, k4_Ptie = get_derivatives(
+			df1 + dt*k3_df1, xg1 + dt*k3_xg1,
+			df2 + dt*k3_df2, xg2 + dt*k3_xg2,
+			P_tie + dt*k3_Ptie,
+		)
+
+		df1 += (dt / 6.0) * (k1_df1 + 2.0*k2_df1 + 2.0*k3_df1 + k4_df1)
+		xg1 += (dt / 6.0) * (k1_xg1 + 2.0*k2_xg1 + 2.0*k3_xg1 + k4_xg1)
+		df2 += (dt / 6.0) * (k1_df2 + 2.0*k2_df2 + 2.0*k3_df2 + k4_df2)
+		xg2 += (dt / 6.0) * (k1_xg2 + 2.0*k2_xg2 + 2.0*k3_xg2 + k4_xg2)
+		P_tie += (dt / 6.0) * (k1_Ptie + 2.0*k2_Ptie + 2.0*k3_Ptie + k4_Ptie)
+
+		max_Ptie = max(max_Ptie, abs(P_tie))
+	end
+
+	return max_Ptie
+end
+
+
+"""
+    find_critical_inertia_tieline(...) -> Float64
+
+English: Performs a bisection search to find the minimum required inertia H1 that satisfies the tie-line capacity limit C12 in unclamped dynamic simulation.
+Chinese: 采用二分搜索算法寻找在无钳位动态模拟下，满足联络线传输极限 C12 约束的区域 1 最小临界惯性 H1。
+"""
+function find_critical_inertia_tieline(
+	D1::Float64, R1::Float64, Tg1::Float64, Km1::Float64, DP1::Float64,
+	H2::Float64, D2::Float64, R2::Float64, Tg2::Float64, Km2::Float64, DP2::Float64,
+	T12::Float64, C12::Float64;
+	H_min_search::Float64 = 0.05, H_max_search::Float64 = 100.0, tol::Float64 = 1e-3,
+)
+	p_max_H = simulate_multiarea_frequency_unclamped(
+		H_max_search, D1, R1, Tg1, Km1, DP1,
+		H2, D2, R2, Tg2, Km2, DP2,
+		T12,
+	)
+	if p_max_H > C12
+		return H_max_search
+	end
+
+	p_min_H = simulate_multiarea_frequency_unclamped(
+		H_min_search, D1, R1, Tg1, Km1, DP1,
+		H2, D2, R2, Tg2, Km2, DP2,
+		T12,
+	)
+	if p_min_H <= C12
+		return H_min_search
+	end
+
+	low = H_min_search
+	high = H_max_search
+	mid = 0.5 * (low + high)
+
+	while (high - low) > tol
+		mid = 0.5 * (low + high)
+		p_val = simulate_multiarea_frequency_unclamped(
+			mid, D1, R1, Tg1, Km1, DP1,
+			H2, D2, R2, Tg2, Km2, DP2,
+			T12,
+		)
+		if p_val > C12
+			low = mid
+		else
+			high = mid
+		end
+	end
+
+	return mid
+end
+
 """
     simulate_multiarea_frequency_history(...) -> Tuple{Vector, Vector, Vector, Vector}
 
