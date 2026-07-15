@@ -427,21 +427,23 @@ function plot_multiarea_mutual_support_trajectories(system::MultiAreaSystem, con
 	t_iso, df1_iso, df2_iso, P_iso = simulate_multiarea_frequency_history(
 		a1.initial_inertia, D_val, a1.droop, a1.time_constant, a1.factorial_coefficient, a1.power_deviation,
 		a2.initial_inertia, D_val, a2.droop, a2.time_constant, a2.factorial_coefficient, 0.0,
-		tl.synchronizing_coeff, 0.0,
+		tl.synchronizing_coeff, 0.0;
+		t_max=15.0
 	)
 
 	# 2. Simulate Case 2: Interconnected (C12 = nominal capacity)
 	t_con, df1_con, df2_con, P_con = simulate_multiarea_frequency_history(
 		a1.initial_inertia, D_val, a1.droop, a1.time_constant, a1.factorial_coefficient, a1.power_deviation,
 		a2.initial_inertia, D_val, a2.droop, a2.time_constant, a2.factorial_coefficient, 0.0,
-		tl.synchronizing_coeff, tl.capacity,
+		tl.synchronizing_coeff, tl.capacity;
+		t_max=15.0
 	)
 
-	# Convert frequency deviation to actual frequency (f = 50 - df)
-	f1_iso = 50.0 .- df1_iso
-	f2_iso = 50.0 .- df2_iso
-	f1_con = 50.0 .- df1_con
-	f2_con = 50.0 .- df2_con
+	# Convert frequency deviation from p.u. to Hz and get actual frequency (f = 50 - 50 * df)
+	f1_iso = 50.0 .- 50.0 .* df1_iso
+	f2_iso = 50.0 .- 50.0 .* df2_iso
+	f1_con = 50.0 .- 50.0 .* df1_con
+	f2_con = 50.0 .- 50.0 .* df2_con
 
 	# Plot panel a: Frequency curves
 	p_freq = Plots.plot(;
@@ -462,7 +464,7 @@ function plot_multiarea_mutual_support_trajectories(system::MultiAreaSystem, con
 		size = (350, 300),
 	)
 
-	Plots.hline!(p_freq, [50.0 - a1.rocof_threshold]; lw = 1.2, color = COLOR_ROCOF_LIMIT, linestyle = :dash, label = "Nadir Limit")
+	Plots.hline!(p_freq, [50.0 - a1.nadir_threshold]; lw = 1.2, color = COLOR_ROCOF_LIMIT, linestyle = :dash, label = "Nadir Limit")
 	Plots.plot!(p_freq, t_iso, f1_iso; lw = 1.5, color = COLOR_VERIFY_C, label = "Area 1 (Isolated)")
 	Plots.plot!(p_freq, t_con, f1_con; lw = 1.5, color = COLOR_UPPER_BOUND, label = "Area 1 (Interconnected)")
 	Plots.plot!(p_freq, t_con, f2_con; lw = 1.5, color = COLOR_LOWER_BOUND, linestyle = :dash, label = "Area 2 (Interconnected)")

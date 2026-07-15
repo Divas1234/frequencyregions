@@ -60,20 +60,20 @@ function simulate_multiarea_frequency_response(
 		# RK4 导数计算辅助闭包函数
 		function get_derivatives(df1_val, xg1_val, df2_val, xg2_val, P_tie_val)
 			# Mechanical power deviations (机械功率偏差计算)
-			Pm1 = - (Km1 / R1) * df1_val + (1.0 - Km1) * xg1_val
-			Pm2 = - (Km2 / R2) * df2_val + (1.0 - Km2) * xg2_val
+			Pm1 = - Km1 * R1 * df1_val + (1.0 - Km1) * xg1_val
+			Pm2 = - Km2 * R2 * df2_val + (1.0 - Km2) * xg2_val
 
 			# Frequency dynamics (swing equations / 转子运动方程)
 			ddf1 = (Pm1 - D1 * df1_val - DP1 + P_tie_val) / H1
-			dxg1 = - (df1_val / (Tg1 * R1)) - (xg1_val / Tg1)
+			dxg1 = - (df1_val * R1 / Tg1) - (xg1_val / Tg1)
 
 			ddf2 = (Pm2 - D2 * df2_val - DP2 - P_tie_val) / H2
-			dxg2 = - (df2_val / (Tg2 * R2)) - (xg2_val / Tg2)
+			dxg2 = - (df2_val * R2 / Tg2) - (xg2_val / Tg2)
 
 			# Tie-line dynamics: P_tie flows from 2 to 1, driven by (df2 - df1)
-			# We scale the synchronizing coefficient by 2 * pi * f_base (f_base = 50 Hz)
-			# 联络线功率动态：由于频率差引起的同步功率交换，乘上系统基准频率参数
-			dP_tie = 2.0 * pi * 50.0 * T12 * (df2_val - df1_val)
+			# We scale the synchronizing coefficient by 2 * pi (without double f_base scaling)
+			# 联络线功率动态：由于频率差引起的同步功率交换，乘上系统同步角频率系数
+			dP_tie = 2.0 * pi * T12 * (df2_val - df1_val)
 
 			# Nonlinear clamping: if saturated, rate is zero in the direction of saturation
 			# 非线性饱和钳位控制：若交换功率已达容量上限且趋势仍然增加，则导数置零
@@ -87,8 +87,8 @@ function simulate_multiarea_frequency_response(
 		end
 
 		# Track current step's ROCOF (记录当前步的频率变化率)
-		Pm1_curr = - (Km1 / R1) * df1 + (1.0 - Km1) * xg1
-		Pm2_curr = - (Km2 / R2) * df2 + (1.0 - Km2) * xg2
+		Pm1_curr = - Km1 * R1 * df1 + (1.0 - Km1) * xg1
+		Pm2_curr = - Km2 * R2 * df2 + (1.0 - Km2) * xg2
 
 		rocof1_val = (Pm1_curr - D1 * df1 - DP1 + P_tie) / H1
 		rocof2_val = (Pm2_curr - D2 * df2 - DP2 - P_tie) / H2
@@ -113,7 +113,7 @@ function simulate_multiarea_frequency_response(
 
 		k4_df1, k4_xg1, k4_df2, k4_xg2, k4_Ptie = get_derivatives(
 			df1 + dt*k3_df1, xg1 + dt*k3_xg1,
-			df2 + dt*k3_df2, xg2 + dt*k3_df2,
+			df2 + dt*k3_df2, xg2 + dt*k3_xg2,
 			clamp(P_tie + dt*k3_Ptie, -C12, C12),
 		)
 
@@ -153,13 +153,17 @@ function find_critical_inertia_nadir(
 	T12::Float64, C12::Float64, nadir_threshold1::Float64, nadir_threshold2::Float64;
 	H_min_search::Float64 = 0.05, H_max_search::Float64 = 100.0, tol::Float64 = 1e-3,
 )
+	# Convert thresholds from Hz to p.u. (50 Hz base)
+	th1 = nadir_threshold1 / 50.0
+	th2 = nadir_threshold2 / 50.0
+
 	# Check boundary conditions first (先进行边界安全检测)
 	n1_min_H, n2_min_H, _, _ = simulate_multiarea_frequency_response(
 		H_max_search, D1, R1, Tg1, Km1, DP1,
 		H2, D2, R2, Tg2, Km2, DP2,
 		T12, C12,
 	)
-	if n1_min_H > nadir_threshold1 || n2_min_H > nadir_threshold2
+	if n1_min_H > th1 || n2_min_H > th2
 		# Even with max search inertia, nadir is violated in either Area 1 or Area 2
 		# 即使使用了搜索的最大惯性，仍然存在区域不满足频率约束，说明解越界，返回最大值
 		return H_max_search
@@ -170,7 +174,7 @@ function find_critical_inertia_nadir(
 		H2, D2, R2, Tg2, Km2, DP2,
 		T12, C12,
 	)
-	if n1_max_H <= nadir_threshold1 && n2_max_H <= nadir_threshold2
+	if n1_max_H <= th1 && n2_max_H <= th2
 		# Even with min search inertia, nadir is satisfied in both areas
 		# 即使处于最小惯性，两区仍都安全，则返回最小值
 		return H_min_search
@@ -189,7 +193,7 @@ function find_critical_inertia_nadir(
 			T12, C12,
 		)
 
-		if nadir1 > nadir_threshold1 || nadir2 > nadir_threshold2
+		if nadir1 > th1 || nadir2 > th2
 			# Violation in either area: needs more inertia support in Area 1
 			# 任何一个区域超标，说明当前惯性不足，抬高下限
 			low = mid
@@ -235,16 +239,16 @@ function simulate_multiarea_frequency_history(
 
 	for step in 1:n_steps
 		function get_derivatives(df1_val, xg1_val, df2_val, xg2_val, P_tie_val)
-			Pm1 = - (Km1 / R1) * df1_val + (1.0 - Km1) * xg1_val
-			Pm2 = - (Km2 / R2) * df2_val + (1.0 - Km2) * xg2_val
+			Pm1 = - Km1 * R1 * df1_val + (1.0 - Km1) * xg1_val
+			Pm2 = - Km2 * R2 * df2_val + (1.0 - Km2) * xg2_val
 
 			ddf1 = (Pm1 - D1 * df1_val - DP1 + P_tie_val) / H1
-			dxg1 = - (df1_val / (Tg1 * R1)) - (xg1_val / Tg1)
+			dxg1 = - (df1_val * R1 / Tg1) - (xg1_val / Tg1)
 
 			ddf2 = (Pm2 - D2 * df2_val - DP2 - P_tie_val) / H2
-			dxg2 = - (df2_val / (Tg2 * R2)) - (xg2_val / Tg2)
+			dxg2 = - (df2_val * R2 / Tg2) - (xg2_val / Tg2)
 
-			dP_tie = 2.0 * pi * 50.0 * T12 * (df2_val - df1_val)
+			dP_tie = 2.0 * pi * T12 * (df2_val - df1_val)
 
 			if P_tie_val >= C12 && dP_tie > 0.0
 				dP_tie = 0.0
@@ -272,7 +276,7 @@ function simulate_multiarea_frequency_history(
 
 		k4_df1, k4_xg1, k4_df2, k4_xg2, k4_Ptie = get_derivatives(
 			df1 + dt*k3_df1, xg1 + dt*k3_xg1,
-			df2 + dt*k3_df2, xg2 + dt*k3_df2,
+			df2 + dt*k3_df2, xg2 + dt*k3_xg2,
 			clamp(P_tie + dt*k3_Ptie, -C12, C12),
 		)
 
