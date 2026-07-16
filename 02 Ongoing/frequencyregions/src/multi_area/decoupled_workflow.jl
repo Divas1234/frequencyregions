@@ -317,28 +317,41 @@ function execute_dynamic_area_workflow(
     # 对阻尼常数进行扫描，利用二分法在动态积分模拟中寻找临界安全惯性
     critical_nadir_inertias = Float64[]
     critical_tieline_inertias = Float64[]
-    for D1 in damping_range
+	for (D_index, D1) in enumerate(damping_range)
         # Baseline/nominal values for the other area (Area 2)
         H2 = area2.initial_inertia
         D2 = 4.0 # Nominal damping in Area 2
-        R2 = area2.droop
-        Tg2 = area2.time_constant
-        Km2 = area2.factorial_coefficient
+		R2 = area2.droop
+		Tg2 = area2.time_constant
+		Km2 = area2.factorial_coefficient
 
-        H1_nadir = find_critical_inertia_nadir(
-            D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
-            H2, D2, R2, Tg2, Km2, DP2,
-            T12, C12, area.nadir_threshold, area2.nadir_threshold
-        )
+		# Restrict the search to the local stability strip.  An arbitrarily tiny
+		# inertia can create a numerical safe island that must not be stitched
+		# into the H-D security polygon.
+		stability_lower = max(single_area_bounds[D_index, 2], 0.05)
+		stability_upper = single_area_bounds[D_index, 1]
+
+		H1_nadir = find_critical_inertia_nadir(
+			D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
+			H2, D2, R2, Tg2, Km2, DP2,
+			T12, C12, area.nadir_threshold, area2.nadir_threshold;
+			H_min_search = stability_lower,
+			H_max_search = stability_upper,
+		)
         push!(critical_nadir_inertias, H1_nadir)
 
-        H1_tieline = 0.05
-        if T12 > 0.0 && C12 > 0.0
-            H1_tieline = find_critical_inertia_tieline(
-                D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
-                H2, D2, R2, Tg2, Km2, DP2,
-                T12, C12
-            )
+        # With no finite tie-line capacity there is no transfer-capacity
+        # restriction; retain the local stability upper bound instead of using
+        # a sentinel that would collapse the feasible region to zero width.
+        H1_tieline = stability_upper
+		if T12 > 0.0 && C12 > 0.0
+			H1_tieline = find_critical_inertia_tieline(
+				D1, area.droop, area.time_constant, area.factorial_coefficient, DP1,
+				H2, D2, R2, Tg2, Km2, DP2,
+				T12, C12;
+				H_min_search = stability_lower,
+				H_max_search = stability_upper,
+			)
         end
         push!(critical_tieline_inertias, H1_tieline)
     end
@@ -359,19 +372,37 @@ function execute_dynamic_area_workflow(
     # 局部 ROCOF 变化率限制（由于联络线功率滞后，在故障瞬间 t=0+ 联络线无法支援，ROCOF 纯由本地惯性决定）
     min_inertia = 0.5 * (area.power_deviation * PERCENTAGE_BASE) / (area.rocof_threshold * FREQUENCY_BASE)
 
+    # Keep only the longest contiguous feasible damping interval. A sampled
+    # boundary can contain isolated numerical safe points; stitching those
+    # points to a later feasible interval would create a disconnected or
+    # self-crossing polygon instead of one closed security region.
+    fitted_nadir = fitting_parameters[1] .+ fitting_parameters[2] .* damping_range .+
+                   fitting_parameters[3] .* damping_range .^ 2
+    active_lower = max.(single_area_bounds[:, 2], min_inertia, fitted_nadir)
+    feasible_mask = isfinite.(active_lower) .& isfinite.(single_area_bounds[:, 1]) .&
+                    (damping_range .>= config.min_damping) .&
+                    (damping_range .<= config.max_damping) .&
+                    (active_lower .< single_area_bounds[:, 1] .- 1e-6)
+    feasible_indices = largest_contiguous_true_run(feasible_mask)
+
     # Calculate feasible region vertices (计算动态可行域边界顶点)
     max_inertia_scalar = maximum(single_area_bounds[:, 1])
-
-    vertices = calculate_vertex(
-        damping_range,
-        single_area_bounds,
-        fitting_parameters,
-        min_inertia,
-        max_inertia_scalar,
-        config.min_damping,
-        config.max_damping,
-        area.droop
-    )
+    vertices = if isempty(feasible_indices)
+        Vector{NamedTuple{(:droop, :damping, :inertia),Tuple{Float64,Float64,Float64}}}()
+    else
+        selected_damping = damping_range[feasible_indices]
+        selected_bounds = single_area_bounds[feasible_indices, :]
+        calculate_vertex(
+            selected_damping,
+            selected_bounds,
+            fitting_parameters,
+            min_inertia,
+            max_inertia_scalar,
+            first(selected_damping),
+            last(selected_damping),
+            area.droop
+        )
+    end
 
     # Generate dynamic visualizer plot (生成动态相互支援模式下的安全区域可视化图形)
     plot = sub_data_visualization(
@@ -386,7 +417,8 @@ function execute_dynamic_area_workflow(
         config.min_damping,
         config.max_damping,
         area.droop,
-        fitting_parameters
+        fitting_parameters;
+        feasible_indices=feasible_indices,
     )
 
     result = ComputationResult(area.droop, plot, vertices, single_area_bounds, fitting_parameters)

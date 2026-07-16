@@ -20,16 +20,15 @@
     sys_asym = build_asymmetric_resources_system()
     @test length(sys_asym.areas) == 2
     @test sys_asym.areas[1].droop == 15.0
-    @test sys_asym.areas[2].droop == 45.0
+    @test sys_asym.areas[2].droop == 25.0
     @test sys_asym.areas[1].time_constant == 0.6
-    @test sys_asym.areas[2].time_constant == 0.15
+    @test sys_asym.areas[2].time_constant == 0.25
 
     # Test strong disturbed / weak healthy system
     sys_strong = build_strong_disturbed_weak_healthy_system()
     @test length(sys_strong.areas) == 2
-    @test sys_strong.areas[1].droop == 45.0
+    @test sys_strong.areas[1].droop == 25.0
     @test sys_strong.areas[2].droop == 15.0
-    @test sys_strong.areas[1].time_constant == 0.15
+    @test sys_strong.areas[1].time_constant == 0.25
     @test sys_strong.areas[2].time_constant == 0.6
 end
-

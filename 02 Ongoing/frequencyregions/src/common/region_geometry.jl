@@ -1,6 +1,8 @@
 function sub_data_visualization(
     damping, min_inertia, max_inertia, inertia_updown_bindings,
-    extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters,)
+    extreme_inertia, nadir_vector, inertia_vector, selected_ids, min_damping, max_damping, droop, fittingparameters;
+    feasible_indices=nothing,
+)
 
     fillarea = zeros(length(damping))
     for i in eachindex(damping)
@@ -42,7 +44,11 @@ function sub_data_visualization(
         )
 
         # 1. Fill Feasible Region
-        idx_range = findall(d -> min_damping <= d <= max_damping, damping)
+        idx_range = if isnothing(feasible_indices)
+            findall(d -> min_damping <= d <= max_damping, damping)
+        else
+            collect(feasible_indices)
+        end
         if !isempty(idx_range)
             damp_sub = collect(damping[idx_range])
             top_sub = bounds_mat[idx_range, 1]
@@ -96,6 +102,37 @@ function sub_data_visualization(
     end
 end
 
+"""
+    largest_contiguous_true_run(mask)
+
+Return the longest contiguous run of `true` entries in a feasibility mask.
+Keeping one run prevents disconnected feasible islands from being stitched into
+one polygon that is not a valid closed security region.
+"""
+function largest_contiguous_true_run(mask::AbstractVector{Bool})
+    isempty(mask) && return Int[]
+
+    best_start = 0
+    best_end = -1
+    run_start = 0
+
+    for index in eachindex(mask)
+        if mask[index]
+            run_start = run_start == 0 ? index : run_start
+            if index == lastindex(mask) || !mask[index + 1]
+                if best_start == 0 || index - run_start > best_end - best_start
+                    best_start = run_start
+                    best_end = index
+                end
+                run_start = 0
+            end
+        else
+            run_start = 0
+        end
+    end
+
+    return best_start == 0 ? Int[] : collect(best_start:best_end)
+end
 
 function calculate_vertex(damping_range, inertia_updown_bindings, fittingparameters,
     min_inertia, max_inertia, min_damping, max_damping, droop,)

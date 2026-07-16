@@ -157,43 +157,45 @@ function find_critical_inertia_nadir(
 	th1 = nadir_threshold1 / 50.0
 	th2 = nadir_threshold2 / 50.0
 
+	# Non-finite trajectories are violations.  Otherwise a numerically invalid
+	# low-inertia point can be mistaken for a safe point by the search.
+	satisfies_nadir = function(H1)
+		nadir1, nadir2, _, _ = simulate_multiarea_frequency_response(
+			H1, D1, R1, Tg1, Km1, DP1,
+			H2, D2, R2, Tg2, Km2, DP2,
+			T12, C12,
+		)
+		return isfinite(nadir1) && isfinite(nadir2) && nadir1 <= th1 && nadir2 <= th2
+	end
+
 	# Check boundary conditions first (先进行边界安全检测)
-	n1_min_H, n2_min_H, _, _ = simulate_multiarea_frequency_response(
-		H_max_search, D1, R1, Tg1, Km1, DP1,
-		H2, D2, R2, Tg2, Km2, DP2,
-		T12, C12,
-	)
-	if n1_min_H > th1 || n2_min_H > th2
+	if !satisfies_nadir(H_max_search)
 		# Even with max search inertia, nadir is violated in either Area 1 or Area 2
 		# 即使使用了搜索的最大惯性，仍然存在区域不满足频率约束，说明解越界，返回最大值
 		return H_max_search
 	end
 
-	n1_max_H, n2_max_H, _, _ = simulate_multiarea_frequency_response(
-		H_min_search, D1, R1, Tg1, Km1, DP1,
-		H2, D2, R2, Tg2, Km2, DP2,
-		T12, C12,
-	)
-	if n1_max_H <= th1 && n2_max_H <= th2
-		# Even with min search inertia, nadir is satisfied in both areas
-		# 即使处于最小惯性，两区仍都安全，则返回最小值
-		return H_min_search
-	end
-
 	low = H_min_search
 	high = H_max_search
-	mid = 0.5 * (low + high)
+
+	# The response is not guaranteed to be monotone over the entire numerical
+	# interval.  When the lower endpoint is safe, scan for the last
+	# unsafe-to-safe transition so a small low-inertia island is not selected.
+	if satisfies_nadir(H_min_search)
+		scan_points = collect(range(H_min_search, H_max_search; length = 33))
+		scan_safe = [satisfies_nadir(H) for H in scan_points]
+		transition = findlast(i -> !scan_safe[i] && scan_safe[i + 1], 1:(length(scan_safe) - 1))
+		if isnothing(transition)
+			return H_min_search
+		end
+		low = scan_points[transition]
+		high = scan_points[transition + 1]
+	end
 
 	# Perform Bisection (执行二分逼近搜索)
 	while (high - low) > tol
 		mid = 0.5 * (low + high)
-		nadir1, nadir2, _, _ = simulate_multiarea_frequency_response(
-			mid, D1, R1, Tg1, Km1, DP1,
-			H2, D2, R2, Tg2, Km2, DP2,
-			T12, C12,
-		)
-
-		if nadir1 > th1 || nadir2 > th2
+		if !satisfies_nadir(mid)
 			# Violation in either area: needs more inertia support in Area 1
 			# 任何一个区域超标，说明当前惯性不足，抬高下限
 			low = mid
@@ -204,7 +206,7 @@ function find_critical_inertia_nadir(
 		end
 	end
 
-	return mid
+	return high
 end
 
 
@@ -299,8 +301,12 @@ function find_critical_inertia_tieline(
     # In this model the peak tie-line transfer can increase with local inertia:
     # a slower frequency excursion gives the interconnection longer to exchange
     # power. Therefore this is an *upper* inertia constraint, not a lower one.
-    if p_min_H > C12
-        return H_min_search
+    if !isfinite(p_min_H) || p_min_H > C12
+        # The lower endpoint is outside the valid finite-transfer branch.  It
+        # is not an upper tie-line boundary; returning H_min here would create
+        # a spurious zero-width island in the feasible polygon.  The local
+        # stability/ROCOF/nadir lower bounds handle that endpoint instead.
+        return H_max_search
     end
 
     p_max_H = simulate_multiarea_frequency_unclamped(
@@ -308,7 +314,7 @@ function find_critical_inertia_tieline(
         H2, D2, R2, Tg2, Km2, DP2,
         T12,
     )
-    if p_max_H <= C12
+    if isfinite(p_max_H) && p_max_H <= C12
         return H_max_search
     end
 
@@ -323,7 +329,7 @@ function find_critical_inertia_tieline(
 			H2, D2, R2, Tg2, Km2, DP2,
 			T12,
 		)
-        if p_val <= C12
+        if isfinite(p_val) && p_val <= C12
             low = mid
         else
             high = mid
@@ -420,4 +426,3 @@ function simulate_multiarea_frequency_history(
 
 	return t_history, df1_history, df2_history, P_tie_history
 end
-

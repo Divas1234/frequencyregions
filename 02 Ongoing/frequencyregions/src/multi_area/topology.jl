@@ -99,7 +99,7 @@ end
 """
     build_asymmetric_resources_system() -> MultiAreaSystem
 
-Case 2: Disturbed Area (Area 1) has slow and weak frequency regulation resources (e.g. typical thermal plant / low gas ratio).
+Case 3: Disturbed Area (Area 1) has slow and weak frequency regulation resources (e.g. typical thermal plant / low gas ratio).
 Undisturbed Area (Area 2) has fast and strong frequency regulation resources (e.g. battery energy storage or fast gas turbine).
 """
 function build_asymmetric_resources_system()
@@ -111,24 +111,24 @@ function build_asymmetric_resources_system()
         0.6,       # T_g (slow governor time constant)
         15.0,      # droop = 1/R = 15.0
         2.0,       # ROCOF threshold (Hz/s)
-        0.8,       # NADIR threshold (Hz)
-        0.25,      # largest contingency (p.u.)
+        0.55,      # NADIR threshold (Hz) - tuned for active Nadir curve
+        0.35,      # largest contingency (p.u.)
     )
 
-    # Area 2: Healthy area with fast/strong regulation (R=0.022 -> droop=45, Tg=0.15s, Km=0.50)
+    # Area 2: Healthy area with fast/strong regulation (R=0.04 -> droop=25, Tg=0.25s, Km=0.35)
     area2 = AreaParameters(
         2,
         8.0,       # initial_inertia
-        0.5,       # K_m (fast turbine fraction/BESS equivalent)
-        0.15,      # T_g (fast governor time constant)
-        45.0,      # droop = 1/R = 45.0
+        0.35,      # K_m (fast turbine fraction)
+        0.25,      # T_g (fast governor time constant)
+        25.0,      # droop = 1/R = 25.0
         2.0,       # ROCOF threshold (Hz/s)
-        0.8,       # NADIR threshold (Hz)
-        0.2,       # largest contingency (p.u. for Area 2)
+        0.55,      # NADIR threshold (Hz)
+        0.20,      # largest contingency (p.u. for Area 2)
     )
 
     # Tie-line configuration
-    tie = TieLine(1, 2, 2.0, 0.185)  # T_sync=2.0 p.u., capacity=0.185 p.u.
+    tie = TieLine(1, 2, 2.0, 0.25)  # T_sync=2.0 p.u., capacity=0.25 p.u. (allows healthy support)
 
     return MultiAreaSystem([area1, area2], [tie])
 end
@@ -137,20 +137,20 @@ end
 """
     build_strong_disturbed_weak_healthy_system() -> MultiAreaSystem
 
-Case 3: Disturbed Area (Area 1) has fast and strong frequency regulation resources.
+Case 2: Disturbed Area (Area 1) has fast and strong frequency regulation resources.
 Undisturbed Area (Area 2) has slow and weak frequency regulation resources.
 """
 function build_strong_disturbed_weak_healthy_system()
-    # Area 1: Disturbed area with fast/strong regulation (R=0.022 -> droop=45, Tg=0.15s, Km=0.50)
+    # Area 1: Disturbed area with fast/strong regulation (R=0.04 -> droop=25, Tg=0.25s, Km=0.35)
     area1 = AreaParameters(
         1,
         8.0,       # initial_inertia
-        0.5,       # K_m (fast turbine fraction/BESS equivalent)
-        0.15,      # T_g (fast governor time constant)
-        45.0,      # droop = 1/R = 45.0
+        0.35,      # K_m (fast turbine fraction)
+        0.25,      # T_g (fast governor time constant)
+        25.0,      # droop = 1/R = 25.0
         2.0,       # ROCOF threshold (Hz/s)
-        0.8,       # NADIR threshold (Hz)
-        0.45,      # largest contingency (p.u. - larger to test active boundary on strong governor)
+        0.55,      # NADIR threshold (Hz)
+        0.35,      # largest contingency (p.u.)
     )
 
     # Area 2: Healthy area with slow/weak regulation (R=0.067 -> droop=15, Tg=0.6s, Km=0.12)
@@ -161,12 +161,88 @@ function build_strong_disturbed_weak_healthy_system()
         0.6,       # T_g (slow governor time constant)
         15.0,      # droop = 1/R = 15.0
         2.0,       # ROCOF threshold (Hz/s)
-        0.8,       # NADIR threshold (Hz)
-        0.22,      # largest contingency (p.u. for Area 2)
+        0.55,      # NADIR threshold (Hz)
+        0.20,      # largest contingency (p.u. for Area 2)
     )
 
     # Tie-line configuration
-    tie = TieLine(1, 2, 2.0, 0.165)  # T_sync=2.0 p.u., capacity=0.165 p.u.
+    tie = TieLine(1, 2, 2.0, 0.25)  # T_sync=2.0 p.u., capacity=0.25 p.u.
+
+    return MultiAreaSystem([area1, area2], [tie])
+end
+
+
+"""
+    build_symmetric_strong_system() -> MultiAreaSystem
+
+Case 1: Both Area 1 (disturbed) and Area 2 (healthy) have fast and strong frequency regulation resources.
+"""
+function build_symmetric_strong_system()
+    # Area 1: Disturbed area with fast/strong regulation.  The high fast-response
+    # fraction keeps the nadir boundary active while allowing it to turn upward
+    # at the high-damping end of the study window.
+    area1 = AreaParameters(
+        1,
+        8.0,       # initial_inertia
+        0.90,      # K_m (fast turbine/converter response fraction)
+        0.25,      # T_g (fast governor time constant)
+        25.0,      # droop = 1/R = 25.0
+        2.0,       # ROCOF threshold (Hz/s)
+        0.55,      # NADIR threshold (Hz)
+        0.35,      # largest contingency (p.u.)
+    )
+
+    # Area 2: Healthy area with the same fast-response tuning.
+    area2 = AreaParameters(
+        2,
+        8.0,       # initial_inertia
+        0.90,      # K_m (fast turbine/converter response fraction)
+        0.25,      # T_g (fast governor time constant)
+        25.0,      # droop = 1/R = 25.0
+        2.0,       # ROCOF threshold (Hz/s)
+        0.55,      # NADIR threshold (Hz)
+        0.20,      # largest contingency (p.u. for Area 2)
+    )
+
+    # Tie-line configuration
+    tie = TieLine(1, 2, 2.0, 0.25)  # T_sync=2.0 p.u., capacity=0.25 p.u.
+
+    return MultiAreaSystem([area1, area2], [tie])
+end
+
+
+"""
+    build_symmetric_weak_system() -> MultiAreaSystem
+
+Case 4: Both Area 1 (disturbed) and Area 2 (healthy) have slow and weak frequency regulation resources.
+"""
+function build_symmetric_weak_system()
+    # Area 1: Disturbed area with slow/weak regulation (R=0.067 -> droop=15, Tg=0.6s, Km=0.12)
+    area1 = AreaParameters(
+        1,
+        8.0,       # initial_inertia
+        0.12,      # K_m (slow turbine fraction)
+        0.6,       # T_g (slow governor time constant)
+        15.0,      # droop = 1/R = 15.0
+        2.0,       # ROCOF threshold (Hz/s)
+        0.55,      # NADIR threshold (Hz)
+        0.35,      # largest contingency (p.u.)
+    )
+
+    # Area 2: Healthy area with slow/weak regulation (R=0.067 -> droop=15, Tg=0.6s, Km=0.12)
+    area2 = AreaParameters(
+        2,
+        8.0,       # initial_inertia
+        0.12,      # K_m (slow turbine fraction)
+        0.6,       # T_g (slow governor time constant)
+        15.0,      # droop = 1/R = 15.0
+        2.0,       # ROCOF threshold (Hz/s)
+        0.55,      # NADIR threshold (Hz)
+        0.15,      # largest contingency (p.u. for Area 2)
+    )
+
+    # Tie-line configuration
+    tie = TieLine(1, 2, 2.0, 0.15)  # T_sync=2.0 p.u., capacity=0.15 p.u.
 
     return MultiAreaSystem([area1, area2], [tie])
 end
