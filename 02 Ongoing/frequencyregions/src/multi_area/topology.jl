@@ -180,7 +180,7 @@ frequency control.
 """
 function build_strong_regulation_both_areas_system()
     a1 = AreaParameters(1, 8.0, 0.50, 0.15, 45.0, 2.0, 0.8, 0.80)
-    a2 = AreaParameters(2, 8.0, 0.50, 0.15, 45.0, 2.0, 0.8, 0.0)
+    a2 = AreaParameters(2, 8.0, 0.50, 0.15, 45.0, 2.0, 0.8, 0.40)
     return MultiAreaSystem([a1, a2], [TieLine(1, 2, 4.0, 0.40)])
 end
 
@@ -191,7 +191,7 @@ Case 4: Both areas have weak primary frequency control.
 """
 function build_weak_regulation_both_areas_system()
     a1 = AreaParameters(1, 8.0, 0.12, 0.60, 15.0, 2.0, 0.8, 0.25)
-    a2 = AreaParameters(2, 8.0, 0.12, 0.60, 15.0, 2.0, 0.8, 0.0)
+    a2 = AreaParameters(2, 8.0, 0.12, 0.60, 15.0, 2.0, 0.8, 0.15)
     return MultiAreaSystem([a1, a2], [TieLine(1, 2, 2.0, 0.126)])
 end
 

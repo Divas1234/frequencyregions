@@ -500,11 +500,11 @@ function plot_multiarea_mutual_support_trajectories(system::MultiAreaSystem, con
 		t_max=15.0
 	)
 
-	# Convert frequency deviation from p.u. to Hz and get actual frequency (f = 50 - 50 * df)
-	f1_iso = 50.0 .- 50.0 .* df1_iso
-	f2_iso = 50.0 .- 50.0 .* df2_iso
-	f1_con = 50.0 .- 50.0 .* df1_con
-	f2_con = 50.0 .- 50.0 .* df2_con
+	# Convert frequency deviation from p.u. to Hz and get actual frequency (f = 50 + 50 * df)
+	f1_iso = 50.0 .+ 50.0 .* df1_iso
+	f2_iso = 50.0 .+ 50.0 .* df2_iso
+	f1_con = 50.0 .+ 50.0 .* df1_con
+	f2_con = 50.0 .+ 50.0 .* df2_con
 
 	# Plot panel a: Frequency curves
 	p_freq = Plots.plot(;

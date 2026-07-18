@@ -188,6 +188,26 @@ function run_hd_fsr_case_studies(; output_dir::String="fig/multi_area", damping_
         mkpath(case_dir)
         path = joinpath(case_dir, "hd_fsr_boundaries.png")
         Plots.savefig(plot, path)
+
+        # Run the full multi-area analysis to get comparative results and other 5 plots
+        output_txt_path = joinpath(case_dir, "all_vertices_multiarea.txt")
+        analysis_res = run_multiarea_analysis(
+            system=system,
+            damping_range=damping_values[1]:0.25:damping_values[end],
+            min_damping=damping_values[1],
+            max_damping=damping_values[end],
+            flag_converter=0,
+            output_path=output_txt_path,
+            decoupling_factor=0.1
+        )
+
+        # Save all comparative figures to the case folder
+        Plots.savefig(analysis_res.comparison_plot_dyn, joinpath(case_dir, "multiarea_comparison_dynamic.png"))
+        Plots.savefig(analysis_res.overlay_plot_dyn, joinpath(case_dir, "multiarea_overlay_dynamic.png"))
+        Plots.savefig(analysis_res.capacity_impact_plot, joinpath(case_dir, "multiarea_capacity_impact.png"))
+        Plots.savefig(analysis_res.stiffness_impact_plot, joinpath(case_dir, "multiarea_stiffness_impact.png"))
+        Plots.savefig(analysis_res.mutual_support_trajectories_plot, joinpath(case_dir, "multiarea_mutual_support_trajectories.png"))
+
         push!(results, (case_id=case_id, label=FSR_CASE_LABELS[case_id], system=system, boundary=boundary, plot=plot, path=path))
     end
     return results
