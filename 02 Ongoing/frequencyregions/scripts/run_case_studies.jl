@@ -38,35 +38,12 @@ function rename_case_files(case_name::String, decoupling_factor::Float64)
     end
 end
 
-# Case 1: Symmetric baseline system
-println("\n>>> Running Case 1: Symmetric Baseline System...")
-case1_system = build_ieee_2area_kundur()
-result1 = mainfun_multiarea(
-    system=case1_system,
-    output_path="res/multi_area/case1_vertices.txt",
-    decoupling_factor=0.1
-)
-rename_case_files("case1_symmetric", 0.1)
-
-# Case 2: Asymmetric Weak Disturbed & Strong Healthy system
-println("\n>>> Running Case 2: Asymmetric Weak Disturbed & Strong Healthy System...")
-case2_system = build_asymmetric_resources_system()
-result2 = mainfun_multiarea(
-    system=case2_system,
-    output_path="res/multi_area/case2_vertices.txt",
-    decoupling_factor=0.1
-)
-rename_case_files("case2_weak_disturbed", 0.1)
-
-# Case 3: Asymmetric Strong Disturbed & Weak Healthy system
-println("\n>>> Running Case 3: Asymmetric Strong Disturbed & Weak Healthy System...")
-case3_system = build_strong_disturbed_weak_healthy_system()
-result3 = mainfun_multiarea(
-    system=case3_system,
-    output_path="res/multi_area/case3_vertices.txt",
-    decoupling_factor=0.1
-)
-rename_case_files("case3_strong_disturbed", 0.1)
+println("\n>>> Running four explicit H-D Nadir / tie-line boundary cases...")
+case_results = run_hd_fsr_case_studies()
+for r in case_results
+    println("$(r.label): feasible H-D area = $(round(r.boundary.area, digits=3)) p.u.·s")
+    println("  figure: $(r.path)")
+end
 
 println("\nAll case studies completed successfully!")
 println("Plots have been saved to fig/multi_area/")

@@ -31,5 +31,13 @@
     @test sys_strong.areas[2].droop == 15.0
     @test sys_strong.areas[1].time_constant == 0.15
     @test sys_strong.areas[2].time_constant == 0.6
+
+    sys_strong_both = build_strong_regulation_both_areas_system()
+    @test all(a -> a.droop == 45.0, sys_strong_both.areas)
+    @test sys_strong_both.tie_lines[1].capacity == 0.40
+
+    sys_weak_both = build_weak_regulation_both_areas_system()
+    @test all(a -> a.droop == 15.0, sys_weak_both.areas)
+    @test sys_weak_both.tie_lines[1].capacity == 0.126
 end
 

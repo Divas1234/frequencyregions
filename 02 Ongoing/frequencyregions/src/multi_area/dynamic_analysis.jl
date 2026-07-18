@@ -152,6 +152,7 @@ function find_critical_inertia_nadir(
 	H2::Float64, D2::Float64, R2::Float64, Tg2::Float64, Km2::Float64, DP2::Float64,
 	T12::Float64, C12::Float64, nadir_threshold1::Float64, nadir_threshold2::Float64;
 	H_min_search::Float64 = 0.05, H_max_search::Float64 = 100.0, tol::Float64 = 1e-3,
+	t_max::Float64 = 10.0, dt::Float64 = 0.005,
 )
 	# Convert thresholds from Hz to p.u. (50 Hz base)
 	th1 = nadir_threshold1 / 50.0
@@ -161,7 +162,7 @@ function find_critical_inertia_nadir(
 	n1_min_H, n2_min_H, _, _ = simulate_multiarea_frequency_response(
 		H_max_search, D1, R1, Tg1, Km1, DP1,
 		H2, D2, R2, Tg2, Km2, DP2,
-		T12, C12,
+		T12, C12; t_max=t_max, dt=dt,
 	)
 	if n1_min_H > th1 || n2_min_H > th2
 		# Even with max search inertia, nadir is violated in either Area 1 or Area 2
@@ -172,7 +173,7 @@ function find_critical_inertia_nadir(
 	n1_max_H, n2_max_H, _, _ = simulate_multiarea_frequency_response(
 		H_min_search, D1, R1, Tg1, Km1, DP1,
 		H2, D2, R2, Tg2, Km2, DP2,
-		T12, C12,
+		T12, C12; t_max=t_max, dt=dt,
 	)
 	if n1_max_H <= th1 && n2_max_H <= th2
 		# Even with min search inertia, nadir is satisfied in both areas
@@ -190,7 +191,7 @@ function find_critical_inertia_nadir(
 		nadir1, nadir2, _, _ = simulate_multiarea_frequency_response(
 			mid, D1, R1, Tg1, Km1, DP1,
 			H2, D2, R2, Tg2, Km2, DP2,
-			T12, C12,
+			T12, C12; t_max=t_max, dt=dt,
 		)
 
 		if nadir1 > th1 || nadir2 > th2
@@ -290,11 +291,12 @@ function find_critical_inertia_tieline(
 	H2::Float64, D2::Float64, R2::Float64, Tg2::Float64, Km2::Float64, DP2::Float64,
 	T12::Float64, C12::Float64;
 	H_min_search::Float64 = 0.05, H_max_search::Float64 = 100.0, tol::Float64 = 1e-3,
+	t_max::Float64 = 10.0, dt::Float64 = 0.005,
 )
     p_min_H = simulate_multiarea_frequency_unclamped(
         H_min_search, D1, R1, Tg1, Km1, DP1,
         H2, D2, R2, Tg2, Km2, DP2,
-        T12,
+        T12; t_max=t_max, dt=dt,
     )
     # In this model the peak tie-line transfer can increase with local inertia:
     # a slower frequency excursion gives the interconnection longer to exchange
@@ -306,7 +308,7 @@ function find_critical_inertia_tieline(
     p_max_H = simulate_multiarea_frequency_unclamped(
         H_max_search, D1, R1, Tg1, Km1, DP1,
         H2, D2, R2, Tg2, Km2, DP2,
-        T12,
+        T12; t_max=t_max, dt=dt,
     )
     if p_max_H <= C12
         return H_max_search
@@ -321,7 +323,7 @@ function find_critical_inertia_tieline(
 		p_val = simulate_multiarea_frequency_unclamped(
 			mid, D1, R1, Tg1, Km1, DP1,
 			H2, D2, R2, Tg2, Km2, DP2,
-			T12,
+			T12; t_max=t_max, dt=dt,
 		)
         if p_val <= C12
             low = mid

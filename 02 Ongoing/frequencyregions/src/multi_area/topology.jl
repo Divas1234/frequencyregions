@@ -112,7 +112,7 @@ function build_asymmetric_resources_system()
         15.0,      # droop = 1/R = 15.0
         2.0,       # ROCOF threshold (Hz/s)
         0.8,       # NADIR threshold (Hz)
-        0.25,      # largest contingency (p.u.)
+        0.40,      # largest contingency (p.u.) - optimized for active boundary
     )
 
     # Area 2: Healthy area with fast/strong regulation (R=0.022 -> droop=45, Tg=0.15s, Km=0.50)
@@ -128,7 +128,7 @@ function build_asymmetric_resources_system()
     )
 
     # Tie-line configuration
-    tie = TieLine(1, 2, 2.0, 0.185)  # T_sync=2.0 p.u., capacity=0.185 p.u.
+    tie = TieLine(1, 2, 2.0, 0.30)  # T_sync=2.0 p.u., capacity=0.30 p.u. - optimized for crossing
 
     return MultiAreaSystem([area1, area2], [tie])
 end
@@ -150,7 +150,7 @@ function build_strong_disturbed_weak_healthy_system()
         45.0,      # droop = 1/R = 45.0
         2.0,       # ROCOF threshold (Hz/s)
         0.8,       # NADIR threshold (Hz)
-        0.45,      # largest contingency (p.u. - larger to test active boundary on strong governor)
+        0.60,      # largest contingency (p.u.) - optimized for active boundary
     )
 
     # Area 2: Healthy area with slow/weak regulation (R=0.067 -> droop=15, Tg=0.6s, Km=0.12)
@@ -166,11 +166,34 @@ function build_strong_disturbed_weak_healthy_system()
     )
 
     # Tie-line configuration
-    tie = TieLine(1, 2, 2.0, 0.165)  # T_sync=2.0 p.u., capacity=0.165 p.u.
+    tie = TieLine(1, 2, 2.0, 0.19)  # T_sync=2.0 p.u., capacity=0.19 p.u. - optimized for crossing
 
     return MultiAreaSystem([area1, area2], [tie])
 end
 
+
+"""
+    build_strong_regulation_both_areas_system() -> MultiAreaSystem
+
+Case 1: Area 1 (disturbed) and Area 2 (supporting) both have strong primary
+frequency control.
+"""
+function build_strong_regulation_both_areas_system()
+    a1 = AreaParameters(1, 8.0, 0.50, 0.15, 45.0, 2.0, 0.8, 0.80)
+    a2 = AreaParameters(2, 8.0, 0.50, 0.15, 45.0, 2.0, 0.8, 0.0)
+    return MultiAreaSystem([a1, a2], [TieLine(1, 2, 4.0, 0.40)])
+end
+
+"""
+    build_weak_regulation_both_areas_system() -> MultiAreaSystem
+
+Case 4: Both areas have weak primary frequency control.
+"""
+function build_weak_regulation_both_areas_system()
+    a1 = AreaParameters(1, 8.0, 0.12, 0.60, 15.0, 2.0, 0.8, 0.25)
+    a2 = AreaParameters(2, 8.0, 0.12, 0.60, 15.0, 2.0, 0.8, 0.0)
+    return MultiAreaSystem([a1, a2], [TieLine(1, 2, 2.0, 0.126)])
+end
 
 
 """

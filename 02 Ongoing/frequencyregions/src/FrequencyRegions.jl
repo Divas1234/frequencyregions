@@ -36,6 +36,7 @@ include("multi_area/topology.jl")
 include("multi_area/dynamic_analysis.jl")
 include("multi_area/decoupled_workflow.jl")
 include("multi_area/visualization.jl")
+include("multi_area/fsr_case_studies.jl")
 include("multi_area/mainfun.jl")
 
 const LOAD_OPTIONAL_GEOMETRY = get(ENV, "FREQUENCYREGIONS_LOAD_OPTIONAL_GEOMETRY", "0") == "1"
@@ -86,8 +87,14 @@ export DAMPING_RANGE,
     execute_dynamic_multiarea_workflow,
     build_ieee_2area_kundur,
     build_regional_frequency_control_system,
+    build_strong_regulation_both_areas_system,
     build_asymmetric_resources_system,
     build_strong_disturbed_weak_healthy_system,
+    build_weak_regulation_both_areas_system,
+    build_fsr_case_system,
+    calculate_hd_fsr_boundaries,
+    plot_hd_fsr_boundaries,
+    run_hd_fsr_case_studies,
     compute_tie_line_contribution,
     collect_all_vertices,
     print_multiarea_summary,

@@ -121,20 +121,46 @@ function plot_multiarea_comparison(
 			active_lower_curve = max.(bounds[:, 2], min_inertia, fit_curve_con)
 			active_lower_curve_plot = [active_lower_curve[i] <= bounds[i, 1] ? active_lower_curve[i] : NaN for i in eachindex(damp)]
 
+			# Compute active upper curve based on stability and tie-line capacity limit if available
+			has_tieline = !isempty(ar_con.tieline_fitting_parameters) || !isempty(ar_con.tieline_inertia_limits)
+			
+			active_upper_curve = if has_tieline
+				tieline_curve = length(ar_con.tieline_inertia_limits) == length(damp) ?
+					ar_con.tieline_inertia_limits :
+					(ar_con.tieline_fitting_parameters[1] .+ ar_con.tieline_fitting_parameters[2] .* damp .+
+					 ar_con.tieline_fitting_parameters[3] .* damp .^ 2)
+				[
+					(h >= 99.9 || h > bounds[i, 1]) ? bounds[i, 1] : h
+					for (i, h) in enumerate(tieline_curve)
+				]
+			else
+				bounds[:, 1]
+			end
+
 			if !isempty(idx_range)
 				damp_sub = damp[idx_range]
-				top_sub = bounds[idx_range, 1]
-				bottom_sub_con = [min(top_sub[i], max(bounds[idx_range[i], 2], min_inertia, fit_curve_con[idx_range[i]])) for i in eachindex(idx_range)]
+				top_sub = [min(bounds[idx_range[i], 1], active_upper_curve[idx_range[i]]) for i in eachindex(idx_range)]
+				bottom_sub_con = [max(bounds[idx_range[i], 2], min_inertia, fit_curve_con[idx_range[i]]) for i in eachindex(idx_range)]
+				
+				# Prevent negative filling ranges
+				for i in eachindex(idx_range)
+					if top_sub[i] < bottom_sub_con[i]
+						top_sub[i] = bottom_sub_con[i]
+					end
+				end
 
 				p = Plots.plot!(p, damp_sub, top_sub;
 					fillrange = bottom_sub_con, fillalpha = 0.15, fillcolor = COLOR_FEASIBLE_CON,
 					lw = 0, label = "Feasible (Interconnected)")
 			end
 
-			# Nadir is the active lower boundary. Tie-line capacity is plotted below
-			# as an upper boundary, so the safe domain is visibly between them.
+			# Plot the active boundaries as outlines
 			p = Plots.plot!(p, damp, active_lower_curve_plot;
 				lw = 2.2, label = "Active lower boundary", color = :black, linestyle = :solid)
+			
+			active_upper_limit_only_plot = [active_upper_curve[i] < bounds[i, 1] ? active_upper_curve[i] : NaN for i in eachindex(damp)]
+			p = Plots.plot!(p, damp, active_upper_limit_only_plot;
+				lw = 2.2, label = "Active upper boundary", color = :black, linestyle = :dash)
 
 			# Plot separate Nadir and Tieline limit curves if available
 			if !isempty(ar_con.nadir_fitting_parameters)
