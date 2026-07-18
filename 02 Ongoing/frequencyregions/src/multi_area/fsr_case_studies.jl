@@ -102,28 +102,77 @@ end
 function plot_hd_fsr_boundaries(case_id::Int, result; title::String=FSR_CASE_LABELS[case_id])
     d, lower, tie = result.damping, result.lower_h, result.tie_h
     finite_h = vcat(lower, tie)
-    y_max = max(1.0, min(30.0, maximum(finite_h) * 1.08))
+    y_max = max(10.0, min(30.0, maximum(finite_h) * 1.08))
     p = Plots.plot(; xlabel="Equivalent damping D₁ (p.u.)", ylabel="Equivalent inertia H₁ (s)",
         title=title, xlims=(first(d), last(d)), ylims=(0.0, y_max), legend=:topright,
         framestyle=:box, grid=true, gridalpha=0.15, size=(600, 420))
+
+    # 1. Fill Nadir/ROCOF Violation Region (Unsafe - Soft Blue)
+    Plots.plot!(p, Plots.Shape(vcat(d, reverse(d)), vcat(fill(0.0, length(d)), reverse(lower)));
+        color=:royalblue, fillalpha=0.06, linecolor=:transparent, label="Nadir/ROCOF Unsafe")
+
+    # 2. Fill Tie-line Overload Region (Unsafe - Soft Red)
+    tie_clamped = min.(tie, y_max)
+    Plots.plot!(p, Plots.Shape(vcat(d, reverse(d)), vcat(tie_clamped, fill(y_max, length(d))));
+        color=:firebrick, fillalpha=0.06, linecolor=:transparent, label="Tie-line Unsafe")
+
+    # 3. Fill Feasible Region (Safe - Green)
     feasible = findall(result.margin .>= 0.0)
     if length(feasible) >= 2
         ds, lows, ups = d[feasible], lower[feasible], tie[feasible]
         Plots.plot!(p, Plots.Shape(vcat(ds, reverse(ds)), vcat(lows, reverse(ups)));
-            color=:seagreen, linecolor=:seagreen, fillalpha=0.20, label="Feasible FSR")
+            color=:seagreen, fillalpha=0.22, linecolor=:transparent, label="Feasible FSR")
+
+        # Dynamic annotation inside Feasible Region
+        mid_idx = div(length(feasible), 2)
+        x_c = ds[mid_idx]
+        y_c = 0.5 * (lows[mid_idx] + ups[mid_idx])
+        Plots.annotate!(p, x_c, y_c, Plots.text("Feasible FSR", 9, :bold, :darkgreen, :center))
     end
+
+    # 4. Plot Boundary Curves
     Plots.plot!(p, d, result.nadir_h; color=:royalblue, lw=2.5, label="Nadir limit (lower boundary)")
     Plots.plot!(p, d, fill(result.rocof_h, length(d)); color=:black, lw=1.5, linestyle=:dot, label="ROCOF floor")
     Plots.plot!(p, d, tie; color=:firebrick, lw=2.5, label="Tie-line limit (upper boundary)")
-    if all(tie .>= result.h_max - 1e-3)
-        Plots.hline!(p, [result.h_max]; color=:gray45, lw=1.2, linestyle=:dash,
-            label="System-stability upper ceiling")
-    end
+
+    # 5. Plot Inertia Ceiling
+    Plots.hline!(p, [result.h_max]; color=:gray45, lw=1.2, linestyle=:dash, label="Inertia ceiling")
+
+    # 6. Plot Intersections and Projection Lines
     for x in result.intersections
-        Plots.scatter!(p, [x.damping], [x.inertia]; color=:black, marker=:diamond, markersize=5,
-            label="Boundary intersection")
-        Plots.annotate!(p, x.damping, x.inertia, Plots.text("($(round(x.damping, digits=2)), $(round(x.inertia, digits=2)))", 8, :black))
+        # Dotted lines to axes
+        Plots.plot!(p, [x.damping, x.damping], [0.0, x.inertia]; color=:black, lw=1.0, linestyle=:dash, label="")
+        Plots.plot!(p, [first(d), x.damping], [x.inertia, x.inertia]; color=:black, lw=1.0, linestyle=:dash, label="")
+
+        # Highlight point
+        Plots.scatter!(p, [x.damping], [x.inertia]; color=:black, marker=:diamond, markersize=6, label="Intersection")
+        
+        # Label coordinates (shifting label placement to avoid line overlaps)
+        x_offset = (last(d) - first(d)) * 0.03
+        y_offset = y_max * 0.03
+        Plots.annotate!(p, x.damping + x_offset, x.inertia + y_offset, 
+            Plots.text("($(round(x.damping, digits=2)), $(round(x.inertia, digits=2)))", 8, :bold, :black, :left))
     end
+
+    # 7. Dynamic text annotations for unsafe regions to avoid overlapping
+    # Nadir violation label placement
+    nadir_heights = lower
+    max_nadir_val, max_nadir_idx = findmax(nadir_heights)
+    if max_nadir_val > 1.5
+        x_n = d[max_nadir_idx]
+        y_n = 0.5 * max_nadir_val
+        Plots.annotate!(p, x_n, y_n, Plots.text("Nadir Violation", 8, :darkblue, :center))
+    end
+
+    # Tie-line overload label placement
+    tieline_heights = y_max .- tie_clamped
+    max_tie_val, max_tie_idx = findmax(tieline_heights)
+    if max_tie_val > 1.5
+        x_t = d[max_tie_idx]
+        y_t = 0.5 * (tie_clamped[max_tie_idx] + y_max)
+        Plots.annotate!(p, x_t, y_t, Plots.text("Tie-line Overload", 8, :red, :center))
+    end
+
     return p
 end
 
